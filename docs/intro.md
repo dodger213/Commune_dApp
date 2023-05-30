@@ -2,6 +2,7 @@
 id: Introduction v0
 sidebar_position: 1
 slug: Introduction
+sidebar_label: 👋 Introduction
 ---
 
 # Introduction

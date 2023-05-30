@@ -1,8 +1,11 @@
 ---
 sidebar_position: 6
+name: Congratulations!
+Tags: ["tutorial", "basics"]
+slug: /tutorial-basics/congratulations
 ---
 
-# Congratulations!
+# 🎉 Congratulations!
 
 You have just learned the **basics of Docusaurus** and made some changes to the **initial template**.
 
