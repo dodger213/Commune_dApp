@@ -13,8 +13,11 @@ module.exports = {
           'min': '1.5rem',
           'max': '1.75rem',
         },
-        }
-    },
+        },
+      colors: {
+        "light-green" : "f5fae7"
+      },
+  },
   },
   plugins: [],
 }

@@ -24,10 +24,12 @@ export default function modules() {
         title={`🚀 Modules`}
     
     >
+
     <div className='text-lg dark:text-white text-black'>
         {/*with a opaque background have comming soon page  */}
-        <div className='flex flex-col items-center justify-center h-screen'>
-            <div className='z-10 flex flex-col items-center justify-center h-5/6 w-5/6 rounded-lg '>
+        <div className='flex flex-col items-center justify-center h-1/2'>
+            <img src="./gif/cubes/MultiColourCubeSpin.gif" className=' w-[500px] h-[300px]'/>
+            <div className='z-10 flex flex-col items-center justify-center rounded-lg '>
                 <h1 className='text-4xl font-bold'>🚀 Modules</h1>
                 <p className='text-2xl'>Coming soon...</p>
             </div>
