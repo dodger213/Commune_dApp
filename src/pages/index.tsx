@@ -1,14 +1,103 @@
+//import(s)
 import React from 'react';
-// import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import WelcomeSection from '@site/src/components/Frontpage/Welcome/index';
 import {getHeaderClasses} from '@site/src/components/utils';
 import { Section } from '../components/Frontpage/Sections/index';
-const words = ["developers.", "designers.", "creators.", "everyone.", "<END>"]
-const colour = ["text-[#00000]", "text-[#ffb4ed] dark:text-[#FFD6F5]", "text-[#FF8F8F]  dark:text-[#FF8F8F]", "text-[#ffef40] dark:text-[#FFF7A1]" ];
 
-function HomepageHeader() {
+// static data
+const words : string[] = ["developers.", "designers.", "creators.", "everyone.", "<END>"];
+const colour : string[] = ["text-[#00000]", "text-[#ffb4ed] dark:text-[#FFD6F5]", "text-[#FF8F8F]  dark:text-[#FF8F8F]", "text-[#ffef40] dark:text-[#FFF7A1]" ];
+const Sections  = [
+  {
+    id: "blue",
+    src : "./gif/cubes/blue_small.gif",
+    className : "dark:bg-[linear-gradient(180deg,#1b1b1d,#84b9f7)] bg-[linear-gradient(180deg,#ffffff,#84b9f7)]",
+    children : <div className=' text-black dark:text-white'>
+                      <div className='pt-6 text-right w-full'>
+                        <h1 className=" text-5xl pb-3 dark:text-white text-center">ENTER TEXT HERE</h1>
+                      </div>
+                </div>
+  },
+  {
+    id: "green",
+    src : "./gif/cubes/green_small.gif",
+    className : "dark:bg-[linear-gradient(180deg,#1b1b1d,#c3f7c8)] bg-[linear-gradient(180deg,#ffffff,#c3f7c8)]",
+    children : <div className=' text-black dark:text-white'>
+                      <div className='pt-6 text-right w-full'>
+                        <h1 className=" text-5xl pb-3 dark:text-white text-center">ENTER TEXT HERE</h1>
+                      </div>
+                </div>
+  },
+  {
+    id: "yellow",
+    src : "./gif/cubes/yellow_small.gif",
+    className : "dark:bg-[linear-gradient(180deg,#1b1b1d,#fff7a1)] bg-[linear-gradient(180deg,#ffffff,#fff7a1)] rounded-lg shadow-xl",
+    children : <div className=' text-black dark:text-white'>
+                      <div className='pt-6 text-right w-full'>
+                        <h1 className=" text-5xl pb-3 dark:text-white text-center">ENTER TEXT HERE</h1>
+                      </div>
+                </div>
+  },
+  {
+    id: "red",
+    src : "./gif/cubes/red_small.gif",
+    className : "dark:bg-[linear-gradient(180deg,#1b1b1d,#ff8f8f)] bg-[linear-gradient(180deg,#ffffff,#ff8f8f)] rounded-lg shadow-xl",
+    children : <div className=' text-black dark:text-white'>
+                      <div className='pt-6 text-right w-full'>  
+                        <h1 className=" text-5xl pb-3 dark:text-white text-center">ENTER TEXT HERE</h1>
+                      </div>  
+                </div>       
+  },
+  {
+    id: "pink",
+    src : "./gif/cubes/pink_small.gif",
+    className : "dark:bg-[linear-gradient(180deg,#1b1b1d,#ffd6f5)] bg-[linear-gradient(180deg,#ffffff,#ffd6f5)] rounded-lg shadow-xl",
+    children : <div className=' text-black dark:text-white'>
+                      <div className='pt-6 text-right w-full'>
+                        <h1 className=" text-5xl pb-3 dark:text-white text-center">ENTER TEXT HERE</h1>
+                      </div>
+                </div>
+  },
+  {
+    id: "black",
+    src : "./gif/cubes/black_small.gif",
+    className : "dark:bg-[linear-gradient(180deg,#1b1b1d,#1b1b1d)] bg-[linear-gradient(180deg,#ffffff,#ffffff)] rounded-lg shadow-xl",
+    children : <div className=' text-black dark:text-white'>
+                      <div className='pt-6 text-right w-full'>
+                        <h1 className=" text-5xl pb-3 dark:text-white text-center">ENTER TEXT HERE</h1>
+                      </div>
+                </div>
+  },
+  {
+    id: "white",
+    src : "./gif/cubes/white_small.gif",
+    className : "dark:bg-[linear-gradient(180deg,#ffffff,#ffffff)] bg-[linear-gradient(180deg,#1b1b1d,#1b1b1d)] rounded-lg shadow-xl",
+    children : <div className=' text-white dark:text-black'>
+                <div className='pt-6 text-right w-full pb-6'>
+                  <h1 className=" text-5xl pb-3 dark:text-black text-center">Read Our Whitepaper 📄</h1>
+                  <p className="hero__subtitle text-3xl text-center">Want to read more? Check<br/>out the our whitepaper.</p>
+
+                  <div className='flex justify-center rounded-xl lg:mb-4'>
+                    <a href='' className=' hover:no-underline '>
+                      <div className=' flex flex-row bg-[#FF8F8F] hover:bg-[#FF8F8F] dark:bg-[#FF8F8F] dark:hover:bg-[#fc9494] text-white font-bold py-2 px-4 mt-10 rounded-lg shadow-md hover:shadow-xl duration-300 '>
+                        <img src="./svg/Drive.svg" className="mr-2 w-7 h-7" /> 
+                        Read Whitepaper
+                      </div>
+                    </a>
+                  </div>
+                  
+                </div>
+              </div>
+  }  
+];
+
+// type
+// --None--
+
+// Helper components fn (function(s))
+function HomepageHeader() : JSX.Element {
 
   
   const [index, setIndex] = React.useState(0); // index of word
@@ -119,89 +208,6 @@ function HomepageHeader() {
   );
 }
 
-const Sections  = [
-  {
-    id: "blue",
-    src : "./gif/cubes/blue_small.gif",
-    className : "dark:bg-[linear-gradient(180deg,#1b1b1d,#84b9f7)] bg-[linear-gradient(180deg,#ffffff,#84b9f7)]",
-    children : <div className=' text-black dark:text-white'>
-                      <div className='pt-6 text-right w-full'>
-                        <h1 className=" text-5xl pb-3 dark:text-white text-center">ENTER TEXT HERE</h1>
-                      </div>
-                </div>
-  },
-  {
-    id: "green",
-    src : "./gif/cubes/green_small.gif",
-    className : "dark:bg-[linear-gradient(180deg,#1b1b1d,#c3f7c8)] bg-[linear-gradient(180deg,#ffffff,#c3f7c8)]",
-    children : <div className=' text-black dark:text-white'>
-                      <div className='pt-6 text-right w-full'>
-                        <h1 className=" text-5xl pb-3 dark:text-white text-center">ENTER TEXT HERE</h1>
-                      </div>
-                </div>
-  },
-  {
-    id: "yellow",
-    src : "./gif/cubes/yellow_small.gif",
-    className : "dark:bg-[linear-gradient(180deg,#1b1b1d,#fff7a1)] bg-[linear-gradient(180deg,#ffffff,#fff7a1)] rounded-lg shadow-xl",
-    children : <div className=' text-black dark:text-white'>
-                      <div className='pt-6 text-right w-full'>
-                        <h1 className=" text-5xl pb-3 dark:text-white text-center">ENTER TEXT HERE</h1>
-                      </div>
-                </div>
-  },
-  {
-    id: "red",
-    src : "./gif/cubes/red_small.gif",
-    className : "dark:bg-[linear-gradient(180deg,#1b1b1d,#ff8f8f)] bg-[linear-gradient(180deg,#ffffff,#ff8f8f)] rounded-lg shadow-xl",
-    children : <div className=' text-black dark:text-white'>
-                      <div className='pt-6 text-right w-full'>  
-                        <h1 className=" text-5xl pb-3 dark:text-white text-center">ENTER TEXT HERE</h1>
-                      </div>  
-                </div>       
-  },
-  {
-    id: "pink",
-    src : "./gif/cubes/pink_small.gif",
-    className : "dark:bg-[linear-gradient(180deg,#1b1b1d,#ffd6f5)] bg-[linear-gradient(180deg,#ffffff,#ffd6f5)] rounded-lg shadow-xl",
-    children : <div className=' text-black dark:text-white'>
-                      <div className='pt-6 text-right w-full'>
-                        <h1 className=" text-5xl pb-3 dark:text-white text-center">ENTER TEXT HERE</h1>
-                      </div>
-                </div>
-  },
-  {
-    id: "black",
-    src : "./gif/cubes/black_small.gif",
-    className : "dark:bg-[linear-gradient(180deg,#1b1b1d,#1b1b1d)] bg-[linear-gradient(180deg,#ffffff,#ffffff)] rounded-lg shadow-xl",
-    children : <div className=' text-black dark:text-white'>
-                      <div className='pt-6 text-right w-full'>
-                        <h1 className=" text-5xl pb-3 dark:text-white text-center">ENTER TEXT HERE</h1>
-                      </div>
-                </div>
-  },
-  {
-    id: "white",
-    src : "./gif/cubes/white_small.gif",
-    className : "dark:bg-[linear-gradient(180deg,#ffffff,#ffffff)] bg-[linear-gradient(180deg,#1b1b1d,#1b1b1d)] rounded-lg shadow-xl",
-    children : <div className=' text-white dark:text-black'>
-                <div className='pt-6 text-right w-full pb-6'>
-                  <h1 className=" text-5xl pb-3 dark:text-black text-center">Read Our Whitepaper 📄</h1>
-                  <p className="hero__subtitle text-3xl text-center">Want to read more? Check<br/>out the our whitepaper.</p>
-
-                  <div className='flex justify-center rounded-xl lg:mb-4'>
-                    <a href='' className=' hover:no-underline '>
-                      <div className=' flex flex-row bg-[#FF8F8F] hover:bg-[#FF8F8F] dark:bg-[#FF8F8F] dark:hover:bg-[#fc9494] text-white font-bold py-2 px-4 mt-10 rounded-lg shadow-md hover:shadow-xl duration-300 '>
-                        <img src="./svg/Drive.svg" className="mr-2 w-7 h-7" /> 
-                        Read Whitepaper
-                      </div>
-                    </a>
-                  </div>
-                  
-                </div>
-              </div>
-  }  
-]
 
 
 export default function Home() {

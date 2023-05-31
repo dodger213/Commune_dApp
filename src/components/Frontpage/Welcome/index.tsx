@@ -1,3 +1,4 @@
+//import(s)
 import React from 'react';
 
 // static data
@@ -85,7 +86,7 @@ const CubeHyperlink : React.FC<CubeHyperlink> = ({img, text, href, className=""}
 
 
 // Main fn
-export default function WelcomeSection ({} : React.FC<{}>) {
+export default function WelcomeSection () {
 
   return (
     <section id="welcome" className=' h-full pt-20 '>

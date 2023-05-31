@@ -1,38 +1,10 @@
-import React from 'react'; // importing FunctionComponent
+//import(s)
+import React from 'react';
 
+// static data
+// --None--
 
-// const FeatureList  = [
-//     {
-//       title: 'Easy to Use',
-//       description: (
-//         <>
-//           Docusaurus was designed from the ground up to be easily installed and
-//           used to get your website up and running quickly.
-//         </>
-//       ),
-//     },
-//     {
-//       title: 'Focus on What Matters',
-      
-//       description: (
-//         <>
-//           Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-//           ahead and move your docs into the <code>docs</code> directory.
-//         </>
-//       ),
-//     },
-//     {
-//       title: 'Powered by React',
-  
-//       description: (
-//         <>
-//           Extend or customize your website layout by reusing React. Docusaurus can
-//           be extended while reusing the same header and footer.
-//         </>
-//       ),
-//     },
-//   ];
-
+// type
 type FeatureProps = {
   title: string,
   description: string,
@@ -40,8 +12,13 @@ type FeatureProps = {
   className?: string
 }
 
-// Create a react component with typescript that takes in path to an image, title, description, and a path to possible images to the discritption
+// Helper components fn (function(s))
+// --None--
+
+
+// Main fn
 export const Feature: React.FC<FeatureProps> = ({title, description, children=null, className=""}) => {
+    // Create a react component with typescript that takes in path to an image, title, description, and a path to possible images to the description
     return (
       <div className={`flex ${className}`}>
         <div className=" text-center ">
@@ -57,6 +34,3 @@ export const Feature: React.FC<FeatureProps> = ({title, description, children=nu
       </div>
     );
   }
-
-
-/** */
