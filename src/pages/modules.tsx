@@ -28,12 +28,13 @@ export default function modules() {
     <div className='text-lg dark:text-white text-black'>
         {/*with a opaque background have comming soon page  */}
         <div className='flex flex-col items-center justify-center h-1/2'>
-            <img src="./gif/cubes/MultiColourCubeSpin.gif" className=' w-[500px] h-[300px]'/>
-            <div className='z-10 flex flex-col items-center justify-center rounded-lg '>
-                <h1 className='text-4xl font-bold'>🚀 Modules</h1>
-                <p className='text-2xl'>Coming soon...</p>
+            
+            <div className='z-10 flex flex-col items-center justify-center rounded-lg mt-10 '>
+                <h1 className='text-4xl font-bold'><span className='text-[#ffb4ed] dark:text-[#FFD6F5] hover:animate-pulse duration-500'>commune</span>::Modules 🚀</h1>
+                <img src="./gif/cubes/MultiColourCubeSpin.gif" className=' w-[500px] h-[300px]'/>
+                <p className=' text-xl font-medium'>Coming soon... 🚧 🏗️</p>
             </div>
-            <div className='absolute justify-center h-4/6 w-5/6 rounded-xl'></div>
+
         </div>
     </div>
     </Layout>

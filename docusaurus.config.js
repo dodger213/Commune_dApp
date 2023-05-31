@@ -156,8 +156,12 @@ const config = {
             ],
           },
           {
-            title: 'More',
+            title: '➕ More',
             items: [
+              {
+                label: '📄 Whitepaper',
+                to: '/docs/whitepaper',
+              }
 
             ],
           },
