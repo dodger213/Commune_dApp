@@ -10,6 +10,8 @@ const config = {
   tagline: 'Renovating the way we build software for ',
   favicon: 'img/favicon.ico',
 
+
+
   // Set the production url of your site here
   url: 'https://your-docusaurus-test-site.com',
   // Set the /<baseUrl>/ pathname under which your site is served
@@ -43,6 +45,12 @@ const config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+          versions: {
+              current: {
+                label: '🚀 v0.0.0',
+                path: '/next',
+              },
+            },
         },
         // blog: {
         //   showReadingTime: true,

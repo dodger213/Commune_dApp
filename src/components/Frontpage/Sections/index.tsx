@@ -1,6 +1,10 @@
 import React from 'react';
-import {getHeaderClasses} from '@site/src/components/utils';
 
+// static data
+// --None--
+
+
+// type
 type SectionProps = {
     src : string,
     className? : string,
@@ -8,14 +12,12 @@ type SectionProps = {
     id : string
 }
 
+// Helper components fn (function(s))
+// --None--
 
-
-  
-
+// Main fn
 export const Section: React.FC<SectionProps> = ({src, className, children=null, id}) => {
-
-
-    
+    // create a component that neatly places a image and text underneath 
     return (
     <section id={id} className='pt-10'>
         <div className={`py-10 px-5`}>

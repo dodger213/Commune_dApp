@@ -1,15 +1,95 @@
 import React from 'react';
 
+// static data
+const cubes = [
+  {
+    img : {
+      src : "./gif/cubes/blue_small.gif",
+      className : "lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
+    },
+    text : "[ENTER TEXT]",
+    href : "#blue"
+  },
+  {
+    img : {
+      src : "./gif/cubes/green_small.gif",
+      className : "lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
+    },
+    text : "[ENTER TEXT]",
+    href : "#green"
+  },
+  {
+    img : {
+      src : "./gif/cubes/yellow_small.gif",
+      className : "lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
+    },
+    text : "[ENTER TEXT]",
+    href : "#yellow"
+  },
+  {
+    img : {
+      src : "./gif/cubes/red_small.gif",
+      className : "lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
+    },
+    text : "[ENTER TEXT]",
+    href : "#red"
+  },
+  {
+    img : {
+      src : "./gif/cubes/pink_small.gif",
+      className : "lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
+    },
+    text : "[ENTER TEXT]",
+    href : "#pink"
+  },
+  {
+    img : {
+      src : "./gif/cubes/black_small.gif",
+      className : "lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
+    },
+    text : "[ENTER TEXT]",
+    href : "#black"
+  },
+  {
+    img : {
+      src : "./gif/cubes/white_small.gif",
+      className : "lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
+    },
+    text : "Whitepaper 📄",
+    href : "#white"
+  }
+]
 
-export default function WelcomeSection() {
 
-  
+// type
+type CubeHyperlink = {
+  img  : {
+    src : string
+    className : string
+  },
+  text : string,
+  href : string,
+  className? : string
+}
 
+// Helper components fn (function(s))
+const CubeHyperlink : React.FC<CubeHyperlink> = ({img, text, href, className=""}) => {
+  return (              
+    <div className={`flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ${className} `}>
+      <a href={href} className='hover:no-underline'> 
+        <img src={img.src} className={img.className}></img>
+      </a>
+      <p>{text}</p>
+    </div>)
+}
+
+
+// Main fn
+export default function WelcomeSection ({} : React.FC<{}>) {
 
   return (
     <section id="welcome" className=' h-full pt-20 '>
       <div className='flex flex-col items-center justify-center'>
-        
         <div className='pt-6 w-[710px]'>
           {/* EDIT SUBTEXT  */}
           <h1 className=" text-6xl pb-3 dark:text-white text-center">Welcome to the <span className='text-[#ffb4ed] dark:text-[#FFD6F5] hover:animate-pulse duration-500'>commune</span>! 👋</h1>
@@ -18,59 +98,10 @@ export default function WelcomeSection() {
         </div>
         
         {/* FIX ME WHEN SMALL SCREEN */}
-        <div className='flex lg:flex-row flex-col items-center justify-center px-4 gap-0 h-[500px] overflow-auto '>
-            <a href="#blue" className='dark:text-white text-black hover:text-black hover:no-underline'> 
-              <div className='flex  flex-col items-center justify-center '>
-                <img src='./gif/cubes/blue_small.gif' className='w-[200px] h-[200px] hover:w-[300px] hover:h-[300px] duration-300'></img>
-                <div>ENTER TEXT</div>
-              </div>
-            </a>
-
-            <a href="#green" className=' dark:text-white text-black hover:text-black  hover:no-underline'> 
-            <div className='flex flex-col items-center justify-center'>
-              <img src='./gif/cubes/green_small.gif' className='w-[200px] h-[200px] hover:w-[300px] hover:h-[300px] duration-300'></img>
-              <div>ENTER EXT</div>
-            </div>
-            </a>
-
-            <a href="#yellow" className=' dark:text-white text-black hover:text-black  hover:no-underline'>
-              <div className='flex flex-col items-center justify-center'>
-                <img src='./gif/cubes/yellow_small.gif' className='w-[200px] h-[200px] hover:w-[300px] hover:h-[300px] duration-300'></img>
-                <div>ENTER TEXT</div>
-              </div>
-            </a>
-            
-            <a href="#red" className=' dark:text-white text-black hover:text-black  hover:no-underline'>
-              <div className='flex flex-col items-center justify-center'>
-                <img src='./gif/cubes/red_small.gif' className='w-[200px] h-[200px] hover:w-[300px] hover:h-[300px] duration-300'></img>
-                <div>ENTER TEXT</div>
-              </div>
-            </a>
-
-            <a href="#pink" className=' dark:text-white text-black hover:text-black  hover:no-underline'>
-              <div className='flex flex-col items-center justify-center'>
-                <img src='./gif/cubes/pink_small.gif' className='w-[200px] h-[200px] hover:w-[300px] hover:h-[300px] duration-300'></img>
-                <div>ENTER TEXT</div>
-              </div>
-            </a>
-
-            <a href="#black" className=' dark:text-white text-black hover:text-black  hover:no-underline'>
-            <div className='flex flex-col items-center justify-center'>
-              <img src='./gif/cubes/black_small.gif' className='w-[200px] h-[200px] hover:w-[300px] hover:h-[300px] duration-300'></img>
-              <div>ENTER TEXT</div>
-            </div>
-            </a>
-
-            <a href="#white" className=' dark:text-white text-black hover:text-black  hover:no-underline'>
-              <div className='flex flex-col items-center justify-center'>
-                <img src='./gif/cubes/white_small.gif' className='w-[200px] h-[200px] hover:w-[300px] hover:h-[300px] duration-300'></img>
-                <div className=' font-semibold'>Whitepaper 📄</div>
-              </div>
-            </a>
+        <div className='flex flex-row items-center justify-center px-3 gap-0 h-[500px] overflow-auto '>
+            {cubes.map((cube) => CubeHyperlink(cube))}
           </div>
       </div>
-
-       
     </section>
   );
 }
