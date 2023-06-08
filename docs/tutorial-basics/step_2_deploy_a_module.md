@@ -34,6 +34,31 @@ Model.deploy()
 ```
 
 
+# Whilelist functions and Attributes
+
+Because you may expose your module to the public, there may be some functions you want to protect from the outside, such as the **c.cmd** function, which allows for shell commands. By default, you only expose the functions that your python class has. If you want to whitelist or blacklist functions, create a function in the module as such
+
+
+```python
+
+
+class Model(c.Module):
+  ...
+  def get_password(cls):
+    return c.cmd('echo $MY_PASSWORD')
+
+  def blacklist(self):
+    return ['get_password']
+
+  # or whitelist the functions you want
+  def whitelist(self):
+    return ['forward']
+
+```
+
+When deployed, the server will block any calls to these functions that arent whitelisted or are blacklisted. User based permissions are works in progress.
+
+
 
 ## Port Range
 
