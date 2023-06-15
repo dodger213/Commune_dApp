@@ -15,7 +15,7 @@ Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new
 
 A module is class that forms the backbone of commune. It consists of a set of helper functions that are useful to the developer.  For example, if you want to load a JSON, you will need to setup the environment and have several steps.
 
-```python
+```python 
 import json
 
 # Specify the path to your JSON file
@@ -31,7 +31,7 @@ with open(file_path, 'r') as file:
 
  After you create , you can put it as a function that you can reuse for later. The module essentially consists of functions that the developer can reuse 
 
-```python
+```python title="commune/module/module.py"
 
 # In commune/module/module.py
 class Module:

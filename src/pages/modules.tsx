@@ -1,5 +1,6 @@
 import React from 'react';
 import Layout from '@theme/Layout';
+import ExtraSidebar from '../components/Modules/components/SideBarComponent/index';
 import '../css/global.css';
 
 export default function Modules() {
