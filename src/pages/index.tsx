@@ -13,7 +13,7 @@ const Sections  = [
   {
     id: "blue",
     src : "./gif/cubes/blue_small.gif",
-    className : "dark:bg-[linear-gradient(180deg,#1b1b1d,#84b9f7)] bg-[linear-gradient(180deg,#ffffff,#84b9f7)]",
+    className : "dark:bg-[linear-gradient(180deg,#1b1b1d,#84b9f7)] bg-[linear-gradient(180deg,#ffffff,#84b9f7)] ",
     children : <div className=' text-black dark:text-white'>
                       <div className='pt-6 text-right w-full'>
                         <h1 className=" text-5xl pb-3 dark:text-white text-center">ENTER TEXT HERE</h1>
@@ -80,7 +80,7 @@ const Sections  = [
                   <p className="hero__subtitle text-3xl text-center">Want to read more? Check<br/>out the our whitepaper.</p>
 
                   <div className='flex justify-center rounded-xl lg:mb-4'>
-                    <a href='#' className=' hover:no-underline '>
+                    <a href='https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf' className=' hover:no-underline '>
                       <div className=' flex flex-row bg-[#FF8F8F] hover:bg-[#FF8F8F] dark:bg-[#FF8F8F] dark:hover:bg-[#fc9494] text-white font-bold py-2 px-4 mt-10 rounded-lg shadow-md hover:shadow-xl duration-300 '>
                         <img src="./svg/Drive.svg" className="mr-2 w-7 h-7" /> 
                         Read Whitepaper
@@ -190,7 +190,7 @@ function HomepageHeader() : JSX.Element {
             
           </div>
 
-          <a href="docs/getting-started" className=' hover:no-underline'>
+          <a href="docs/next/Introduction" className=' hover:no-underline'>
               <div className='bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-600 duration-200 text-white hover:text-white font-sans font-semibold justify-center px-2 py-2 hover:border-blue-300 hover:border-2 hover:border-solid' >
                 Get Started
               </div>
