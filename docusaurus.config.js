@@ -129,15 +129,11 @@ const config = {
             items: [
               {
                 label: 'Introduction',
-                to: '/docs/Introduction',
-              },
-              {
-                label: 'Getting Started',
-                to: '/docs/getting-started',
+                to: 'docs/next/Introduction',
               },
               {
                 label : "Installation",
-                to: '/docs/installation',
+                to: '/docs/next/installation',
               }
               
             ],
@@ -168,7 +164,7 @@ const config = {
             items: [
               {
                 label: '📄 Whitepaper',
-                to: '/docs/whitepaper',
+                to: 'https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf',
               }
 
             ],

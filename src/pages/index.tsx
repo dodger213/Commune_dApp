@@ -80,7 +80,7 @@ const Sections  = [
                   <p className="hero__subtitle text-3xl text-center">Want to read more? Check<br/>out the our whitepaper.</p>
 
                   <div className='flex justify-center rounded-xl lg:mb-4'>
-                    <a href='' className=' hover:no-underline '>
+                    <a href='#' className=' hover:no-underline '>
                       <div className=' flex flex-row bg-[#FF8F8F] hover:bg-[#FF8F8F] dark:bg-[#FF8F8F] dark:hover:bg-[#fc9494] text-white font-bold py-2 px-4 mt-10 rounded-lg shadow-md hover:shadow-xl duration-300 '>
                         <img src="./svg/Drive.svg" className="mr-2 w-7 h-7" /> 
                         Read Whitepaper
