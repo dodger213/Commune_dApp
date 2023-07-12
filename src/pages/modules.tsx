@@ -34,8 +34,7 @@ export default function Modules() {
   })
   return (
     <Layout dark-theme="dark" title={`🚀 Modules`}>
-      <div className='text-lg dark:text-white text-black '>
-        <div className='flex flex-col items-center justify-center'>
+        <div className='flex flex-col items-center justify-center  my-auto '>
         {(!loaded && !error) && (<><h1 className='text-4xl font-bold'>
           <span className='text-[#ffb4ed] dark:text-[#FFD6F5] hover:animate-pulse duration-500'>
           commune
@@ -65,7 +64,6 @@ export default function Modules() {
            
           </div>
         </div>
-      </div>
 
     </Layout>
   );

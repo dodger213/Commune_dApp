@@ -15,8 +15,23 @@ const Sections  = [
     src : "./gif/cubes/blue_small.gif",
     className : "dark:bg-[linear-gradient(180deg,#1b1b1d,#84b9f7)] bg-[linear-gradient(180deg,#ffffff,#84b9f7)] ",
     children : <div className=' text-black dark:text-white'>
-                      <div className='pt-6 text-right w-full'>
-                        <h1 className=" text-5xl pb-3 dark:text-white text-center">ENTER TEXT HERE</h1>
+                      <div className='pt-6 text-right w-full pb-10'>
+                      <h1 className=" text-5xl pb-6 dark:text-white text-center">Networking & Wrapping <br/>Over Everything 🌐</h1>
+                      <div className='flex flex-row space-x-24 items-center justify-center '>
+                        
+                      <div>
+                        <div className='z-40 bg-gray-100 rounded-lg w-[17rem] h-[17rem] border-2 border-blue-400 border-solid shadow-md px-3 '>
+                          <img src="./img/frontpage/without_commune.png" className='mt-5'/>
+                        </div>
+                      </div>
+
+                      <div>
+                        <div className='z-40 bg-gray-100 rounded-lg w-[17rem] h-[17rem] border-2 border-blue-400 border-solid shadow-md px-3 '>
+                          <img src="./img/frontpage/commune_network.png" className='mt-5'/>
+                        </div>
+                      </div>
+                      </div>
+
                       </div>
                 </div>
   },
@@ -26,7 +41,7 @@ const Sections  = [
     className : "dark:bg-[linear-gradient(180deg,#1b1b1d,#c3f7c8)] bg-[linear-gradient(180deg,#ffffff,#c3f7c8)]",
     children : <div className=' text-black dark:text-white'>
                       <div className='pt-6 text-right w-full'>
-                        <h1 className=" text-5xl pb-3 dark:text-white text-center">ENTER TEXT HERE</h1>
+                        <h1 className=" text-5xl pb-3 dark:text-white text-center">Reusability ♻️</h1>
                       </div>
                 </div>
   },
@@ -36,7 +51,7 @@ const Sections  = [
     className : "dark:bg-[linear-gradient(180deg,#1b1b1d,#fff7a1)] bg-[linear-gradient(180deg,#ffffff,#fff7a1)] rounded-lg shadow-xl",
     children : <div className=' text-black dark:text-white'>
                       <div className='pt-6 text-right w-full'>
-                        <h1 className=" text-5xl pb-3 dark:text-white text-center">ENTER TEXT HERE</h1>
+                        <h1 className=" text-5xl pb-3 dark:text-white text-center">Scalability ⚖️</h1>
                       </div>
                 </div>
   },
@@ -46,7 +61,7 @@ const Sections  = [
     className : "dark:bg-[linear-gradient(180deg,#1b1b1d,#ff8f8f)] bg-[linear-gradient(180deg,#ffffff,#ff8f8f)] rounded-lg shadow-xl",
     children : <div className=' text-black dark:text-white'>
                       <div className='pt-6 text-right w-full'>  
-                        <h1 className=" text-5xl pb-3 dark:text-white text-center">ENTER TEXT HERE</h1>
+                        <h1 className=" text-5xl pb-3 dark:text-white text-center">Namespaces 🖥️</h1>
                       </div>  
                 </div>       
   },
@@ -56,7 +71,7 @@ const Sections  = [
     className : "dark:bg-[linear-gradient(180deg,#1b1b1d,#ffd6f5)] bg-[linear-gradient(180deg,#ffffff,#ffd6f5)] rounded-lg shadow-xl",
     children : <div className=' text-black dark:text-white'>
                       <div className='pt-6 text-right w-full'>
-                        <h1 className=" text-5xl pb-3 dark:text-white text-center">ENTER TEXT HERE</h1>
+                        <h1 className=" text-5xl pb-3 dark:text-white text-center">Tokenomics 🪙</h1>
                       </div>
                 </div>
   },
@@ -66,7 +81,7 @@ const Sections  = [
     className : "dark:bg-[linear-gradient(180deg,#1b1b1d,#1b1b1d)] bg-[linear-gradient(180deg,#ffffff,#ffffff)] rounded-lg shadow-xl",
     children : <div className=' text-black dark:text-white'>
                       <div className='pt-6 text-right w-full'>
-                        <h1 className=" text-5xl pb-3 dark:text-white text-center">ENTER TEXT HERE</h1>
+                        <h1 className=" text-5xl pb-3 dark:text-white text-center">Application Validators ✅</h1>
                       </div>
                 </div>
   },
@@ -77,9 +92,41 @@ const Sections  = [
     children : <div className=' text-white dark:text-black'>
                 <div className='pt-6 text-right w-full pb-6'>
                   <h1 className=" text-5xl pb-3 dark:text-black text-center">Read Our Whitepaper 📄</h1>
-                  <p className="hero__subtitle text-3xl text-center">Want to read more? Check<br/>out the our whitepaper.</p>
+                  
+                  <div className='flex flex-row md:space-x-20 space-x-10 items-center justify-center'>
+                  
+                  <div>
+                    <div className='z-40 absolute bg-gray-100 rounded-lg w-[17rem] h-[17rem] border-2 border-violet-500 border-solid shadow-md px-3 '>
+                      <img src="./img/frontpage/commune_network.png" className='mt-5'/>
+                    </div>
+                    <div className=' z-30 mt-5 ml-5 absolute bg-gray-100 rounded-lg w-[17rem] h-[17rem] border-2 border-blue-400 border-solid shadow-md px-3'></div>
+                    <div className=' mt-10 ml-10 absolute  bg-gray-100 rounded-lg w-[17rem] h-[17rem] border-2 border-green-400 border-solid shadow-md px-3'></div>
+                    <div className=' mt-14 ml-14  bg-gray-100 rounded-lg w-[17rem] h-[17rem] border-2 border-yellow-500 border-solid shadow-xl px-3'></div>
+                  </div>
 
-                  <div className='flex justify-center rounded-xl lg:mb-4'>
+                  <div className=' lg:hidden xl:block  '>
+                    <div className='z-40 absolute bg-gray-100 rounded-lg w-[17rem] h-[17rem] border-2 border-pink-400 border-solid shadow-md px-3 '>
+                      <img src="./img/frontpage/without_commune.png" className='mt-5'/>
+                    </div>
+                    <div className=' z-30 mt-5 ml-5 absolute bg-gray-100 rounded-lg w-[17rem] h-[17rem] border-2 border-blue-400 border-solid shadow-md px-3'></div>
+                    <div className=' mt-10 ml-10 absolute  bg-gray-100 rounded-lg w-[17rem] h-[17rem] border-2 border-red-400 border-solid shadow-md px-3'></div>
+                    <div className=' mt-14 ml-14  bg-gray-100 rounded-lg w-[17rem] h-[17rem] border-2 border-yellow-500 border-solid shadow-xl px-3'></div>
+                  </div>
+
+                  <div className=' md:hidden 2xl:block  '>
+                    <div className='z-40 absolute bg-gray-100 rounded-lg w-[17rem] h-[17rem] border-2 border-red-500 border-solid shadow-md px-3 '>
+                      <img src="./img/_8.png" className='mt-10'/>
+                    </div>
+                    <div className=' z-30 mt-5 ml-5 absolute bg-gray-100 rounded-lg w-[17rem] h-[17rem] border-2 border-orange-400 border-solid shadow-md px-3'></div>
+                    <div className=' mt-10 ml-10 absolute  bg-gray-100 rounded-lg w-[17rem] h-[17rem] border-2 border-yellow-400 border-solid shadow-md px-3'></div>
+                    <div className=' mt-14 ml-14  bg-gray-100 rounded-lg w-[17rem] h-[17rem] border-2 border-green-500 border-solid shadow-xl px-3'></div>
+                    
+                  </div>
+                    
+                </div>
+                  
+                <p className=" text-2xl font-semibold text-center mt-10">Want to read more? Check<br/>out our whitepaper.</p>
+                <div className=' -mt-2 flex justify-center rounded-xl lg:mb-4'>
                     <a href='https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf' className=' hover:no-underline '>
                       <div className=' flex flex-row bg-[#FF8F8F] hover:bg-[#FF8F8F] dark:bg-[#FF8F8F] dark:hover:bg-[#fc9494] text-white font-bold py-2 px-4 mt-10 rounded-lg shadow-md hover:shadow-xl duration-300 '>
                         <img src="./svg/Drive.svg" className="mr-2 w-7 h-7" /> 
@@ -87,7 +134,6 @@ const Sections  = [
                       </div>
                     </a>
                   </div>
-                  
                 </div>
               </div>
   }  
