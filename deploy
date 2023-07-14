@@ -1,0 +1,10 @@
+echo "Switching to production branch 🔄"
+git checkout master
+
+echo "Building app... 🏗️"
+# make build
+
+echo "Deploy files to server... 🚀"
+# scp -r build/* #route to server and dir of website
+
+echo "Done ✅"

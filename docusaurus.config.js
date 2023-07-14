@@ -11,17 +11,18 @@ const config = {
   favicon: 'img/favicon.ico',
 
 
-
   // Set the production url of your site here
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://commune-ai.github.io',
+  trailingSlash: false,
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'commune', // Usually your GitHub org/user name.
-  projectName: 'main-site', // Usually your repo name.
+  organizationName : "commune-ai",
+  projectName : "frontend",
+  deploymentBranch : "production",
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',

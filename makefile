@@ -5,7 +5,7 @@ run:
 	@npm run start
 
 build:
-	@npm build start
+	@npm run build
 
 bash-run:
 	@bash ./localbuild.sh \
