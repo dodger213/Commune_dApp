@@ -33,9 +33,16 @@ export default function Modules() {
     setError(true)
   })
   return (
-    <Layout dark-theme="dark" title={`🚀 Modules`}>
+    <Layout dark-theme="dark" title={`🚀 Modules`} description='Connect to the current modules' >
         <div className='flex flex-col items-center justify-center  my-auto '>
-        {(!loaded && !error) && (<><h1 className='text-4xl font-bold'>
+            <h1 className='text-4xl font-bold'>
+            <span className='text-[#ffb4ed] dark:text-[#FFD6F5] hover:animate-pulse duration-500'>
+            commune
+            </span>::Modules 🚀
+            </h1>
+            <img src="./gif/cubes/MultiColourCubeSpin.gif" className='w-[500px] h-[300px]' />
+            <p className='text-xl font-medium'>Coming soon...</p> 
+        {/* {(!loaded && !error) && (<><h1 className='text-4xl font-bold'>
           <span className='text-[#ffb4ed] dark:text-[#FFD6F5] hover:animate-pulse duration-500'>
           commune
         </span>::Modules 🚀
@@ -59,7 +66,7 @@ export default function Modules() {
             src='http://localhost:8501/?embed=true'  // Replace with the URL of the desired iframe content
             title='Embedded Content'
         ></iframe>
-        )}
+        )} */}
           <div className='fixed z-10 flex flex-col items-center justify-center rounded-lg mt-10'>
            
           </div>
