@@ -1,5 +1,7 @@
 // tailwind.config.js
 /** @type {import('tailwindcss').Config} */
+const { fontFamily } = require("tailwindcss/defaultTheme")
+
 module.exports = {
   corePlugins: {
     preflight: false, // disable Tailwind's reset
@@ -7,17 +9,15 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}", "../docs/**/*.mdx"], // my markdown stuff is in ../docs, not /src
   darkMode: ['class', '[data-theme="dark"]'], // hooks into docusaurus' dark mode settigns
   theme: {
-    extend: {
-      fontSize: {
-        '2xl': {
-          'min': '1.5rem',
-          'max': '1.75rem',
-        },
-        },
-      colors: {
-        "light-green" : "f5fae7"
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
       },
+    },
+    extend: {
+    },
   },
-  },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 }

@@ -47,6 +47,12 @@
   color: #6a4bdc;
 }
 
+.__navbar-whitepaper.navbar__item:hover {
+  color: #d2d522;
+}
+
+
+
 /* ADD ON */
 html {
   scroll-behavior: smooth;

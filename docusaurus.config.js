@@ -88,8 +88,10 @@ const config = {
  
         },
         items: [
-          {to: '/modules', label: 'Modules', position: 'left', className : '__navbar-modules'},
-          {to: '/docs', label: 'Documentation', position: 'left', sidebarId: 'tutorialSidebar', type: 'docSidebar', className : '__navbar-docs'},
+          {to: '/modules', label: '🚀 Modules', position: 'left', className : '__navbar-modules'},
+          {to: '/docs', label: '📚 Docs', position: 'left', sidebarId: 'tutorialSidebar', type: 'docSidebar', className : '__navbar-docs'},
+          {label: '📄 Whitepaper',to: 'https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf' , className : '__navbar-whitepaper'},
+          {label: '⛓️ Telemetry',to: '/telemetry' },
           {
             type: 'docsVersionDropdown',
             position: 'right',
@@ -129,15 +131,11 @@ const config = {
             items: [
               {
                 label: 'Introduction',
-                to: '/docs/Introduction',
-              },
-              {
-                label: 'Getting Started',
-                to: '/docs/getting-started',
+                to: 'docs/next/Introduction',
               },
               {
                 label : "Installation",
-                to: '/docs/installation',
+                to: '/docs/next/installation',
               }
               
             ],
@@ -168,7 +166,7 @@ const config = {
             items: [
               {
                 label: '📄 Whitepaper',
-                to: '/docs/whitepaper',
+                to: 'https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf',
               }
 
             ],

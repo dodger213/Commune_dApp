@@ -8,7 +8,7 @@ const cubes = [
       src : "./gif/cubes/blue_small.gif",
       className : "lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
     },
-    text : "[ENTER TEXT]",
+    text : "Networking & Wrapping",
     href : "#blue"
   },
   {
@@ -16,7 +16,7 @@ const cubes = [
       src : "./gif/cubes/green_small.gif",
       className : "lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
     },
-    text : "[ENTER TEXT]",
+    text : "Reusability",
     href : "#green"
   },
   {
@@ -24,7 +24,7 @@ const cubes = [
       src : "./gif/cubes/yellow_small.gif",
       className : "lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
     },
-    text : "[ENTER TEXT]",
+    text : "Scalability",
     href : "#yellow"
   },
   {
@@ -32,7 +32,7 @@ const cubes = [
       src : "./gif/cubes/red_small.gif",
       className : "lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
     },
-    text : "[ENTER TEXT]",
+    text : "Namespaces",
     href : "#red"
   },
   {
@@ -40,7 +40,7 @@ const cubes = [
       src : "./gif/cubes/pink_small.gif",
       className : "lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
     },
-    text : "[ENTER TEXT]",
+    text : "Tokenomics",
     href : "#pink"
   },
   {
@@ -48,7 +48,7 @@ const cubes = [
       src : "./gif/cubes/black_small.gif",
       className : "lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
     },
-    text : "[ENTER TEXT]",
+    text : "Application Validators",
     href : "#black"
   },
   {
