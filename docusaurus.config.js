@@ -16,13 +16,13 @@ const config = {
   trailingSlash: false,
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/commune-ai.github.io/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName : "commune-ai",
-  projectName : "frontend",
-  deploymentBranch : "production",
+  projectName : "commune-ai.github.io",
+  deploymentBranch : "master",
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
