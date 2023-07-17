@@ -97,7 +97,7 @@ const Sections  = [
                         </div>
                       </div>
 
-                        <div className='flex md:flex-row flex-col md:space-x-4 sm:items-center sm:justify-center'>
+                        <div className='flex md:flex-row  flex-col md:space-x-4 sm:items-center sm:justify-center'>
                           <div className='z-40 bg-green-50 rounded-lg w-[35rem] h-[35rem] border-2 border-green-400 border-solid shadow-md px-3 '>
                               <img src="./img/frontpage/_4.png" className='mt-5'/>
                           </div>
@@ -124,7 +124,7 @@ const Sections  = [
     src : "./gif/cubes/yellow_small.gif",
     className : "dark:dark:bg-gradient-to-b from-yellow-300 to-[#fff7a1] bg-[linear-gradient(180deg,#ffffff,#fff7a1)] rounded-lg shadow-xl",
     children : <div className=' text-black dark:text-black mt-10'>
-                      <div className='pt-6 text-right w-full'>
+                      <div className='pt-6 text-right w-full p-10'>
                         
                       <h1 className=" text-5xl pb-3 text-center">Scalability ⚖️</h1>
 
@@ -173,7 +173,7 @@ const Sections  = [
                             <h1> Module Namespaces </h1>
                             <ul className='text-left space-y-4'>
                               <li>We do not want to work with IP and ports as it can get confusing.</li>
-                              <li>TWe want to map the name of the module with the endpoint that server is on</li>
+                              <li>We want to map the name of the module with the endpoint that server is on</li>
                                 <ul>
                                   <li>Ex: Model → 192.93.39.584:3000</li>
                                 </ul>
@@ -405,28 +405,37 @@ function HomepageHeader() : JSX.Element {
   
   return (
     <header ref={headerRef} className={` dark:bg-[#161616] p-[4rem] py-32 text-center overflow-hidden ${getHeaderClasses(scrollPosition, headerHeight)} duration-500`} >
+
+<img src="gif/logo/CubesShufflingGIF.gif" alt="Commune Logo" className='block sm:hidden'/>  
       <div className="px-10 py-5">
         <div className='flex lg:flex-row flex-col h-1/2'>
         <div className='w-full lg:w-1/2 flex flex-col items-center justify-center'>
-          <div className='p-6 w-[710px] h-[250px]'>
-            <h1 className=" text-6xl pb-3 dark:text-white">{siteConfig.title}</h1>
-            <p className="hero__subtitle text-4xl">{siteConfig.tagline}
-            <br/>
-            <span className={`hero__subtitle text-4xl ${colour[index]} font-semibold mb-5`}>{`${words[index].substring(0, subIndex)}${blink ? "|" : ""}`}</span></p>
-            
+          
+          <div className=' w-auto sm:w-[710px] sm:h-[250px] '>
+            <h1 className=" text-4xl sm:text-6xl sm:pb-3 dark:text-white">{siteConfig.title}</h1>
+            <div className='hidden sm:block'>
+              <p className="hero__subtitle text-xl sm:text-4xl">{siteConfig.tagline}
+              <br />
+              <span className={`hero__subtitle text-4xl ${colour[index]} font-semibold mb-5`}>{`${words[index].substring(0, subIndex)}${blink ? "|" : ""}`}</span></p>
+            </div>
           </div>
-
-          <a href="docs/next/Introduction" className=' hover:no-underline'>
-              <div className='bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-600 duration-200 text-white hover:text-white font-sans font-semibold justify-center px-2 py-2 hover:border-blue-300 hover:border-2 hover:border-solid' >
+          
+          <div className='w-30 h-10'>
+          <a href="docs/next/Introduction" className=' hover:no-underline' >
+              <div className=' bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-600 duration-200 text-white hover:text-white font-sans font-semibold justify-center px-2 py-2 hover:border-blue-300 hover:border-2 hover:border-solid' >
                 Get Started
               </div>
             </a>
+          </div>
+
         </div>
 
 
-        <div className='w-full lg:w-[75%] lg:-mr-44 '>
-          <img src="gif/logo/CubesShufflingGIF.gif" alt="Commune Logo" className=''/>
+        <div className='hidden sm:block w-full lg:w-[75%] h-full lg:-mr-44 '>
+          <img src="gif/logo/CubesShufflingGIF.gif" alt="Commune Logo" className=''/>  
         </div>
+
+
       </div>
       </div>
 
@@ -444,6 +453,7 @@ export default function Home() {
       description="commune ai home page">
       <main>
         <HomepageHeader />
+        <div className='hidden sm:block md:block lg:block xl:block'>
         <WelcomeSection />
         {Sections.map((section) => {
           return (
@@ -452,7 +462,7 @@ export default function Home() {
             </Section>
           )
         })}
-
+      </div>
       </main>
     </Layout>
   );

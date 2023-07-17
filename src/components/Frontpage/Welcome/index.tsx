@@ -91,15 +91,15 @@ export default function WelcomeSection () {
   return (
     <section id="welcome" className=' h-full pt-20 '>
       <div className='flex flex-col items-center justify-center'>
-        <div className='pt-6 w-[710px]'>
+        <div className='pt-6 w-full'>
           {/* EDIT SUBTEXT  */}
           <h1 className=" text-6xl pb-3 dark:text-white text-center">Welcome to the <span className='text-[#ffb4ed] dark:text-[#FFD6F5] hover:animate-pulse duration-500'>commune</span>! 👋</h1>
-          <p className="hero__subtitle text-4xl text-center">A place for <span className='text-[#6db1ff] dark:text-[#6db1ff]'>developers</span>, <span className='text-[#FF8F8F]  dark:text-[#FF8F8F]'>designers</span>, <span className='text-[#ffef40] dark:text-[#FFF7A1]'>creators</span>, <span className='text-[#ffb4ed] dark:text-[#FFD6F5]'>everyone</span>.</p>
+          <p className="hero__subtitle text-4xl text-center">A place for <span className='text-[#ffb4ed] dark:text-[#FFD6F5]'>everyone</span> to <span className='text-[#6db1ff] dark:text-[#6db1ff]'>develop</span>, <span className='text-[#FF8F8F]  dark:text-[#FF8F8F]'>design</span>, and <span className='text-[#ffef40] dark:text-[#FFF7A1]'>create</span>.</p>
 
         </div>
         
         {/* FIX ME WHEN SMALL SCREEN */}
-        <div className='flex flex-row items-center justify-center px-3 gap-0 h-[500px] overflow-auto '>
+        <div className='flex flex-row h-[500px] items-center justify-center px-3 gap-0 overflow-auto '>
             {cubes.map((cube) => CubeHyperlink(cube))}
           </div>
       </div>
