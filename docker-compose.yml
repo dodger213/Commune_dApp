@@ -1,0 +1,13 @@
+
+  services:
+    frontend:
+      image: "commune.v0"
+      container_name: "frontend.commune.v0"
+      build: 
+        context : ./
+        dockerfile: Dockerfile
+      ports:
+        - mode: ingress
+          published: 3000
+          target : 3000
+          protocol: tcp
