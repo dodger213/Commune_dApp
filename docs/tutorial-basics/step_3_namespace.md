@@ -1,11 +1,14 @@
 ---
-sidebar_position: 3
+id: namespace
+title: Namespace
+sidebar_position: 4
+slug: /namespace
+sidebar_label: Namespace
 ---
 
 # What is a Namespace
 
-A namespace is a map of the module's name to it's IP address that its served on. The purpose of this is for navigation over modules across the internet. Namespaces can be local to you, between you and a few buds, or global across the network. 
-
+A namespace is a map of the module's name to it's IP address that its served on. The purpose of this is for navigation over modules across the internet. Namespaces can be local to you, between you and a few buds, or global across the network.
 
 ## Local Namespace
 
@@ -38,7 +41,6 @@ c.add_peer('123.456.789:8888')
 
 To add a single module instead of an entire namespace, just add the following
 
-
 ```python
 # this will add a single module to the remote namespace, not the entire remote namespace that that module consists of
 c.add_module('123.456.789:8888')
@@ -48,9 +50,6 @@ c.add_module('123.456.789:8888')
 
 You need to be careful for who you add or who can add you. To disable people from adding you, blacklist any functions that give away such information, as seen in step 2 (deploy module).
 
-
 ## Global Namespace
 
 A global namespace combines both of your local and remote namespaces
-
-

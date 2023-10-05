@@ -1,5 +1,9 @@
 ---
-sidebar_position: 3
+id: connect-module
+title: Connect a Module
+sidebar_position: 5
+slug: /connect-module
+sidebar_label: Connect a Module
 ---
 
 # Connect a Module
@@ -25,11 +29,9 @@ model.info() # view all the info of the function
 ```
 
 This includes the functions and attributes
+
 # View info of the module
 
 ```python
 model.schema()
 ```
-
-
-A new page is now available at [http://localhost:3000/my-markdown-page](http://localhost:3000/my-markdown-page).
