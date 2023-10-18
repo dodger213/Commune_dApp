@@ -1,40 +1,26 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import classNames from 'classnames';
 import Layout from '@theme/Layout';
 // import ExtraSidebar from '../components/Modules/components/SideBarComponent/index';
 import '../css/global.css';
-
-
+import ModulesService from '../services/modules-service';
+import classes from './modules.module.css';
+import ModuleTile from '../components/Frontpage/ModuleTile';
+import useThrottling from '../hooks/use-throttling';
 
 
 export default function Modules() {
+  const [ modulesList, setModulesList ] = useState([]);
+  const [ searchedModuleString, setSearchedModuleString ] = useState('');
+  const throttle = useThrottling();
 
+  useEffect(() => {
+    throttle(() => ModulesService.getModulesList(searchedModuleString).then(setModulesList));
+  }, [searchedModuleString]);
 
-  const [loaded, setLoaded] = useState(false)
-  const [error, setError] = useState(false)
-  const isStreamUp = (target : string, times : number, delay : number) =>{ 
-    return new Promise((res, rej) => {
-            (function rec(i) {
-              fetch(target, {mode : 'no-cors'}).then((r) => {
-                res(r)
-              }).catch(err => {
-                  if (times === 0)
-                    return rej(err)
-
-                  setTimeout(() => rec(--times), delay)
-              })
-            })(times);
-          }) 
-  }
-
-  isStreamUp("http://localhost:8501/?embed=true", 3, 1000)
-  .then( res => {
-    setLoaded(true)
-  }).catch( err => {
-    setError(true)
-  })
   return (
     <Layout dark-theme="dark" title={`🚀 Modules`} description='Connect to the current modules' >
-        <div className='flex flex-col items-center justify-center  my-auto '>
+        {/* <div className='flex flex-col items-center justify-center  my-auto '>
             <h1 className='text-4xl font-bold'>
             <span className='text-[#ffb4ed] dark:text-[#FFD6F5] hover:animate-pulse duration-500'>
             commune
@@ -42,36 +28,37 @@ export default function Modules() {
             </h1>
             <img src="./gif/cubes/MultiColourCubeSpin.gif" className='w-[500px] h-[300px]' />
             <p className='text-xl font-medium'>Coming soon...</p> 
-        {/* {(!loaded && !error) && (<><h1 className='text-4xl font-bold'>
-          <span className='text-[#ffb4ed] dark:text-[#FFD6F5] hover:animate-pulse duration-500'>
-          commune
-        </span>::Modules 🚀
-        </h1>
-        <img src="./gif/cubes/MultiColourCubeSpin.gif" className='w-[500px] h-[300px]' />
-        <p className='text-xl font-medium'>Building... 🚧 🏗️</p> 
-        </>)}
-        {error && (
-          <><h1 className='text-4xl font-bold'>
-          <span className='text-[#ffb4ed] dark:text-[#FFD6F5] hover:animate-pulse duration-500'>
-          commune
-        </span>::Modules 🚀
-        </h1>
-        <img src="./gif/cubes/MultiColourCubeSpin.gif" className='w-[500px] h-[300px]' />
-        <p className='text-xl font-medium'>something went wrong... ❌</p> 
-        </>
-        )}
-        { loaded && (
-          <iframe
-            className='w-screen h-screen'
-            src='http://localhost:8501/?embed=true'  // Replace with the URL of the desired iframe content
-            title='Embedded Content'
-        ></iframe>
-        )} */}
           <div className='fixed z-10 flex flex-col items-center justify-center rounded-lg mt-10'>
            
           </div>
-        </div>
-
+        </div> */}
+        <main className={
+          classNames(
+            classes.content,
+            'flex flex-col items-center justify-center  my-auto '
+          )}>
+          <section className={classNames(
+            classes.inputWrapper,
+            'my-auto mx-auto z-40 bg-gray-100 rounded-lg border-2 border-zinc-700 dark:border-gray-100 border-solid shadow-md'
+          )}>
+            <input
+              className={classNames('shadow-xl', classes.searchInput)}
+              type="text"
+              value={searchedModuleString}
+              onChange={e => setSearchedModuleString(e.target.value)}
+              placeholder="Search for module"
+            />
+          </section>
+          <ul className={classes.modulesList}>
+            {modulesList.map((module, i) => (
+              <ModuleTile
+                key={module.name}
+                {...module}
+                index={i}
+              />
+            ))}
+          </ul>
+        </main>
     </Layout>
   );
 }
