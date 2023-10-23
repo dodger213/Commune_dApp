@@ -1,0 +1,68 @@
+.popup {
+    width: 30%;
+    display: grid;
+    grid-template-columns: 45% 45%;
+    column-gap: 10%;
+    row-gap: 1rem;
+    grid-template-areas:
+        "address name"
+        "description description"
+        "schemas schemas";
+}
+.address {
+    grid-area: address;
+    font-weight: 600;
+    align-self: center;
+}
+.name {
+    grid-area: name;
+    display: flex;
+    justify-content: center;
+    padding: 0.5rem;
+}
+.description {
+    grid-area: description;
+    padding: 1rem;
+}
+
+.schemas {
+    grid-area: schemas;
+}
+.schemasSubtitle {
+    padding: 0.5rem 0;
+}
+.schemasList {
+    padding: 0;
+}
+.schemaElement {
+    list-style: none;
+}
+.schemaName {
+    display: flex;
+    justify-content: center;
+    width: 40%;
+}
+.inputsList {
+    padding: 0.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    list-style: none;
+}
+.input {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.htmlInputElement {
+    width: 100%;
+    text-align: center;
+    border: none;
+    outline: none;
+}
+.output {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+}
