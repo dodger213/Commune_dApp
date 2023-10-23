@@ -1,0 +1,26 @@
+.content {
+  display: flex;
+  flex-direction: 1rem;
+  gap: 2rem;
+  padding: 1rem;
+}
+
+.inputWrapper {
+  width: 100%;
+}
+
+.searchInput {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  font-size: 3rem;
+}
+
+.modulesList {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 0;
+}
