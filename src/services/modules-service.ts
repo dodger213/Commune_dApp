@@ -1,35 +1,35 @@
 const modulesList = [
   {
     name: "bittensor",
-    description: "The first module",
+    description: "Enables building a Cabal by mining, configuring, and interacting with the Bittensor network.",
   },
   {
     name: "data_hf",
-    description: "Another of our modulesassssssssssssssssssssssdadasdaddafav fsdgaergehr rffffffffffffffffffffffffff 234324563t25 gfegdf",
+    description: " Performs tests on truthful_qa using the huggingface library",
   },
   {
     name: "data_text_realfake",
-    description: "modulesassssssssssssssssssssssdadasdaddafav ",
+    description: "Generates real or fake text samples from a folder of text for model training.",
   },
   {
     name: "data_text_truthqa",
-    description: "Another of our  fsdgaergehr",
+    description: "Provides real or fake text samples from a text folder, useful for real or fake text detection",
   },
   {
     name: "model_hf",
-    description: "rffffffffffffffffffffffffff ",
+    description: "Wraps the huggingface transformers library, allowing deployment of any model in huggingface.",
   },
   {
     name: "model_openai",
-    description: "234324563t25",
+    description: "A wrapper module over the OPENAI API.",
   },
   {
     name: "vali",
-    description: "gfegdf",
+    description: "Learn to deploy a validator, perform tasks related to staking, registration, and validation.",
   },
   {
     name: "vali_text_realfake",
-    description: "99999999999",
+    description: "Draws real or fake text samples from a folder for training models in text authenticity detection.",
   },
 ];
 
