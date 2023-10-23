@@ -1,14 +1,15 @@
 ---
+id: deploy-module
+title: Deploy a Module
 sidebar_position: 2
+slug: /deploy-module
+sidebar_label: Deploy Module
 ---
 
 # Deploy a Module
 
 So you have your first module ready. Now you want to deploy it as a remote module.
 Givin the following module. Assume its located in commune/model.py, resulting in a module path of model.
-
-
-
 
 ```python
 import commune as c
@@ -17,15 +18,14 @@ class Model(c.Module):
 
   def __init__(self, model='gpt1000'):
     self.set_model(model)
-  
+
   def set_model(self,model:str):
     ...
-  
+
   def forward(self, x:dict) -> dict:
     return self.model(x)
 
 ```
-
 
 Deploy the Object by calling the deploy function, which is a function within c.Module. This deploys the module as a grpc server. The following chooses an open port on your machine and runs the model on that port.
 
@@ -33,11 +33,9 @@ Deploy the Object by calling the deploy function, which is a function within c.M
 Model.deploy()
 ```
 
-
 # Whilelist functions and Attributes
 
 Because you may expose your module to the public, there may be some functions you want to protect from the outside, such as the **c.cmd** function, which allows for shell commands. By default, you only expose the functions that your python class has. If you want to whitelist or blacklist functions, create a function in the module as such
-
 
 ```python
 
@@ -58,17 +56,14 @@ class Model(c.Module):
 
 When deployed, the server will block any calls to these functions that arent whitelisted or are blacklisted. User based permissions are works in progress.
 
-
-
 ## Port Range
 
 When a module is deployed, it is deployed on a free port that is within the port range. The port range is a range or list of available ports on a machine. These ports can be open or closed for them to be locally accessible
 
-
 ## Making Ports Publically Accesible
+
 In order for your module to be publically accessible, you will need to make sure the port is open on your router. Follow this tutorial for exposing your modules to the world.
 [How to open your port to the public](https://nordvpn.com/blog/open-ports-on-router/#:~:text=Navigate%20to%20your%20router%27s%20configuration,the%20port%20to%20forward%20to.)
-
 
 ## Security Considerations When Openning Your Ports
 
@@ -91,5 +86,3 @@ When making your module publicly accessible by opening ports on your router, it'
 8. **Security Best Practices**: Follow general security best practices, such as using secure coding practices, validating user inputs, and protecting against common security vulnerabilities like injection attacks and cross-site scripting (XSS).
 
 Remember, exposing ports publicly increases the potential attack surface and can make your system more susceptible to malicious activities. It's crucial to balance accessibility with security and implement appropriate security measures to protect your module and the underlying infrastructure.
-
-

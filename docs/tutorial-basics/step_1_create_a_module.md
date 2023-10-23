@@ -1,17 +1,19 @@
 ---
+id: create-module
+title: Create a Commune
 sidebar_position: 1
+slug: /create-commune
+sidebar_label: Create Commune
 ---
-
 
 # Create a Module
 
-Before creating a module, we will need to go over the following: 
+Before creating a module, we will need to go over the following:
 
 - **Module Path** is the path from the root directory in commune to a specific module. These module paths are used to reference modules easily using a string. For instance, if a module is place in commune/model/llm, then its module path is model.llm
 - **Module Tree** is a collection of all of the module paths in your local folder. This forms a tree that is defined by the user
 
 If a module is defined outside of the commune directory, then it will not be recorded in the module tree, but can still be used with most of the commune.Modules functions that are not related to the module tree.
-
 
 ### Way 1: Config and Python Class
 
@@ -33,9 +35,7 @@ The config and python class are as follows.
 ```yaml
 "model": "text-davinci-003"
 "tokenizer": "gpt2"
-
 ```
-
 
 ```python
 import commune as c
@@ -44,22 +44,20 @@ class LLM(c.Module):
     # set the config , if None, use the default yaml
     self.set_config(config)
 
-    # do whatever the fuck else you want 
+    # do whatever the fuck else you want
     self.set_tokenizer(self.config.tokenizer)
     self.set_model(self.config.model)
   def set_model(model:str):
     ...
-  def set_tokenizer(tokenizer: str): 
+  def set_tokenizer(tokenizer: str):
     ...
 
 
 ```
- 
-
 
 ### Way 2: Python only, no config
 
-Now lets define the same module without a config for those that hate configs. 
+Now lets define the same module without a config for those that hate configs.
 
 ```bash
 # Module path of model.llm
@@ -69,6 +67,7 @@ commune\
 ```
 
 With the python file being
+
 ```python
 import commune as c
 class LLM(c.Module):
@@ -78,16 +77,10 @@ class LLM(c.Module):
     self.set_model(model)
   def set_model(model:str):
     ...
-  def set_tokenizer(tokenizer: str): 
+  def set_tokenizer(tokenizer: str):
     ...
 
 
 ```
 
-
 If you want your module to be contianed within a directory without affecting the module path
-
-
-
-
-
