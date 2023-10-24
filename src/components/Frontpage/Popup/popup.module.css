@@ -12,9 +12,11 @@
 
 .popup {
     position: absolute;
-    width: min-content;
+    top: 2rem;
     left: 0;
     right: 0;
+    width: min-content;
+    overflow: auto;
     margin: auto;
     padding: 1rem;
     cursor: default;

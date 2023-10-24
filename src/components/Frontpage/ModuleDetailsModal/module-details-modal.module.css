@@ -32,28 +32,47 @@
     padding: 0.5rem 0;
 }
 .schemasList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
     padding: 0;
 }
-.schemaElement {
+.schemaNameElement {
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
 }
 .schemaName {
     display: flex;
     justify-content: center;
     width: 40%;
 }
+
 .inputsList {
-    padding: 0.5rem 2rem;
+    padding: 0.5rem 0 1rem;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     list-style: none;
 }
-.input {
+.inputWrapper {
+    display: flex;
+    gap: 0.5rem;
+}
+.inputDescription{
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.htmlInputElementWrapper {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .htmlInputElement {
     width: 100%;
@@ -61,8 +80,17 @@
     border: none;
     outline: none;
 }
+.numericalInput {
+    padding-left: 1rem;
+}
+
 .output {
     width: 50%;
     display: flex;
     justify-content: center;
+}
+
+.runButton {
+    padding: 1.5rem;
+    cursor: pointer;
 }

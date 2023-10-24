@@ -69,10 +69,10 @@ function SchemasList ({
     return (
         <ul className={classes.schemasList}>
             {Object.entries(schemas).map(([schemaName, schemaValue]: [string, any]) => (
-                <li key={schemaName} className={classes.schemaElement}>
-                    <SchemaNameElement
-                        name={schemaName}
-                    />
+                <SchemaNameElement
+                    key={schemaName}
+                    name={schemaName}
+                >
                     <ul className={classes.inputsList}>
                         {Object.entries(schemaValue.input).map(([inputName, inputType]: [string, any]) => (
                             <InputElement
@@ -85,22 +85,25 @@ function SchemasList ({
                             outputValue={schemaValue.output}
                         />
                     </ul>
-                </li>
+                </SchemaNameElement>
             ))}
         </ul>
     );
 }
 
 function SchemaNameElement ({
+    children,
     name,
 }) {
     return (
-        <div className={classNames(
-            classes.schemaName,
+        <li className={classNames(
+            classes.schemaNameElement,
             'bg-gray-200 rounded-lg border-2 border-solid'
         )}>
             {name}
-        </div>
+            {children}
+            <RunButton />
+        </li>
     );
 }
 
@@ -119,6 +122,7 @@ function InputElement ({
                 <input
                     className={classNames(
                         classes.htmlInputElement,
+                        classes.numericalInput,
                         "bg-yellow-200 rounded-lg"
                     )}
                     type="number"
@@ -158,11 +162,20 @@ function InputElement ({
 
     return (
         <li className={classNames(
-            classes.input,
-            'bg-yellow-300 rounded-lg border-2 border-solid'
+            classes.inputWrapper,
         )}>
-            {name}: {type}
-            {htmlInputElement}
+            <div className={classNames(
+                classes.inputDescription,
+                'bg-yellow-300 rounded-lg border-2 border-solid'
+            )}>
+                {name}: {type}
+            </div>
+            <div className={classNames(
+                classes.htmlInputElementWrapper,
+                'bg-yellow-200 rounded-lg border-2 border-solid'
+            )}>
+                {htmlInputElement}
+            </div>
         </li>
     );
 }
@@ -175,5 +188,19 @@ function OutputElement (outputValue) {
         )}>
             {typeof outputValue === 'object' ? 'void' : outputValue}
         </li>
+    );
+}
+
+function RunButton () {
+    return (
+        <button
+            className={classNames(
+                classes.runButton,
+                "bg-green-400 rounded-lg border-2 border-solid border-black"
+            )}
+            onClick={() => alert("Not implemented.")}
+        >
+            RUN
+        </button>
     );
 }
