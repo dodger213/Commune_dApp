@@ -96,6 +96,7 @@ const config = {
           { to: "/docs", label: "📚 Docs", position: "left", sidebarId: "tutorialSidebar", type: "docSidebar", className: "__navbar-docs" },
           { label: "📄 Whitepaper", to: "https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf", className: "__navbar-whitepaper" },
           { label: "⛓️ Telemetry", to: "/telemetry" },
+          { label: "💱  Exchanges", to: "/exchanges" },
           {
             type: "docsVersionDropdown",
             position: "right",
