@@ -1,11 +1,11 @@
 /* The container */
 .container {
-    width: 1rem;
-    height: 1rem;
+    width: 1vw;
+    height: 1vw;
     display: block;
     position: relative;
     cursor: pointer;
-    font-size: 22px;
+    font-size: 1vw;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -26,8 +26,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    width: 1rem;
-    height: 1rem;
+    width: 1vw;
+    height: 1vw;
     background-color: rgb(254 240 138 / var(--tw-bg-opacity));
     outline: 1px solid black;
 }
@@ -51,12 +51,12 @@
 
 /* Style the checkmark/indicator */
 .container .checkmark:after {
-    left: 6px;
-    top: 3px;
-    width: 3px;
-    height: 7px;
+    left: 0.35vw;
+    top: 0.075vw;
+    width: 0.2vw;
+    height: 0.6vw;
     border: solid rgb(253 224 71 / var(--tw-bg-opacity));
-    border-width: 0 2px 2px 0;
+    border-width: 0 0.2vw 0.2vw 0;
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);

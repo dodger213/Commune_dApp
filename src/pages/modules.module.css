@@ -1,8 +1,7 @@
 .content {
   display: flex;
-  flex-direction: 1rem;
-  gap: 2rem;
-  padding: 1rem;
+  gap: 1vw;
+  padding: 1vw;
 }
 
 .inputWrapper {
@@ -21,6 +20,6 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 1vw;
   padding: 0;
 }

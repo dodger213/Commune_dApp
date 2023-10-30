@@ -65,12 +65,11 @@ export default function Modules() {
               />
             ))}
           </ul>
-          {selectedModuleName && (
-            <ModuleDetailsModal
-              onClose={() => setSelectedModuleName(null)}
-              moduleName={selectedModuleName}
-            />
-          )}
+          <ModuleDetailsModal
+            isOpen={!!selectedModuleName}
+            onClose={() => setSelectedModuleName(null)}
+            moduleName={selectedModuleName}
+          />
         </main>
     </Layout>
   );

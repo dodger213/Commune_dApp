@@ -3,7 +3,7 @@
     display: grid;
     grid-template-columns: 45% 45%;
     column-gap: 10%;
-    row-gap: 1rem;
+    row-gap: 1vw;
     grid-template-areas:
         "address name"
         "description description"
@@ -18,30 +18,30 @@
     grid-area: name;
     display: flex;
     justify-content: center;
-    padding: 0.5rem;
+    padding: 0.5vw;
 }
 .description {
     grid-area: description;
-    padding: 1rem;
+    padding: 1vw;
 }
 
 .schemas {
     grid-area: schemas;
 }
 .schemasSubtitle {
-    padding: 0.5rem 0;
+    padding: 0.5vw 0;
 }
 .schemasList {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1vw;
     padding: 0;
 }
 .schemaNameElement {
     list-style: none;
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    padding: 1vw;
 }
 .schemaName {
     display: flex;
@@ -50,15 +50,15 @@
 }
 
 .inputsList {
-    padding: 0.5rem 0 1rem;
+    padding: 0.5vw 0 1vw;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.5vw;
     list-style: none;
 }
 .inputWrapper {
     display: flex;
-    gap: 0.5rem;
+    gap: 0.5vw;
 }
 .inputDescription{
     width: 50%;
@@ -81,7 +81,7 @@
     outline: none;
 }
 .numericalInput {
-    padding-left: 1rem;
+    padding-left: 1vw;
 }
 
 .output {
@@ -91,6 +91,6 @@
 }
 
 .runButton {
-    padding: 1.5rem;
+    padding: 1.5vw;
     cursor: pointer;
 }

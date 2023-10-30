@@ -8,6 +8,7 @@ import Checkbox from '../Checkbox/checkbox';
 
 
 export default function ModuleDetailsModal ({
+    isOpen,
     onClose,
     moduleName,
 }) {
@@ -15,22 +16,27 @@ export default function ModuleDetailsModal ({
     const [ loading, setLoading ] = useState(true);
 
     useEffect(() => {
-        ModulesService.getModuleDetailsByName(moduleName).then(details => {
-            setModuleDetails(details);
-            setLoading(false);
-        });
-    }, []);
+        console.log("loading details", isOpen, moduleName)
+        if (moduleName) {
+            ModulesService.getModuleDetailsByName(moduleName).then(details => {
+                console.log("details obtained")
+                setModuleDetails(details);
+                setLoading(false);
+            });
+        }
+    }, [isOpen, moduleName]);
 
-    if (loading) {
+    if (loading || !isOpen) {
         return null;
     }
-    console.log("loading", loading, moduleDetails)
+    console.log("loading", loading, isOpen, moduleDetails)
     return (
         <Popup
             className={classNames(
                 classes.popup,
                 'bg-teal-100'
             )}
+            isOpen={isOpen}
             onClose={onClose}
         >
             <span className={classes.address}>{moduleDetails.address}</span>
@@ -76,6 +82,7 @@ function SchemasList ({
                     <ul className={classes.inputsList}>
                         {Object.entries(schemaValue.input).map(([inputName, inputType]: [string, any]) => (
                             <InputElement
+                                key={inputName}
                                 name={inputName}
                                 type={inputType}
                                 defaultValue={schemaValue.default[inputName]}
@@ -112,7 +119,7 @@ function InputElement ({
     type,
     defaultValue,
 }) {
-    const [ value, setValue ] = useState<any>(defaultValue);
+    const [ value, setValue ] = useState<any>(defaultValue ?? '');
 
     let htmlInputElement = null;
     switch (type) {

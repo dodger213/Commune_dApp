@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import classes from './popup.module.css';
 import classNames from 'classnames';
@@ -7,7 +7,18 @@ export default function Popup ({
     children,
     className,
     onClose,
+    isOpen,
 }) {
+    useEffect(() => {
+        if (isOpen) {
+            //disable scrolling
+        }
+    }, [isOpen]);
+
+    if (!isOpen) {
+        return null;
+    }
+
     return (
         <div
             className={classes.overlay}

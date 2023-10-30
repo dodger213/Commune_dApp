@@ -3,33 +3,51 @@ import classNames from 'classnames';
 
 import classes from './module-tile.module.css';
 
-// yes, technically it's not a map
-const indexToColorClassesMap = [
-    'bg-blue-50 border-blue-400',
-    'bg-green-50 border-green-400',
-    'bg-yellow-100/90 border-yellow-400',
-    'bg-red-100 border-red-400',
-    'bg-pink-50 border-pink-400',
-];
-
 export default function ModuleTile ({
+    image_url,
     name,
+    address,
     description,
-    index,
+    attributes,
     onClick,
 }) {
     return (
         <li
             className={classNames(
                 classes.moduleTile,
-                indexToColorClassesMap[index % indexToColorClassesMap.length],
-                "shadow-xl z-40 rounded-lg border-2 border-solid shadow-md bg-blue-50 border-blue-400"
+                "shadow-xl z-40 rounded-lg border-2 border-solid shadow-md bg-teal-50"
             )}
             onClick={onClick}
         >
-            <span className={classes.tileName}>
-                {name}
-            </span>
+            <div className={classNames(classes.name, "bg-blue-100 rounded-lg border-2 border-solid")}>
+                name: {name}
+            </div>
+            <div className={classNames(classes.address, "bg-orange-200 rounded-lg border-2 border-solid")}>
+                address: {address}
+            </div>
+            <div className={classNames(classes.imageWrapper, "bg-green-100 rounded-lg border-2 border-solid")}>
+                {image_url ? (
+                    <img src={image_url} className={classNames(classes.image, "rounded-lg")}/>
+                ) : (
+                    "No image"
+                )}
+            </div>
+            {description && (
+                <div className={classNames(classes.description, "bg-pink-100 rounded-lg border-2 border-solid")}>
+                    description: {description}
+                </div>
+            )}
+            {attributes && (
+                <div className={classes.attributes}>
+                    {attributes.map(attribute => (
+                        <div
+                            key={attribute}
+                            className={classNames(classes.attribute, "bg-yellow-300 rounded-lg border-2 border-solid")}>
+                            {attribute}
+                        </div>
+                    ))}
+                </div>
+            )}
         </li>
     );
 }

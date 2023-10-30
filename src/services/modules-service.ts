@@ -1,4 +1,5 @@
 const modulesList = [{
+    "image_url": "https://placehold.co/600x400",
     "address": "158.247.70.45:8888",
     "functions": ["generate"],
     "attributes": [],
@@ -78,12 +79,15 @@ const modulesList = [{
         }
     }
 }, {
-    name: 'module1',
-    description: 'The first module',
     "address": "158.247.70.45:8888",
+    "attributes": ["asd","11112222222222222222222", "222", "33333333333333333"],
+    "name": "storage2",
+    "path": "storage2",
+    "description": "not available",
 }, {
     name: 'Module 2',
     description: 'Another of our modulesassssssssssssssssssssssdadasdaddafav fsdgaergehr rffffffffffffffffffffffffff 234324563t25 gfegdf',
+    "attributes": ["0asd","11112222222222222222222", "222", "33333333333333333", "4", "55", "666666666666666666666", "777777", "888", "9&$TYTYRR^TY"],
     "address": "158.247.70.45:8888",
 }, {
     name: 'Module 3',
