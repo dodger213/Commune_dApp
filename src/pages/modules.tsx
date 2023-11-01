@@ -5,14 +5,20 @@ import Layout from '@theme/Layout';
 import '../css/global.css';
 import ModulesService from '../services/modules-service';
 import classes from './modules.module.css';
-import ModuleTile from '../components/Frontpage/ModuleTile';
+import ModuleTile from '../components/Frontpage/ModuleTile/module-tile';
 import useThrottling from '../hooks/use-throttling';
+import ModuleDetailsModal from '../components/Frontpage/ModuleDetailsModal/module-details-modal';
 
 
 export default function Modules() {
   const [ modulesList, setModulesList ] = useState([]);
+  const [ selectedModuleName, setSelectedModuleName ] = useState(null);
   const [ searchedModuleString, setSearchedModuleString ] = useState('');
   const throttle = useThrottling();
+
+  useEffect(() => {
+    ModulesService.getModulesList(searchedModuleString).then(setModulesList);
+  }, []);
 
   useEffect(() => {
     throttle(() => ModulesService.getModulesList(searchedModuleString).then(setModulesList));
@@ -55,9 +61,15 @@ export default function Modules() {
                 key={module.name}
                 {...module}
                 index={i}
+                onClick={() => setSelectedModuleName(module.name)}
               />
             ))}
           </ul>
+          <ModuleDetailsModal
+            isOpen={!!selectedModuleName}
+            onClose={() => setSelectedModuleName(null)}
+            moduleName={selectedModuleName}
+          />
         </main>
     </Layout>
   );
