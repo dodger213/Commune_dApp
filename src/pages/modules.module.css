@@ -7,21 +7,18 @@
 .inputWrapper {
   width: 100%;
 }
-
 .searchInput {
-  width: 100%;
   background-color: transparent;
   outline: none;
   border: none;
-  font-size: 3vw;
-  padding: 5px 10px;
+  font-size: 3rem;
 }
-
 .modulesList {
   width: 100%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+
   gap: 1vw;
   padding: 0;
 }
