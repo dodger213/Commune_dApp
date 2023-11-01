@@ -1,3 +1,4 @@
+
 const modulesList = [{
     "image_url": "https://placehold.co/600x400",
     "address": "158.247.70.45:8888",
@@ -116,15 +117,9 @@ const modulesList = [{
 }];
 
 export default class ModulesService {
-    static getModulesList = async (searchQuery = '') => {
-        if (!searchQuery) {
-            return modulesList;
-        }
-        
-        return modulesList.filter(module =>
-            module.name.includes(searchQuery)
-            || module.description.includes(searchQuery)
-        )
+  static getModulesList = async (searchQuery = "") => {
+    if (!searchQuery) {
+      return modulesList;
     }
 
     static getModuleDetailsByName = async (name: string) => {

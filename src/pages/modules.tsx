@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import classNames from 'classnames';
-import Layout from '@theme/Layout';
+import React, { useEffect, useState } from "react";
+import classNames from "classnames";
+import Layout from "@theme/Layout";
 // import ExtraSidebar from '../components/Modules/components/SideBarComponent/index';
+
 import '../css/global.css';
 import ModulesService from '../services/modules-service';
 import classes from './modules.module.css';
@@ -25,8 +26,8 @@ export default function Modules() {
   }, [searchedModuleString]);
 
   return (
-    <Layout dark-theme="dark" title={`🚀 Modules`} description='Connect to the current modules' >
-        {/* <div className='flex flex-col items-center justify-center  my-auto '>
+    <Layout dark-theme="dark" title={`🚀 Modules`} description="Connect to the current modules">
+      {/* <div className='flex flex-col items-center justify-center  my-auto '>
             <h1 className='text-4xl font-bold'>
             <span className='text-[#ffb4ed] dark:text-[#FFD6F5] hover:animate-pulse duration-500'>
             commune

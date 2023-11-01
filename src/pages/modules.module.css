@@ -9,10 +9,12 @@
 }
 
 .searchInput {
+  width: 100%;
   background-color: transparent;
   outline: none;
   border: none;
-  font-size: 3rem;
+  font-size: 3vw;
+  padding: 5px 10px;
 }
 
 .modulesList {
