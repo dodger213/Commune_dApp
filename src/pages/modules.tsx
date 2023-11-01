@@ -2,16 +2,24 @@ import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 import Layout from "@theme/Layout";
 // import ExtraSidebar from '../components/Modules/components/SideBarComponent/index';
-import "../css/global.css";
-import ModulesService from "../services/modules-service";
-import classes from "./modules.module.css";
-import ModuleTile from "../components/Frontpage/ModuleTile";
-import useThrottling from "../hooks/use-throttling";
+
+import '../css/global.css';
+import ModulesService from '../services/modules-service';
+import classes from './modules.module.css';
+import ModuleTile from '../components/Frontpage/ModuleTile/module-tile';
+import useThrottling from '../hooks/use-throttling';
+import ModuleDetailsModal from '../components/Frontpage/ModuleDetailsModal/module-details-modal';
+
 
 export default function Modules() {
-  const [modulesList, setModulesList] = useState([]);
-  const [searchedModuleString, setSearchedModuleString] = useState("");
+  const [ modulesList, setModulesList ] = useState([]);
+  const [ selectedModuleName, setSelectedModuleName ] = useState(null);
+  const [ searchedModuleString, setSearchedModuleString ] = useState('');
   const throttle = useThrottling();
+
+  useEffect(() => {
+    ModulesService.getModulesList(searchedModuleString).then(setModulesList);
+  }, []);
 
   useEffect(() => {
     throttle(() => ModulesService.getModulesList(searchedModuleString).then(setModulesList));
@@ -31,16 +39,39 @@ export default function Modules() {
            
           </div>
         </div> */}
-      <main className={classNames(classes.content, "flex flex-col items-center justify-center my-2px ")}>
-        <section className={classNames(classes.inputWrapper, "my-auto mx-auto z-40 bg-gray-100 rounded-lg border-2 border-zinc-700 dark:border-gray-100 border-solid shadow-md")}>
-          <input className={classNames("shadow-xl", classes.searchInput)} type="text" value={searchedModuleString} onChange={(e) => setSearchedModuleString(e.target.value)} placeholder="Search for module" />
-        </section>
-        <ul className={classes.modulesList}>
-          {modulesList.map((module, i) => (
-            <ModuleTile key={module.name} {...module} index={i} />
-          ))}
-        </ul>
-      </main>
+        <main className={
+          classNames(
+            classes.content,
+            'flex flex-col items-center justify-center  my-auto '
+          )}>
+          <section className={classNames(
+            classes.inputWrapper,
+            'my-auto mx-auto z-40 bg-gray-100 rounded-lg border-2 border-zinc-700 dark:border-gray-100 border-solid shadow-md'
+          )}>
+            <input
+              className={classNames('shadow-xl', classes.searchInput)}
+              type="text"
+              value={searchedModuleString}
+              onChange={e => setSearchedModuleString(e.target.value)}
+              placeholder="Search for module"
+            />
+          </section>
+          <ul className={classes.modulesList}>
+            {modulesList.map((module, i) => (
+              <ModuleTile
+                key={module.name}
+                {...module}
+                index={i}
+                onClick={() => setSelectedModuleName(module.name)}
+              />
+            ))}
+          </ul>
+          <ModuleDetailsModal
+            isOpen={!!selectedModuleName}
+            onClose={() => setSelectedModuleName(null)}
+            moduleName={selectedModuleName}
+          />
+        </main>
     </Layout>
   );
 }
