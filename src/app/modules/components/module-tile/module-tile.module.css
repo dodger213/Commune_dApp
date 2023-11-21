@@ -1,0 +1,86 @@
+.tileWrapper {
+    width: 24%;
+}
+
+.moduleTile {
+    list-style: none;
+    height: fit-content;
+    /* aspect-ratio: 16/9; */
+    display: grid;
+    grid-template-columns: 55% 40%;
+    column-gap: 5%;
+    grid-template-rows: 2vw 2vw 4vw 1.25vw;
+    row-gap: 0.5vw;
+    grid-template-areas: 
+    "name imageWrapper"
+    "address imageWrapper"
+    "description description"
+    "attributes attributes";
+    padding: 1vw;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+
+.name {
+    grid-area: name;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imageWrapper {
+    grid-area: imageWrapper;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.address {
+    grid-area: address;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.description {
+    grid-area: description;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5vw;
+    line-height: normal;
+}
+.attributes {
+    grid-area: attributes;
+    display: flex;
+    gap: 0.5vw;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-gutter: stable;
+}
+.attributes::-webkit-scrollbar {
+    height: 0.2vw;
+}
+
+/* Track */
+.attributes::-webkit-scrollbar-track {
+    background: rgb(253, 224, 71); 
+}
+
+/* Handle */
+.attributes::-webkit-scrollbar-thumb {
+    background: black; 
+}
+
+/* Handle on hover */
+.attributes::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+.attribute {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 0.25vw;
+}

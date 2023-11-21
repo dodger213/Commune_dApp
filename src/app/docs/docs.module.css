@@ -1,0 +1,7 @@
+.docsLayout {
+    display: flex;
+}
+
+.docsContent {
+    padding: 2rem;
+}
