@@ -1,0 +1,15 @@
+.content {
+  display: flex;
+  gap: 1vw;
+  padding: 1vw;
+}
+
+.modulesList {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 1vw;
+  padding: 0;
+}
