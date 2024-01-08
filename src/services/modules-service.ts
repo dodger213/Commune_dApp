@@ -129,7 +129,7 @@ export default class ModulesService {
       return modulesList;
     }
 
-    return modulesList.filter((module) => module.name.includes(searchQuery) || module.description.includes(searchQuery));
+    return modulesList.filter((module) => module.name.includes(searchQuery) || (module.description && module.description.includes(searchQuery)));
   };
 
   static getModuleDetailsByName = async (name: string) => {
