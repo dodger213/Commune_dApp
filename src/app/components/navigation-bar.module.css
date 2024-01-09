@@ -35,6 +35,21 @@
     color: var(--ifm-link-hover-color);
 }
 
+@media (max-width: 768px) {
+    .navbar {
+        position: static;
+        top: auto;
+        flex-direction: column;
+    }
+    .items, .itemsRight {
+        flex-direction: column;
+        width: 100%;
+    }
+    .item, .link {
+        font-size: 14px;
+    }
+}
+
 .brand {
     height: 2.5rem;
     align-items: center;
