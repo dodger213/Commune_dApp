@@ -76,7 +76,7 @@
 }
 
 * {
-  font-family: var(--ifm-font-family-base) !important;
+  font-family: var(--ifm-font-family-base);
   border-color: var(--theme-border-color);
 }
 

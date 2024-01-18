@@ -11,7 +11,7 @@
 }
 .address {
   grid-area: address;
-  font-weight: 600;
+  /* font-weight: 600; */
   align-self: center;
 }
 .name {

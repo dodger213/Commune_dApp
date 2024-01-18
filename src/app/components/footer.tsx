@@ -1,7 +1,7 @@
 import config from '@/config';
 import classes from './footer.module.css';
 
-function OpenIcon () {
+function OpenIcon() {
   return (
     <svg
       width="13.5"
@@ -15,59 +15,59 @@ function OpenIcon () {
   );
 }
 
-export default function Footer () {
-    return (
-      <footer className={classes.footer}>
-        <div className={classes.container}>
-          <div className={classes.row}>
-            <div className={classes.col}>
-              <div className={classes.title}>📚 Docs</div>
-              <ul className={classes.list}>
-                <li className={classes.item}>
-                  <a className={classes.link} href="/docs/next/Introduction">Introduction</a>
-                </li>
-                <li className={classes.item}>
-                  <a className={classes.link} href="/docs/next/installation">Installation</a>
-                </li>
-              </ul>
-            </div>
-            <div className={classes.col}>
-              <div className={classes.title}>🔗 Community</div>
-              <ul className={classes.list}>
-                <li className={classes.item}>
-                  <a href="https://discord.gg/A8JGkZ9Dmm" target="_blank" rel="noopener noreferrer" className={classes.link}>
-                    Discord<OpenIcon />
-                  </a>
-                </li>
-                <li className={classes.item}>
-                  <a href="https://twitter.com/communeaidotorg" target="_blank" rel="noopener noreferrer" className={classes.link}>
-                    Twitter<OpenIcon />
-                  </a>
-                </li>
-                <li className={classes.item}>
-                  <a href="https://github.com/commune-ai" target="_blank" rel="noopener noreferrer" className={classes.link}>
-                    GitHub<OpenIcon />
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div className={classes.col}>
-              <div className={classes.title}>
-                ➕ More
-              </div>
-              <ul className={classes.list}>
-                <li className={classes.item}>
-                  <a href={config.whitepaperUrl} target="_blank" rel="noopener noreferrer" className={classes.link}>
-                    📄 Whitepaper
-                  </a>
-                </li>
-              </ul>
-            </div>
+export default function Footer() {
+  return (
+    <footer className={classes.footer} >
+      <div className={classes.container}>
+        <div className={classes.row}>
+          <div className={classes.col}>
+            <div className={classes.title}>📚 Docs</div>
+            <ul className={classes.list}>
+              <li className={classes.item}>
+                <a className={classes.link} href="/docs/next/Introduction">Introduction</a>
+              </li>
+              <li className={classes.item}>
+                <a className={classes.link} href="/docs/next/installation">Installation</a>
+              </li>
+            </ul>
           </div>
-          <div className={classes.copyright}>
-            Copyright © 2023 Commune, Inc. Built with Docusaurus.
+          <div className={classes.col}>
+            <div className={classes.title}>🔗 Community</div>
+            <ul className={classes.list}>
+              <li className={classes.item}>
+                <a href="https://discord.gg/A8JGkZ9Dmm" target="_blank" rel="noopener noreferrer" className={classes.link}>
+                  Discord<OpenIcon />
+                </a>
+              </li>
+              <li className={classes.item}>
+                <a href="https://twitter.com/communeaidotorg" target="_blank" rel="noopener noreferrer" className={classes.link}>
+                  Twitter<OpenIcon />
+                </a>
+              </li>
+              <li className={classes.item}>
+                <a href="https://github.com/commune-ai" target="_blank" rel="noopener noreferrer" className={classes.link}>
+                  GitHub<OpenIcon />
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div className={classes.col}>
+            <div className={classes.title}>
+              ➕ More
+            </div>
+            <ul className={classes.list}>
+              <li className={classes.item}>
+                <a href={config.whitepaperUrl} target="_blank" rel="noopener noreferrer" className={classes.link}>
+                  📄 Whitepaper
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
-      </footer>
-    );
-  }
+        <div className={classes.copyright}>
+          Copyright © 2023 Commune, Inc. Built with Docusaurus.
+        </div>
+      </div>
+    </footer>
+  );
+}

@@ -15,15 +15,15 @@ const ActiveLink = ({
   className,
   ...props
 }: PropsWithChildren<ActiveLinkProps>) => {
-    const pathname = usePathname();
+  const pathname = usePathname();
 
-    const isActive = pathname.startsWith(props.href as string);
+  const isActive = pathname.startsWith(props.href as string);
 
-    return (
+  return (
     <Link className={classNames(className, isActive ? activeClassName : '')} {...props}>
-        {children}
+      {children}
     </Link>
-    );
+  );
 }
 
 export default ActiveLink

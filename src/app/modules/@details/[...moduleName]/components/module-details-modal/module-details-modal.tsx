@@ -4,16 +4,17 @@ import React, { useState } from "react";
 
 import Popup from "../../../../../../components/popup/popup";
 import classes from "./module-details-modal.module.css";
-import ModulesService from "../../../../../../services/modules-service";
+import { modulesList } from "../../../../../../services/modules-service";
 import classNames from "classnames";
 import Checkbox from "../../../../../../components/checkbox/checkbox";
 
-export default async function ModuleDetailsModal({
+export default function ModuleDetailsModal({
   name,
 }: {
   name: string,
 }) {
-  const moduleDetails = await ModulesService.getModuleDetailsByName(name);
+
+  const moduleDetails = modulesList.find((module) => module.name === name);
 
   if (!moduleDetails) {
     return null;
@@ -65,9 +66,11 @@ function SchemaNameElement({
   children: React.ReactNode,
   name: string,
 }) {
+
   return (
     <li className={classNames(classes.schemaNameElement, "bg-gray-200 rounded-lg border-2 border-solid")}>
-      {name}
+      {name.charAt(0).toUpperCase() + name.slice(1)}
+
       {children}
       <RunButton />
     </li>

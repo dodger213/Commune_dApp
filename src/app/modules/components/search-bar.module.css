@@ -3,7 +3,7 @@
     background-color: transparent;
     outline: none;
     border: none;
-    font-size: 3rem;
+    font-size: 4rem;
     line-height: 3rem;
 }
 .searchInput::placeholder {

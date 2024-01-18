@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import classes from './checkbox.module.css';
 
 type CheckboxProps = {
@@ -13,7 +12,8 @@ export default function Checkbox({
     text,
     defaultValue,
 }: CheckboxProps) {
-    const [ checked, setChecked ] = useState(!!defaultValue);
+
+    const [checked, setChecked] = useState(!!defaultValue);
 
     return (
         <label className={classes.container}>
