@@ -4,6 +4,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { useRouter } from "next/navigation";
 import config from "@/config";
 import ThemeToggler from "./theme-toggler";
+import { useSelector, useDispatch } from 'react-redux'
 
 import classes from './navigation-bar.module.css';
 import classNames from "classnames";
@@ -19,6 +20,7 @@ import { useSendTransaction, useContractWrite } from 'wagmi'
 import { parseEther } from 'viem'
 import axios from "axios";
 import * as  erc20ContractABI from '../../services/token_abi.json';
+import { saveTransaction } from "@/store/action/transaction.record.action";
 
 const items: MenuProps['items'] = [
     {
@@ -84,6 +86,7 @@ export default function NavigationBar() {
     const { abi: erc20ABI } = erc20ContractABI
 
     const router = useRouter();
+    // const dispatch = useDispatch<any>()
 
     const handleClickPayButton = async () => {
         try {
@@ -271,13 +274,19 @@ export default function NavigationBar() {
     //         };
     //     }
     // };
-    const { write: paywithUSDT } = useContractWrite({
-        address: '0x55d398326f99059ff775485246999027b3197955',
+    // const { write: paywithUSDT } = useContractWrite({
+    //     address: '0x55d398326f99059ff775485246999027b3197955',
+    //     abi: erc20ABI,
+    //     functionName: 'transfer'
+    // })
+
+    const { data: txHashUSDT, write: paywithUSDT } = useContractWrite({
+        address: '0x28B3071bE7A6E4B3bE2b36D78a29b6e4DbBdDb74',
         abi: erc20ABI,
         functionName: 'transfer'
     })
 
-    const { write: paywithUSDC } = useContractWrite({
+    const { data: txHashUSDC, write: paywithUSDC } = useContractWrite({
         address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
         abi: erc20ABI,
         functionName: 'transfer'
@@ -285,11 +294,12 @@ export default function NavigationBar() {
 
     const handlePayWithWallet = () => {
         if (tokenType === 'eth') {
-            if (selectedChain !== 'Ethereum') {
-                window.alert('Please change your chain to Polygon')
-            } else {
-                sendTransaction({ to: destinationAddress, value: parseEther(amount) })
-            }
+            // if (selectedChain !== 'Ethereum') {
+            //     window.alert('Please change your chain to Ethereum')
+            // } else {
+            //     sendTransaction({ to: destinationAddress, value: parseEther(amount) })
+            // }
+            sendTransaction({ to: destinationAddress, value: parseEther(amount) })
         }
         if (tokenType === 'matic') {
             if (selectedChain !== 'Polygon') {
@@ -299,10 +309,14 @@ export default function NavigationBar() {
             }
         }
         if (tokenType === 'usdt') {
-            paywithUSDT({ args: [amount], to: `0x${destinationAddress}` })
+
+            paywithUSDT({ args: [destinationAddress, amount] });
+
         }
         if (tokenType === 'usdc') {
-            paywithUSDC({ args: [amount], to: `0x${destinationAddress}` })
+
+            paywithUSDC({ args: [destinationAddress, amount] });
+
         }
         if (tokenType === 'bitcoin') {
             const transfer = async (
@@ -343,6 +357,16 @@ export default function NavigationBar() {
                 }
             };
         }
+    }
+
+    if (hash || txHashUSDT || txHashUSDC) {
+
+        let selectedHash = hash || txHashUSDT || txHashUSDC;
+
+        if (selectedHash) {
+            saveTransaction(tokenType, parseFloat(amount), destinationAddress, selectedHash.hash);
+        }
+
     }
 
     return (
@@ -440,7 +464,7 @@ export default function NavigationBar() {
                                         { value: 'matic', label: 'MATIC' },
                                         { value: 'usdt', label: 'USDT' },
                                         { value: 'usdc', label: 'USDC' },
-                                        { value: 'bitcoin', label: 'BTC' },
+                                        // { value: 'bitcoin', label: 'BTC' },
                                     ]}
                                 />
                             </Space>

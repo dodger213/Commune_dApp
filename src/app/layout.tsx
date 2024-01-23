@@ -41,6 +41,8 @@ import {
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { createConfig, configureChains, WagmiConfig, sepolia } from "wagmi";
 import { publicProvider } from "wagmi/providers/public";
+import { store } from '../store/index'
+import { Provider } from 'react-redux'
 
 const { chains, publicClient } = configureChains(
   [mainnet, polygon, optimism, arbitrum, base, zora, sepolia, goerli],
@@ -103,12 +105,14 @@ export default function RootLayout({
       <body>
         <WagmiConfig config={wagmiConfig}>
           <RainbowKitProvider chains={chains} coolMode theme={darkTheme()}>
-            <ThemeProvider>
-              {/* <Banner /> */}
-              <NavigationBar />
-              {children}
-              <Footer />
-            </ThemeProvider>
+            {/* <Provider store={store}> */}
+              <ThemeProvider>
+                {/* <Banner /> */}
+                <NavigationBar />
+                {children}
+                <Footer />
+              </ThemeProvider>
+            {/* </Provider> */}
           </RainbowKitProvider>
         </WagmiConfig>
       </body>
