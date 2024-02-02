@@ -1,29 +1,15 @@
 'use client';
 
-import type { Metadata } from 'next';
-import '@fontsource/source-code-pro';
-import './globals.css';
-import Banner from './components/banner';
-import Footer from './components/footer';
-import NavigationBar from './components/navigation-bar';
-import ThemeProvider from './toggle-theme-provider';
-
-import Env from '../config';
-
-import Head from './head';
-
-//wagmi wallet connection
-import '@rainbow-me/rainbowkit/styles.css';
-
 import {
   RainbowKitProvider,
+  Chain,
+  Wallet,
   darkTheme,
   connectorsForWallets,
-  getWalletConnectConnector
+  getWalletConnectConnector,
 } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
-  walletConnectWallet,
   trustWallet,
   enkryptWallet,
   okxWallet,
@@ -31,6 +17,8 @@ import {
   talismanWallet,
   metaMaskWallet
 } from '@rainbow-me/rainbowkit/wallets';
+import '@rainbow-me/rainbowkit/styles.css';
+
 import {
   mainnet,
   polygon,
@@ -39,27 +27,49 @@ import {
   base,
   zora,
   goerli,
+  sepolia,
+  polygonMumbai
 } from 'wagmi/chains';
-import { alchemyProvider } from 'wagmi/providers/alchemy';
-import { createConfig, configureChains, WagmiConfig, sepolia } from "wagmi";
-import { publicProvider } from "wagmi/providers/public";
 import {
-  Chain,
-  Wallet,
-} from '@rainbow-me/rainbowkit';
+  alchemyProvider
+} from 'wagmi/providers/alchemy';
+import {
+  createConfig,
+  configureChains,
+  WagmiConfig
+} from "wagmi";
+import {
+  publicProvider
+} from "wagmi/providers/public";
+
+import '@fontsource/source-code-pro';
+
+import Env from '../config';
+
+import Footer from './components/footer';
+import NavigationBar from './components/navigation-bar';
+import ThemeProvider from './toggle-theme-provider';
+import Head from './head';
+
+import './globals.css';
 
 const { chains, publicClient } = configureChains(
-  [mainnet, polygon, optimism, arbitrum, base, zora, sepolia, goerli],
+  [
+    mainnet,
+    polygon,
+    optimism,
+    arbitrum,
+    base,
+    zora,
+    sepolia,
+    goerli,
+    polygonMumbai
+  ],
   [
     alchemyProvider({ apiKey: Env.alchemyApi }),
     publicProvider()
   ]
 );
-
-// const { publicClient, webSocketPublicClient } = configureChains(
-//   [mainnet],
-//   [publicProvider()]
-// );
 
 const projectId = Env.projectId;
 
@@ -67,13 +77,12 @@ const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
     wallets: [
-      metaMaskWallet({ projectId, chains }), // Metamask,
-      ...(projectId ? [talismanWallet({ projectId, chains })] : []),
-      ...(projectId ? [enkryptWallet({ projectId, chains })] : []),
-      ...(projectId ? [trustWallet({ projectId, chains })] : []),
-      // walletConnectWallet({ projectId, chains }),
-      // trustWallet({ projectId, chains }),
-      // Add more recommended wallets as needed
+      metaMaskWallet({ projectId, chains }),
+      ...(projectId ? [
+        talismanWallet({ chains }),
+        enkryptWallet({ chains }),
+        trustWallet({ projectId, chains })
+      ] : []),
     ],
   },
   {
@@ -82,12 +91,6 @@ const connectors = connectorsForWallets([
       ...(projectId ? [rainbowWallet({ projectId, chains })] : []),
       ...(projectId ? [okxWallet({ projectId, chains })] : []),
       ...(projectId ? [ledgerWallet({ projectId, chains })] : []),
-
-      // rainbowWallet({ projectId, chains }),
-      // coinbaseWallet({ projectId, chains }),
-      // okxWallet({ projectId, chains }),
-      // ledgerWallet({ projectId, chains }),
-      // Add other wallets to the "Other" group
     ],
   },
 ]);
@@ -98,7 +101,7 @@ export const wagmiConfig = createConfig({
   publicClient
 })
 
-export interface MyWalletOptions {
+export interface WalletOptions {
   projectId: string;
   chains: Chain[];
 }
@@ -106,7 +109,7 @@ export interface MyWalletOptions {
 export const rainbow = ({
   chains,
   projectId,
-}: MyWalletOptions): Wallet => ({
+}: WalletOptions): Wallet => ({
   id: 'my-wallet',
   name: 'My Wallet',
   iconUrl: 'https://my-image.xyz',

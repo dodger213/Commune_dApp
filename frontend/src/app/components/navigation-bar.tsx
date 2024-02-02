@@ -79,8 +79,8 @@ export default function NavigationBar() {
     const [isShowWalletPaymentModal, setIsShowWalletPaymentModal] = React.useState(false)
     const [destinationAddress, setDestinationAddress] = React.useState('')
     const [amount, setAmount] = React.useState('')
-    const [tokenType, setTokenType] = React.useState('')
-    const [selectedChain, setSelectedChain] = React.useState('')
+    const [tokenType, setTokenType] = React.useState('eth')
+    const [selectedChain, setSelectedChain] = React.useState('Ethereum')
 
     const asyncStripe = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
     const { abi: erc20ABI } = erc20ContractABI
@@ -136,16 +136,7 @@ export default function NavigationBar() {
     };
 
     const { data: hash, sendTransaction } = useSendTransaction()
-    // const { write } = useContractWrite({ 
-    //     abi,
-    //     address: '0x6b175474e89094c44da98b954eedeac495271d0f',
-    //     functionName: 'transfer',
-    //     args: [
-    //       '0xd2135CfB216b74109775236E36d4b433F1DF507B',
-    //       '0xA0Cf798816D4b9b9866b5330EEa46a18382f251e',
-    //       BigInt(123),
-    //     ],
-    //  })
+
 
     //This Function must be used in Client side.
     const createBTCTx = async (toAddress: string, value: number, env: string, fromAddress: string) => {
@@ -281,7 +272,7 @@ export default function NavigationBar() {
     // })
 
     const { data: txHashUSDT, write: paywithUSDT } = useContractWrite({
-        address: '0x28B3071bE7A6E4B3bE2b36D78a29b6e4DbBdDb74',
+        address: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
         abi: erc20ABI,
         functionName: 'transfer'
     })
@@ -293,13 +284,13 @@ export default function NavigationBar() {
     })
 
     const handlePayWithWallet = () => {
+        console.log(selectedChain, tokenType, destinationAddress);
         if (tokenType === 'eth') {
-            // if (selectedChain !== 'Ethereum') {
-            //     window.alert('Please change your chain to Ethereum')
-            // } else {
-            //     sendTransaction({ to: destinationAddress, value: parseEther(amount) })
-            // }
-            sendTransaction({ to: destinationAddress, value: parseEther(amount) })
+            if (selectedChain !== 'Ethereum') {
+                window.alert('Please change your chain to Ethereum')
+            } else {
+                sendTransaction({ to: destinationAddress, value: parseEther(amount) })
+            }
         }
         if (tokenType === 'matic') {
             if (selectedChain !== 'Polygon') {
@@ -309,14 +300,18 @@ export default function NavigationBar() {
             }
         }
         if (tokenType === 'usdt') {
-
-            paywithUSDT({ args: [destinationAddress, amount] });
-
+            if (selectedChain !== 'Ethereum') {
+                window.alert('Please change your chain to Ethereum')
+            } else {
+                paywithUSDT({ args: [destinationAddress, amount] });
+            }
         }
         if (tokenType === 'usdc') {
-
-            paywithUSDC({ args: [destinationAddress, amount] });
-
+            if (selectedChain !== 'Ethereum') {
+                window.alert('Please change your chain to Ethereum')
+            } else {
+                paywithUSDC({ args: [destinationAddress, amount] });
+            }
         }
         if (tokenType === 'bitcoin') {
             const transfer = async (
@@ -576,19 +571,6 @@ export default function NavigationBar() {
                     </div>
                 </Modal>
             }
-        </nav>
-    );
-}
-
-function NavigationBar2() {
-    return (
-        <nav>
-            <Link href="/modules">Modules</Link>
-            <Link href="/docs">Docs</Link>
-            <Link href={config.whitepaperUrl}>Whitepaper</Link>
-            <Link href="/telemetry">Telemetry</Link>
-            <Link href="/exchanges">Exchanges</Link>
-            <ThemeToggler />
         </nav>
     );
 }

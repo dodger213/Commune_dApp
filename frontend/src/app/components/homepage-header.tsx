@@ -1,16 +1,29 @@
 "use client";
-import React from 'react';
-import { MetaMaskConnector } from "wagmi/connectors/metaMask";
+
+import { useState, useEffect, useRef } from 'react';
+
 import { signIn } from "next-auth/react";
-import { useAccount, useConnect, useSignMessage, useDisconnect } from "wagmi";
 import { useRouter } from "next/navigation";
-import { useAuthRequestChallengeEvm } from "@moralisweb3/next";
-import Modal from 'antd/es/modal/Modal';
 import Image from 'next/image';
+
+import GitHubLogin from 'react-github-login';
+
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+
+import { MetaMaskConnector } from "wagmi/connectors/metaMask";
+import {
+  useAccount,
+  useConnect,
+  useSignMessage,
+  useDisconnect
+} from "wagmi";
+
+import { useAuthRequestChallengeEvm } from "@moralisweb3/next";
+
+import Modal from 'antd/es/modal/Modal';
+
 import MetaMaskImage from '../../../public/svg/metamask.svg'
 import GithubImage from '../../../public/svg/github-mark.svg'
-import GitHubLogin from 'react-github-login';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 
 const words: string[] = ["developers.", "designers.", "creators.", "everyone.", "<END>"];
@@ -22,16 +35,16 @@ const TAGLINE = "Renovating the way we build software for ";
 export default function HomepageHeader() {
 
   // blinker
-  const [index, setIndex] = React.useState(0);
-  const [subIndex, setSubIndex] = React.useState(0);
-  const [blink, setBlink] = React.useState(true);
-  const [reverse, setReverse] = React.useState(false);
-  const [isShowAuthModalOpen, setIsShowAuthModalOpen] = React.useState(false)
+  const [index, setIndex] = useState(0);
+  const [subIndex, setSubIndex] = useState(0);
+  const [blink, setBlink] = useState(true);
+  const [reverse, setReverse] = useState(false);
+  const [isShowAuthModalOpen, setIsShowAuthModalOpen] = useState(false)
 
   // state of the scroll position and header height
-  const [scrollPosition, setScrollPosition] = React.useState(0);
-  const headerRef = React.useRef<any>(null);
-  const [headerHeight, setHeaderHeight] = React.useState(20);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const headerRef = useRef<any>(null);
+  const [headerHeight, setHeaderHeight] = useState(20);
 
   const { connectAsync } = useConnect();
   const { disconnectAsync } = useDisconnect();
@@ -96,7 +109,7 @@ export default function HomepageHeader() {
 
   // typeWriter effect
   // give me the context of this whole useEffect
-  React.useEffect(() => {
+  useEffect(() => {
     if (index === words.length) return; // if end of words, return
     // if subIndex is equal to the length of the word + 1 and index is not the last word and not reverse
     if (subIndex === words[index].length + 1 && index !== words.length - 1 && !reverse) {
@@ -123,7 +136,7 @@ export default function HomepageHeader() {
 
 
   // blinker effect
-  React.useEffect(() => {
+  useEffect(() => {
     const timeout2 = setTimeout(() => {
       setBlink((prev) => !prev);
     }, 250);
@@ -139,7 +152,7 @@ export default function HomepageHeader() {
   };
 
   // Add scroll event listener to window
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
@@ -149,7 +162,7 @@ export default function HomepageHeader() {
 
   // Get header height on mount and when window is resized
   // This is to offset the scroll position so that the header
-  React.useEffect(() => {
+  useEffect(() => {
     if (headerRef?.current) {
       setHeaderHeight(headerRef.current.clientHeight);
     }
@@ -201,6 +214,7 @@ export default function HomepageHeader() {
   const responseMessage = (response: any) => {
     console.log('-----------------------This is the React component-------------------', response);
   };
+
   const errorMessage = () => {
     console.log('An error has occured')
   };
@@ -213,7 +227,7 @@ export default function HomepageHeader() {
         <div className='flex lg:flex-row flex-col h-1/2'>
           <div className='w-full lg:w-1/2 flex flex-col items-center justify-center'>
 
-            <div className=' w-auto sm:w-[710px] sm:h-[250px] '>
+            <div className='w-auto sm:w-[710px] sm:h-[250px] '>
               <h1 className=" text-4xl sm:text-6xl sm:pb-3 dark:text-white">{TITLE}</h1>
               <div className='hidden sm:block'>
                 <p className="hero__subtitle text-xl sm:text-4xl">{TAGLINE}
@@ -223,11 +237,12 @@ export default function HomepageHeader() {
             </div>
 
             <div className='w-30 h-10'>
-              {/* <a href="docs/next/Introduction" className=' hover:no-underline' > */}
-              <div className=' bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-600 duration-200 text-white hover:text-white font-sans font-semibold justify-center px-2 py-2 hover:border-blue-300 hover:border-2 hover:border-solid cursor-pointer' onClick={handleAuthModal}>
+              <div
+                className='bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-600 duration-200 text-white hover:text-white font-sans font-semibold justify-center px-2 py-2 hover:border-blue-300 hover:border-2 hover:border-solid cursor-pointer'
+                onClick={handleAuthModal}
+              >
                 Get Started
               </div>
-              {/* </a> */}
             </div>
 
           </div>
@@ -240,7 +255,6 @@ export default function HomepageHeader() {
       </div>
 
       {
-        isShowAuthModalOpen &&
         <Modal open={isShowAuthModalOpen} onCancel={handleShowAuthModalCancel} footer={null} width={500}>
           <div className='flex items-center justify-center'>
             <span style={{ fontWeight: '500', alignItems: 'center', display: 'flex', fontSize: '2rem' }}>
