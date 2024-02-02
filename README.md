@@ -12,7 +12,7 @@ This is the commune ai project.
   1. Clone the repository:
   
   ```
-  git clone https://github.com/your-username/next-js-project.git
+  git clone https://github.com/commune-ai/frontend.git
   ```
   
   2. Install the dependencies:
