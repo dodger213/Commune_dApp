@@ -1,5 +1,7 @@
 This is the commune ai project.
 
+**This project has three roles: user, owner, and friend like social network**
+
 **1. Frontend Running**
   # Next.js Project
   
