@@ -1,4 +1,4 @@
-import config from '@/config';
+import { externalLinks } from '@/config';
 import classes from './footer.module.css';
 
 function OpenIcon() {
@@ -57,7 +57,7 @@ export default function Footer() {
             </div>
             <ul className={classes.list}>
               <li className={classes.item}>
-                <a href={config.whitepaperUrl} target="_blank" rel="noopener noreferrer" className={classes.link}>
+                <a href={externalLinks.whitepaper} target="_blank" rel="noopener noreferrer" className={classes.link}>
                   📄 Whitepaper
                 </a>
               </li>

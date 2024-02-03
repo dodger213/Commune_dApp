@@ -1,28 +1,36 @@
-import React from "react";
-import Link from "next/link";
-import { loadStripe } from "@stripe/stripe-js";
-import { useRouter } from "next/navigation";
-import config from "@/config";
-import ThemeToggler from "./theme-toggler";
-import { useSelector, useDispatch } from 'react-redux'
+'use client';
 
-import classes from './navigation-bar.module.css';
+import { useState } from "react";
+
+import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+
+import { loadStripe } from "@stripe/stripe-js";
+
 import classNames from "classnames";
-import ActiveLink from "./active-link";
+
 import type { MenuProps } from 'antd';
 import { Dropdown, Modal, Space, Select } from 'antd';
-import { DownOutlined } from "@ant-design/icons";
-import StripeImage from '../../../public/img/frontpage/stripe.png'
-import Image from "next/image";
+
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import MetaMaskImage from '../../../public/svg/metamask.svg'
 import { useSendTransaction, useContractWrite } from 'wagmi'
 import { parseEther } from 'viem'
+
 import axios from "axios";
-import * as  erc20ContractABI from '../../services/token_abi.json';
+
+import ActiveLink from "../active-link";
+import ThemeToggler from "../theme-toggler/theme-toggler";
+
 import { saveTransaction } from "@/store/action/transaction.record.action";
 
-const items: MenuProps['items'] = [
+import * as  erc20ContractABI from '../../../services/token_abi.json';
+import MetaMaskImage from '../../../../public/svg/metamask.svg'
+import StripeImage from '../../../../public/img/frontpage/stripe.png'
+
+import classes from './navbar.module.css';
+
+const paymentMethods: MenuProps['items'] = [
     {
         key: '1',
         label: (
@@ -75,12 +83,11 @@ function GitHubIcon() {
 }
 
 export default function NavigationBar() {
-
-    const [isShowWalletPaymentModal, setIsShowWalletPaymentModal] = React.useState(false)
-    const [destinationAddress, setDestinationAddress] = React.useState('')
-    const [amount, setAmount] = React.useState('')
-    const [tokenType, setTokenType] = React.useState('eth')
-    const [selectedChain, setSelectedChain] = React.useState('Ethereum')
+    const [isShowWalletPaymentModal, setIsShowWalletPaymentModal] = useState(false)
+    const [destinationAddress, setDestinationAddress] = useState('')
+    const [amount, setAmount] = useState('')
+    const [tokenType, setTokenType] = useState('eth')
+    const [selectedChain, setSelectedChain] = useState('Ethereum')
 
     const asyncStripe = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
     const { abi: erc20ABI } = erc20ContractABI
@@ -90,7 +97,6 @@ export default function NavigationBar() {
 
     const handleClickPayButton = async () => {
         try {
-
             let amount = 1;
             const stripe = await asyncStripe;
             const res = await fetch("/api/stripe/session", {
@@ -136,7 +142,6 @@ export default function NavigationBar() {
     };
 
     const { data: hash, sendTransaction } = useSendTransaction()
-
 
     //This Function must be used in Client side.
     const createBTCTx = async (toAddress: string, value: number, env: string, fromAddress: string) => {
@@ -222,55 +227,6 @@ export default function NavigationBar() {
 
     }
 
-    // //This Function must be used in Client side.
-    // const generateSignatures = (privateKey: string, env: string, toSign: any, ecc: any) => {
-    //     try {
-    //         const ECPair = ecfacory.ECPairFactory(ecc);
-    //         // console.log(ECPair);
-    //         let keys;
-    //         if (env == 'testnet') {
-    //             keys = ECPair.fromWIF(privateKey, bitcoin.networks.testnet);
-    //             //   console.log(keys);
-    //         } else if (env == 'mainnet') {
-    //             keys = ECPair.fromWIF(privateKey, bitcoin.networks.bitcoin);
-    //             //   console.log(keys);
-    //         } else {
-    //             return {
-    //                 code: 0,
-    //                 error: INVALID_ENV,
-    //             };
-    //         }
-    //         const signatures = [];
-    //         const pubkeys = [];
-    //         for (let i = 0; i < toSign.length; i++) {
-    //             // console.log(i,"Data");
-    //             signatures.push(
-    //                 bitcoin.script.signature
-    //                     .encode(keys.sign(Buffer.from(toSign[i], 'hex')), 0x01)
-    //                     .toString('hex')
-    //                     .slice(0, -2),
-    //             );
-    //             pubkeys.push(keys.publicKey.toString('hex'));
-    //         }
-    //         // console.log("Signature", signatures, "Pubkeys", pubkeys);
-    //         return {
-    //             code: 1,
-    //             signatures,
-    //             pubkeys,
-    //         };
-    //     } catch (error/* : any */) {
-    //         return {
-    //             code: 0,
-    //             error,
-    //         };
-    //     }
-    // };
-    // const { write: paywithUSDT } = useContractWrite({
-    //     address: '0x55d398326f99059ff775485246999027b3197955',
-    //     abi: erc20ABI,
-    //     functionName: 'transfer'
-    // })
-
     const { data: txHashUSDT, write: paywithUSDT } = useContractWrite({
         address: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
         abi: erc20ABI,
@@ -313,49 +269,9 @@ export default function NavigationBar() {
                 paywithUSDC({ args: [destinationAddress, amount] });
             }
         }
-        if (tokenType === 'bitcoin') {
-            const transfer = async (
-                privateKey: string,
-                value: number,
-                receiver: string,
-                env: string,
-                address: string,
-                ecc: any,
-            ) => {
-                try {
-                    const createTxResponse = await createBTCTx(receiver, value, env, address);
-                    // console.log(createTxResponse, "createTxResponsecreateTxResponse");
-                    if (createTxResponse?.code != 1) return createTxResponse;
-                    const tx = createTxResponse.result.tx;
-                    const toSign = createTxResponse.result.tosign;
-                    // // console.log(tx, toSign);
-                    // const generateSignaturesResponse = generateSignatures(privateKey, env, toSign, ecc);
-                    // if (generateSignaturesResponse?.code != 1) return generateSignaturesResponse;
-                    // const signatures = generateSignaturesResponse.signatures;
-                    // const pubkeys = generateSignaturesResponse.pubkeys;
-                    // // console.log("signature",signatures);
-                    // // console.log(pubkeys);
-                    // if (!signatures || !pubkeys) {
-                    //     return {
-                    //         code: 0,
-                    //         error: 'ERROR_BTC_SIGNATURES',
-                    //     };
-                    // }
-                    // return {
-                    //     tx, toSign, signatures, pubkeys, env
-                    // };
-                } catch (error) {
-                    return {
-                        code: 0,
-                        error,
-                    };
-                }
-            };
-        }
     }
 
     if (hash || txHashUSDT || txHashUSDC) {
-
         let selectedHash = hash || txHashUSDT || txHashUSDC;
 
         if (selectedHash) {
@@ -371,36 +287,120 @@ export default function NavigationBar() {
                     <div className={classes.logo}>
                         <img style={{ width: "auto", height: "3.7rem", marginRight: "-0.25rem" }} src="/svg/commune.svg" alt="My Site Logo" />
                     </div>
-                    <b>commune</b>
+                    <b className="dark:text-white dark:hover:text-[#25c2a0]">commune</b>
                 </Link>
-                <ActiveLink activeClassName={classes.activeModules} className={classNames(classes.item, classes.modules)} href="/modules">🚀 Modules</ActiveLink>
-                <ActiveLink activeClassName={classes.activeDocs} className={classNames(classes.item, classes.docs)} href="/docs/introduction">📚 Docs</ActiveLink>
-                <Link className={classNames(classes.item, classes.whitepaper)} href="https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf" target="_blank" rel="noopener noreferrer">📄 Whitepaper</Link>
-                <ActiveLink activeClassName={classes.active} className={classes.item} href="/telemetry">⛓️ Telemetry</ActiveLink>
-                <ActiveLink activeClassName={classes.active} className={classes.item} href="/exchanges">💱  Exchanges</ActiveLink>
-                <ActiveLink activeClassName={classes.active} className={classes.item} href="https://comchat.io/">🥂  ComChat</ActiveLink>
+                <ActiveLink
+                    activeClassName={classes.activeModules}
+                    className={
+                        classNames(
+                            'dark:text-white dark:hover:text-[#dc4b4b] dark:active:text-[#dc4b4b]',
+                            classes.item
+                        )
+                    }
+                    href="/modules"
+                >
+                    🚀 Modules
+                </ActiveLink>
+                <ActiveLink
+                    activeClassName={classes.activeDocs}
+                    className={
+                        classNames(
+                            'dark:text-white dark:hover:text-[#6a4bdc] dark:active:text-[#6a4bdc]',
+                            classes.item
+                        )
+                    }
+                    href="/docs/introduction"
+                >
+                    📚 Docs
+                </ActiveLink>
+                <Link
+                    className={
+                        classNames(
+                            'dark:text-white dark:hover:text-[#d2d522] dark:active:text-[#d2d522]',
+                            classes.item
+                        )
+                    }
+                    href="https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    📄 Whitepaper
+                </Link>
+                <ActiveLink
+                    activeClassName={classes.active}
+                    className={
+                        classNames(
+                            'dark:text-white dark:hover:text-[#25c2a0] dark:active:text-[#25c2a0]',
+                            classes.item
+                        )
+                    }
+                    href="/telemetry"
+                >
+                    ⛓️ Telemetry
+                </ActiveLink>
+                <ActiveLink
+                    activeClassName={classes.active}
+                    className={
+                        classNames(
+                            'dark:text-white dark:hover:text-[#25c2a0] dark:active:text-[#25c2a0]',
+                            classes.item
+                        )
+                    }
+                    href="/exchanges"
+                >
+                    💱  Exchanges
+                </ActiveLink>
+                <Link
+                    className={
+                        classNames(
+                            'dark:text-white dark:hover:text-[#25c2a0] dark:active:text-[#25c2a0]',
+                            classes.item
+                        )
+                    }
+                    href="https://comchat.io/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    🥂  ComChat
+                </Link>
 
-                <Dropdown menu={{ items, onClick }}>
+                <Dropdown menu={{ items: paymentMethods, onClick }}>
                     <Space>
-                        <span style={{ fontWeight: '600', marginLeft: '0.25rem' }} className="hover:text-[#25c2a0]">💰  Payment</span>
-                        <DownOutlined />
+                        <ActiveLink
+                            activeClassName={classes.active}
+                            className={
+                                classNames(
+                                    'dark:text-white dark:hover:text-[#25c2a0] dark:active:text-[#25c2a0]',
+                                    classes.item
+                                )
+                            }
+                            href="/#"
+                        >
+                            💰  Payment
+                        </ActiveLink>
                     </Space>
                 </Dropdown>
 
             </div>
-            <div className={classNames(classes.items, classes.itemsRight)}>
-                <Link className={classes.link} href="/docs/next/Introduction">🚀 v0.0.0</Link>
-                <div className={classes.dropdown}>
+            <div className={classNames('dark:text-white', classes.items, classes.itemsRight )}>
+                <Link
+                    className={classNames('dark:hover:text-[#25c2a0] dark:active:text-[#25c2a0]', classes.link)}
+                    href="/docs/next/Introduction"
+                >
+                    🚀 v0.0.0
+                </Link>
+
+                <div className={classNames(classes.dropdown, 'z-[9999]')}>
                     <Link className={classes.link} href="#" aria-haspopup="true" aria-expanded="false" role="button" >🔗 Community</Link>
-                    <ul className={classes.dropdownMenu}>
+                    <ul className={classNames(classes.dropdownMenu, 'dark:bg-white dark:text-black w-32')}>
                         <li>
                             <Link
-                                className={classes.dropdownLink}
+                                className={classNames(classes.dropdownLink)}
                                 href="https://discord.gg/A8JGkZ9Dmm"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <div style={{ display: "flex", alignItems: "center", }}>
+                                <div style={{ display: "flex", alignItems: "center", justifyContent: 'space-between' }}>
                                     <span>Discord</span>
                                     <DiscordIcon />
                                 </div>
@@ -413,7 +413,7 @@ export default function NavigationBar() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <div style={{ display: "flex", alignItems: "center" }}>
+                                <div style={{ display: "flex", alignItems: "center", justifyContent: 'space-between' }}>
                                     <span>Twitter</span>
                                     <TwitterIcon />
                                 </div>
@@ -426,10 +426,9 @@ export default function NavigationBar() {
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
-                                <div style={{ display: "flex", alignItems: "center" }}>
+                                <div style={{ display: "flex", alignItems: "center", justifyContent: 'space-between' }}>
                                     <span>Github</span>
                                     <GitHubIcon />
-                                    <span className="nx-sr-only"></span>
                                 </div>
                             </Link>
                         </li>

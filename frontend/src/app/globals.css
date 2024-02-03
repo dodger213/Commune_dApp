@@ -105,3 +105,7 @@ ul, ol {
   margin: 0 0 var(--ifm-list-margin);
   padding-left: var(--ifm-list-left-padding);
 }
+
+div[data-theme="dark"] {
+  background-color: #181a1b;
+}

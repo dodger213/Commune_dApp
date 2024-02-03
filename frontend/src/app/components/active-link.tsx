@@ -20,7 +20,10 @@ const ActiveLink = ({
   const isActive = pathname.startsWith(props.href as string);
 
   return (
-    <Link className={classNames(className, isActive ? activeClassName : '')} {...props} target='blank'>
+    <Link
+      {...props}
+      className={classNames(className, isActive ? activeClassName : '')}
+    >
       {children}
     </Link>
   );

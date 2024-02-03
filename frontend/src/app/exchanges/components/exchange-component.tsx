@@ -100,7 +100,7 @@ const ExchangeComponent = () => {
             </th>
           </tr>
         </thead>
-        <tbody className="bg-white ">
+        <tbody className="bg-white">
           {exchanges.map((exchange, idx) => (
             <ExchangeRow key={idx} exchange={exchange} index={idx} />
           ))}
