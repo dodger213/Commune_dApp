@@ -1,0 +1,11 @@
+.table {
+    border-collapse: collapse;
+    display: block;
+    margin-bottom: 1rem;
+    overflow: auto;
+    border-color: rgb(128, 128, 128);
+}
+
+.table td, .table th {
+    border-width: 1px;
+}
