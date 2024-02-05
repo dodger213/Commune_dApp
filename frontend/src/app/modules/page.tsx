@@ -1,30 +1,20 @@
 "use client";
 
-import classNames from "classnames";
 import { useEffect, useState } from "react";
+
+import classNames from "classnames";
 
 import { modulesList } from "@/services/modules-service";
 import ModuleTile from "./components/module-tile/module-tile";
-
-import classes from './modules.module.css';
 import SearchBar from "./components/search-bar";
 
-type ModuleTileProps = {
-    image_url?: string;
-    name: string;
-    address: string;
-    description?: string;
-    attributes?: string[];
-};
+import classes from './modules.module.css';
 
 export default function () {
-
     const [searchString, setSearchString] = useState('');
-
     const [updatedModuleList, setUpdatedModuleList] = useState<any[]>(modulesList);
 
     useEffect(() => {
-
         if (searchString) {
             const newData = modulesList.filter((item) => {
                 return item.name?.toLowerCase().includes(searchString.toLowerCase())
@@ -38,18 +28,25 @@ export default function () {
     }, [searchString])
 
     return (
-        <main className={classNames(classes.content, "flex flex-col items-center justify-center  my-auto ")}>
+        <main
+            className={classNames(classes.content, "flex flex-col items-center justify-center  my-auto ")}
+        >
             <SearchBar setSearchString={setSearchString} searchString={searchString} />
+            
             {
-                updatedModuleList ? <ul className={classes.modulesList}>
-                    {updatedModuleList.map((module, i) => (
-                        <ModuleTile
-                            key={module.name}
-                            {...module}
-                        />
-                    ))}
-                </ul> : <span>There is no data to display</span>}
-
+                updatedModuleList ? (
+                    <ul className={classes.modulesList}>
+                        {updatedModuleList.map((module) => (
+                            <ModuleTile
+                                key={module.name}
+                                {...module}
+                            />
+                        ))}
+                    </ul> 
+                ) : (
+                    <span>There is no data to display</span>
+                )
+            }
         </main>
     );
 }

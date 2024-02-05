@@ -105,3 +105,16 @@ ul, ol {
   margin: 0 0 var(--ifm-list-margin);
   padding-left: var(--ifm-list-left-padding);
 }
+
+div[data-theme="dark"] {
+  background-color: #181a1b;
+}
+
+[data-theme="dark"] pre, [data-theme="dark"] code {
+  background-color: #1c1e1f;
+  color: white;
+}
+
+body, body > div:first-child {
+  min-height: 100vh;
+}

@@ -4,21 +4,21 @@ import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 
 import classes from './exchange-component.module.css';
-import config from "@/config";
+import { externalLinks } from "@/config";
 
 const ExchangeRow = ({ exchange, index }: { exchange: any, index: number }) => (
   <tr className="h-12">
     <td className="px-3 md:px-6 py-4 text-center text-sm font-medium text-gray-900">{index + 1}</td>
 
-    <td className="px-3 md:px-6 py-4  text-center text-md text-gray-500">
+    <td className="px-3 md:px-6 py-4  text-center text-md text-gray-500 dark:text-white">
       <div className="flex items-center justify-center">
         <img className="h-5 w-5 mr-2" src={exchange.logo} alt={`${exchange.name} Logo`} />
         {exchange.name}
       </div>
     </td>
-    <td className="px-3 md:px-6 py-4 text-center text-md text-gray-500">{exchange.price}</td>
-    <td className="px-3 md:px-6 py-4  text-center text-md text-gray-500">{exchange.volume}</td>
-    <td className="px-3 md:px-6 py-4 text-center text-md text-gray-500">{exchange.volume7d}</td>
+    <td className="px-3 md:px-6 py-4 text-center text-md text-gray-500 dark:text-white">{exchange.price}</td>
+    <td className="px-3 md:px-6 py-4  text-center text-md text-gray-500 dark:text-white">{exchange.volume}</td>
+    <td className="px-3 md:px-6 py-4 text-center text-md text-gray-500 dark:text-white">{exchange.volume7d}</td>
     <td className="px-3 md:px-6 py-4  text-center text-md font-medium">
       <a href={exchange.link} className="text-blue-700 hover:text-blue-800">
         <div className="inline-block bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-600 duration-200 text-white font-sans font-semibold px-2 py-2">Trade</div>
@@ -34,7 +34,7 @@ const ExchangeComponent = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(config.exchangeApiUrl);
+        const response = await fetch(externalLinks.exchangeApi);
         if (!response.ok) {
           throw new Error("Network response was not ok " + response.statusText);
         }
@@ -70,7 +70,7 @@ const ExchangeComponent = () => {
   ];
 
   return (
-    <div className="z-40 bg-blue-50 rounded-lg border-2 border-blue-400 border-solid shadow-md p-3 max-w-3xl mx-auto  overflow-x-auto w-full">
+    <div className="z-40 bg-blue-50 rounded-lg border-2 border-blue-400 border-solid shadow-md p-3 max-w-3xl mx-auto  overflow-x-auto w-full dark:bg-[#1d1f20] flex flex-col items-center">
       {error && <div className="mb-4 text-lg font-semibold text-red-500">Error: {error}</div>}
       {comswapData && (
         <div className="mb-4 text-lg font-semibold text-center">
@@ -78,29 +78,29 @@ const ExchangeComponent = () => {
         </div>
       )}
       <table className={classNames(classes.table, "rounded-md")}>
-        <thead className="bg-gray-50">
+        <thead className="bg-gray-50 dark:!bg-[#1d1f20]">
           <tr>
-            <th scope="col" className="px-3 md:px-6 py-3 text-center text-xs font-medium text-gray-500">
+            <th scope="col" className="px-3 md:px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-white">
               #
             </th>
-            <th scope="col" className="px-3 md:px-6 py-3 text-center text-xs font-medium text-gray-500">
+            <th scope="col" className="px-3 md:px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-white">
               EXCHANGE
             </th>
-            <th scope="col" className="px-3 md:px-6 py-3 text-center text-xs font-medium text-gray-500">
+            <th scope="col" className="px-3 md:px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-white">
               LAST PRICE
             </th>
-            <th scope="col" className="px-3 md:px-6 py-3 text-center text-xs font-medium text-gray-500">
+            <th scope="col" className="px-3 md:px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-white">
               24H VOLUME
             </th>
-            <th scope="col" className="px-3 md:px-6 py-3 text-center text-xs font-medium text-gray-500">
+            <th scope="col" className="px-3 md:px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-white">
               7D VOLUME
             </th>
-            <th scope="col" className="px-3 md:px-6 py-3 text-center text-xs font-medium text-gray-500">
+            <th scope="col" className="px-3 md:px-6 py-3 text-center text-xs font-medium text-gray-500 dark:text-white">
               BUY/SELL
             </th>
           </tr>
         </thead>
-        <tbody className="bg-white ">
+        <tbody className="bg-white dark:!bg-[#1d1f20]">
           {exchanges.map((exchange, idx) => (
             <ExchangeRow key={idx} exchange={exchange} index={idx} />
           ))}
