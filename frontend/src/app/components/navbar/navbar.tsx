@@ -15,7 +15,7 @@ import { Dropdown, Modal, Space, Select } from 'antd';
 
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useSendTransaction, useContractWrite } from 'wagmi'
-import { parseEther } from 'viem'
+import { parseEther, parseUnits } from 'viem'
 
 import axios from "axios";
 
@@ -29,6 +29,7 @@ import MetaMaskImage from '../../../../public/svg/metamask.svg'
 import StripeImage from '../../../../public/img/frontpage/stripe.png'
 
 import classes from './navbar.module.css';
+import { acceptableChains, tokenAddresses } from "@/config";
 
 const paymentMethods: MenuProps['items'] = [
     {
@@ -87,7 +88,7 @@ export default function NavigationBar() {
     const [destinationAddress, setDestinationAddress] = useState('')
     const [amount, setAmount] = useState('')
     const [tokenType, setTokenType] = useState('eth')
-    const [selectedChain, setSelectedChain] = useState('Ethereum')
+    const [selectedChain, setSelectedChain] = useState<string>('ethereum')
 
     const asyncStripe = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
     const { abi: erc20ABI } = erc20ContractABI
@@ -224,25 +225,27 @@ export default function NavigationBar() {
                 message: error,
             };
         }
-
     }
 
     const { data: txHashUSDT, write: paywithUSDT } = useContractWrite({
-        address: '0xdAC17F958D2ee523a2206206994597C13D831ec7',
+        address: tokenAddresses[selectedChain || 'ethereum'].usdt,
         abi: erc20ABI,
         functionName: 'transfer'
     })
 
     const { data: txHashUSDC, write: paywithUSDC } = useContractWrite({
-        address: '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48',
+        address: tokenAddresses[selectedChain || 'ethereum'].usdc,
         abi: erc20ABI,
         functionName: 'transfer'
     })
 
     const handlePayWithWallet = () => {
-        console.log(selectedChain, tokenType, destinationAddress);
+        if(!acceptableChains.includes(selectedChain)) {
+            return;
+        }
+
         if (tokenType === 'eth') {
-            if (selectedChain !== 'Ethereum') {
+            if (selectedChain !== 'ethereum') {
                 window.alert('Please change your chain to Ethereum')
             } else {
                 sendTransaction({ to: destinationAddress, value: parseEther(amount) })
@@ -256,18 +259,10 @@ export default function NavigationBar() {
             }
         }
         if (tokenType === 'usdt') {
-            if (selectedChain !== 'Ethereum') {
-                window.alert('Please change your chain to Ethereum')
-            } else {
-                paywithUSDT({ args: [destinationAddress, amount] });
-            }
+            paywithUSDT({ args: [destinationAddress, parseUnits(amount, 6)] });
         }
         if (tokenType === 'usdc') {
-            if (selectedChain !== 'Ethereum') {
-                window.alert('Please change your chain to Ethereum')
-            } else {
-                paywithUSDC({ args: [destinationAddress, amount] });
-            }
+            paywithUSDC({ args: [destinationAddress, parseUnits(amount, 6)] });
         }
     }
 
@@ -374,7 +369,7 @@ export default function NavigationBar() {
                                     classes.item
                                 )
                             }
-                            href="/#"
+                            href="#"
                         >
                             💰  Payment
                         </ActiveLink>
@@ -446,9 +441,15 @@ export default function NavigationBar() {
 
                     <div className="flex flex-col">
                         <label className="mt-2">Receiver:</label>
-                        <input value={destinationAddress} onChange={({ target: { value } }) => setDestinationAddress(value)} style={{ padding: '0.3rem' }} className="mt-2" placeholder="Please input wallet address" />
+                        <input
+                            value={destinationAddress}
+                            onChange={({ target: { value } }) => setDestinationAddress(value)}
+                            style={{ padding: '0.3rem' }}
+                            className="mt-2 !border-2 !border-gray-400 rounded"
+                            placeholder="Please input wallet address"
+                        />
                         <div className="flex items-center mt-4">
-                            <label style={{ marginRight: '0.3rem' }}>PayType:</label>
+                            <label style={{ marginRight: '0.3rem' }}>TOKEN:</label>
                             <Space wrap>
                                 <Select
                                     defaultValue="ETH"
@@ -464,7 +465,14 @@ export default function NavigationBar() {
                                 />
                             </Space>
                             <label className="ml-auto mr-2">Amount:</label>
-                            <input type="number" value={amount} onChange={({ target: { value } }) => setAmount(value)} style={{ padding: '0.3rem' }} />
+                            <input
+                                type="number"
+                                value={amount}
+                                onChange={({ target: { value } }) => setAmount(value)}
+                                style={{ padding: '0.3rem' }}
+                                placeholder="0.00"
+                                className="!border-2 !border-gray-400 rounded"
+                            />
                         </div>
 
                         <ConnectButton.Custom>
@@ -480,7 +488,7 @@ export default function NavigationBar() {
                                 // Note: If your app doesn't use authentication, you
                                 // can remove all 'authenticationStatus' checks
                                 const ready = mounted && authenticationStatus !== 'loading';
-                                setSelectedChain(chain?.name || '');
+                                setSelectedChain(chain?.name?.toLowerCase() || '');
                                 const connected =
                                     ready &&
                                     account &&
@@ -520,18 +528,19 @@ export default function NavigationBar() {
                                             }
 
                                             return (
-                                                <div style={{ display: 'flex', gap: 12 }} className='flex items-center flex-col justify-center'>
+                                                <div style={{ display: 'flex', gap: 12 }} className='flex items-center justify-between mt-4'>
                                                     <button
                                                         onClick={openChainModal}
                                                         style={{ display: 'flex', alignItems: 'center' }}
                                                         type="button"
+                                                        className="uppercase"
                                                     >
                                                         {chain.hasIcon && (
                                                             <div
                                                                 style={{
                                                                     background: chain.iconBackground,
-                                                                    width: 12,
-                                                                    height: 12,
+                                                                    width: 24,
+                                                                    height: 24,
                                                                     borderRadius: 999,
                                                                     overflow: 'hidden',
                                                                     marginRight: 4,
@@ -541,7 +550,7 @@ export default function NavigationBar() {
                                                                     <img
                                                                         alt={chain.name ?? 'Chain icon'}
                                                                         src={chain.iconUrl}
-                                                                        style={{ width: 12, height: 12 }}
+                                                                        style={{ width: 24, height: 24 }}
                                                                     />
                                                                 )}
                                                             </div>
@@ -549,17 +558,13 @@ export default function NavigationBar() {
                                                         {chain.name}
                                                     </button>
 
-                                                    <button type="button" style={{ color: 'darkcyan' }} onClick={handlePayWithWallet}>
+                                                    <button onClick={openAccountModal} type="button">
+                                                        {`${account.address.substring(0, 8)}...${account.address.substring(0, 8)}`}
+                                                    </button>
+
+                                                    <button type="button" style={{ color: 'darkcyan' }} className="!text-black border-blue-400 border-2 p-2 rounded-full" onClick={handlePayWithWallet}>
                                                         Pay with Wallet
                                                     </button>
-
-                                                    <button onClick={openAccountModal} type="button">
-                                                        {account.displayName}
-                                                        {account.displayBalance
-                                                            ? ` (${account.displayBalance})`
-                                                            : ''}
-                                                    </button>
-
                                                 </div>
                                             );
                                         })()}

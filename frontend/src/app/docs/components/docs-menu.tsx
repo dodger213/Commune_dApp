@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import classes from './docs-menu.module.css';
 import ActiveLink from "@/app/components/active-link";
+import classNames from "classnames";
 
 const MENU_ITEMS = [{
     name: '👋 Introduction',
@@ -81,7 +82,7 @@ export default function DocsMenu () {
                 }) => (<>
                     <li className={classes.listItem}>
                         <ActiveLink
-                            className={classes.menuLink}
+                            className={classNames(classes.menuLink, 'dark:text-gray-200')}
                             activeClassName={classes.active}
                             href={url}
                         >
@@ -96,7 +97,7 @@ export default function DocsMenu () {
                             }) => (
                                 <li className={classes.listItem}>
                                     <ActiveLink
-                                        className={classes.menuLink}
+                                        className={classNames(classes.menuLink, 'dark:text-gray-400')}
                                         activeClassName={classes.active}
                                         href={url}
                                     >
