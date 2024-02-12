@@ -1,6 +1,5 @@
 "use client";
-
-import { createContext, useState, useCallback } from "react";
+import { useContext, createContext, useState, useCallback } from "react";
 
 type ThemeProviderProps = {
     children: React.ReactNode | React.ReactNode[];
@@ -28,7 +27,7 @@ export default function ThemeProvider({
     return (
         <ToggleThemeContext.Provider value={toggleTheme}>
             <ThemeContext.Provider value={theme}>
-                <div data-theme={theme} className="min-h-[100vh] flex flex-col justify-between">
+                <div data-theme={theme}>
                     {children}
                 </div>
             </ThemeContext.Provider>
