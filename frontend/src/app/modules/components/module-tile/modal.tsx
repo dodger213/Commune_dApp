@@ -2,19 +2,18 @@
 
 import React, { useState } from "react";
 
-import classNames from "classnames";
-
-import { Checkbox, Tag } from "antd";
-import { PlayCircleOutlined } from '@ant-design/icons';
-
 import classes from "./modal.module.css";
 import { modulesList } from "../../../../services/modules-service";
+import classNames from "classnames";
+import { Checkbox, Tag } from "antd";
+import { PlayCircleOutlined } from '@ant-design/icons';
 
 export default function ModuleDetailsModal({
     name,
 }: {
     name: string,
 }) {
+
     const moduleDetails = modulesList.find((module) => module.name === name);
 
     if (!moduleDetails) {
@@ -32,58 +31,24 @@ export default function ModuleDetailsModal({
                 background: '#e0ffd1',
                 marginBottom: '0.5rem'
             }}>
-                <span
-                    className={classes.address}
-                    style={{
-                        marginBottom: '0.5rem'
-                    }}
-                >
-                    <strong
-                        style={{ fontSize: '1.2rem', marginRight: '0.5rem' }}
-                    >
-                        Address:
-                    </strong>
-                    {moduleDetails.address}
-                </span>
-                <span
-                    className={classes.address}
-                    style={{ marginBottom: '0.5rem', marginRight: '0.5rem' }}
-                >
-                    <strong
-                        style={{ fontSize: '1.2rem', marginRight: '0.5rem' }}
-                    >
-                        Name:
-                    </strong>
-                    {moduleDetails.name}
-                </span>
+                <span className={classes.address} style={{
+                    marginBottom: '0.5rem'
+                }}><strong style={{ fontSize: '1.2rem', marginRight: '0.5rem' }}>Address:</strong>{moduleDetails.address}</span>
+                <span className={classes.address} style={{ marginBottom: '0.5rem', marginRight: '0.5rem', overflow: 'auto' }}><strong style={{ fontSize: '1.2rem', marginRight: '0.5rem' }}>Name:</strong>{moduleDetails.name}</span>
             </div>
 
-            {
-                moduleDetails.description && (
-                    <div
-                        className={classNames(classes.description, " rounded-lg")}
-                        style={{
-                            marginBottom: '0.3rem', borderLeft: '5px solid green',
-                            padding: '10px 0 10px 25px',
-                            background: '#e0ffd1'
-                        }}
-                    >
-                        Description: {moduleDetails.description}
-                    </div>
-                )
-            }
-            {
-                moduleDetails.schema && (
-                    <section className={classes.schemas} style={{ marginBottom: '0.3rem' }}>
-                        <div className={classes.schemasSubtitle} style={{ marginBottom: '0.3rem', marginTop: '0.5rem' }}>
-                            <strong style={{ fontSize: '1.1rem', marginRight: '0.3rem' }}>
-                                Module Playground
-                            </strong>
-                        </div>
-                        <SchemasList schemas={moduleDetails.schema} />
-                    </section>
-                )
-            }
+            {moduleDetails.description && <div className={classNames(classes.description, " rounded-lg overflow-auto")} style={{
+                marginBottom: '0.3rem', borderLeft: '5px solid green',
+                padding: '10px 0 10px 25px',
+                background: '#e0ffd1'
+            }}>Description: {moduleDetails.description}</div>}
+            {moduleDetails.schema && (
+                <section className={classes.schemas} style={{ marginBottom: '0.3rem' }}>
+                    <div className={classes.schemasSubtitle} style={{ marginBottom: '0.3rem', marginTop: '0.5rem' }}><strong style={{ fontSize: '1.1rem', marginRight: '0.3rem' }}>
+                        Module Playground</strong></div>
+                    <SchemasList schemas={moduleDetails.schema} />
+                </section>
+            )}
         </div>
     );
 }
@@ -121,13 +86,8 @@ function SchemaNameElement({
     name: string,
 }) {
     return (
-        <li
-            className={classNames(classes.schemaNameElement, "bg-gray-200 rounded-lg border-1 border-solid")}
-            style={{ padding: '0.7rem', marginBottom: '1rem' }}
-        >
-            <h4 style={{ marginBottom: '0' }}>
-                {name.charAt(0).toUpperCase() + name.slice(1)}
-            </h4>
+        <li className={classNames(classes.schemaNameElement, "bg-gray-200 rounded-lg border-1 border-solid")} style={{ padding: '0.7rem', marginBottom: '1rem' }}>
+            <h4 style={{ marginBottom: '0' }}>{name.charAt(0).toUpperCase() + name.slice(1)}</h4>
             {children}
             <RunButton />
         </li>
@@ -167,49 +127,15 @@ function InputElement({
     }
 
     return (
-        <form
-            className={classNames(classes.inputWrapper)}
-            style={
-                type === 'bool' ? {
-                    display: 'flex',
-                    alignItems: 'center'
-                } : {
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    flexDirection: 'column'
-                }
-            }
-        >
-            <label
-                htmlFor=""
-                style={{
-                    fontFamily: 'Source Code Pro !important',
-                    marginBottom: '0.3rem',
-                    marginTop: '0.7rem',
-                    marginRight: '0.5rem',
-                    fontSize: '1rem' }
-                }
-            >
-                {name}: <strong>{type}</strong>
-            </label>
+        <form className={classNames(classes.inputWrapper)} style={type === 'bool' ? { display: 'flex', alignItems: 'center' } : { display: 'flex', justifyContent: 'space-between', flexDirection: 'column' }}>
+            <label htmlFor="" style={{ fontFamily: 'Source Code Pro !important', marginBottom: '0.3rem', marginTop: '0.7rem', marginRight: '0.5rem', fontSize: '1rem' }}>{name}: <strong>{type}</strong></label>
             {htmlInputElement}
         </form>
     );
 }
 
 function OutputElement(outputValue: any) {
-    return (
-        <div className="flex items-center" style={{ marginTop: '1rem' }}>
-            <span style={{ marginRight: '0.5rem', fontFamily: 'Source Code Pro !important' }}>Result: </span>
-            <Tag
-                className={classNames(classes.output)}
-                color="success"
-                style={{ padding: '0.5rem', width: '100%' }}
-            >
-                {typeof outputValue === "object" ? "void" : outputValue}
-            </Tag>
-        </div>
-    )
+    return <div className="flex items-center" style={{ marginTop: '1rem' }}><span style={{ marginRight: '0.5rem', fontFamily: 'Source Code Pro !important' }}>Result: </span><Tag className={classNames(classes.output)} color="success" style={{ padding: '0.5rem', width: '100%' }}>{typeof outputValue === "object" ? "void" : outputValue}</Tag></div>;
 }
 
 function RunButton() {
