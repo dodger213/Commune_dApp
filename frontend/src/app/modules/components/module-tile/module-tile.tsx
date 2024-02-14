@@ -80,7 +80,7 @@ export default function ModuleTile({
         className={classNames(classes.moduleTile)}
         onClick={() => handleClickItem(name)}
       >
-        <div className={classNames(classes.name, "bg-blue-100 rounded-lg")} style={{ fontSize: '1.1rem' }}>
+        <div className={classNames(classes.name, "bg-blue-100 rounded-lg overflow-x-auto")} style={{ fontSize: '1.1rem' }}>
           name: {name}
         </div>
         <div className={classNames(classes.address, "bg-orange-200 rounded-lg border-solid flex")} style={{ fontSize: '1.1rem' }}>
@@ -94,7 +94,7 @@ export default function ModuleTile({
           }
         </div>
         {
-          description && <div className={classNames(classes.description, "bg-pink-100 rounded-lg border-solid h-[130px]")} style={{ fontSize: '1.1rem', padding: '.5rem' }}>
+          description && <div className={classNames(classes.description, "bg-pink-100 rounded-lg border-solid h-[130px] overflow-x-auto")} style={{ fontSize: '1.1rem', padding: '.5rem' }}>
             description: {description}
           </div>
         }

@@ -11,6 +11,7 @@ import MetaMaskImage from '../../../public/svg/metamask.svg'
 import GithubImage from '../../../public/svg/github-mark.svg'
 import GitHubLogin from 'react-github-login';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { ApiPromise, WsProvider } from '@polkadot/api';
 
 
 const words: string[] = ["developers.", "designers.", "creators.", "everyone.", "<END>"];
@@ -27,6 +28,7 @@ export default function HomepageHeader() {
   const [blink, setBlink] = React.useState(true);
   const [reverse, setReverse] = React.useState(false);
   const [isShowAuthModalOpen, setIsShowAuthModalOpen] = React.useState(false)
+  const [isShowSubstrateConnectModalOpen, setIsShowSubstrateConnectModalOpen] = React.useState(false)
 
   // state of the scroll position and header height
   const [scrollPosition, setScrollPosition] = React.useState(0);
@@ -163,6 +165,10 @@ export default function HomepageHeader() {
     setIsShowAuthModalOpen(false);
   };
 
+  const handleShowSubstrateModalCancel = () => {
+    setIsShowSubstrateConnectModalOpen(false);
+  };
+
   const onGitHubLoginSuccess = (response: any) => {
 
     setIsShowAuthModalOpen(false)
@@ -205,6 +211,30 @@ export default function HomepageHeader() {
     console.log('An error has occured')
   };
 
+  const [api, setApi] = React.useState<ApiPromise | null>(null);
+  const [chainInfo, setChainInfo] = React.useState('');
+  const [nodeName, setNodeName] = React.useState('');
+
+  React.useEffect(() => {
+    const connectToSubstrate = async () => {
+      const provider = new WsProvider('wss://rpc.polkadot.io');
+      const substrateApi = await ApiPromise.create({ provider });
+      setApi(substrateApi);
+    };
+
+    connectToSubstrate();
+  }, []);
+
+  const getChainInfo = async () => {
+    if (api) {
+      const chain = await api.rpc.system.chain();
+      setChainInfo(chain.toString())
+      const nodeName = await api.rpc.system.name();
+      setNodeName(nodeName.toString())
+      console.log(`Connected to chain ${chain} using ${nodeName}`);
+    }
+  };
+
   return (
     <header ref={headerRef} className={` dark:bg-[#161616] p-[4rem] py-32 text-center overflow-hidden ${getHeaderClasses(scrollPosition, headerHeight)} duration-500`} >
 
@@ -239,6 +269,11 @@ export default function HomepageHeader() {
         </div>
       </div>
 
+      {
+        isShowSubstrateConnectModalOpen && <Modal open={isShowSubstrateConnectModalOpen} onCancel={handleShowSubstrateModalCancel} footer={null} width={500}>
+          <button onClick={getChainInfo}>Get Chain Info</button>
+        </Modal>
+      }
       {
         isShowAuthModalOpen &&
         <Modal open={isShowAuthModalOpen} onCancel={handleShowAuthModalCancel} footer={null} width={500}>

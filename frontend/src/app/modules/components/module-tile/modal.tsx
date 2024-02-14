@@ -34,10 +34,10 @@ export default function ModuleDetailsModal({
                 <span className={classes.address} style={{
                     marginBottom: '0.5rem'
                 }}><strong style={{ fontSize: '1.2rem', marginRight: '0.5rem' }}>Address:</strong>{moduleDetails.address}</span>
-                <span className={classes.address} style={{ marginBottom: '0.5rem', marginRight: '0.5rem' }}><strong style={{ fontSize: '1.2rem', marginRight: '0.5rem' }}>Name:</strong>{moduleDetails.name}</span>
+                <span className={classes.address} style={{ marginBottom: '0.5rem', marginRight: '0.5rem', overflow: 'auto' }}><strong style={{ fontSize: '1.2rem', marginRight: '0.5rem' }}>Name:</strong>{moduleDetails.name}</span>
             </div>
 
-            {moduleDetails.description && <div className={classNames(classes.description, " rounded-lg")} style={{
+            {moduleDetails.description && <div className={classNames(classes.description, " rounded-lg overflow-auto")} style={{
                 marginBottom: '0.3rem', borderLeft: '5px solid green',
                 padding: '10px 0 10px 25px',
                 background: '#e0ffd1'

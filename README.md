@@ -1,5 +1,7 @@
 This is the commune ai project.
 
+**This project has three roles: user, owner, and friend like social network**
+
 **1. Frontend Running**
   # Next.js Project
   
@@ -12,7 +14,7 @@ This is the commune ai project.
   1. Clone the repository:
   
   ```
-  git clone https://github.com/your-username/next-js-project.git
+  git clone https://github.com/commune-ai/frontend.git
   ```
   
   2. Install the dependencies:

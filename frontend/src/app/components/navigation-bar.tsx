@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import config from "@/config";
 import ThemeToggler from "./theme-toggler";
 import { useSelector, useDispatch } from 'react-redux'
+import { ApiPromise, WsProvider } from '@polkadot/api';
 
 import classes from './navigation-bar.module.css';
 import classNames from "classnames";
@@ -81,12 +82,12 @@ export default function NavigationBar() {
     const [amount, setAmount] = React.useState('')
     const [tokenType, setTokenType] = React.useState('')
     const [selectedChain, setSelectedChain] = React.useState('')
+    const [isShowConnectWithSubstrateModalOpen, setIsShowConnectWithSubstrateModalOpen] = React.useState(false)
 
     const asyncStripe = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
     const { abi: erc20ABI } = erc20ContractABI
 
     const router = useRouter();
-    // const dispatch = useDispatch<any>()
 
     const handleClickPayButton = async () => {
         try {
@@ -136,16 +137,6 @@ export default function NavigationBar() {
     };
 
     const { data: hash, sendTransaction } = useSendTransaction()
-    // const { write } = useContractWrite({ 
-    //     abi,
-    //     address: '0x6b175474e89094c44da98b954eedeac495271d0f',
-    //     functionName: 'transfer',
-    //     args: [
-    //       '0xd2135CfB216b74109775236E36d4b433F1DF507B',
-    //       '0xA0Cf798816D4b9b9866b5330EEa46a18382f251e',
-    //       BigInt(123),
-    //     ],
-    //  })
 
     //This Function must be used in Client side.
     const createBTCTx = async (toAddress: string, value: number, env: string, fromAddress: string) => {
@@ -231,55 +222,6 @@ export default function NavigationBar() {
 
     }
 
-    // //This Function must be used in Client side.
-    // const generateSignatures = (privateKey: string, env: string, toSign: any, ecc: any) => {
-    //     try {
-    //         const ECPair = ecfacory.ECPairFactory(ecc);
-    //         // console.log(ECPair);
-    //         let keys;
-    //         if (env == 'testnet') {
-    //             keys = ECPair.fromWIF(privateKey, bitcoin.networks.testnet);
-    //             //   console.log(keys);
-    //         } else if (env == 'mainnet') {
-    //             keys = ECPair.fromWIF(privateKey, bitcoin.networks.bitcoin);
-    //             //   console.log(keys);
-    //         } else {
-    //             return {
-    //                 code: 0,
-    //                 error: INVALID_ENV,
-    //             };
-    //         }
-    //         const signatures = [];
-    //         const pubkeys = [];
-    //         for (let i = 0; i < toSign.length; i++) {
-    //             // console.log(i,"Data");
-    //             signatures.push(
-    //                 bitcoin.script.signature
-    //                     .encode(keys.sign(Buffer.from(toSign[i], 'hex')), 0x01)
-    //                     .toString('hex')
-    //                     .slice(0, -2),
-    //             );
-    //             pubkeys.push(keys.publicKey.toString('hex'));
-    //         }
-    //         // console.log("Signature", signatures, "Pubkeys", pubkeys);
-    //         return {
-    //             code: 1,
-    //             signatures,
-    //             pubkeys,
-    //         };
-    //     } catch (error/* : any */) {
-    //         return {
-    //             code: 0,
-    //             error,
-    //         };
-    //     }
-    // };
-    // const { write: paywithUSDT } = useContractWrite({
-    //     address: '0x55d398326f99059ff775485246999027b3197955',
-    //     abi: erc20ABI,
-    //     functionName: 'transfer'
-    // })
-
     const { data: txHashUSDT, write: paywithUSDT } = useContractWrite({
         address: '0x28B3071bE7A6E4B3bE2b36D78a29b6e4DbBdDb74',
         abi: erc20ABI,
@@ -294,11 +236,7 @@ export default function NavigationBar() {
 
     const handlePayWithWallet = () => {
         if (tokenType === 'eth') {
-            // if (selectedChain !== 'Ethereum') {
-            //     window.alert('Please change your chain to Ethereum')
-            // } else {
-            //     sendTransaction({ to: destinationAddress, value: parseEther(amount) })
-            // }
+
             sendTransaction({ to: destinationAddress, value: parseEther(amount) })
         }
         if (tokenType === 'matic') {
@@ -329,26 +267,10 @@ export default function NavigationBar() {
             ) => {
                 try {
                     const createTxResponse = await createBTCTx(receiver, value, env, address);
-                    // console.log(createTxResponse, "createTxResponsecreateTxResponse");
                     if (createTxResponse?.code != 1) return createTxResponse;
                     const tx = createTxResponse.result.tx;
                     const toSign = createTxResponse.result.tosign;
-                    // // console.log(tx, toSign);
-                    // const generateSignaturesResponse = generateSignatures(privateKey, env, toSign, ecc);
-                    // if (generateSignaturesResponse?.code != 1) return generateSignaturesResponse;
-                    // const signatures = generateSignaturesResponse.signatures;
-                    // const pubkeys = generateSignaturesResponse.pubkeys;
-                    // // console.log("signature",signatures);
-                    // // console.log(pubkeys);
-                    // if (!signatures || !pubkeys) {
-                    //     return {
-                    //         code: 0,
-                    //         error: 'ERROR_BTC_SIGNATURES',
-                    //     };
-                    // }
-                    // return {
-                    //     tx, toSign, signatures, pubkeys, env
-                    // };
+
                 } catch (error) {
                     return {
                         code: 0,
@@ -369,6 +291,37 @@ export default function NavigationBar() {
 
     }
 
+    const handleConnectWithSubstrateShowModal = () => {
+        setIsShowConnectWithSubstrateModalOpen(true)
+    }
+
+    const handleConnectWithSubstrateModalCancel = () => {
+        setIsShowConnectWithSubstrateModalOpen(false)
+    }
+    const [api, setApi] = React.useState<ApiPromise | null>(null);
+    const [chainInfo, setChainInfo] = React.useState('');
+    const [nodeName, setNodeName] = React.useState('');
+
+    React.useEffect(() => {
+        const connectToSubstrate = async () => {
+            const provider = new WsProvider('wss://rpc.polkadot.io');
+            const substrateApi = await ApiPromise.create({ provider });
+            setApi(substrateApi);
+        };
+
+        connectToSubstrate();
+    }, []);
+
+    const getChainInfo = async () => {
+        if (api) {
+            const chain = await api.rpc.system.chain();
+            setChainInfo(chain.toString())
+            const nodeName = await api.rpc.system.name();
+            setNodeName(nodeName.toString())
+            console.log(`Connected to chain ${chain} using ${nodeName}`);
+        }
+    };
+
     return (
         <nav aria-label="Main" className={classes.navbar}>
             <div className={classes.items}>
@@ -383,14 +336,20 @@ export default function NavigationBar() {
                 <Link className={classNames(classes.item, classes.whitepaper)} href="https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf" target="_blank" rel="noopener noreferrer">📄 Whitepaper</Link>
                 <ActiveLink activeClassName={classes.active} className={classes.item} href="/telemetry">⛓️ Telemetry</ActiveLink>
                 <ActiveLink activeClassName={classes.active} className={classes.item} href="/exchanges">💱  Exchanges</ActiveLink>
-                <ActiveLink activeClassName={classes.active} className={classes.item} href="https://comchat.io/">🥂  ComChat</ActiveLink>
+                <ActiveLink activeClassName={classes.active} className={classes.item} href="https://comchat.io/">🥂 ComChat</ActiveLink>
 
                 <Dropdown menu={{ items, onClick }}>
                     <Space>
-                        <span style={{ fontWeight: '600', marginLeft: '0.25rem' }} className="hover:text-[#25c2a0]">💰  Payment</span>
+                        <span style={{ fontWeight: '600', marginLeft: '0.25rem' }} className="hover:text-[#25c2a0]">💰 Payment</span>
                         <DownOutlined />
                     </Space>
                 </Dropdown>
+
+                <span className={classes.item} onClick={handleConnectWithSubstrateShowModal}>
+                    Connect with Substrate
+                </span>
+
+                <ActiveLink activeClassName={classes.active} className={classes.item} href="https://comwallet.io/">💱 ComWallet</ActiveLink>
 
             </div>
             <div className={classNames(classes.items, classes.itemsRight)}>
@@ -444,6 +403,24 @@ export default function NavigationBar() {
                     <ThemeToggler />
                 </div>
             </div>
+
+            {
+                isShowConnectWithSubstrateModalOpen
+                &&
+                <Modal open={isShowConnectWithSubstrateModalOpen} onCancel={handleConnectWithSubstrateModalCancel} footer={null} >
+                    <div className="flex flex-col">
+                        <button onClick={getChainInfo} className="w-1/2 mx-auto bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-600 duration-200 text-white hover:text-white font-sans font-semibold justify-center px-2 py-2 hover:border-blue-300 hover:border-2 hover:border-solid cursor-pointer">Get Chain Info</button>
+
+                        {
+                            chainInfo && nodeName &&
+                            <div className="flex items-center justify-evenly mt-4">
+                                Connected to chain <span className="text-cyan-500">{chainInfo}</span> using <span className="text-cyan-500">{nodeName}</span>
+                            </div>
+                        }
+
+                    </div>
+                </Modal>
+            }
 
             {
                 isShowWalletPaymentModal
