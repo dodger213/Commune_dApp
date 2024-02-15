@@ -17,7 +17,7 @@ function OpenIcon() {
 
 export default function Footer() {
   return (
-    <footer className={classes.footer} >
+    <footer className={classes.footer} style={{ width: '100%', bottom: '0' }}>
       <div className={classes.container}>
         <div className={classes.row}>
           <div className={classes.col}>
