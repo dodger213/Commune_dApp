@@ -89,7 +89,12 @@ h1 {
   font-size: var(--ifm-h1-font-size);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   color: var(--ifm-heading-color);
   font-family: var(--ifm-font-family-base);
   font-weight: var(--ifm-heading-font-weight);
@@ -101,7 +106,23 @@ p {
   margin: 0 0 var(--ifm-paragraph-margin-bottom);
 }
 
-ul, ol {
+ul,
+ol {
   margin: 0 0 var(--ifm-list-margin);
   padding-left: var(--ifm-list-left-padding);
+}
+
+div[data-theme="dark"] {
+  background-color: #181a1b;
+}
+
+[data-theme="dark"] pre,
+[data-theme="dark"] code {
+  background-color: #1c1e1f;
+  color: white;
+}
+
+body,
+body>div:first-child {
+  min-height: 100vh;
 }
