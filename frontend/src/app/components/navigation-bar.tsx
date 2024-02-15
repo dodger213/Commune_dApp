@@ -331,10 +331,9 @@ export default function NavigationBar() {
                     <b>commune</b>
                 </Link>
                 <ActiveLink activeClassName={classes.activeModules} className={classNames(classes.item, classes.modules)} href="/modules">🚀 Modules</ActiveLink>
-                <ActiveLink activeClassName={classes.activeDocs} className={classNames(classes.item, classes.docs)} href="/docs/introduction">📚 Docs</ActiveLink>
                 <Link className={classNames(classes.item, classes.whitepaper)} href="https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf" target="_blank" rel="noopener noreferrer">📄 Whitepaper</Link>
-                <ActiveLink activeClassName={classes.active} className={classes.item} href="/telemetry">⛓️ Telemetry</ActiveLink>
-                <ActiveLink activeClassName={classes.active} className={classes.item} href="/exchanges">💱  Exchanges</ActiveLink>
+                <ActiveLink activeClassName={classes.active} className={classes.item} href="/telemetry"><Image src={'http://telemetry.communeai.net/favicon.svg'} alt="image" width={20} height={20}></Image> &nbsp;Telemetry</ActiveLink>
+
                 <ActiveLink activeClassName={classes.active} className={classes.item} href="https://comchat.io/">🥂 ComChat</ActiveLink>
 
                 <Dropdown menu={{ items, onClick }}>
@@ -349,7 +348,6 @@ export default function NavigationBar() {
                 </span>
 
                 <ActiveLink activeClassName={classes.active} className={classes.item} href="https://comwallet.io/">💱 ComWallet</ActiveLink>
-                <ActiveLink activeClassName={classes.active} className={classes.item} href="http://telemetry.communeai.net/#/0xbc6eb9753e2417476601485f9f8ef8474701ec199d456f989bd397682c9425c5"><Image src={'http://telemetry.communeai.net/favicon.svg'} alt="image" width={20} height={20}></Image> &nbsp;Polkadot Telemetry</ActiveLink>
 
             </div>
             <div className={classNames(classes.items, classes.itemsRight)}>
@@ -399,6 +397,10 @@ export default function NavigationBar() {
                         </li>
                     </ul>
                 </div>
+                <ActiveLink activeClassName={classes.active} className={classes.item} href="/exchanges">💱  Exchanges</ActiveLink>
+
+                <ActiveLink activeClassName={classes.activeDocs} className={classNames(classes.item, classes.docs)} href="/docs/introduction">📚 Docs</ActiveLink>
+
                 <div className={classes.themeTogglerWrapper}>
                     <ThemeToggler />
                 </div>
