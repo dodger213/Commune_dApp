@@ -8,6 +8,7 @@
     border-radius: 50%;
     transition: background var(--ifm-transition-fast);
 }
+
 .button:hover {
     background: var(--ifm-color-gray-200);
 }
