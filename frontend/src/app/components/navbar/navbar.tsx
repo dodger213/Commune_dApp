@@ -319,8 +319,8 @@ export default function NavigationBar() {
 		}
 	};
 
-	if (hash || txHashUSDT || txHashUSDC) {
-		let selectedHash = hash || txHashUSDT || txHashUSDC;
+  if (hash || txHashUSDT || txHashUSDC) {
+    let selectedHash = hash || txHashUSDT || txHashUSDC;
 
 		if (selectedHash) {
 			saveTransaction(
@@ -331,37 +331,6 @@ export default function NavigationBar() {
 			);
 		}
 	}
-
-	const handleConnectWithSubstrateShowModal = () => {
-		setIsShowConnectWithSubstrateModalOpen(true);
-	};
-
-	const handleConnectWithSubstrateModalCancel = () => {
-		setIsShowConnectWithSubstrateModalOpen(false);
-	};
-	const [api, setApi] = useState<ApiPromise | null>(null);
-	const [chainInfo, setChainInfo] = useState("");
-	const [nodeName, setNodeName] = useState("");
-
-	useEffect(() => {
-		const connectToSubstrate = async () => {
-			const provider = new WsProvider("wss://rpc.polkadot.io");
-			const substrateApi = await ApiPromise.create({ provider });
-			setApi(substrateApi);
-		};
-
-		connectToSubstrate();
-	}, []);
-
-	const getChainInfo = async () => {
-		if (api) {
-			const chain = await api.rpc.system.chain();
-			setChainInfo(chain.toString());
-			const nodeName = await api.rpc.system.name();
-			setNodeName(nodeName.toString());
-			console.log(`Connected to chain ${chain} using ${nodeName}`);
-		}
-	};
 
 	return (
 		<nav aria-label="Main" className={classes.navbar}>
@@ -458,21 +427,6 @@ export default function NavigationBar() {
 						</ActiveLink>
 					</Space>
 				</Dropdown>
-
-				<span
-					className={classNames(classes.item, "dark:text-white cursor-pointer")}
-					onClick={handleConnectWithSubstrateShowModal}
-				>
-					Connect with Substrate
-				</span>
-
-				<ActiveLink
-					activeClassName={classes.active}
-					className={classNames(classes.item, "dark:text-white cursor-pointer")}
-					href="https://comwallet.io/"
-				>
-					💱 ComWallet
-				</ActiveLink>
 			</div>
 			<div
 				className={classNames(

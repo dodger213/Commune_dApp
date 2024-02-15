@@ -8,11 +8,7 @@ export default function TelemetryPage() {
 				</span>
 				::Telemetry ⛓️
 			</h1>
-			<img
-				src="/gif/cubes/MultiColourCubeSpin.gif"
-				className="w-[500px] h-[300px]"
-			/>
-			<p className="text-xl font-medium dark:text-white">Coming soon...</p>
+			<iframe src="http://telemetry.communeai.net/" style={{ width: '100%', height: '620px' }}></iframe>
 		</div>
 	);
 }
