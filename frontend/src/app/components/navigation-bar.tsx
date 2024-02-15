@@ -4,7 +4,6 @@ import { loadStripe } from "@stripe/stripe-js";
 import { useRouter } from "next/navigation";
 import config from "@/config";
 import ThemeToggler from "./theme-toggler";
-import { useSelector, useDispatch } from 'react-redux'
 import { ApiPromise, WsProvider } from '@polkadot/api';
 
 import classes from './navigation-bar.module.css';
@@ -350,6 +349,7 @@ export default function NavigationBar() {
                 </span>
 
                 <ActiveLink activeClassName={classes.active} className={classes.item} href="https://comwallet.io/">💱 ComWallet</ActiveLink>
+                <ActiveLink activeClassName={classes.active} className={classes.item} href="http://telemetry.communeai.net/#/0xbc6eb9753e2417476601485f9f8ef8474701ec199d456f989bd397682c9425c5"><Image src={'http://telemetry.communeai.net/favicon.svg'} alt="image" width={20} height={20}></Image> &nbsp;Polkadot Telemetry</ActiveLink>
 
             </div>
             <div className={classNames(classes.items, classes.itemsRight)}>
