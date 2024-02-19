@@ -1,3 +1,21 @@
 nextjs-portal {
     display: none;
 }
+
+/* styles/fonts.css */
+
+@font-face {
+    font-family: 'CommuneFont';
+    src: url('../frontend/public/fonts/Fontspring-DEMO-articulatcf-bold-BF64a38d89ce81e.otf') format('otf'),
+        url('../frontend/public/fonts/Fontspring-DEMO-articulatcf-normal-BF64a38d8b0cbaf.otf') format('otf'),
+        url('../frontend/public/fonts/fonts/Fontspring-DEMO-articulatcf-heavy-BF64a38d8b25524.otf') format('otf');
+    /* Add other font properties as needed */
+}
+
+body {
+    font-family: 'CommuneFont', sans-serif;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
