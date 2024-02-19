@@ -2,35 +2,32 @@
 import { useContext, createContext, useState, useCallback } from "react";
 
 type ThemeProviderProps = {
-    children: React.ReactNode | React.ReactNode[];
+	children: React.ReactNode | React.ReactNode[];
 };
 
-const ToggleThemeContext = createContext<() => void>(() => { });
-const ThemeContext = createContext<string>('light');
+const ToggleThemeContext = createContext<() => void>(() => {});
+const ThemeContext = createContext<string>("light");
 
 export { ToggleThemeContext, ThemeContext };
 
-export default function ThemeProvider({
-    children,
-}: ThemeProviderProps) {
-    const [theme, setTheme] = useState('light');
+export default function ThemeProvider({ children }: ThemeProviderProps) {
+	const [theme, setTheme] = useState("light");
 
-    const toggleTheme = useCallback(
-        () => setTheme(
-            state => state === 'light'
-                ? 'dark'
-                : 'light'
-        ),
-        []
-    );
+	const toggleTheme = useCallback(
+		() => setTheme((state) => (state === "light" ? "dark" : "light")),
+		[]
+	);
 
-    return (
-        <ToggleThemeContext.Provider value={toggleTheme}>
-            <ThemeContext.Provider value={theme}>
-                <div data-theme={theme}>
-                    {children}
-                </div>
-            </ThemeContext.Provider>
-        </ToggleThemeContext.Provider>
-    );
+	return (
+		<ToggleThemeContext.Provider value={toggleTheme}>
+			<ThemeContext.Provider value={theme}>
+				<div
+					data-theme={theme}
+					className="min-h-[100vh] flex flex-col justify-between"
+				>
+					{children}
+				</div>
+			</ThemeContext.Provider>
+		</ToggleThemeContext.Provider>
+	);
 }
