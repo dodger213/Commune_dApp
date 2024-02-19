@@ -17,7 +17,7 @@ import { ApiPromise, WsProvider } from '@polkadot/api';
 const words: string[] = ["developers.", "designers.", "creators.", "everyone.", "<END>"];
 const colour: string[] = ["text-[#00000]", "text-[#ffb4ed] dark:text-[#FFD6F5]", "text-[#FF8F8F]  dark:text-[#FF8F8F]", "text-[#ffef40] dark:text-[#FFF7A1]"];
 
-const TITLE = "commune ai";
+const TITLE = "Commune AI";
 const TAGLINE = "Renovating the way we build software for ";
 
 export default function HomepageHeader() {
@@ -262,8 +262,8 @@ export default function HomepageHeader() {
 
           </div>
 
-          <div className='hidden sm:block w-full lg:w-[75%] h-full lg:-mr-44 '>
-            <img src="gif/logo/CubesShufflingGIF.gif" alt="Commune Logo" className='' />
+          <div className='hidden sm:block w-full lg:w-1/2 h-full lg:-mr-44 '>
+            <img src="gif/logo/commune.gif" alt="Commune Logo" className='' />
           </div>
 
         </div>

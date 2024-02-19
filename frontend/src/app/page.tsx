@@ -2,6 +2,7 @@
 import classNames from 'classnames';
 import HomepageHeader from './components/homepage-header';
 import classes from './home.module.css';
+import BlueSmallGifImage from '../../public/gif/cubes/blue_small.gif'
 
 function WelcomeSection() {
 
@@ -19,7 +20,7 @@ function WelcomeSection() {
         <div className="flex flex-row h-[500px] items-center justify-center px-3 gap-0 overflow-auto ">
           <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg  ">
             <a href="#blue" className="hover:no-underline">
-              <img src="./gif/cubes/blue_small.gif" className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300" />
+              <img src={BlueSmallGifImage.src} className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300" />
             </a>
             <p>Networking &amp; Wrapping</p>
           </div>
@@ -78,8 +79,8 @@ function SectionWrapper({
 }) {
   return (
     <div id={id} className="pt-10">
-      <div className="py-10 px-5">
-        <div className={`${backgroundClassName} mt-10 flex lg:flex-row flex-col items-center justify-center gap-10`}>
+      <div className="py-10 px-5 bg-white">
+        <div className={`${backgroundClassName} mt-10 flex lg:flex-row flex-col items-center justify-center gap-10 rounded-3xl hover-effect w-[95%] mx-auto`} style={{ boxShadow: `1px 6px 50px 10px ${id}` }}>
           <div className=" flex-none lg:-mr-4 m-10 mt-20">
             <img
               className="w-[200px] h-[200px] duration-300"
@@ -103,7 +104,7 @@ export default function Home() {
       <SectionWrapper
         id="blue"
         imageUrl="./gif/cubes/blue_small.gif"
-        backgroundClassName="dark:bg-gradient-to-b from-blue-300 to-[#84b9f7] bg-[linear-gradient(180deg,#ffffff,#84b9f7)]"
+        backgroundClassName="dark:bg-white bg-white rounded-lg"
       >
         <div className=' text-black '>
           <div className='pt-6 text-right w-full pb-10'>
@@ -111,7 +112,7 @@ export default function Home() {
               Networking & Wrapping <br />Over Everything 🌐
             </h1>
             <div className='flex flex-col space-y-10'>
-              <div className=' flex md:flex-row sm:flex-col sm:space-y-4 text-center items-center justify-center '>
+              <div className=' flex md:flex-row sm:flex-col sm:space-y-4 text-center items-center justify-center'>
                 <div className=' my-auto mx-auto bg-blue-50 rounded-lg w-[30rem] h-[30rem] border-2 border-blue-400 border-solid shadow-md px-3 '>
                   <img src="./img/frontpage/without_commune.png" className='mt-5' />
                 </div>
@@ -141,7 +142,8 @@ export default function Home() {
       <SectionWrapper
         id="green"
         imageUrl="./gif/cubes/green_small.gif"
-        backgroundClassName="dark:bg-gradient-to-b from-green-300 to-[#7ceb87] bg-[linear-gradient(180deg,#ffffff,#c3f7c8)]"
+        // backgroundClassName="dark:bg-gradient-to-b from-green-300 to-[#7ceb87] bg-[linear-gradient(180deg,#ffffff,#c3f7c8)]"
+        backgroundClassName="bg-white"
       >
         <div className=' text-black mt-10'>
           <div className='pt-6 text-right w-full'>
@@ -200,7 +202,8 @@ export default function Home() {
       <SectionWrapper
         id="yellow"
         imageUrl="./gif/cubes/yellow_small.gif"
-        backgroundClassName="dark:dark:bg-gradient-to-b from-yellow-300 to-[#fff7a1] bg-[linear-gradient(180deg,#ffffff,#fff7a1)] rounded-lg shadow-xl"
+        // backgroundClassName="dark:dark:bg-gradient-to-b from-yellow-300 to-[#fff7a1] bg-[linear-gradient(180deg,#ffffff,#fff7a1)] rounded-lg shadow-xl"
+        backgroundClassName="bg-white rounded-lg shadow-xl"
       >
         <div className=' text-black dark:text-black mt-10'>
           <div className='pt-6 text-right w-full p-10'>
@@ -240,7 +243,8 @@ export default function Home() {
       <SectionWrapper
         id="red"
         imageUrl="./gif/cubes/red_small.gif"
-        backgroundClassName="dark:bg-gradient-to-b from-red-300 to-[#ff8f8f] bg-[linear-gradient(180deg,#ffffff,#ff8f8f)] rounded-lg shadow-xl"
+        // backgroundClassName="dark:bg-gradient-to-b from-red-300 to-[#ff8f8f] bg-[linear-gradient(180deg,#ffffff,#ff8f8f)] rounded-lg shadow-xl"
+        backgroundClassName="bg-white rounded-lg shadow-xl"
       >
         <div className=' text-black '>
           <div className='pt-6 text-right w-full'>
@@ -273,7 +277,8 @@ export default function Home() {
       <SectionWrapper
         id="pink"
         imageUrl="./gif/cubes/pink_small.gif"
-        backgroundClassName="dark:bg-gradient-to-b from-pink-300 to-[#ffd6f5] bg-[linear-gradient(180deg,#ffffff,#ffd6f5)] rounded-lg shadow-xl"
+        // backgroundClassName="dark:bg-gradient-to-b from-pink-300 to-[#ffd6f5] bg-[linear-gradient(180deg,#ffffff,#ffd6f5)] rounded-lg shadow-xl"
+        backgroundClassName="bg-white rounded-lg shadow-xl"
       >
         <div className=' text-black'>
           <div className='pt-6 text-right w-full'>
@@ -323,7 +328,8 @@ export default function Home() {
       <SectionWrapper
         id="black"
         imageUrl="./gif/cubes/black_small.gif"
-        backgroundClassName="dark:bg-[#1b1b1d] bg-[#ffffff] rounded-lg shadow-xl"
+        // backgroundClassName="dark:bg-[#1b1b1d] bg-[#ffffff] rounded-lg shadow-xl"
+        backgroundClassName="bg-white rounded-lg shadow-xl"
       >
         <div className=' text-black dark:text-white'>
           <div className='pt-6 text-right w-full'>
