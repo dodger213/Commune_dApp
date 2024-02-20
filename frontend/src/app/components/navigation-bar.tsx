@@ -2,7 +2,6 @@ import React from "react";
 import Link from "next/link";
 import { loadStripe } from "@stripe/stripe-js";
 import { useRouter } from "next/navigation";
-import config from "@/config";
 import ThemeToggler from "./theme-toggler";
 import { ApiPromise, WsProvider } from '@polkadot/api';
 
@@ -336,18 +335,18 @@ export default function NavigationBar() {
 
                 <ActiveLink activeClassName={classes.active} className={classes.item} href="https://comchat.io/">🥂 ComChat</ActiveLink>
 
+                <span className={classes.item} onClick={handleConnectWithSubstrateShowModal}>
+                    Connect with Substrate
+                </span>
+
+                <ActiveLink activeClassName={classes.active} className={classes.item} href="https://comwallet.io/">💱 ComWallet</ActiveLink>
+
                 <Dropdown menu={{ items, onClick }}>
                     <Space>
                         <span style={{ fontWeight: '600', marginLeft: '0.25rem' }} className="hover:text-[#25c2a0]">💰 Payment</span>
                         <DownOutlined />
                     </Space>
                 </Dropdown>
-
-                <span className={classes.item} onClick={handleConnectWithSubstrateShowModal}>
-                    Connect with Substrate
-                </span>
-
-                <ActiveLink activeClassName={classes.active} className={classes.item} href="https://comwallet.io/">💱 ComWallet</ActiveLink>
 
             </div>
             <div className={classNames(classes.items, classes.itemsRight)}>
@@ -564,7 +563,7 @@ function NavigationBar2() {
         <nav>
             <Link href="/modules">Modules</Link>
             <Link href="/docs">Docs</Link>
-            <Link href={config.whitepaperUrl}>Whitepaper</Link>
+            <Link href={'https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf'}>Whitepaper</Link>
             <Link href="/telemetry">Telemetry</Link>
             <Link href="/exchanges">Exchanges</Link>
             <ThemeToggler />

@@ -14,17 +14,17 @@ import MetaMaskImage from "../../../public/svg/metamask.svg";
 import GithubImage from "../../../public/svg/github-mark.svg";
 
 const words: string[] = [
-	"developers.",
-	"designers.",
-	"creators.",
-	"everyone.",
-	"<END>",
+  "developers.",
+  "designers.",
+  "creators.",
+  "everyone.",
+  "<END>",
 ];
 const colour: string[] = [
-	"text-[#00000]",
-	"text-[#ffb4ed] dark:text-[#FFD6F5]",
-	"text-[#FF8F8F]  dark:text-[#FF8F8F]",
-	"text-[#ffef40] dark:text-[#FFF7A1]",
+  "text-[#00000]",
+  "text-[#ffb4ed] dark:text-[#FFD6F5]",
+  "text-[#FF8F8F]  dark:text-[#FF8F8F]",
+  "text-[#ffef40] dark:text-[#FFF7A1]",
 ];
 
 const TITLE = "Commune AI";
@@ -32,82 +32,22 @@ const TAGLINE = "Renovating the way we build software for ";
 
 export default function HomepageHeader() {
 
-  const [index, setIndex] = React.useState(0);
-  const [subIndex, setSubIndex] = React.useState(0);
-  const [blink, setBlink] = React.useState(true);
-  const [reverse, setReverse] = React.useState(false);
-  const [isShowAuthModalOpen, setIsShowAuthModalOpen] = React.useState(false)
-  const [isShowSubstrateConnectModalOpen, setIsShowSubstrateConnectModalOpen] = React.useState(false)
+  const [index, setIndex] = useState(0);
+  const [subIndex, setSubIndex] = useState(0);
+  const [blink, setBlink] = useState(true);
+  const [reverse, setReverse] = useState(false);
+  const [isShowAuthModalOpen, setIsShowAuthModalOpen] = useState(false)
+  const [isShowSubstrateConnectModalOpen, setIsShowSubstrateConnectModalOpen] = useState(false)
 
   // state of the scroll position and header height
-  const [scrollPosition, setScrollPosition] = React.useState(0);
-  const headerRef = React.useRef<any>(null);
-  const [headerHeight, setHeaderHeight] = React.useState(20);
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const headerRef = useRef<any>(null);
+  const [headerHeight, setHeaderHeight] = useState(20);
 
-  const { connectAsync } = useConnect();
-  const { disconnectAsync } = useDisconnect();
-  const { isConnected } = useAccount();
-  const { signMessageAsync } = useSignMessage();
-  const { requestChallengeAsync } = useAuthRequestChallengeEvm();
-  const { push } = useRouter();
-
-  const handleAuth = async () => {
-    if (isConnected) {
-      await disconnectAsync();
-    }
-
-    setIsShowAuthModalOpen(false)
-
-    const { account, chain } = await connectAsync({
-      connector: new MetaMaskConnector(),
-    });
-
-    try {
-      const result = await requestChallengeAsync({
-        address: account,
-        chainId: chain.id,
-      });
-
-      // Check if the result is undefined
-      if (result === undefined) {
-        throw new Error('Received undefined result from requestChallengeAsync');
-      }
-
-      // Now TypeScript knows that result is definitely not undefined, and you can safely access its properties
-      const { message } = result;
-      const signature = await signMessageAsync({ message });
-
-      // redirect user after successful authentication to '/user' page
-      const signInResponse = await signIn("moralis-auth", {
-        message,
-        signature,
-        redirect: false,
-        callbackUrl: "/modules",
-      });
-
-      // Check if signInResponse is defined before accessing its properties
-      const url = signInResponse?.url;
-
-      // Now you can use 'url' without TypeScript complaining about undefined
-      if (url) {
-        push(url);
-
-        // Do something with the 'url'
-      } else {
-        // Handle the case where 'url' is undefined
-      }
-      // Continue using message as needed
-      console.log(message);
-    } catch (error) {
-      // Handle any errors that might occur during the asynchronous operation
-      console.error('Error:', error);
-    }
-
-  };
 
   // typeWriter effect
   // give me the context of this whole useEffect
-  React.useEffect(() => {
+  useEffect(() => {
     if (index === words.length) return; // if end of words, return
     // if subIndex is equal to the length of the word + 1 and index is not the last word and not reverse
     if (subIndex === words[index].length + 1 && index !== words.length - 1 && !reverse) {
@@ -134,7 +74,7 @@ export default function HomepageHeader() {
 
 
   // blinker effect
-  React.useEffect(() => {
+  useEffect(() => {
     const timeout2 = setTimeout(() => {
       setBlink((prev) => !prev);
     }, 250);
@@ -150,7 +90,7 @@ export default function HomepageHeader() {
   };
 
   // Add scroll event listener to window
-  React.useEffect(() => {
+  useEffect(() => {
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {
@@ -160,7 +100,7 @@ export default function HomepageHeader() {
 
   // Get header height on mount and when window is resized
   // This is to offset the scroll position so that the header
-  React.useEffect(() => {
+  useEffect(() => {
     if (headerRef?.current) {
       setHeaderHeight(headerRef.current.clientHeight);
     }
@@ -220,11 +160,11 @@ export default function HomepageHeader() {
     console.log('An error has occured')
   };
 
-  const [api, setApi] = React.useState<ApiPromise | null>(null);
-  const [chainInfo, setChainInfo] = React.useState('');
-  const [nodeName, setNodeName] = React.useState('');
+  const [api, setApi] = useState<ApiPromise | null>(null);
+  const [chainInfo, setChainInfo] = useState('');
+  const [nodeName, setNodeName] = useState('');
 
-  React.useEffect(() => {
+  useEffect(() => {
     const connectToSubstrate = async () => {
       const provider = new WsProvider('wss://rpc.polkadot.io');
       const substrateApi = await ApiPromise.create({ provider });
@@ -416,9 +356,9 @@ export default function HomepageHeader() {
 }
 
 export const getHeaderClasses = (position: number, height: number) => {
-	if (position > height / 2) {
-		return "rounded-b-lg shadow-lg mx-5";
-	}
+  if (position > height / 2) {
+    return "rounded-b-lg shadow-lg mx-5";
+  }
 
-	return "";
+  return "";
 };
