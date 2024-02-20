@@ -3,27 +3,29 @@
 import {
   RainbowKitProvider,
   darkTheme,
-  connectorsForWallets,
-} from "@rainbow-me/rainbowkit";
+  connectorsForWallets
+} from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
+  walletConnectWallet,
   trustWallet,
-  enkryptWallet,
+  coinbaseWallet,
   okxWallet,
   ledgerWallet,
-  talismanWallet,
   metaMaskWallet
 } from '@rainbow-me/rainbowkit/wallets';
-
+import { configureChains, createConfig, sepolia, WagmiConfig } from 'wagmi';
 import {
   mainnet,
   polygon,
-  avalanche,
-  sepolia,
-  polygonMumbai,
-} from "wagmi/chains";
-import { createConfig, configureChains, WagmiConfig } from "wagmi";
-import { publicProvider } from "wagmi/providers/public";
+  optimism,
+  arbitrum,
+  base,
+  zora,
+  goerli,
+} from 'wagmi/chains';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
 
 import "@fontsource/source-code-pro";
 
@@ -37,18 +39,22 @@ import Head from "./head";
 import './globals.css';
 
 const { chains, publicClient } = configureChains(
-  [mainnet, polygon, avalanche, sepolia, polygonMumbai],
-  [publicProvider()]
+  [mainnet, polygon, optimism, arbitrum, base, zora, sepolia, goerli],
+  [
+    alchemyProvider({ apiKey: 'Pg7_v8x8SlXaP0ZsI90QrGFxOEEJBCtA' }),
+    publicProvider()
+  ]
 );
 
 const connectors = connectorsForWallets([
   {
     groupName: 'Recommended',
     wallets: [
-      metaMaskWallet({ projectId, chains }), // Metamask,
-      ...(projectId ? [talismanWallet({ projectId, chains })] : []),
-      ...(projectId ? [enkryptWallet({ projectId, chains })] : []),
+      metaMaskWallet({ projectId, chains }), // Metamask
+      ...(projectId ? [walletConnectWallet({ projectId, chains })] : []),
       ...(projectId ? [trustWallet({ projectId, chains })] : []),
+      // walletConnectWallet({ projectId, chains }),
+      // trustWallet({ projectId, chains }),
       // Add more recommended wallets as needed
     ],
   },
@@ -66,7 +72,6 @@ const connectors = connectorsForWallets([
       // Add other wallets to the "Other" group
     ],
   },
-
 ]);
 
 export const wagmiConfig = createConfig({

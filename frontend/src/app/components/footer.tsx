@@ -1,4 +1,3 @@
-import config from "@/config";
 import classes from "./footer.module.css";
 
 function OpenIcon() {
@@ -56,7 +55,7 @@ export default function Footer() {
             <div className={classes.title}>➕ More</div>
             <ul className={classes.list}>
               <li className={classes.item}>
-                <a href={config.whitepaperUrl} target="_blank" rel="noopener noreferrer" className={classes.link}>
+                <a href='https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf' target="_blank" rel="noopener noreferrer" className={classes.link}>
                   📄 Whitepaper
                 </a>
               </li>
