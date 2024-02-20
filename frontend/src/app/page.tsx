@@ -4,78 +4,115 @@ import HomepageHeader from './components/homepage-header';
 import classes from './home.module.css';
 import BlueSmallGifImage from '../../public/gif/cubes/blue_small.gif'
 
-function WelcomeSection() {
 
-  return (
-    <section id="welcome" className=" h-full pt-20 ">
-      <div className="flex flex-col items-center justify-center">
-        <div className="pt-6 w-full">
-          <h1 className=" text-6xl pb-3 dark:text-white text-center">
-            Welcome to the <span className="text-[#ffb4ed] dark:text-[#FFD6F5] hover:animate-pulse duration-500">commune</span>! 👋
-          </h1>
-          <p className="hero__subtitle text-4xl text-center">
-            A place for <span className="text-[#ffb4ed] dark:text-[#FFD6F5]">everyone</span> to <span className="text-[#6db1ff] dark:text-[#6db1ff]">develop</span>, <span className="text-[#FF8F8F]  dark:text-[#FF8F8F]">design</span>, and <span className="text-[#ffef40] dark:text-[#FFF7A1]">create</span>.
-          </p>
-        </div>
-        <div className="flex flex-row h-[500px] items-center justify-center px-3 gap-0 overflow-auto ">
-          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg  ">
-            <a href="#blue" className="hover:no-underline">
-              <img src={BlueSmallGifImage.src} className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300" />
-            </a>
-            <p>Networking &amp; Wrapping</p>
-          </div>
-          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg  ">
-            <a href="#green" className="hover:no-underline">
-              <img src="./gif/cubes/green_small.gif" className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300" />
-            </a>
-            <p>Reusability</p>
-          </div>
-          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg  ">
-            <a href="#yellow" className="hover:no-underline">
-              <img src="./gif/cubes/yellow_small.gif" className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300" />
-            </a>
-            <p>Scalability</p>
-          </div>
-          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg  ">
-            <a href="#red" className="hover:no-underline">
-              <img src="./gif/cubes/red_small.gif" className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300" />
-            </a>
-            <p>Namespaces</p>
-          </div>
-          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg  ">
-            <a href="#pink" className="hover:no-underline">
-              <img src="./gif/cubes/pink_small.gif" className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300" />
-            </a>
-            <p>Tokenomics</p>
-          </div>
-          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg  ">
-            <a href="#black" className="hover:no-underline">
-              <img src="./gif/cubes/black_small.gif" className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300" />
-            </a>
-            <p>Application Validators</p>
-          </div>
-          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg  ">
-            <a href="#white" className="hover:no-underline">
-              <img src="./gif/cubes/white_small.gif" className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300" />
-            </a>
-            <p>Whitepaper 📄</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+import classNames from "classnames";
+
+import HomepageHeader from "./components/homepage-header";
+import classes from "./home.module.css";
+
+
+function WelcomeSection() {
+	return (
+		<section id="welcome" className="h-full pt-20">
+			<div className="flex flex-col items-center justify-center">
+				<div className="pt-6 w-full">
+					<h1 className="text-6xl pb-3 dark:text-white text-center">
+						Welcome to the{" "}
+						<span className="text-[#ffb4ed] dark:text-[#FFD6F5] hover:animate-pulse duration-500">
+							commune
+						</span>
+						! 👋
+					</h1>
+					<p className="hero__subtitle text-4xl text-center dark:text-white">
+						A place for{" "}
+						<span className="text-[#ffb4ed] dark:text-[#FFD6F5]">everyone</span>{" "}
+						to{" "}
+						<span className="text-[#6db1ff] dark:text-[#6db1ff]">develop</span>,{" "}
+						<span className="text-[#FF8F8F]  dark:text-[#FF8F8F]">design</span>,
+						and{" "}
+						<span className="text-[#ffef40] dark:text-[#FFF7A1]">create</span>.
+					</p>
+				</div>
+				<div className="flex flex-row h-[500px] items-center justify-center px-3 gap-0 overflow-auto">
+					<div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
+						<a href="#blue" className="hover:no-underline">
+							<img
+								src="./gif/cubes/blue_small.gif"
+								className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
+							/>
+						</a>
+						<p>Networking &amp; Wrapping</p>
+					</div>
+					<div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
+						<a href="#green" className="hover:no-underline">
+							<img
+								src="./gif/cubes/green_small.gif"
+								className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
+							/>
+						</a>
+						<p>Reusability</p>
+					</div>
+					<div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
+						<a href="#yellow" className="hover:no-underline">
+							<img
+								src="./gif/cubes/yellow_small.gif"
+								className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
+							/>
+						</a>
+						<p>Scalability</p>
+					</div>
+					<div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
+						<a href="#red" className="hover:no-underline">
+							<img
+								src="./gif/cubes/red_small.gif"
+								className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
+							/>
+						</a>
+						<p>Namespaces</p>
+					</div>
+					<div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
+						<a href="#pink" className="hover:no-underline">
+							<img
+								src="./gif/cubes/pink_small.gif"
+								className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
+							/>
+						</a>
+						<p>Tokenomics</p>
+					</div>
+					<div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
+						<a href="#black" className="hover:no-underline">
+							<img
+								src="./gif/cubes/black_small.gif"
+								className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
+							/>
+						</a>
+						<p>Application Validators</p>
+					</div>
+					<div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
+						<a href="#white" className="hover:no-underline">
+							<img
+								src="./gif/cubes/white_small.gif"
+								className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
+							/>
+						</a>
+						<p>Whitepaper 📄</p>
+					</div>
+				</div>
+			</div>
+		</section>
+	);
 }
 
 function SectionWrapper({
-  id,
-  imageUrl,
-  backgroundClassName,
-  children,
+	id,
+	imageUrl,
+	backgroundClassName,
+	children,
 }: {
-  id: string,
-  imageUrl: string,
-  backgroundClassName: string,
-  children: React.ReactNode,
+	id: string;
+	imageUrl: string;
+	backgroundClassName: string;
+	children: React.ReactNode;
 }) {
   return (
     <div id={id} className="pt-10">
@@ -407,4 +444,7 @@ export default function Home() {
       </SectionWrapper>
     </main>
   )
+
+}
+
 }
