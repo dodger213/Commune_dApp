@@ -342,9 +342,6 @@ export default function NavigationBar() {
                 </Dropdown>
                 <ActiveLink activeClassName={classes.active} className={classes.item} href="https://comchat.io/">🥂 ComChat</ActiveLink>
 
-                <span className={classes.item} onClick={handleConnectWithSubstrateShowModal}>
-                    Connect with Substrate
-                </span>
             </div>
             <div className={classNames(classes.items, classes.itemsRight)}>
                 <Link className={classes.link} href="/docs/next/Introduction">🚀 v0.0.0</Link>

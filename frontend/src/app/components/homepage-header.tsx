@@ -38,13 +38,17 @@ export default function HomepageHeader() {
   const [reverse, setReverse] = useState(false);
   const [isShowAuthModalOpen, setIsShowAuthModalOpen] = useState(false)
   const [isShowSubstrateConnectModalOpen, setIsShowSubstrateConnectModalOpen] = useState(false)
+  const [address, setAddress] = useState('');
+  const [balance, setBalance] = useState(null);
 
   // state of the scroll position and header height
   const [scrollPosition, setScrollPosition] = useState(0);
   const headerRef = useRef<any>(null);
   const [headerHeight, setHeaderHeight] = useState(20);
 
-
+  const [api, setApi] = useState<ApiPromise | null>(null);
+  const [chainInfo, setChainInfo] = useState('');
+  const [nodeName, setNodeName] = useState('');
   // typeWriter effect
   // give me the context of this whole useEffect
   useEffect(() => {
@@ -160,19 +164,21 @@ export default function HomepageHeader() {
     console.log('An error has occured')
   };
 
-  const [api, setApi] = useState<ApiPromise | null>(null);
-  const [chainInfo, setChainInfo] = useState('');
-  const [nodeName, setNodeName] = useState('');
+  // useEffect(() => {
+  //   const connectToSubstrate = async () => {
+  //     const provider = new WsProvider('wss://rpc.polkadot.io');
+  //     const substrateApi = await ApiPromise.create({ provider });
+  //     setApi(substrateApi);
+  //   };
 
-  useEffect(() => {
-    const connectToSubstrate = async () => {
-      const provider = new WsProvider('wss://rpc.polkadot.io');
-      const substrateApi = await ApiPromise.create({ provider });
-      setApi(substrateApi);
-    };
+  //   connectToSubstrate();
+  // }, []);
 
-    connectToSubstrate();
-  }, []);
+  const connectToSubstrate = async () => {
+    const provider = new WsProvider('wss://rpc.polkadot.io');
+    const substrateApi = await ApiPromise.create({ provider });
+    setApi(substrateApi);
+  }
 
   const getChainInfo = async () => {
     if (api) {
@@ -182,6 +188,45 @@ export default function HomepageHeader() {
       setNodeName(nodeName.toString())
       console.log(`Connected to chain ${chain} using ${nodeName}`);
     }
+  };
+
+  useEffect(() => {
+    getChainInfo()
+  }, [api])
+
+  const getAccountBalance = async () => {
+    try {
+      const accountInfo = await api?.query.system.account(address);
+
+      console.log('------------------where is the account Info---------', accountInfo)
+
+      // if (accountInfo?.isSome) {
+      //   const { nonce, data: balance } = accountInfo.unwrap();
+
+      //   console.log('Account Nonce:', nonce.toNumber());
+      //   console.log('Account Balance:', balance.free.toString());
+
+      //   setBalance(balance.free.toString());
+      // } else {
+      //   console.error('Account information not available for the provided address');
+      // }
+    } catch (error) {
+      console.error('Error getting account balance:', error);
+    }
+  };
+
+  const handleLogin = async () => {
+    // Perform login logic here
+    // For example, check if the entered address is valid and proceed accordingly
+    console.log('--------this is the status---------', api)
+    if (!api || !address) {
+      window.alert('Substrate API not connected or address not provided')
+      console.error('Substrate API not connected or address not provided');
+      return;
+    }
+
+    // Fetch account balance as an example
+    getAccountBalance();
   };
 
   return (
@@ -270,10 +315,10 @@ export default function HomepageHeader() {
                       {(() => {
                         if (!connected) {
                           return (
-                            <div className='flex items-center justify-center' style={{ flexDirection: 'column' }} onClick={openConnectModal}>
+                            <div className='flex items-center justify-center hover:scale-105 p-2 w-[145.77px] h-[75.77px] rounded-md' style={{ flexDirection: 'column', border: '1px solid #2d50db' }} onClick={openConnectModal}>
                               <Image src={MetaMaskImage} alt='login with Metamask' width={40} height={40} className='cursor-pointer' />
                               <button type="button">
-                                Connect Wallet
+                                Login with Wallet
                               </button>
                             </div>
                           );
@@ -336,7 +381,7 @@ export default function HomepageHeader() {
                 }}
               </ConnectButton.Custom>
 
-              <div className='flex items-center justify-center' style={{ flexDirection: 'column' }}>
+              <div className='flex items-center justify-center p-2 rounded-md hover:scale-105' style={{ flexDirection: 'column', border: '1px solid #2d50db' }}>
                 <Image src={GithubImage} alt='login with Github' width={40} height={40} className='cursor-pointer' />
                 <GitHubLogin clientId='8386c0df1514607054e7'
                   buttonText="Continue with Github"
@@ -346,9 +391,27 @@ export default function HomepageHeader() {
                   redirectUri={'http://localhost:3000/modules'}
                 />
               </div>
+
             </div>
 
+            <div className="flex flex-col justify-center items-center mt-4 hover:scale-105 p-2 rounded-md" style={{ flexDirection: 'column', border: '1px solid #2d50db' }}>
+              <h2>Substrate Login</h2>
+              <button onClick={connectToSubstrate} className="bg-blue-400 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-500 duration-200 text-white hover:text-white font-sans font-semibold justify-center px-2 py-2 hover:border-blue-300 hover:border-2 hover:border-solid cursor-pointer">Connect to Substrate</button>
+              {
+                chainInfo && nodeName &&
+                <div className="flex items-center justify-evenly mt-4">
+                  Connected to chain &nbsp;<span className="text-cyan-500" style={{ fontStyle: 'italic' }}>{chainInfo}&nbsp;</span> using &nbsp;<span className="text-cyan-500" style={{ fontStyle: 'italic' }}>&nbsp;{nodeName}</span>
+                </div>
+              }
+              <div className="flex flex-col">
+                <label>Enter Substrate Address:</label>
+                <input type="text" value={address} onChange={({ target: { value } }) => setAddress(value)} className="p-2" />
+              </div>
+              <button onClick={handleLogin} className="bg-blue-400 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-500 duration-200 text-white hover:text-white font-sans font-semibold justify-center px-2 py-2 hover:border-blue-300 hover:border-2 hover:border-solid cursor-pointer mt-2">Login</button>
+              {balance !== null && <p>Account Balance: {balance}</p>}
+            </div>
           </div>
+
         </Modal>
       }
     </header>

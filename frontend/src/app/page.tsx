@@ -145,7 +145,7 @@ export default function Home() {
             <div className='flex flex-col space-y-10'>
               <div className=' flex md:flex-row sm:flex-col sm:space-y-4 text-center items-center justify-center'>
                 <div className=' my-auto mx-auto bg-blue-50 rounded-lg w-[30rem] h-[30rem] border-2 border-blue-400 border-solid shadow-md px-3 '>
-                  <img src="./img/frontpage/without_commune.png" className='mt-5' />
+                  <img src="./img/frontpage/1.png" className='mt-5 h-[27rem]' />
                 </div>
                 <div className=' w-[30rem] mx-auto my-auto font-semibold text-lg'>
                   <ul className='text-left list-disc'>
@@ -163,7 +163,7 @@ export default function Home() {
                   </ul>
                 </div>
                 <div className=' my-auto mx-auto bg-blue-50 rounded-lg border-2 border-blue-400 border-solid shadow-md'>
-                  <img src="./img/frontpage/commune_network.png" className='my-auto w-[30rem] h-[30rem]' />
+                  <img src="./img/frontpage/_5.png" className='my-auto w-[30rem] h-[30rem] p-2' />
                 </div>
               </div>
             </div>
@@ -213,16 +213,16 @@ export default function Home() {
 
               <div className='flex md:flex-row  flex-col md:space-x-4 sm:items-center sm:justify-center'>
                 <div className='bg-green-50 rounded-lg w-[35rem] h-[35rem] border-2 border-green-400 border-solid shadow-md px-3 '>
-                  <img src="./img/frontpage/_4.png" className='mt-5' />
+                  <img src="./img/frontpage/3.png" className='mt-[7.25rem]' />
                 </div>
 
                 <div className=' flex flex-col space-y-2'>
                   <div className='bg-green-50 rounded-lg w-[30rem] my-auto border-2 border-green-400 border-solid shadow-md px-3 '>
-                    <img src="./svg/_10.svg" className='mt-5' />
+                    <img src="./img/frontpage/4.png" className='py-4' />
                   </div>
 
                   <div className='bg-green-50 rounded-lg w-[30rem] my-auto border-2 border-green-400 border-solid shadow-md px-3 '>
-                    <img src="./img/frontpage/_1.png" className='mt-5' />
+                    <img src="./img/frontpage/5.png" className='py-4' />
                   </div>
                 </div>
               </div>

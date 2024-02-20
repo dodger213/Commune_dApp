@@ -1,4 +1,5 @@
 "use client";
+import '@rainbow-me/rainbowkit/styles.css';
 
 import {
   RainbowKitProvider,
@@ -9,7 +10,6 @@ import {
   rainbowWallet,
   walletConnectWallet,
   trustWallet,
-  coinbaseWallet,
   okxWallet,
   ledgerWallet,
   metaMaskWallet
