@@ -332,13 +332,6 @@ export default function NavigationBar() {
                 <ActiveLink activeClassName={classes.activeModules} className={classNames(classes.item, classes.modules)} href="/modules">🚀 Modules</ActiveLink>
                 <Link className={classNames(classes.item, classes.whitepaper)} href="https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf" target="_blank" rel="noopener noreferrer">📄 Whitepaper</Link>
                 <ActiveLink activeClassName={classes.active} className={classes.item} href="/telemetry"><Image src={'http://telemetry.communeai.net/favicon.svg'} alt="image" width={20} height={20}></Image> &nbsp;Telemetry</ActiveLink>
-
-                <ActiveLink activeClassName={classes.active} className={classes.item} href="https://comchat.io/">🥂 ComChat</ActiveLink>
-
-                <span className={classes.item} onClick={handleConnectWithSubstrateShowModal}>
-                    Connect with Substrate
-                </span>
-
                 <ActiveLink activeClassName={classes.active} className={classes.item} href="https://comwallet.io/">💱 ComWallet</ActiveLink>
 
                 <Dropdown menu={{ items, onClick }}>
@@ -347,7 +340,11 @@ export default function NavigationBar() {
                         <DownOutlined />
                     </Space>
                 </Dropdown>
+                <ActiveLink activeClassName={classes.active} className={classes.item} href="https://comchat.io/">🥂 ComChat</ActiveLink>
 
+                <span className={classes.item} onClick={handleConnectWithSubstrateShowModal}>
+                    Connect with Substrate
+                </span>
             </div>
             <div className={classNames(classes.items, classes.itemsRight)}>
                 <Link className={classes.link} href="/docs/next/Introduction">🚀 v0.0.0</Link>
