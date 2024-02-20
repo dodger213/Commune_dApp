@@ -23,7 +23,6 @@ import {
 } from '@rainbow-me/rainbowkit';
 import {
   rainbowWallet,
-  walletConnectWallet,
   trustWallet,
   enkryptWallet,
   okxWallet,
@@ -71,8 +70,6 @@ const connectors = connectorsForWallets([
       ...(projectId ? [talismanWallet({ projectId, chains })] : []),
       ...(projectId ? [enkryptWallet({ projectId, chains })] : []),
       ...(projectId ? [trustWallet({ projectId, chains })] : []),
-      // walletConnectWallet({ projectId, chains }),
-      // trustWallet({ projectId, chains }),
       // Add more recommended wallets as needed
     ],
   },
