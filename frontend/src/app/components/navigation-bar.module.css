@@ -9,7 +9,6 @@
 
     background-color: var(--theme-background-color);
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 2px 0px;
-    display: flex;
     padding: 0.5rem 1rem;
     z-index: 2;
 }
@@ -96,8 +95,6 @@
     flex: 0 0 auto;
     margin-right: 0.5rem;
 }
-
-.link {}
 
 .dropdown {
     position: relative;

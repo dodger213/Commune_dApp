@@ -23,6 +23,7 @@ const ActiveLink = ({
 		<Link
 			{...props}
 			className={classNames(className, isActive ? activeClassName : "")}
+			style={{ display: 'flex' }}
 		>
 			{children}
 		</Link>
