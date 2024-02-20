@@ -44,7 +44,7 @@ export default function ModuleDetailsModal({ name }: { name: string }) {
 				</span>
 				<span
 					className={classes.address}
-					style={{ marginBottom: "0.5rem", marginRight: "0.5rem" }}
+					style={{ marginBottom: "0.5rem", marginRight: "0.5rem", overflow: 'auto' }}
 				>
 					<strong style={{ fontSize: "1.2rem", marginRight: "0.5rem" }}>
 						Name:
@@ -61,6 +61,7 @@ export default function ModuleDetailsModal({ name }: { name: string }) {
 						borderLeft: "5px solid green",
 						padding: "10px 0 10px 25px",
 						background: "#e0ffd1",
+						overflow: 'auto'
 					}}
 				>
 					Description: {moduleDetails.description}
@@ -199,14 +200,14 @@ function InputElement({
 			style={
 				type === "bool"
 					? {
-							display: "flex",
-							alignItems: "center",
-						}
+						display: "flex",
+						alignItems: "center",
+					}
 					: {
-							display: "flex",
-							justifyContent: "space-between",
-							flexDirection: "column",
-						}
+						display: "flex",
+						justifyContent: "space-between",
+						flexDirection: "column",
+					}
 			}
 		>
 			<label
