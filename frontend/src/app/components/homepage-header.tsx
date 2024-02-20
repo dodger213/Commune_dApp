@@ -1,28 +1,37 @@
-"use client";
-import React from 'react';
-import { MetaMaskConnector } from "wagmi/connectors/metaMask";
-import { signIn } from "next-auth/react";
-import { useAccount, useConnect, useSignMessage, useDisconnect } from "wagmi";
-import { useRouter } from "next/navigation";
-import { useAuthRequestChallengeEvm } from "@moralisweb3/next";
-import Modal from 'antd/es/modal/Modal';
-import Image from 'next/image';
-import MetaMaskImage from '../../../public/svg/metamask.svg'
-import GithubImage from '../../../public/svg/github-mark.svg'
-import GitHubLogin from 'react-github-login';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { ApiPromise, WsProvider } from '@polkadot/api';
+import { useState, useEffect, useRef } from "react";
 
+import Image from "next/image";
 
-const words: string[] = ["developers.", "designers.", "creators.", "everyone.", "<END>"];
-const colour: string[] = ["text-[#00000]", "text-[#ffb4ed] dark:text-[#FFD6F5]", "text-[#FF8F8F]  dark:text-[#FF8F8F]", "text-[#ffef40] dark:text-[#FFF7A1]"];
+import GitHubLogin from "react-github-login";
+
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+
+import { ApiPromise, WsProvider } from "@polkadot/api";
+
+import Modal from "antd/es/modal/Modal";
+
+import MetaMaskImage from "../../../public/svg/metamask.svg";
+import GithubImage from "../../../public/svg/github-mark.svg";
+
+const words: string[] = [
+	"developers.",
+	"designers.",
+	"creators.",
+	"everyone.",
+	"<END>",
+];
+const colour: string[] = [
+	"text-[#00000]",
+	"text-[#ffb4ed] dark:text-[#FFD6F5]",
+	"text-[#FF8F8F]  dark:text-[#FF8F8F]",
+	"text-[#ffef40] dark:text-[#FFF7A1]",
+];
 
 const TITLE = "Commune AI";
 const TAGLINE = "Renovating the way we build software for ";
 
 export default function HomepageHeader() {
 
-  // blinker
   const [index, setIndex] = React.useState(0);
   const [subIndex, setSubIndex] = React.useState(0);
   const [blink, setBlink] = React.useState(true);
@@ -407,8 +416,9 @@ export default function HomepageHeader() {
 }
 
 export const getHeaderClasses = (position: number, height: number) => {
-  if (position > (height / 2)) {
-    return 'rounded-b-lg shadow-lg mx-5';
-  }
-  return '';
-}
+	if (position > height / 2) {
+		return "rounded-b-lg shadow-lg mx-5";
+	}
+
+	return "";
+};
