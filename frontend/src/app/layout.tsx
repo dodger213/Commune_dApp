@@ -36,9 +36,26 @@ import NavigationBar from "./components/navbar/navbar";
 import ThemeProvider from "./toggle-theme-provider";
 import Head from "./head";
 
+const connectors = connectorsForWallets([
+  {
+    groupName: 'Recommended',
+    wallets: [
+      metaMaskWallet({ projectId, chains }), // Metamask,
+      ...(projectId ? [talismanWallet({ projectId, chains })] : []),
+      ...(projectId ? [enkryptWallet({ projectId, chains })] : []),
+      ...(projectId ? [trustWallet({ projectId, chains })] : []),
+      // Add more recommended wallets as needed
+    ],
+  },
+  {
+    groupName: 'Other',
+    wallets: [
+      ...(projectId ? [rainbowWallet({ projectId, chains })] : []),
+      ...(projectId ? [okxWallet({ projectId, chains })] : []),
+      ...(projectId ? [ledgerWallet({ projectId, chains })] : []),
 import "./globals.css";
 
-const { chains, publicClient } = configureChains(
+      const { chains, publicClient } = configureChains(
 	[mainnet, polygon, avalanche, sepolia, polygonMumbai],
 	[publicProvider()]
 );
