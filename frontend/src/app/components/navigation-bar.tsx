@@ -558,7 +558,6 @@ function NavigationBar2() {
             <Link href="/docs">Docs</Link>
             <Link href={'https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf'}>Whitepaper</Link>
             <Link href="/telemetry">Telemetry</Link>
-            <Link href="/exchanges">Exchanges</Link>
             <ThemeToggler />
         </nav>
     );
