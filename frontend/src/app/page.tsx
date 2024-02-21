@@ -135,7 +135,7 @@ export default function Home() {
       <SectionWrapper
         id="blue"
         imageUrl="./gif/cubes/blue_small.gif"
-        backgroundClassName="dark:bg-white bg-white rounded-lg"
+        backgroundClassName="bg-white"
       >
         <div className=' text-black '>
           <div className='pt-6 text-right w-full pb-10'>
@@ -234,7 +234,7 @@ export default function Home() {
         id="yellow"
         imageUrl="./gif/cubes/yellow_small.gif"
         // backgroundClassName="dark:dark:bg-gradient-to-b from-yellow-300 to-[#fff7a1] bg-[linear-gradient(180deg,#ffffff,#fff7a1)] rounded-lg shadow-xl"
-        backgroundClassName="bg-white rounded-lg shadow-xl"
+        backgroundClassName="bg-white"
       >
         <div className=' text-black dark:text-black mt-10'>
           <div className='pt-6 text-right w-full p-10'>
@@ -275,7 +275,7 @@ export default function Home() {
         id="red"
         imageUrl="./gif/cubes/red_small.gif"
         // backgroundClassName="dark:bg-gradient-to-b from-red-300 to-[#ff8f8f] bg-[linear-gradient(180deg,#ffffff,#ff8f8f)] rounded-lg shadow-xl"
-        backgroundClassName="bg-white rounded-lg shadow-xl"
+        backgroundClassName="bg-white"
       >
         <div className=' text-black '>
           <div className='pt-6 text-right w-full'>
@@ -309,7 +309,7 @@ export default function Home() {
         id="pink"
         imageUrl="./gif/cubes/pink_small.gif"
         // backgroundClassName="dark:bg-gradient-to-b from-pink-300 to-[#ffd6f5] bg-[linear-gradient(180deg,#ffffff,#ffd6f5)] rounded-lg shadow-xl"
-        backgroundClassName="bg-white rounded-lg shadow-xl"
+        backgroundClassName="bg-white"
       >
         <div className=' text-black'>
           <div className='pt-6 text-right w-full'>
@@ -357,7 +357,7 @@ export default function Home() {
         id="black"
         imageUrl="./gif/cubes/black_small.gif"
         // backgroundClassName="dark:bg-[#1b1b1d] bg-[#ffffff] rounded-lg shadow-xl"
-        backgroundClassName="bg-white rounded-lg shadow-xl"
+        backgroundClassName="bg-white"
       >
         <div className=' text-black dark:text-white'>
           <div className='pt-6 text-right w-full dark:text-white'>
@@ -389,7 +389,7 @@ export default function Home() {
         id="white"
         imageUrl="./gif/cubes/white_small.gif"
         // backgroundClassName="dark:bg-[linear-gradient(180deg,#ffffff,#ffffff)] bg-[linear-gradient(180deg,#1b1b1d,#1b1b1d)] rounded-lg shadow-xl"
-        backgroundClassName="bg-white rounded-lg shadow-xl"
+        backgroundClassName="bg-white"
       >
         <div className='dark:text-white dark:bg-black'>
           <div className='pt-6 text-right w-full pb-6 dark:text-white '>
