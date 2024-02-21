@@ -344,14 +344,14 @@ export default function NavigationBar() {
 
             </div>
             <div className={classNames(classes.items, classes.itemsRight)}>
-                <Link className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0]')} href="/docs/next/Introduction">🚀 v0.0.0</Link>
+                <Link className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0]')} href="/docs/introduction">🚀 v0.0.0</Link>
                 <div className={classes.dropdown}>
                     <Link className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0]')} href="#" aria-haspopup="true" aria-expanded="false" role="button" >🔗 Community</Link>
                     <ul className={classes.dropdownMenu}>
                         <li>
                             <Link
                                 className={classes.dropdownLink}
-                                href="https://discord.gg/A8JGkZ9Dmm"
+                                href="https://discord.gg/communeai"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
@@ -390,7 +390,6 @@ export default function NavigationBar() {
                         </li>
                     </ul>
                 </div>
-                <ActiveLink activeClassName={classes.active} className={classes.item} href="/exchanges">💱  Exchanges</ActiveLink>
 
                 <ActiveLink activeClassName={classes.activeDocs} className={classNames(classes.item, classes.docs)} href="/docs/introduction">📚 Docs</ActiveLink>
 
@@ -559,7 +558,6 @@ function NavigationBar2() {
             <Link href="/docs">Docs</Link>
             <Link href={'https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf'}>Whitepaper</Link>
             <Link href="/telemetry">Telemetry</Link>
-            <Link href="/exchanges">Exchanges</Link>
             <ThemeToggler />
         </nav>
     );
