@@ -390,7 +390,6 @@ export default function NavigationBar() {
                         </li>
                     </ul>
                 </div>
-                <ActiveLink activeClassName={classes.active} className={classes.item} href="/exchanges">💱  Exchanges</ActiveLink>
 
                 <ActiveLink activeClassName={classes.activeDocs} className={classNames(classes.item, classes.docs)} href="/docs/introduction">📚 Docs</ActiveLink>
 
