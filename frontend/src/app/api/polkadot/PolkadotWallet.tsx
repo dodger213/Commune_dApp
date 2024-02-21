@@ -6,15 +6,18 @@ import { postRequest } from "../modules/ApiCalls";
 export default function PolkadotWallet({ onModulesFetched }: { onModulesFetched: (data: any) => void }) {
 	const [accounts, setAccounts] = useState<InjectedAccountWithMeta[]>([]);
 	const [selectedAccount, setSelectedAccount] = useState<InjectedAccountWithMeta | null>(null);
+	const [extensionAvailable, setExtensionAvailable] = useState<boolean>(true);
 
 	async function connectWallet() {
 		try {
 			const extensions = await web3Enable("CommuneAI");
 			if (extensions.length === 0) {
 				console.error("Install Polkadot wallet extension");
+				setExtensionAvailable(false); 
 				return;
 			}
-
+	
+			setExtensionAvailable(true); 
 			const allAccounts = await web3Accounts();
 			setAccounts(allAccounts as InjectedAccountWithMeta[]);
 		} catch (error) {
@@ -40,6 +43,16 @@ export default function PolkadotWallet({ onModulesFetched }: { onModulesFetched:
 	};
 
 	return (
+		<>
+        {!extensionAvailable && (
+            <div className="bg-red-100 p-8 rounded-md shadow-md flex flex-col gap-4">
+                <p>Please install the Polkadot{".js"} extension to continue.</p>
+                <a href="https://polkadot.js.org/extension/" target="_blank" rel="noopener noreferrer" className="rounded-md px-4 py-2 bg-red-500 text-white ">
+                    Get Polkadot{".js"} Extension
+                </a>
+            </div>
+        )}
+
 		<div className=" flex items-center justify-center h-[20svh]">
 			{accounts.length === 0 && (
 				<div className="bg-neutral-100 p-8 rounded-md shadow-md flex flex-col gap-4">
@@ -74,5 +87,6 @@ export default function PolkadotWallet({ onModulesFetched }: { onModulesFetched:
 				</div>
 			)}
 		</div>
+		</>
 	);
 }
