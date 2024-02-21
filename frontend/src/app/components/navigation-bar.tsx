@@ -344,14 +344,14 @@ export default function NavigationBar() {
 
             </div>
             <div className={classNames(classes.items, classes.itemsRight)}>
-                <Link className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0]')} href="/docs/next/Introduction">🚀 v0.0.0</Link>
+                <Link className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0]')} href="/docs/introduction">🚀 v0.0.0</Link>
                 <div className={classes.dropdown}>
                     <Link className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0]')} href="#" aria-haspopup="true" aria-expanded="false" role="button" >🔗 Community</Link>
                     <ul className={classes.dropdownMenu}>
                         <li>
                             <Link
                                 className={classes.dropdownLink}
-                                href="https://discord.gg/A8JGkZ9Dmm"
+                                href="https://discord.gg/communeai"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >

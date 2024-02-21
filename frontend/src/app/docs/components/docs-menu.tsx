@@ -12,7 +12,7 @@ const MENU_ITEMS = [{
     url: '/docs/setup-commune'
 }, {
     name: 'Basics',
-    url: '/docs/basics',
+    url: '/docs/basics/create-commune',
     submenuItems: [{
         name: 'Create Commune',
         url: '/docs/basics/create-commune'
@@ -37,7 +37,7 @@ const MENU_ITEMS = [{
     }],
 }, {
     name: 'Modules',
-    url: '/docs/modules',
+    url: '/docs/modules/module-basics',
     submenuItems: [{
         name: 'Module Basics',
         url: '/docs/modules/module-basics'

@@ -21,12 +21,12 @@ export default function Footer() {
 						<div className={classes.title}>📚 Docs</div>
 						<ul className={classes.list}>
 							<li className={classes.item}>
-								<a className={classes.link} href="/docs/next/Introduction">
+								<a className={classes.link} href="/docs/introduction">
 									Introduction
 								</a>
 							</li>
 							<li className={classes.item}>
-								<a className={classes.link} href="/docs/next/installation">
+								<a className={classes.link} href="/docs/setup-commune">
 									Installation
 								</a>
 							</li>
@@ -37,7 +37,7 @@ export default function Footer() {
 						<ul className={classes.list}>
 							<li className={classes.item}>
 								<a
-									href="https://discord.gg/A8JGkZ9Dmm"
+									href="https://discord.gg/communeai"
 									target="_blank"
 									rel="noopener noreferrer"
 									className={classes.link}
