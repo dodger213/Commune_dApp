@@ -327,16 +327,16 @@ export default function NavigationBar() {
                     <div className={classes.logo}>
                         <img style={{ width: "auto", height: "3.7rem", marginRight: "-0.25rem" }} src="/svg/commune.svg" alt="My Site Logo" />
                     </div>
-                    <b>commune</b>
+                    <b className="dark:text-white dark:hover:text-[#25c2a0]">commune</b>
                 </Link>
                 <ActiveLink activeClassName={classes.activeModules} className={classNames(classes.item, classes.modules)} href="/modules">🚀 Modules</ActiveLink>
-                <Link className={classNames(classes.item, classes.whitepaper)} href="https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf" target="_blank" rel="noopener noreferrer">📄 Whitepaper</Link>
+                <Link className={classNames(classes.item, classes.whitepaper, 'dark:text-white dark:hover:text-[#25c2a0]')} href="https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf" target="_blank" rel="noopener noreferrer">📄 Whitepaper</Link>
                 <ActiveLink activeClassName={classes.active} className={classes.item} href="/telemetry"><Image src={'http://telemetry.communeai.net/favicon.svg'} alt="image" width={20} height={20}></Image> &nbsp;Telemetry</ActiveLink>
                 <ActiveLink activeClassName={classes.active} className={classes.item} href="https://comwallet.io/">💱 ComWallet</ActiveLink>
 
                 <Dropdown menu={{ items, onClick }}>
                     <Space>
-                        <span style={{ fontWeight: '600', marginLeft: '0.25rem' }} className="hover:text-[#25c2a0]">💰 Payment</span>
+                        <span style={{ fontWeight: '600', marginLeft: '0.25rem' }} className="hover:text-[#25c2a0] dark:text-white dark:hover:text-[#25c2a0]">💰 Payment</span>
                         <DownOutlined />
                     </Space>
                 </Dropdown>
@@ -344,9 +344,9 @@ export default function NavigationBar() {
 
             </div>
             <div className={classNames(classes.items, classes.itemsRight)}>
-                <Link className={classes.link} href="/docs/next/Introduction">🚀 v0.0.0</Link>
+                <Link className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0]')} href="/docs/next/Introduction">🚀 v0.0.0</Link>
                 <div className={classes.dropdown}>
-                    <Link className={classes.link} href="#" aria-haspopup="true" aria-expanded="false" role="button" >🔗 Community</Link>
+                    <Link className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0]')} href="#" aria-haspopup="true" aria-expanded="false" role="button" >🔗 Community</Link>
                     <ul className={classes.dropdownMenu}>
                         <li>
                             <Link

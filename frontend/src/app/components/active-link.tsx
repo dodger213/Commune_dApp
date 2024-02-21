@@ -22,7 +22,7 @@ const ActiveLink = ({
 	return (
 		<Link
 			{...props}
-			className={classNames(className, isActive ? activeClassName : "")}
+			className={classNames(className, isActive ? activeClassName : "", 'dark:text-white dark:hover:text-[#25c2a0]')}
 			style={{ display: 'flex' }}
 		>
 			{children}

@@ -109,8 +109,8 @@ function SectionWrapper({
   children: React.ReactNode;
 }) {
   return (
-    <div id={id}>
-      <div className="py-10 px-5 bg-white">
+    <div id={id} className='dark:bg-black'>
+      <div className="py-10 px-5 bg-white dark:bg-black">
         <div className={`${backgroundClassName} mt-10 flex lg:flex-row flex-col items-center justify-center gap-10 rounded-3xl hover-effect w-[95%] mx-auto`} style={{ boxShadow: `1px 6px 50px 10px ${id}` }}>
           <div className=" flex-none lg:-mr-4 m-10 mt-20">
             <img
