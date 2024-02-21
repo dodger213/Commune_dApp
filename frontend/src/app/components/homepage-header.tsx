@@ -247,7 +247,6 @@ export default function HomepageHeader() {
             </div>
 
             <div className='w-30 h-10'>
-              {/* <a href="docs/next/Introduction" className=' hover:no-underline' > */}
               <div className=' bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-600 duration-200 text-white hover:text-white font-sans font-semibold justify-center px-2 py-2 hover:border-blue-300 hover:border-2 hover:border-solid cursor-pointer' onClick={handleAuthModal}>
                 Get Started
               </div>
