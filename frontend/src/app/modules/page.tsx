@@ -25,8 +25,8 @@ export default function () {
 	useEffect(() => {
 		const filtered = searchString
 			? loadedModules.filter((module) =>
-					module.name.toLowerCase().includes(searchString.toLowerCase())
-				)
+				module.name.toLowerCase().includes(searchString.toLowerCase())
+			)
 			: loadedModules;
 		setFilteredModules(filtered);
 		if (searchString) {
@@ -102,16 +102,14 @@ export default function () {
 					previousLabel={"previous"}
 					nextLabel={"next"}
 					breakLabel={"..."}
-					previousClassName={`mr-2 ${
-						currentPage === 1
-							? "text-gray-500"
-							: "text-blue-500 hover:text-blue-700"
-					}`}
-					nextClassName={`${
-						currentPage === pageCount
-							? "text-gray-500"
-							: "text-blue-500 hover:text-blue-700"
-					}`}
+					previousClassName={`mr-2 ${currentPage === 1
+						? "text-gray-500"
+						: "text-blue-500 hover:text-blue-700"
+						}`}
+					nextClassName={`${currentPage === pageCount
+						? "text-gray-500"
+						: "text-blue-500 hover:text-blue-700"
+						}`}
 				/>
 			)}
 		</>

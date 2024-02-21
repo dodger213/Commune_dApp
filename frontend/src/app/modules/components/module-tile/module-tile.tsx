@@ -101,7 +101,7 @@ export default function ModuleTile({
 				<div
 					className={classNames(
 						classes.name,
-						"bg-blue-100 rounded-lg dark:bg-[#272b2e] dark:text-white"
+						"bg-blue-100 rounded-lg dark:bg-[#272b2e] dark:text-white overflow-auto"
 					)}
 					style={{ fontSize: "1.1rem" }}
 				>
@@ -141,7 +141,7 @@ export default function ModuleTile({
 					<div
 						className={classNames(
 							classes.description,
-							"bg-pink-100 rounded-lg border-solid h-[130px] dark:bg-[#3c0725] dark:text-white"
+							"bg-pink-100 rounded-lg border-solid h-[130px] dark:bg-[#3c0725] dark:text-white overflow-auto"
 						)}
 						style={{ fontSize: "1.1rem", padding: ".5rem" }}
 					>
