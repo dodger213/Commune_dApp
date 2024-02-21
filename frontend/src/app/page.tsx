@@ -108,9 +108,10 @@ function SectionWrapper({
   backgroundClassName: string;
   children: React.ReactNode;
 }) {
+  
   return (
-    <div id={id} className='dark:bg-black'>
-      <div className="py-10 px-5 bg-white dark:bg-black">
+    <div id={id} className=''>
+      <div className="py-10 px-5 my-5 ">
         <div className={`${backgroundClassName} mt-10 flex lg:flex-row flex-col items-center justify-center gap-10 rounded-3xl hover-effect w-[95%] mx-auto dark:bg-black`} style={{ boxShadow: `1px 6px 50px 10px ${id}` }}>
           <div className=" flex-none lg:-mr-4 m-10 mt-20">
             <img
@@ -391,7 +392,7 @@ export default function Home() {
         // backgroundClassName="dark:bg-[linear-gradient(180deg,#ffffff,#ffffff)] bg-[linear-gradient(180deg,#1b1b1d,#1b1b1d)] rounded-lg shadow-xl"
         backgroundClassName="bg-white"
       >
-        <div className='dark:text-white dark:bg-black'>
+        <div className='text-black dark:text-white'>
           <div className='pt-6 text-right w-full pb-6 dark:text-white '>
 
             <h1 className=" text-5xl pb-3 dark:text-white text-center">Read Our Whitepaper 📄</h1>
