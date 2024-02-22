@@ -108,7 +108,7 @@ function SectionWrapper({
   backgroundClassName: string;
   children: React.ReactNode;
 }) {
-  
+
   return (
     <div id={id} className=''>
       <div className="py-10 px-5 my-5 ">
@@ -264,8 +264,8 @@ export default function Home() {
 
               </div>
 
-              <div className='bg-yellow-100/90 rounded-lg w-[30rem] border-2 border-yellow-400 border-solid shadow-md px-3 '>
-                <img src="./img/frontpage/_2.png" className='mt-5' />
+              <div className='mx-auto my-auto w-[80%]'>
+                <img src="./img/frontpage/9.png" className='mt-5' />
               </div>
             </div>
 
@@ -296,8 +296,8 @@ export default function Home() {
                   </ul>
                 </div>
 
-                <div className='bg-red-100 rounded-lg w-[30rem] border-2 border-red-400 border-solid shadow-md px-3 '>
-                  <img src="./img/frontpage/_8.png" className='mt-5' />
+                <div className='mx-auto my-auto w-[50%]'>
+                  <img src="./img/frontpage/8.png" className='mt-5' />
                 </div>
               </div>
 
@@ -329,8 +329,8 @@ export default function Home() {
                   </ul>
                 </div>
 
-                <div className='bg-pink-50 rounded-lg w-[30rem] border-2 border-pink-400 border-solid shadow-md px-3 '>
-                  <img src="./img/frontpage/_6.png" className='mt-5' />
+                <div className='w-[30rem] px-3 '>
+                  <img src="./img/frontpage/7.1.png" className='mt-5' />
                 </div>
               </div>
 
@@ -344,8 +344,8 @@ export default function Home() {
                   </ul>
                 </div>
 
-                <div className='bg-pink-50 rounded-lg w-[30rem] border-2 border-pink-400 border-solid shadow-md px-3 '>
-                  <img src="./img/frontpage/_7.png" className='mt-5' />
+                <div className='w-[30rem] px-3 '>
+                  <img src="./img/frontpage/7.2.png" className='mt-5' />
                 </div>
               </div>
 
@@ -367,8 +367,8 @@ export default function Home() {
             <div className='flex flex-col space-y-24 p-10 sm:justify-center sm:items-center '>
 
               <div className=' flex md:flex-row sm:flex-col sm:space-y-4 text-center items-center justify-center '>
-                <div className=' my-auto mx-auto bg-gray-100 rounded-lg border-2 border-zinc-700 dark:border-gray-100 border-solid shadow-md '>
-                  <img src="./img/frontpage/_3.png" className='mt-5 mx-auto w-[35rem] h-[25rem]' />
+                <div className=' my-auto mx-auto '>
+                  <img src="./img/frontpage/6.png" className='my-auto w-[40rem]' />
                 </div>
                 <div className=' w-[30rem] mx-auto my-auto font-semibold '>
                   <ul className=' text-left space-y-10 list-disc'>
@@ -381,7 +381,6 @@ export default function Home() {
                 </div>
               </div>
             </div>
-
 
           </div>
         </div>
