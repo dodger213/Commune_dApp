@@ -41,6 +41,9 @@ export default function HomepageHeader() {
   const [address, setAddress] = useState('');
   const [balance, setBalance] = useState(null);
 
+  //user login
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+
   // state of the scroll position and header height
   const [scrollPosition, setScrollPosition] = useState(0);
   const headerRef = useRef<any>(null);
@@ -139,6 +142,7 @@ export default function HomepageHeader() {
       if (response.ok) {
 
         const userInfo = await response.json();
+        setIsLoggedIn(true)
         // Handle user information (userInfo)
         console.log('------github account------', userInfo);
 
@@ -199,6 +203,7 @@ export default function HomepageHeader() {
       const accountInfo = await api?.query.system.account(address);
 
       console.log('------------------where is the account Info---------', accountInfo)
+      setIsLoggedIn(true)
 
       // if (accountInfo?.isSome) {
       //   const { nonce, data: balance } = accountInfo.unwrap();
@@ -218,7 +223,6 @@ export default function HomepageHeader() {
   const handleLogin = async () => {
     // Perform login logic here
     // For example, check if the entered address is valid and proceed accordingly
-    console.log('--------this is the status---------', api)
     if (!api || !address) {
       window.alert('Substrate API not connected or address not provided')
       console.error('Substrate API not connected or address not provided');
@@ -293,6 +297,7 @@ export default function HomepageHeader() {
                   // Note: If your app doesn't use authentication, you
                   // can remove all 'authenticationStatus' checks
                   const ready = mounted && authenticationStatus !== 'loading';
+                  ready && account && chain && setIsLoggedIn(true);
                   const connected =
                     ready &&
                     account &&
