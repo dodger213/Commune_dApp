@@ -35,8 +35,7 @@ export default function ModuleTile({
 	description,
 	attributes,
 }: ModuleTileProps) {
-	const [isShowDetailedModalOpen, setIsShowDetailedModalOpen] =
-		React.useState(false);
+	const [isShowDetailedModalOpen, setIsShowDetailedModalOpen] = React.useState(false);
 	const [selectedModuleName, setSelectedModuleName] = React.useState("");
 	const [isLikeIconClicked, setIsLikeIconClicked] = React.useState(false);
 	const [isDisLikeIconClicked, setIsDisLikeIconClicked] = React.useState(false);
