@@ -5,13 +5,13 @@ type ThemeProviderProps = {
 	children: React.ReactNode | React.ReactNode[];
 };
 
-const ToggleThemeContext = createContext<() => void>(() => {});
-const ThemeContext = createContext<string>("light");
+const ToggleThemeContext = createContext<() => void>(() => { });
+const ThemeContext = createContext<string>("dark");
 
 export { ToggleThemeContext, ThemeContext };
 
 export default function ThemeProvider({ children }: ThemeProviderProps) {
-	const [theme, setTheme] = useState("light");
+	const [theme, setTheme] = useState("dark");
 
 	const toggleTheme = useCallback(
 		() => setTheme((state) => (state === "light" ? "dark" : "light")),
