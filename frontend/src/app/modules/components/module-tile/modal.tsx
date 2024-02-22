@@ -5,12 +5,13 @@ import React, { useState } from "react";
 import classNames from "classnames";
 
 import { Checkbox, Tag } from "antd";
-import { PlayCircleOutlined } from "@ant-design/icons";
+import { HomeOutlined, PlayCircleOutlined } from "@ant-design/icons";
 
 import classes from "./modal.module.css";
 import { modulesList } from "../../../../services/modules-service";
 
 export default function ModuleDetailsModal({ name }: { name: string }) {
+
 	const moduleDetails = modulesList.find((module) => module.name === name);
 
 	if (!moduleDetails) {
@@ -20,7 +21,7 @@ export default function ModuleDetailsModal({ name }: { name: string }) {
 	return (
 		<div
 			className={classNames(classes.popup)}
-			style={{ padding: ".5rem", borderRadius: ".5rem" }}
+			style={{ padding: ".5rem", borderRadius: ".5rem", width: '100%' }}
 		>
 			<div
 				className="flex items-center justify-between rounded-lg"
@@ -84,7 +85,7 @@ export default function ModuleDetailsModal({ name }: { name: string }) {
 	);
 }
 
-function SchemasList({ schemas }: { schemas: any }) {
+export function SchemasList({ schemas }: { schemas: any }) {
 	return (
 		<>
 			<ul className={classes.schemasList} style={{ padding: "0" }}>
@@ -115,7 +116,7 @@ function SchemasList({ schemas }: { schemas: any }) {
 	);
 }
 
-function SchemaNameElement({
+export function SchemaNameElement({
 	children,
 	name,
 }: {
@@ -126,11 +127,11 @@ function SchemaNameElement({
 		<li
 			className={classNames(
 				classes.schemaNameElement,
-				"bg-gray-200 rounded-lg border-1 border-solid"
+				"bg-gray-200 rounded-lg border-1 border-solid dark:text-black"
 			)}
 			style={{ padding: "0.7rem", marginBottom: "1rem" }}
 		>
-			<h4 style={{ marginBottom: "0" }}>
+			<h4 style={{ marginBottom: "0" }} className="dark:text-black">
 				{name.charAt(0).toUpperCase() + name.slice(1)}
 			</h4>
 			{children}
@@ -139,7 +140,7 @@ function SchemaNameElement({
 	);
 }
 
-function InputElement({
+export function InputElement({
 	name,
 	type,
 	defaultValue,
@@ -159,7 +160,7 @@ function InputElement({
 					className={classNames(
 						classes.htmlInputElement,
 						classes.numericalInput,
-						"rounded-lg"
+						"dark:text-black rounded-lg"
 					)}
 					type="number"
 					onChange={({ target: { value } }) => setValue(value)}
@@ -172,6 +173,7 @@ function InputElement({
 			htmlInputElement = (
 				<Checkbox
 					style={{ marginBottom: "0.3rem", marginTop: "0.7rem" }}
+					className="dark:text-black"
 					defaultChecked
 				/>
 			);
@@ -181,7 +183,7 @@ function InputElement({
 		case "dict":
 			htmlInputElement = (
 				<input
-					className={classNames(classes.htmlInputElement, "rounded-lg")}
+					className={classNames(classes.htmlInputElement, "rounded-lg dark:text-black")}
 					type="text"
 					onChange={({ target: { value } }) => setValue(value)}
 					value={value}
@@ -196,7 +198,7 @@ function InputElement({
 
 	return (
 		<form
-			className={classNames(classes.inputWrapper)}
+			className={classNames(classes.inputWrapper, 'dark:text-black')}
 			style={
 				type === "bool"
 					? {
@@ -219,6 +221,7 @@ function InputElement({
 					marginRight: "0.5rem",
 					fontSize: "1rem",
 				}}
+				className="dark:text-black"
 			>
 				{name}: <strong>{type}</strong>
 			</label>
@@ -227,9 +230,9 @@ function InputElement({
 	);
 }
 
-function OutputElement(outputValue: any) {
+export function OutputElement(outputValue: any) {
 	return (
-		<div className="flex items-center" style={{ marginTop: "1rem" }}>
+		<div className="flex items-center dark:text-black" style={{ marginTop: "1rem" }}>
 			<span
 				style={{
 					marginRight: "0.5rem",
@@ -239,7 +242,7 @@ function OutputElement(outputValue: any) {
 				Result:{" "}
 			</span>
 			<Tag
-				className={classNames(classes.output)}
+				className={classNames(classes.output, 'dark:text-black')}
 				color="success"
 				style={{ padding: "0.5rem", width: "100%" }}
 			>
@@ -249,10 +252,10 @@ function OutputElement(outputValue: any) {
 	);
 }
 
-function RunButton() {
+export function RunButton() {
 	return (
 		<button
-			className="bg-[#7F57EA] text-white rounded-md p-2 hover:bg-[#5829D7] w-full"
+			className="bg-[#7F57EA] text-white rounded-md p-2 hover:bg-[#5829D7] w-full dark:text-black"
 			onClick={() => alert("Not implemented.")}
 		>
 			<PlayCircleOutlined style={{ marginRight: "0.5rem" }} />
