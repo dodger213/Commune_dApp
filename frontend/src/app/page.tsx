@@ -296,7 +296,7 @@ export default function Home() {
                   </ul>
                 </div>
 
-                <div className='mx-auto my-auto w-[60%]'>
+                <div className='mx-auto my-auto w-[50%]'>
                   <img src="./img/frontpage/8.png" className='mt-5' />
                 </div>
               </div>
