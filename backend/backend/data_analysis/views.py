@@ -1,33 +1,18 @@
 import os
 import requests
 from django.http import JsonResponse
-import matplotlib.pyplot as plt
-import bandit
-from bandit.core import manager
 
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.parsers import JSONParser
 from rest_framework import generics
 from rest_framework.exceptions import NotFound
-import pandas as pd
-import matplotlib.pyplot as plt
-from cryptography.fernet import Fernet
-from backend.data_analysis import utils
 
 from rest_framework import permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 # import mysql.connector
-from botocore.exceptions import NoCredentialsError
-from time import ctime
-from datetime import datetime, date
-
-from backend.users.models import User
-from backend.users.api.serializers import UserSerializer
-
-from django.utils import timezone
 
 from backend.data_analysis.models import (
     TransactionRecordModel,
