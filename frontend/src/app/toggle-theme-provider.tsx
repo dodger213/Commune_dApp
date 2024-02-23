@@ -23,7 +23,7 @@ export default function ThemeProvider({ children }: ThemeProviderProps) {
 			<ThemeContext.Provider value={theme}>
 				<div
 					data-theme={theme}
-					className="min-h-[100vh] flex flex-col justify-between"
+					className="min-h-[100vh] flex flex-col"
 				>
 					{children}
 				</div>

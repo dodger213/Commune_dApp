@@ -330,16 +330,7 @@ export default function NavigationBar() {
                     <b className="dark:text-white dark:hover:text-[#25c2a0]">commune</b>
                 </Link>
                 <ActiveLink activeClassName={classes.activeModules} className={classNames(classes.item, classes.modules)} href="/modules">🚀 Modules</ActiveLink>
-                <Link className={classNames(classes.item, classes.whitepaper, 'dark:text-white dark:hover:text-[#25c2a0]')} href="https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf" target="_blank" rel="noopener noreferrer">📄 Whitepaper</Link>
                 <ActiveLink activeClassName={classes.active} className={classes.item} href="/telemetry"><Image src={'http://telemetry.communeai.net/favicon.svg'} alt="image" width={20} height={20}></Image> &nbsp;Telemetry</ActiveLink>
-                <ActiveLink activeClassName={classes.active} className={classes.item} href="https://comwallet.io/">💱 ComWallet</ActiveLink>
-
-                <Dropdown menu={{ items, onClick }}>
-                    <Space>
-                        <span style={{ fontWeight: '600', marginLeft: '0.25rem' }} className="hover:text-[#25c2a0] dark:text-white dark:hover:text-[#25c2a0]">💰 Payment</span>
-                        <DownOutlined />
-                    </Space>
-                </Dropdown>
                 <ActiveLink activeClassName={classes.active} className={classes.item} href="https://comchat.io/">🥂 ComChat</ActiveLink>
 
             </div>
@@ -348,6 +339,19 @@ export default function NavigationBar() {
                 <div className={classes.dropdown}>
                     <Link className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0]')} href="#" aria-haspopup="true" aria-expanded="false" role="button" >🔗 Community</Link>
                     <ul className={classes.dropdownMenu}>
+                        <li>
+                            <Link
+                                className={classes.dropdownLink}
+                                href="https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <div style={{ display: "flex", alignItems: "center" }}>
+                                    <span>Whitepaper 📄</span>
+                                    <span className="nx-sr-only"></span>
+                                </div>
+                            </Link>
+                        </li>
                         <li>
                             <Link
                                 className={classes.dropdownLink}
@@ -387,6 +391,27 @@ export default function NavigationBar() {
                                     <span className="nx-sr-only"></span>
                                 </div>
                             </Link>
+                        </li>
+                        <li>
+                            <Link
+                                className={classes.dropdownLink}
+                                href="https://comwallet.io/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                <div style={{ display: "flex", alignItems: "center" }}>
+                                    <span>Comwallet 💱</span>
+                                    <span className="nx-sr-only"></span>
+                                </div>
+                            </Link>
+                        </li>
+                        <li>
+                            <Dropdown menu={{ items, onClick }}>
+                                <Space>
+                                    <span style={{ marginLeft: '0.25rem' }} className="hover:text-[#25c2a0] dark:hover:text-[#25c2a0]">Payment 💰</span>
+                                    <DownOutlined />
+                                </Space>
+                            </Dropdown>
                         </li>
                     </ul>
                 </div>

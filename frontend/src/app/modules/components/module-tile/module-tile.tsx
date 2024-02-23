@@ -19,6 +19,7 @@ import {
 import ModuleDetailsModal from "./modal";
 
 import classes from "./module-tile.module.css";
+import { useRouter } from "next/navigation";
 
 type ModuleTileProps = {
 	image_url?: string;
@@ -35,8 +36,7 @@ export default function ModuleTile({
 	description,
 	attributes,
 }: ModuleTileProps) {
-	const [isShowDetailedModalOpen, setIsShowDetailedModalOpen] =
-		React.useState(false);
+	const [isShowDetailedModalOpen, setIsShowDetailedModalOpen] = React.useState(false);
 	const [selectedModuleName, setSelectedModuleName] = React.useState("");
 	const [isLikeIconClicked, setIsLikeIconClicked] = React.useState(false);
 	const [isDisLikeIconClicked, setIsDisLikeIconClicked] = React.useState(false);
@@ -45,9 +45,12 @@ export default function ModuleTile({
 	const [dislikeCount, setDislikeCount] = React.useState(2);
 	const [heartCount, setHeartCount] = React.useState(23);
 
+	const router = useRouter()
+
 	const handleClickItem = (name: string) => {
-		setIsShowDetailedModalOpen(true);
-		setSelectedModuleName(name);
+		// setIsShowDetailedModalOpen(true);
+		// setSelectedModuleName(name);
+		router.push(`/modules/interface/app/dashboard?modulename=${name}`)
 	};
 
 	const handleCancelModal = () => {
