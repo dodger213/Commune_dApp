@@ -4,7 +4,6 @@ Werkzeug[watchdog]==3.0.0 # https://github.com/pallets/werkzeug
 ipdb==0.13.13  # https://github.com/gotcha/ipdb
 # psycopg[c]==3.1.12  # https://github.com/psycopg/psycopg
 psycopg
-psycopg-binary
 watchfiles==0.20.0  # https://github.com/samuelcolvin/watchfiles
 
 # Testing
@@ -14,15 +13,10 @@ django-stubs[compatible-mypy]==4.2.4  # https://github.com/typeddjango/django-st
 pytest==7.4.2  # https://github.com/pytest-dev/pytest
 pytest-sugar==0.9.7  # https://github.com/Frozenball/pytest-sugar
 djangorestframework-stubs[compatible-mypy]==3.14.3  # https://github.com/typeddjango/djangorestframework-stubs
-
-openai
-boto3
-matplotlib
+django
+environ
+celery
 docker
-django_cryptography
-bandit
-pandas
-mysql
 # Documentation
 # ------------------------------------------------------------------------------
 sphinx==7.2.6  # https://github.com/sphinx-doc/sphinx
