@@ -2364,6 +2364,11 @@ export const modulesList = [
     address: "158.247.70.45:8888"
   },
   {
+    name: "model.video2video",
+    description: "model.video2video",
+    address: "158.247.70.45:8888"
+  },
+  {
     name: "model.adapter",
     description: "model.adapter",
     address: "158.247.70.45:8888"
