@@ -18,7 +18,7 @@ const ModuleItem = ( { title, group, imageLink, logoLink } : ModuleItemPropsType
                 {title}
             </p>
             <div className="mt-[10px]">
-                <Image src={BasicImage} className='w-[350px] h-[250px]' width={500} height={400} alt=''/>
+                <Image src={BasicImage} className='w-[450px] h-[350px]' width={500} height={400} alt=''/>
             </div>
             <div className="mt-[20px]">
                 <p className='text-[50px] text-center'>👁</p>
