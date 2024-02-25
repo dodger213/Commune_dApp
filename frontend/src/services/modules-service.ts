@@ -4334,6 +4334,14 @@ export default class ModulesService {
     return modulesList.filter((module) => module.name.includes(searchQuery) || (module.description && module.description.includes(searchQuery)));
   };
 
+  static getNewModulesList = async (searchQuery = "") => {
+    if (!searchQuery) {
+      return modulesList;
+    }
+
+    return modulesList.filter((module) => module.name.includes(searchQuery) || (module.description && module.description.includes(searchQuery)));
+  };
+
   static getModuleDetailsByName = async (name: string) => {
     const moduleDetails = modulesList.find((module) => module.name === name);
 

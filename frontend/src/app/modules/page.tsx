@@ -8,6 +8,7 @@ import ModuleTile from "./components/module-tile/module-tile";
 import classes from "./modules.module.css";
 import SearchBar from "./components/search-bar";
 import Pagination from "react-paginate";
+import ModuleItem from "./components/module-item";
 
 const PolkadotWallet = dynamic(
 	() => import("@/app/api/polkadot/PolkadotWallet"),
@@ -40,8 +41,14 @@ export default function () {
 	const pageCount = Math.ceil(filteredModules.length / itemsPerPage);
 
 	useEffect(() => {
+		// async function fetchModules() {
+		// 	const modules = await ModulesService.getModulesList();
+		// 	setLoadedModules(modules);
+		// 	updateDisplayedModules(modules, currentPage);
+		// }
+
 		async function fetchModules() {
-			const modules = await ModulesService.getModulesList();
+			const modules = await ModulesService.getNewModulesList();
 			setLoadedModules(modules);
 			updateDisplayedModules(modules, currentPage);
 		}
@@ -83,8 +90,11 @@ export default function () {
 				/>
 				{displayedModules && displayedModules.length > 0 ? (
 					<ul className={classes.modulesList}>
-						{displayedModules.map((module, i) => (
+						{/* {displayedModules.map((module, i) => (
 							<ModuleTile key={module.name} {...module} />
+						))} */}
+						{displayedModules.map((item, idx) => (
+							<ModuleItem key={idx} title={item.tile} group={item.group} imageLink="" logoLink="" />
 						))}
 					</ul>
 				) : (
