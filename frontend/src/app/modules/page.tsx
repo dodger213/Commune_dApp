@@ -88,7 +88,7 @@ export default function () {
 						))}
 					</ul>
 				) : (
-					<span>There is no data to display</span>
+					<span className="dark: text-white">There is no data to display</span>
 				)}
 			</main>
 			{filteredModules.length > 8 && (

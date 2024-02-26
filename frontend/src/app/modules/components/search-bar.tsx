@@ -22,7 +22,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
 		>
 			<input
 				type="text"
-				className={classNames("shadow-xl p-[2rem]", classes.searchInput)}
+				className={classNames("shadow-xl p-[2rem]", classes.searchInput, 'dark:text-white')}
 				value={searchString}
 				onChange={({ target: { value } }) => setSearchString(value)}
 				placeholder="Search for module"
