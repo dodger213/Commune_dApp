@@ -57,6 +57,7 @@
   list-style: none;
 }
 .inputWrapper {
+  position: fixed;
   display: flex;
   gap: 0.5vw;
 }
