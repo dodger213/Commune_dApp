@@ -99,8 +99,8 @@ export default function () {
 					containerClassName="flex justify-center items-center space-x-3 my-4 text-lg dark:text-white"
 					pageLinkClassName="px-5 text-lg border rounded hover:bg-gray-200 transition-colors duration-200 py-3"
 					activeClassName="bg-blue-500 text-white py-3 rounded"
-					previousLabel={"previous"}
-					nextLabel={"next"}
+					// previousLabel={"previous"}
+					// nextLabel={"next"}
 					breakLabel={"..."}
 					previousClassName={`mr-2 ${currentPage === 1
 						? "text-gray-500"
