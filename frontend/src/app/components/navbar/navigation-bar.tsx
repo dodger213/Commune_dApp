@@ -2,24 +2,26 @@ import React from "react";
 import Link from "next/link";
 import { loadStripe } from "@stripe/stripe-js";
 import { useRouter } from "next/navigation";
-import ThemeToggler from "./theme-toggler";
+import ThemeToggler from "../theme-toggler";
 import { ApiPromise, WsProvider } from '@polkadot/api';
 
 import classes from './navigation-bar.module.css';
 import classNames from "classnames";
-import ActiveLink from "./active-link";
+import ActiveLink from "../active-link";
 import type { MenuProps } from 'antd';
 import { Dropdown, Modal, Space, Select } from 'antd';
 import { DownOutlined } from "@ant-design/icons";
-import StripeImage from '../../../public/img/frontpage/stripe.png'
+import StripeImage from '../../../../public/img/frontpage/stripe.png'
 import Image from "next/image";
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import MetaMaskImage from '../../../public/svg/metamask.svg'
+import MetaMaskImage from '../../../../public/svg/metamask.svg'
 import { useSendTransaction, useContractWrite } from 'wagmi'
 import { parseEther } from 'viem'
 import axios from "axios";
-import * as  erc20ContractABI from '../../services/token_abi.json';
+import * as  erc20ContractABI from '../../../services/token_abi.json';
 import { saveTransaction } from "@/store/action/transaction.record.action";
+import LogoImage from '../../../../public/img/frontpage/stripe.png'
+import ProfileDropDownComponent from "./profile.dropdown";
 
 const items: MenuProps['items'] = [
     {
@@ -81,6 +83,9 @@ export default function NavigationBar() {
     const [tokenType, setTokenType] = React.useState('')
     const [selectedChain, setSelectedChain] = React.useState('')
     const [isShowConnectWithSubstrateModalOpen, setIsShowConnectWithSubstrateModalOpen] = React.useState(false)
+
+    //user profile
+    const [isShowUserProfileAvatar, setIsShowUserProfileAvatar] = React.useState(false)
 
     const asyncStripe = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
     const { abi: erc20ABI } = erc20ContractABI
@@ -289,10 +294,6 @@ export default function NavigationBar() {
 
     }
 
-    const handleConnectWithSubstrateShowModal = () => {
-        setIsShowConnectWithSubstrateModalOpen(true)
-    }
-
     const handleConnectWithSubstrateModalCancel = () => {
         setIsShowConnectWithSubstrateModalOpen(false)
     }
@@ -418,9 +419,14 @@ export default function NavigationBar() {
 
                 <ActiveLink activeClassName={classes.activeDocs} className={classNames(classes.item, classes.docs)} href="/docs/introduction">📚 Docs</ActiveLink>
 
+                <div className="ml-2 mr-2">
+                    <ProfileDropDownComponent />
+                </div>
+
                 <div className={classes.themeTogglerWrapper}>
                     <ThemeToggler />
                 </div>
+
             </div>
 
             {

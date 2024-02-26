@@ -225,7 +225,6 @@ export default function HomepageHeader() {
     // For example, check if the entered address is valid and proceed accordingly
     if (!api || !address) {
       window.alert('Substrate API not connected or address not provided')
-      console.error('Substrate API not connected or address not provided');
       return;
     }
 
@@ -254,7 +253,6 @@ export default function HomepageHeader() {
               <div className=' bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-600 duration-200 text-white hover:text-white font-sans font-semibold justify-center px-2 py-2 hover:border-blue-300 hover:border-2 hover:border-solid cursor-pointer' onClick={handleAuthModal}>
                 Get Started
               </div>
-              {/* </a> */}
             </div>
 
           </div>
