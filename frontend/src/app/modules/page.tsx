@@ -9,6 +9,7 @@ import classes from "./modules.module.css";
 import SearchBar from "./components/search-bar";
 import Pagination from "react-paginate";
 import ModuleItem from "./components/module-item";
+import axios from "axios";
 
 const PolkadotWallet = dynamic(
 	() => import("@/app/api/polkadot/PolkadotWallet"),
@@ -48,9 +49,9 @@ export default function () {
 		// }
 
 		async function fetchModules() {
-			const modules = await ModulesService.getNewModulesList();
-			setLoadedModules(modules);
-			updateDisplayedModules(modules, currentPage);
+			const response = await axios.get('https://huggingface.co/api/spaces?full=full&direction=-1&sort=likes&limit=5000')
+			setLoadedModules(response.data);
+			updateDisplayedModules(response.data, currentPage);
 		}
 
 		fetchModules();
@@ -94,7 +95,7 @@ export default function () {
 							<ModuleTile key={module.name} {...module} />
 						))} */}
 						{displayedModules.map((item, idx) => (
-							<ModuleItem key={idx} title={item.title} group={item.group} imageLink="" logoLink="" />
+							<ModuleItem key={idx} id={item.id} cardData={item.cardData} />
 						))}
 					</ul>
 				) : (

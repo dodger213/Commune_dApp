@@ -4,31 +4,37 @@ import Card from "../../../components/atoms/card";
 import { useRouter } from "next/navigation";
 
 type ModuleItemPropsType = {
-    title: string;
-    group: string;
-    imageLink: string;
-    logoLink: string;
+    id: string;
+    cardData: {
+        title: string;
+        emoji: string;
+        colorFrom: string;
+        colorTo: string;
+        sdk: string;
+        app_file: string;
+        pinned: false
+    };
 }
 
 
-const ModuleItem = ( { title, group, imageLink, logoLink } : ModuleItemPropsType ) => {
+const ModuleItem = ( { id, cardData } : ModuleItemPropsType ) => {
 	const router = useRouter()
 
-	const onClickItemHandle = (name: string) => {
-		router.push(`/modules/interface/app/dashboard?modulename=${name}`)
+	const onClickItemHandle = () => {
+		router.push(`https://huggingface.co/spaces/${id}`)
 	};
 
     return (
         <Card className="p-[20px] cursor-pointer">
-            <div onClick={() => onClickItemHandle(title)}>
+            <div onClick={() => onClickItemHandle()}>
                 <p className="text-[#0e0e0e] text-[14px] break-words max-w-[350px] h-[36px]">
-                    {title}
+                    {cardData.title}
                 </p>
                 <div className="mt-[10px]">
                     <Image src={BasicImage} className='w-[450px] h-[350px]' width={500} height={400} alt=''/>
                 </div>
                 <div className="mt-[20px]">
-                    <p className='text-[50px] text-center'>👁</p>
+                    <p className='text-[50px] text-center'>{cardData.emoji}</p>
                 </div>
             </div>
         </Card>
