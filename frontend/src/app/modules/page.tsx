@@ -26,7 +26,7 @@ export default function () {
 	useEffect(() => {
 		const filtered = searchString
 			? loadedModules.filter((module) =>
-				module.name.toLowerCase().includes(searchString.toLowerCase())
+				module.title.toLowerCase().includes(searchString.toLowerCase())
 			)
 			: loadedModules;
 		setFilteredModules(filtered);
