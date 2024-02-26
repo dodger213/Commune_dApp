@@ -16,18 +16,6 @@ const getBase64 = (file: FileType): Promise<string> =>
         reader.onerror = (error) => reject(error);
     });
 
-const beforeUpload = (file: FileType) => {
-    const isJpgOrPng = file.type === 'image/jpeg' || file.type === 'image/png';
-    if (!isJpgOrPng) {
-        message.error('You can only upload JPG/PNG file!');
-    }
-    const isLt2M = file.size / 1024 / 1024 < 2;
-    if (!isLt2M) {
-        message.error('Image must smaller than 2MB!');
-    }
-    return isJpgOrPng && isLt2M;
-};
-
 const ProfileEditPage: React.FC = () => {
 
     const [fullName, setFullName] = useState('');
@@ -82,24 +70,24 @@ const ProfileEditPage: React.FC = () => {
                         <Image src={LogoImage} alt="image" width={150} height={150}
                             className="cursor-pointer" />
                         <div className="flex flex-col">
-                            <span className=''>
+                            <h1 className=''>
                                 Alan Guerrero
-                            </span>
-                            <span style={{ fontSize: '11.5px' }} className="dark: text-gray-500">
+                            </h1>
+                            <span className="dark: text-gray-500">
                                 Alan1201
                             </span>
                         </div>
 
                     </div>
 
-                    <div style={{ backgroundImage: 'linear-gradient(to right,rgb(190 191 195), rgb(101 101 101))' }} className="p-2 w-full mt-5 cursor-pointer">
+                    <div style={{ backgroundImage: 'linear-gradient(to right,rgb(190 191 195), rgb(101 101 101))' }} className="p-2 w-full mt-5 cursor-pointer hover:text-black">
                         <span style={{ fontWeight: '500' }}>Profile</span>
                     </div>
 
                     {
                         Items.map((item, index) => {
                             return <div key={index}>
-                                <div className="p-2 w-full cursor-pointer hover:bg-slate-400">
+                                <div className="p-2 w-full cursor-pointer hover:bg-slate-400 hover:text-black">
                                     <span >{item}</span>
                                 </div>
                             </div>
