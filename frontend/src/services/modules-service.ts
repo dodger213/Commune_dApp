@@ -4338,7 +4338,6 @@ export default class ModulesService {
     if (!searchQuery) {
       return modulesList;
     }
-
     return modulesList.filter((module) => module.name.includes(searchQuery) || (module.description && module.description.includes(searchQuery)));
   };
 
