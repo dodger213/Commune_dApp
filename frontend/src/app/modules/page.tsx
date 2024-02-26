@@ -94,7 +94,7 @@ export default function () {
 							<ModuleTile key={module.name} {...module} />
 						))} */}
 						{displayedModules.map((item, idx) => (
-							<ModuleItem key={idx} title={item.tile} group={item.group} imageLink="" logoLink="" />
+							<ModuleItem key={idx} title={item.title} group={item.group} imageLink="" logoLink="" />
 						))}
 					</ul>
 				) : (
