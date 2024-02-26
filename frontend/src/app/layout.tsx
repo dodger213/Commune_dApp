@@ -32,7 +32,7 @@ import "@fontsource/source-code-pro";
 import { projectId } from "../config";
 
 import Footer from "./components/footer/footer";
-import NavigationBar from "./components/navigation-bar";
+import NavigationBar from "./components/navbar/navigation-bar";
 import ThemeProvider from "./toggle-theme-provider";
 import Head from "./head";
 
