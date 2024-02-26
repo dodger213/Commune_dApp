@@ -14,7 +14,7 @@ const ModuleItem = ( { title, group, imageLink, logoLink } : ModuleItemPropsType
 
     return (
         <Card className="p-[20px]">
-            <p className="text-[#0e0e0e] text-[12px] break-words max-w-[350px] h-[36px]">
+            <p className="text-[#0e0e0e] text-[14px] break-words max-w-[350px] h-[36px]">
                 {title}
             </p>
             <div className="mt-[10px]">

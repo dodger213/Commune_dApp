@@ -2,6 +2,8 @@ import BasicImage from '../../public/img/frontpage/blockchain-1.png'
 import BasicImage1 from '../../public/img/frontpage/blockchain-2.png'
 import Image1 from '../../public/img/frontpage/portfolio-b1.png'
 import Image2 from '../../public/img/frontpage/portfolio-b2.png'
+import {modules} from './modules';
+
 
 export const modulesList = [
   {
@@ -4335,10 +4337,11 @@ export default class ModulesService {
   };
 
   static getNewModulesList = async (searchQuery = "") => {
+    
     if (!searchQuery) {
-      return modulesList;
+      return modules;
     }
-    return modulesList.filter((module) => module.name.includes(searchQuery) || (module.description && module.description.includes(searchQuery)));
+    return modules.filter((module) => module.title.includes(searchQuery) || (module.title && module.group.includes(searchQuery)));
   };
 
   static getModuleDetailsByName = async (name: string) => {
