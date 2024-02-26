@@ -1,5 +1,5 @@
 .tileWrapper {
-    width: 24%;
+    width: 98%;
     position: relative;
     transition: all 0.8s ease-in-out;
 }
@@ -19,7 +19,7 @@
         "description description"
         "attributes attributes";
     padding: 1vw;
-    height: 340px;
+    height: 300px;
     cursor: pointer;
     font-size: 0.9rem;
 }
