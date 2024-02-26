@@ -9,6 +9,8 @@ import classes from "./modules.module.css";
 import SearchBar from "./components/search-bar";
 import Modal from "antd/es/modal/Modal";
 import Pagination from "react-paginate";
+import ModuleItem from "./components/module-item";
+import axios from "axios";
 
 const PolkadotWallet = dynamic(
 	() => import("@/app/api/polkadot/PolkadotWallet"),
@@ -18,7 +20,7 @@ const PolkadotWallet = dynamic(
 export default function () {
 	const [searchString, setSearchString] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
-	const itemsPerPage = 849;
+	const itemsPerPage = 6;
 	const [loadedModules, setLoadedModules] = useState<any[]>([]);
 	const [displayedModules, setDisplayedModules] = useState<any[]>([]);
 	const [filteredModules, setFilteredModules] = useState<any[]>([]);
@@ -27,7 +29,7 @@ export default function () {
 	useEffect(() => {
 		const filtered = searchString
 			? loadedModules.filter((module) =>
-				module.name.toLowerCase().includes(searchString.toLowerCase())
+				module.id.toLowerCase().includes(searchString.toLowerCase())
 			)
 			: loadedModules;
 		setFilteredModules(filtered);
@@ -42,10 +44,16 @@ export default function () {
 	const pageCount = Math.ceil(filteredModules.length / itemsPerPage);
 
 	useEffect(() => {
+		// async function fetchModules() {
+		// 	const modules = await ModulesService.getModulesList();
+		// 	setLoadedModules(modules);
+		// 	updateDisplayedModules(modules, currentPage);
+		// }
+
 		async function fetchModules() {
-			const modules = await ModulesService.getModulesList();
-			setLoadedModules(modules);
-			updateDisplayedModules(modules, currentPage);
+			const response = await axios.get('https://huggingface.co/api/spaces?full=full&direction=-1&sort=likes&limit=5000')
+			setLoadedModules(response.data);
+			updateDisplayedModules(response.data, currentPage);
 		}
 
 		fetchModules();
@@ -96,15 +104,15 @@ export default function () {
 				/>
 				{displayedModules && displayedModules.length > 0 ? (
 					<ul className={classes.modulesList}>
-						{displayedModules.map((module, i) => (
-							<ModuleTile key={module.name} {...module} />
+						{displayedModules.map((item, idx) => (
+							<ModuleItem key={idx} id={item.id} cardData={item.cardData} />
 						))}
 					</ul>
 				) : (
 					<span className="dark: text-white">There is no data to display</span>
 				)}
 			</main>
-			{/* {filteredModules.length > 8 && (
+			{filteredModules.length > 6 && (
 				<Pagination
 					pageCount={pageCount}
 					onPageChange={handlePageChange}
@@ -124,7 +132,7 @@ export default function () {
 						: "text-blue-500 hover:text-blue-700"
 						}`}
 				/>
-			)} */}
+			)} 
 
 		{
 			isShowPolkadotWalletModalOpen &&
