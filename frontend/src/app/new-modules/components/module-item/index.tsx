@@ -33,7 +33,7 @@ const ModuleItem = ( { id, cardData } : ModuleItemPropsType ) => {
                     }
                 </p>
                 <div className="mt-[20px]">
-                    <p className='text-[50px] text-center'>{cardData.emoji}</p>
+                    <p className='text-[50px] text-center'>{cardData?.emoji}</p>
                 </div>
             </div>
         </Card>
