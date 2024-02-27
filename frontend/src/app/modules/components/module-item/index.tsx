@@ -27,7 +27,7 @@ const ModuleItem = ( { id, cardData } : ModuleItemPropsType ) => {
     return (
         <Card className="p-[20px] cursor-pointer">
             <div onClick={() => onClickItemHandle()}>
-                <p className="text-[#0e0e0e] text-[18px] break-words w-[200px] h-[36px]">
+                <p className="text-[#0e0e0e] text-[18px] break-words w-[260px] h-[36px]">
                     {
                         cardData?.title
                     }
