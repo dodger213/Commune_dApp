@@ -26,14 +26,12 @@ const ModuleItem = ( { id, cardData } : ModuleItemPropsType ) => {
 
     return (
         <Card className="p-[20px] cursor-pointer">
-            <div onClick={() => onClickItemHandle()}>
-                <p className="text-[#0e0e0e] text-[18px] break-words w-[200px] h-[36px]">
-                    {
-                        cardData?.title
-                    }
+            <div style={{width: "15rem"}} onClick={() => onClickItemHandle()}>
+                <p className="text-[#0e0e0e] text-[18px] break-words max-w-[350px] h-[36px]">
+                    {cardData.title}
                 </p>
                 <div className="mt-[20px]">
-                    <p className='text-[50px] text-center'>{cardData?.emoji}</p>
+                    <p className='text-[50px] text-center'>{cardData.emoji}</p>
                 </div>
             </div>
         </Card>

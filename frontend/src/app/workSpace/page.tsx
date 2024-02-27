@@ -3,6 +3,9 @@
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import ModulesService from "@/services/modules-service";
+import ModuleTile from "./components/module-tile/module-tile";
+import classes from "./modules.module.css";
 import SearchBar from "./components/search-bar";
 import Modal from "antd/es/modal/Modal";
 import Pagination from "react-paginate";
@@ -17,7 +20,7 @@ const PolkadotWallet = dynamic(
 export default function () {
 	const [searchString, setSearchString] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
-	const itemsPerPage = 15;
+	const itemsPerPage = 300;
 	const [loadedModules, setLoadedModules] = useState<any[]>([]);
 	const [displayedModules, setDisplayedModules] = useState<any[]>([]);
 	const [filteredModules, setFilteredModules] = useState<any[]>([]);
@@ -41,6 +44,12 @@ export default function () {
 	const pageCount = Math.ceil(filteredModules.length / itemsPerPage);
 
 	useEffect(() => {
+		// async function fetchModules() {
+		// 	const modules = await ModulesService.getModulesList();
+		// 	setLoadedModules(modules);
+		// 	updateDisplayedModules(modules, currentPage);
+		// }
+
 		async function fetchModules() {
 			const response = await axios.get('https://huggingface.co/api/spaces?full=full&direction=-1&sort=likes&limit=5000')
 			setLoadedModules(response.data);
@@ -79,28 +88,27 @@ export default function () {
 
 	return (
 		<>
-			<main className="mt-[30px] flex flex-col items-center justify-center my-auto mx-auto xl:w-[1400px] px-[20px] ">
-				<div className=' mb-[20px] bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-600 duration-200 
-					text-white hover:text-white font-sans font-semibold px-2 py-2 w-full flex justify-center items-center
-						hover:border-blue-300 hover:border-2 hover:border-solid cursor-pointer' 	onClick={handlePolkadotWalletModal}>
-					<img style={{ width: "auto", height: "2.7rem", marginRight: "0.25rem" }} src="/svg/polkadot.svg" alt="My Site Logo" />
-					<span>Connect Wallet</span>
-				</div>
+			<main
+				className={classNames(
+					classes.content,
+					"flex flex-col items-center justify-center my-auto "
+				)}
+			>
 				<SearchBar
 					setSearchString={setSearchString}
 					searchString={searchString}
 				/>
 				{displayedModules && displayedModules.length > 0 ? (
-					<ul className='mt-[40px] flex justify-center flex-wrap gap-[20px]'>
+					<ul className={classes.modulesList}>
 						{displayedModules.map((item, idx) => (
 							<ModuleItem key={idx} id={item.id} cardData={item.cardData} />
 						))}
 					</ul>
 				) : (
-					<span style={{height: "1500px"}}>There is no data to display</span>
+					<span className="dark: text-white" style={{height: "1500px"}}>There is no data to display</span>
 				)}
 			</main>
-			{filteredModules.length > 15 && (
+			{/* {filteredModules.length > 6 && (
 				<Pagination
 					pageCount={pageCount}
 					onPageChange={handlePageChange}
@@ -108,8 +116,8 @@ export default function () {
 					containerClassName="flex justify-center items-center space-x-3 my-4 text-lg dark:text-white"
 					pageLinkClassName="px-5 text-lg border rounded hover:bg-gray-200 transition-colors duration-200 py-3"
 					activeClassName="bg-blue-500 text-white py-3 rounded"
-					previousLabel={"previous"}
-					nextLabel={"next"}
+					// previousLabel={"previous"}
+					// nextLabel={"next"}
 					breakLabel={"..."}
 					previousClassName={`mr-2 ${currentPage === 1
 						? "text-gray-500"
@@ -120,7 +128,7 @@ export default function () {
 						: "text-blue-500 hover:text-blue-700"
 						}`}
 				/>
-			)} 
+			)}  */}
 
 		{
 			isShowPolkadotWalletModalOpen &&
