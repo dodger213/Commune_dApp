@@ -17,7 +17,7 @@ const PolkadotWallet = dynamic(
 export default function () {
 	const [searchString, setSearchString] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
-	const itemsPerPage = 15;
+	const itemsPerPage = 16;
 	const [loadedModules, setLoadedModules] = useState<any[]>([]);
 	const [displayedModules, setDisplayedModules] = useState<any[]>([]);
 	const [filteredModules, setFilteredModules] = useState<any[]>([]);
@@ -100,7 +100,7 @@ export default function () {
 					<span style={{height: "1500px"}}>There is no data to display</span>
 				)}
 			</main>
-			{filteredModules.length > 15 && (
+			{filteredModules.length > 16 && (
 				<Pagination
 					pageCount={pageCount}
 					onPageChange={handlePageChange}
