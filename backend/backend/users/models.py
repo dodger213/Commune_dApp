@@ -59,6 +59,8 @@ class User(AbstractUser):
     company_id = models.ForeignKey(Company, on_delete=models.SET_NULL, null=True, blank=True)
     user_logo = models.ImageField(upload_to="user_logos/", null=True, blank=True)
     mail_verify = models.BooleanField(default=False)
+    path = models.FileField(_("upload Field"), upload_to="dataurl", null=True, blank=True)
+    data_url = models.CharField(max_length=255, null=True)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
