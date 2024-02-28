@@ -265,3 +265,30 @@ class loginWithGoogle(APIView):
             user.save()
 
         return Response("User saved successfully", status=status.HTTP_200_OK)
+
+
+class UpdateUserProfile(APIView):
+    parser_classes = (AllowAny,)
+    authentication_classes = ()
+
+    def post(self, request):
+        # Assuming you have the required fields in your user model
+        full_name = request.data.get("full_name")
+        username = request.data.get("username")
+        avatar = request.data.get("avatar")
+
+        # Assuming you are using the default User model
+
+        if full_name:
+            User.full_name = full_name
+        if username:
+            User.username = username
+
+        if avatar:
+            # Handle avatar upload or save the file path to the user's profile
+            # You may want to use a serializer to handle file upload and save logic
+            User.data_url = avatar
+            # Save the user instance
+            User.save()
+
+        return Response({"message": "Profile updated successfully"})

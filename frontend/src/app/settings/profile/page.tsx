@@ -2,9 +2,10 @@
 import React, { useState } from "react";
 import LogoImage from '../../../../public/gif/logo/CubesShufflingGIF.gif'
 import Image from "next/image";
-import { LoadingOutlined, PlusOutlined } from '@ant-design/icons';
-import { Modal, Upload, message } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
+import { Modal, Upload } from 'antd';
 import type { GetProp, UploadFile, UploadProps } from 'antd';
+import axios from "axios";
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 
@@ -59,7 +60,27 @@ const ProfileEditPage: React.FC = () => {
     ]
 
     const handleSaveUserProfile = () => {
+        const formData = new FormData();
+        formData.append('fullName', fullName);
+        formData.append('userName', username);
+        if (fileList.length > 0) {
+            const firstFile = fileList[0];
+            formData.append('avatar', firstFile.name);
+        }
 
+        axios.post('http://localhost:8000/authentication/profile/', formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data',
+            },
+        })
+            .then((response) => {
+                console.log('File uploaded successfully!', response.data);
+                // You can handle success here, e.g., update state, show success message, etc.
+            })
+            .catch((error) => {
+                console.error('Error uploading file:', error);
+                // Handle errors here, e.g., show error message to the user
+            });
     }
 
     return (
@@ -104,10 +125,10 @@ const ProfileEditPage: React.FC = () => {
                         Profile Settings
                     </span>
                     <label className="mt-[5rem]">Full name</label>
-                    <textarea value={fullName} onChange={({ target: { value } }) => setFullName(value)} className="dark:bg-slate-600 dark:text-white flex justify-center p-1 w-full" />
+                    <textarea value={fullName} onChange={({ target: { value } }) => setFullName(value)} className="dark:bg-slate-600 dark:text-white flex justify-center p-2 w-full rounded-md" />
 
                     <label className="mt-[4rem]">Username</label>
-                    <textarea value={username} onChange={({ target: { value } }) => setUserName(value)} className="dark:bg-slate-600 dark:text-white flex justify-center p-1 w-full" />
+                    <textarea value={username} onChange={({ target: { value } }) => setUserName(value)} className="dark:bg-slate-600 dark:text-white flex justify-center p-2 w-full rounded-md" />
 
                     <label className="mt-[4rem]">Avatar <span className="dark:text-gray-500">(Optional)</span></label>
                     <Upload
