@@ -8,6 +8,7 @@ import ModuleTile from "./components/module-tile/module-tile";
 import classes from "./modules.module.css";
 import SearchBar from "./components/search-bar";
 import { Pagination } from 'antd';
+import Modal from "antd/es/modal/Modal";
 
 const PolkadotWallet = dynamic(
 	() => import("@/app/api/polkadot/PolkadotWallet"),
@@ -17,10 +18,11 @@ const PolkadotWallet = dynamic(
 export default function () {
 	const [searchString, setSearchString] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
-	const itemsPerPage = 8;
+	const itemsPerPage = 849;
 	const [loadedModules, setLoadedModules] = useState<any[]>([]);
 	const [displayedModules, setDisplayedModules] = useState<any[]>([]);
 	const [filteredModules, setFilteredModules] = useState<any[]>([]);
+	const [isShowPolkadotWalletModalOpen, setIsShowPolkadotWalletModalOpen] = useState(false)
 
 	useEffect(() => {
 		const filtered = searchString
@@ -38,8 +40,6 @@ export default function () {
 	}, [searchString, loadedModules]);
 
 	const pageCount = Math.ceil(filteredModules.length / itemsPerPage);
-
-	console.log('---------------this is the pageCount------------', pageCount, currentPage)
 
 	useEffect(() => {
 		async function fetchModules() {
@@ -70,6 +70,14 @@ export default function () {
 		setDisplayedModules(modules.slice(startIndex, endIndex));
 	};
 
+	const handlePolkadotWalletModal = () => {
+		setIsShowPolkadotWalletModalOpen(true)
+	}
+
+	const handleShowPolkadotWalletModalCancel: () => void = () => {
+		setIsShowPolkadotWalletModalOpen(false);
+	};
+
 	return (
 		<>
 			<main
@@ -78,7 +86,10 @@ export default function () {
 					"flex flex-col items-center justify-center my-auto "
 				)}
 			>
-				<PolkadotWallet onModulesFetched={handleModulesFetched} />
+				<div className={classNames(classes.Polkadot, ' bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-600 duration-200 text-white hover:text-white font-sans font-semibold justify-center px-2 py-2 hover:border-blue-300 hover:border-2 hover:border-solid cursor-pointer')} onClick={handlePolkadotWalletModal}>
+					<img style={{ width: "auto", height: "2.7rem", marginRight: "0.25rem" }} src="/svg/polkadot.svg" alt="My Site Logo" />
+					<span>Connect Wallet</span>
+				</div>
 				<SearchBar
 					setSearchString={setSearchString}
 					searchString={searchString}
@@ -94,6 +105,12 @@ export default function () {
 				)}
 			</main>
 			<Pagination current={currentPage} total={pageCount} defaultPageSize={10} onChange={handlePageChange} className="dark:text-white mx-auto" />;
+			{
+				isShowPolkadotWalletModalOpen &&
+				<Modal open={isShowPolkadotWalletModalOpen} onCancel={handleShowPolkadotWalletModalCancel} footer={null} width={500}>
+					<PolkadotWallet onModulesFetched={handleModulesFetched} />
+				</Modal>
+			}
 		</>
 	);
 }

@@ -106,7 +106,7 @@ export default function ModuleTile({
 						classes.name,
 						"bg-blue-100 rounded-lg dark:bg-[#272b2e] dark:text-white overflow-auto"
 					)}
-					style={{ fontSize: "1.1rem" }}
+					style={{ fontSize: "0.9rem" }}
 				>
 					name: {name}
 				</div>
@@ -116,7 +116,7 @@ export default function ModuleTile({
 						classes.address,
 						"bg-orange-200 rounded-lg border-solid flex dark:bg-[#653701] dark:text-white"
 					)}
-					style={{ fontSize: "1.1rem" }}
+					style={{ fontSize: "0.9rem" }}
 				>
 					address: {address}
 				</div>
@@ -136,7 +136,7 @@ export default function ModuleTile({
 							height={100}
 						/>
 					) : (
-						<span style={{ fontSize: "1.1rem" }}>No image</span>
+						<span style={{ fontSize: "0.9rem" }}>No image</span>
 					)}
 				</div>
 
@@ -146,7 +146,7 @@ export default function ModuleTile({
 							classes.description,
 							"bg-pink-100 rounded-lg border-solid h-[130px] dark:bg-[#3c0725] dark:text-white overflow-auto"
 						)}
-						style={{ fontSize: "1.1rem", padding: ".5rem" }}
+						style={{ fontSize: "0.9rem", padding: ".5rem" }}
 					>
 						description: {description}
 					</div>

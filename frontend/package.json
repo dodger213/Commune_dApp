@@ -34,6 +34,7 @@
     "next-auth": "^4.24.5",
     "react": "^18",
     "react-dom": "^18",
+    "react-flow-renderer": "^10.3.17",
     "react-github-login": "^1.0.3",
     "react-google-login": "^5.2.2",
     "react-hook-form": "^7.49.3",
