@@ -1,0 +1,97 @@
+.popup {
+  width: 30%;
+  display: grid;
+  grid-template-columns: 45% 45%;
+  column-gap: 10%;
+  row-gap: 1vw;
+  grid-template-areas:
+    "address name"
+    "description description"
+    "schemas schemas";
+}
+.address {
+  grid-area: address;
+  /* font-weight: 600; */
+  align-self: center;
+}
+.name {
+  grid-area: name;
+  display: flex;
+  justify-content: center;
+  padding: 0.5vw;
+}
+.description {
+  grid-area: description;
+  padding: 1vw;
+}
+
+.schemas {
+  grid-area: schemas;
+}
+.schemasSubtitle {
+  padding: 0.5vw 0;
+}
+.schemasList {
+  display: flex;
+  flex-direction: column;
+  gap: 1vw;
+  padding: 0;
+}
+.schemaNameElement {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 1vw;
+}
+.schemaName {
+  display: flex;
+  justify-content: center;
+  width: 40%;
+}
+
+.inputsList {
+  padding: 0.5vw 0 1vw;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5vw;
+  list-style: none;
+}
+.inputWrapper {
+  position: fixed;
+  display: flex;
+  gap: 0.5vw;
+}
+.inputDescription {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.htmlInputElementWrapper {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.htmlInputElement {
+  width: 100%;
+  text-align: center;
+  border: none;
+  outline: none;
+}
+.numericalInput {
+  padding-left: 1vw;
+}
+
+.output {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.runButton {
+  padding: 1.5vw;
+  cursor: pointer;
+}

@@ -333,7 +333,7 @@ export default function NavigationBar() {
                 <ActiveLink activeClassName={classes.activeModules} className={classNames(classes.item, classes.modules)} href="/modules">🚀 Modules</ActiveLink>
                 <ActiveLink activeClassName={classes.active} className={classes.item} href="/telemetry"><Image src={'http://telemetry.communeai.net/favicon.svg'} alt="image" width={20} height={20}></Image> &nbsp;Telemetry</ActiveLink>
                 <ActiveLink activeClassName={classes.active} className={classes.item} href="https://comchat.io/">🥂 ComChat</ActiveLink>
-
+                <ActiveLink activeClassName={classes.activeModules} className={classNames(classes.item, classes.modules)} href="/workSpace">🚀 Workspace</ActiveLink>
             </div>
             <div className={classNames(classes.items, classes.itemsRight)}>
                 <Link className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0]')} href="/docs/introduction">🚀 v0.0.0</Link>
