@@ -1,6 +1,5 @@
 "use client";
 
-import classNames from "classnames";
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import SearchBar from "@/components/molecules/search-bar/search-bar";
