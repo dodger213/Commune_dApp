@@ -43,6 +43,7 @@ export default function HomepageHeader() {
 
   //user login
   const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isShowSubstrateAuth, setIsShowSubstrateAuth] = useState(false)
 
   // state of the scroll position and header height
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -224,13 +225,19 @@ export default function HomepageHeader() {
     // Perform login logic here
     // For example, check if the entered address is valid and proceed accordingly
     if (!api || !address) {
-      window.alert('Substrate API not connected or address not provided')
+      window.alert('Substrate API not connected or address not provided');
+      setIsShowSubstrateAuth(false)
       return;
     }
 
     // Fetch account balance as an example
     getAccountBalance();
+    setIsShowSubstrateAuth(false)
   };
+
+  const handleShowSubstrateAuth = () => {
+    setIsShowSubstrateAuth(true)
+  }
 
   return (
     <header ref={headerRef} className={` dark:bg-[#161616] p-[4rem] py-32 text-center overflow-hidden ${getHeaderClasses(scrollPosition, headerHeight)} duration-500`} >
@@ -274,7 +281,7 @@ export default function HomepageHeader() {
         <Modal open={isShowAuthModalOpen} onCancel={handleShowAuthModalCancel} footer={null} width={500}>
           <div className='flex items-center justify-center'>
             <span style={{ fontWeight: '500', alignItems: 'center', display: 'flex', fontSize: '2rem' }}>
-              Welcome to Commune ai
+              Connect to Commune AI
             </span>
           </div>
 
@@ -317,10 +324,10 @@ export default function HomepageHeader() {
                       {(() => {
                         if (!connected) {
                           return (
-                            <div className='flex items-center justify-center hover:scale-105 p-2 w-[145.77px] h-[75.77px] rounded-md' style={{ flexDirection: 'column', border: '1px solid #2d50db' }} onClick={openConnectModal}>
-                              <Image src={MetaMaskImage} alt='login with Metamask' width={40} height={40} className='cursor-pointer' />
+                            <div className='flex items-center justify-center hover:bg-gray-300 p-2 w-[105.77px] h-[105.77px] rounded-md' style={{ flexDirection: 'column', border: '1px solid gray' }} onClick={openConnectModal}>
+                              <Image src={MetaMaskImage} alt='login with Metamask' width={40} height={40} className='cursor-pointer mb-1' />
                               <button type="button">
-                                Login with Wallet
+                                Metamask
                               </button>
                             </div>
                           );
@@ -383,10 +390,10 @@ export default function HomepageHeader() {
                 }}
               </ConnectButton.Custom>
 
-              <div className='flex items-center justify-center p-2 rounded-md hover:scale-105' style={{ flexDirection: 'column', border: '1px solid #2d50db' }}>
-                <Image src={GithubImage} alt='login with Github' width={40} height={40} className='cursor-pointer' />
+              <div className='flex items-center justify-center p-2 rounded-md hover:bg-gray-300 w-[105.77px] h-[105.77px]' style={{ flexDirection: 'column', border: '1px solid gray' }}>
+                <Image src={GithubImage} alt='login with Github' width={40} height={40} className='cursor-pointer mb-1' />
                 <GitHubLogin clientId='8386c0df1514607054e7'
-                  buttonText="Continue with Github"
+                  buttonText="Github"
                   style={{ marginTop: '8px' }}
                   onSuccess={onGitHubLoginSuccess}
                   onFailure={onGitHubLoginFailure}
@@ -396,21 +403,32 @@ export default function HomepageHeader() {
 
             </div>
 
-            <div className="flex flex-col justify-center items-center mt-4 hover:scale-105 p-2 rounded-md" style={{ flexDirection: 'column', border: '1px solid #2d50db' }}>
-              <h2>Substrate Login</h2>
-              <button onClick={connectToSubstrate} className="bg-blue-400 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-500 duration-200 text-white hover:text-white font-sans font-semibold justify-center px-2 py-2 hover:border-blue-300 hover:border-2 hover:border-solid cursor-pointer">Connect to Substrate</button>
+            <div className="flex flex-col justify-center items-center mt-4 hover:bg-gray-300 p-2 rounded-md w-[290px]" style={{ flexDirection: 'column', border: '1px solid gray' }}>
               {
-                chainInfo && nodeName &&
-                <div className="flex items-center justify-evenly mt-4">
-                  Connected to chain &nbsp;<span className="text-cyan-500" style={{ fontStyle: 'italic' }}>{chainInfo}&nbsp;</span> using &nbsp;<span className="text-cyan-500" style={{ fontStyle: 'italic' }}>&nbsp;{nodeName}</span>
-                </div>
+                isShowSubstrateAuth ?
+                  <>
+                    <button onClick={connectToSubstrate} className="bg-blue-400 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-500 duration-200 text-white hover:text-white font-sans font-semibold justify-center px-2 py-2 hover:border-blue-300 hover:border-2 hover:border-solid cursor-pointer">Connect to Substrate</button>
+                    {
+                      chainInfo && nodeName &&
+                      <div className="flex items-center justify-evenly mt-4">
+                        Connected to chain &nbsp;<span className="text-cyan-500" style={{ fontStyle: 'italic' }}>{chainInfo}&nbsp;</span> using &nbsp;<span className="text-cyan-500" style={{ fontStyle: 'italic' }}>&nbsp;{nodeName}</span>
+                      </div>
+                    }
+                    <div className="flex flex-col">
+                      <label>Enter Substrate Address:</label>
+                      <input type="text" value={address} onChange={({ target: { value } }) => setAddress(value)} className="p-2" />
+                    </div>
+                    <button onClick={handleLogin} className="bg-blue-400 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-500 duration-200 text-white hover:text-white font-sans font-semibold justify-center px-2 py-2 hover:border-blue-300 hover:border-2 hover:border-solid cursor-pointer mt-2">Login</button>
+                    {balance !== null && <p>Account Balance: {balance}</p>}
+                  </>
+                  :
+                  <div className="flex flex-col items-center justify-center cursor-pointer h-[105.77px]" onClick={handleShowSubstrateAuth}>
+                    <img style={{ width: "auto", height: "2.7rem" }} src="/svg/polkadot.svg" alt="My Site Logo" className="mb-1" />
+                    <span>Substrate</span>
+                  </div>
               }
-              <div className="flex flex-col">
-                <label>Enter Substrate Address:</label>
-                <input type="text" value={address} onChange={({ target: { value } }) => setAddress(value)} className="p-2" />
-              </div>
-              <button onClick={handleLogin} className="bg-blue-400 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-500 duration-200 text-white hover:text-white font-sans font-semibold justify-center px-2 py-2 hover:border-blue-300 hover:border-2 hover:border-solid cursor-pointer mt-2">Login</button>
-              {balance !== null && <p>Account Balance: {balance}</p>}
+
+
             </div>
           </div>
 
