@@ -2,12 +2,12 @@ import React from "react";
 import Link from "next/link";
 import { loadStripe } from "@stripe/stripe-js";
 import { useRouter } from "next/navigation";
-import ThemeToggler from "../theme-toggler";
+import ThemeToggler from "@/components/templates/theme-toggler";
 import { ApiPromise, WsProvider } from '@polkadot/api';
 
 import classes from './navigation-bar.module.css';
 import classNames from "classnames";
-import ActiveLink from "../active-link";
+import ActiveLink from "@/components/atoms/active-link";
 import type { MenuProps } from 'antd';
 import { Dropdown, Modal, Space, Select } from 'antd';
 import { DownOutlined } from "@ant-design/icons";

@@ -1,15 +1,9 @@
 import { useState, useEffect, useRef } from "react";
-
 import Image from "next/image";
-
 import GitHubLogin from "react-github-login";
-
 import { ConnectButton } from "@rainbow-me/rainbowkit";
-
 import { ApiPromise, WsProvider } from "@polkadot/api";
-
 import Modal from "antd/es/modal/Modal";
-
 import MetaMaskImage from "../../../public/svg/metamask.svg";
 import GithubImage from "../../../public/svg/github-mark.svg";
 

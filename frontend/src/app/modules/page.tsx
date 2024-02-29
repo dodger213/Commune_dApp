@@ -37,8 +37,6 @@ export default function () {
 		}
 	}, [searchString, loadedModules]);
 
-	const pageCount = Math.ceil(filteredModules.length / itemsPerPage);
-
 	useEffect(() => {
 		async function fetchModules() {
 			const response = await axios.get('https://huggingface.co/api/spaces?full=full&direction=-1&sort=likes&limit=5000')

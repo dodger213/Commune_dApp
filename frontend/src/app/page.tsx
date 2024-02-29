@@ -1,6 +1,6 @@
 'use client';
 import classNames from 'classnames';
-import HomepageHeader from './components/homepage-header';
+import HomepageHeader from '@/components/templates/homepage-header';
 
 import classes from "./home.module.css";
 
