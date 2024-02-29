@@ -159,3 +159,14 @@ a {
     background: black;
   }
 }
+
+
+.ant-pagination .ant-pagination-item a, .ant-pagination-item-link span, 
+.ant-pagination .ant-pagination-jump-next .ant-pagination-item-container .ant-pagination-item-ellipsis,
+.ant-pagination .ant-pagination-jump-prev .ant-pagination-item-container .ant-pagination-item-ellipsis {
+  color: white;
+}
+
+.ant-pagination .ant-pagination-item.ant-pagination-item-active a {
+  color: #1c1e1f;
+}

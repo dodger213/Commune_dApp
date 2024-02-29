@@ -1,6 +1,4 @@
-import Image from 'next/image';
-import BasicImage from '../../../../../public/img/frontpage/blockchain-1.png';
-import Card from "../../../components/atoms/card";
+import Card from "@/components/atoms/card";
 import { useRouter } from "next/navigation";
 
 type ModuleItemPropsType = {

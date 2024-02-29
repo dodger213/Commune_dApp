@@ -3,10 +3,10 @@
 import classNames from "classnames";
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import SearchBar from "./components/search-bar";
+import SearchBar from "@/components/molecules/search-bar/search-bar";
 import { Pagination } from 'antd';
 import Modal from "antd/es/modal/Modal";
-import ModuleItem from "./components/module-item";
+import ModuleItem from "@/components/molecules/module-item";
 import axios from "axios";
 
 const PolkadotWallet = dynamic(
@@ -100,7 +100,7 @@ export default function () {
 					<span style={{height: "1500px"}}>There is no data to display</span>
 				)}
 			</main>
-			<Pagination current={currentPage} total={pageCount} defaultPageSize={10} onChange={handlePageChange} className="dark:text-white mx-auto" />;
+			<Pagination current={currentPage} total={filteredModules.length} defaultPageSize={16} showSizeChanger={false} onChange={handlePageChange} className="dark:text-white mx-auto" />;
 		{
 			isShowPolkadotWalletModalOpen &&
 			<Modal open={isShowPolkadotWalletModalOpen} onCancel={handleShowPolkadotWalletModalCancel} footer={null} width={500}>
