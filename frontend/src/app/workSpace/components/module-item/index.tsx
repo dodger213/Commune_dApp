@@ -19,14 +19,10 @@ type ModuleItemPropsType = {
 
 const ModuleItem = ( { id, cardData } : ModuleItemPropsType ) => {
 	const router = useRouter()
-
-	const onClickItemHandle = () => {
-		router.push(`https://huggingface.co/spaces/${id}`)
-	};
-
+    
     return (
         <Card className="p-[20px] cursor-pointer">
-            <div style={{width: "15rem"}} onClick={() => onClickItemHandle()}>
+            <div style={{width: "9rem", height: "7rem"}} >
                 <p className="text-[#0e0e0e] text-[18px] break-words max-w-[350px] h-[36px]">
                     {cardData.title}
                 </p>
