@@ -1,15 +1,11 @@
 "use client";
 
-import classNames from "classnames";
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import SearchBar from "./components/search-bar";
 import Modal from "antd/es/modal/Modal";
 import Pagination from "react-paginate";
 import ModuleItem from "./components/module-item";
-import axios from "axios";
-import { cogData } from "./components/data/data";
-import { useParams } from "next/navigation";
 
 const PolkadotWallet = dynamic(
 	() => import("@/app/api/polkadot/PolkadotWallet"),
@@ -17,20 +13,19 @@ const PolkadotWallet = dynamic(
 );
 
 export default function () {
-	const url= useParams();
 	const [searchString, setSearchString] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
 	const itemsPerPage = 6;
 	const [loadedModules, setLoadedModules] = useState<any[]>([]);
 	const [displayedModules, setDisplayedModules] = useState<any[]>([]);
 	const [filteredModules, setFilteredModules] = useState<any[]>([]);
-	const [isShowPolkadotWalletModalOpen, setIsShowPolkadotWalletModalOpen] = useState(false)
-
+	const [isShowPolkadotWalletModalOpen, setIsShowPolkadotWalletModalOpen] = useState(false);
+	const [replicateData, setData] = useState<any[]>([]);
+	
 	useEffect(() => {
 		const filtered = searchString
 			? loadedModules.filter((module) =>
-				 module.id.toLowerCase().includes(searchString.toLowerCase())
-				
+			    module?.description ? module.description.toLowerCase().includes(searchString.toLowerCase()) : false			
 			)
 			: loadedModules;
 		setFilteredModules(filtered);
@@ -43,19 +38,33 @@ export default function () {
 	}, [searchString, loadedModules]);
 
 	const pageCount = Math.ceil(filteredModules.length / itemsPerPage);
+    
+	var  count = 0;
+	async function fetchModules(val: string) {
+		const response = await fetch(`/api/replicate?cursor=${val}`, { method: "GET" });
+		const data = await response.json();
+		const next = data.modules.next;
+		if (count < 6) {
+			const dataArray: any[] = data.modules.results;
+			dataArray.forEach(element => {
+				replicateData.push(element)
+			});
+			fetchModules(next);
+		}
+
+		else {
+			setLoadedModules(replicateData);
+			updateDisplayedModules(replicateData, currentPage);
+			return;
+		}
+		count++
+
+	}
 
 	useEffect(() => {
-		// async function fetchModules() {
-		// 	const response = await axios.get('https://huggingface.co/api/spaces?full=full&direction=-1&sort=likes&limit=5000')
-		// 	// setLoadedModules(response.data);
-		// 	// updateDisplayedModules(response.data, currentPage);
-			
-		// }
-		    setLoadedModules(cogData);
-			updateDisplayedModules(cogData, currentPage);
+		fetchModules('');
+	}, []);
 
-		// fetchModules();
-	}, [url]);
 
 	const handlePageChange = (selectedItem: any) => {
 		setCurrentPage(selectedItem.selected + 1);
@@ -101,10 +110,11 @@ export default function () {
 					<div className='mt-[40px] grid grid-cols-3 gap-[20px] w-[100%]'>
 						{displayedModules.map((item, idx) => (
 							<ModuleItem key={idx} data={item} />
+
 						))}
 					</div>
 				) : (
-					<span style={{height: "1500px"}}>There is no data to display</span>
+					<span style={{ height: "1500px" }}>There is no data to display</span>
 				)}
 			</main>
 			{filteredModules.length > 6 && (
@@ -127,14 +137,14 @@ export default function () {
 						: "text-blue-500 hover:text-blue-700"
 						}`}
 				/>
-			)} 
+			)}
 
-		{
-			isShowPolkadotWalletModalOpen &&
-			<Modal open={isShowPolkadotWalletModalOpen} onCancel={handleShowPolkadotWalletModalCancel} footer={null} width={500}>
-				<PolkadotWallet onModulesFetched={handleModulesFetched} />
-			</Modal>
-		}
+			{
+				isShowPolkadotWalletModalOpen &&
+				<Modal open={isShowPolkadotWalletModalOpen} onCancel={handleShowPolkadotWalletModalCancel} footer={null} width={500}>
+					<PolkadotWallet onModulesFetched={handleModulesFetched} />
+				</Modal>
+			}
 		</>
 	);
 }
