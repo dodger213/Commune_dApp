@@ -15,6 +15,10 @@
   padding: 0;
 }
 
+.modulesList::-webkit-scrollbar {
+  display: none;
+}
+
 .Polkadot {
   width: 100%;
   display: flex;

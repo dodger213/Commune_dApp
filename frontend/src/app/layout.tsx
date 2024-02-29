@@ -37,6 +37,7 @@ import ThemeProvider from "./toggle-theme-provider";
 import Head from "./head";
 
 import './globals.css';
+import 'reactflow/dist/style.css';
 
 const { chains, publicClient } = configureChains(
   [mainnet, polygon, optimism, arbitrum, base, zora, sepolia, goerli],
