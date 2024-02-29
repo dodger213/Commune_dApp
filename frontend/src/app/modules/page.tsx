@@ -1,6 +1,5 @@
 "use client";
 
-import classNames from "classnames";
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import SearchBar from "@/components/molecules/search-bar/search-bar";
@@ -37,8 +36,6 @@ export default function () {
 			updateDisplayedModules(filtered, currentPage);
 		}
 	}, [searchString, loadedModules]);
-
-	const pageCount = Math.ceil(filteredModules.length / itemsPerPage);
 
 	useEffect(() => {
 		async function fetchModules() {

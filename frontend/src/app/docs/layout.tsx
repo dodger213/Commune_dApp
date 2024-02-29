@@ -1,8 +1,5 @@
 import Link from "next/link";
-
-import classes from "./docs.module.css";
-import DocsMenu from "./components/docs-menu";
-import classNames from "classnames";
+import DocsMenu from "@/components/molecules/docs/docs-menu";
 
 export default function DocsLayout({
 	children,
@@ -10,9 +7,9 @@ export default function DocsLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<div className={classes.docsLayout}>
+		<div className="flex">
 			<DocsMenu />
-			<section className={classNames(classes.docsContent, "dark:text-white")}>
+			<section className="mt-[50px] px-[2rem] dark:text-white">
 				{children}
 			</section>
 		</div>

@@ -2,11 +2,11 @@
 
 import React, { useState } from "react";
 
-import Popup from "../../../../../../components/popup/popup";
+import Popup from "@/components/atoms/popup/popup";
 import classes from "./module-details-modal.module.css";
 import { modulesList } from "../../../../../../services/modules-service";
 import classNames from "classnames";
-import Checkbox from "../../../../../../components/checkbox/checkbox";
+import Checkbox from "@/components/atoms/checkbox/checkbox";
 
 export default function ModuleDetailsModal({
   name,

@@ -26,15 +26,12 @@ import {
 } from 'wagmi/chains';
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
-
 import "@fontsource/source-code-pro";
-
 import { projectId } from "../config";
-
-import Footer from "./components/footer/footer";
-import NavigationBar from "./components/navbar/navigation-bar";
-import ThemeProvider from "./toggle-theme-provider";
-import Head from "./head";
+import Head from '@/components/templates/head';
+import Footer from '@/components/templates/footer/footer';
+import NavigationBar from '@/components/organisms/navbar/navigation-bar';
+import ThemeProvider from '@/context/toggle-theme-provider';
 
 import './globals.css';
 import 'reactflow/dist/style.css';

@@ -1,7 +1,7 @@
 "use client";
 
 import { useContext } from "react";
-import { ThemeContext, ToggleThemeContext } from "../toggle-theme-provider";
+import { ThemeContext, ToggleThemeContext } from "@/context/toggle-theme-provider";
 
 import classes from "./theme-toggler.module.css";
 
