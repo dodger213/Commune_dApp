@@ -325,7 +325,7 @@ export default function HomepageHeader() {
                         if (!connected) {
                           return (
                             <div className='flex items-center justify-center hover:bg-gray-300 p-2 w-[105.77px] h-[105.77px] rounded-md' style={{ flexDirection: 'column', border: '1px solid gray' }} onClick={openConnectModal}>
-                              <Image src={MetaMaskImage} alt='login with Metamask' width={40} height={40} className='cursor-pointer mb-1' />
+                              <Image src={MetaMaskImage} alt='login with Metamask' width={50} height={50} className='cursor-pointer mb-1' />
                               <button type="button">
                                 Metamask
                               </button>
@@ -391,7 +391,7 @@ export default function HomepageHeader() {
               </ConnectButton.Custom>
 
               <div className='flex items-center justify-center p-2 rounded-md hover:bg-gray-300 w-[105.77px] h-[105.77px]' style={{ flexDirection: 'column', border: '1px solid gray' }}>
-                <Image src={GithubImage} alt='login with Github' width={40} height={40} className='cursor-pointer mb-1' />
+                <Image src={GithubImage} alt='login with Github' width={50} height={50} className='cursor-pointer mb-1' />
                 <GitHubLogin clientId='8386c0df1514607054e7'
                   buttonText="Github"
                   style={{ marginTop: '8px' }}
@@ -423,11 +423,10 @@ export default function HomepageHeader() {
                   </>
                   :
                   <div className="flex flex-col items-center justify-center cursor-pointer h-[105.77px]" onClick={handleShowSubstrateAuth}>
-                    <img style={{ width: "auto", height: "2.7rem" }} src="/svg/polkadot.svg" alt="My Site Logo" className="mb-1" />
+                    <img style={{ width: "50px", height: "50px" }} src="/svg/polkadot.svg" alt="My Site Logo" className="mb-1" />
                     <span>Substrate</span>
                   </div>
               }
-
 
             </div>
           </div>
