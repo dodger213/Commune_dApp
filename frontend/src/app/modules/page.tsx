@@ -100,7 +100,7 @@ export default function () {
 					<span style={{height: "1500px"}}>There is no data to display</span>
 				)}
 			</main>
-			<Pagination current={currentPage} total={pageCount} defaultPageSize={10} onChange={handlePageChange} className="dark:text-white mx-auto" />;
+			<Pagination current={currentPage} total={filteredModules.length} defaultPageSize={16} showSizeChanger={false} onChange={handlePageChange} className="dark:text-white mx-auto" />;
 		{
 			isShowPolkadotWalletModalOpen &&
 			<Modal open={isShowPolkadotWalletModalOpen} onCancel={handleShowPolkadotWalletModalCancel} footer={null} width={500}>
