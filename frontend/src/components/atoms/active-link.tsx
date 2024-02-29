@@ -17,7 +17,7 @@ const ActiveLink = ({
 }: PropsWithChildren<ActiveLinkProps>) => {
 	const pathname = usePathname();
 
-	const isActive = pathname.startsWith(props.href as string);
+	const isActive = pathname?.startsWith(props.href as string);
 
 	return (
 		<Link

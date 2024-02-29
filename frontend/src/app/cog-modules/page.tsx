@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import SearchBar from "./components/search-bar";
+import SearchBar from "@/components/molecules/search-bar/search-bar";
 import Modal from "antd/es/modal/Modal";
 import Pagination from "react-paginate";
-import ModuleItem from "./components/module-item";
+import ModuleItem from "@/components/molecules/cog-modules";
 
 const PolkadotWallet = dynamic(
 	() => import("@/app/api/polkadot/PolkadotWallet"),
