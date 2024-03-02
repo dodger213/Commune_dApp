@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux'
-import transactionRecord from './transaction.record.reducer'
+import { combineReducers } from "redux";
+import transactionRecord from "./transaction.record.reducer";
 
 const rootReducer = combineReducers({
-    transactionRecord: transactionRecord,
+  transactionRecord: transactionRecord,
 });
 
 export default rootReducer;

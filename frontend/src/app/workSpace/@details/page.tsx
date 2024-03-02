@@ -1,5 +1,3 @@
-export default function ModulesDetailsPage({
-
-}) {
-    return null;
+export default function ModulesDetailsPage({}) {
+  return null;
 }

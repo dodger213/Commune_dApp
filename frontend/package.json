@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\""
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
@@ -32,6 +33,7 @@
     "moralis": "^2.23.2",
     "next": "14.0.1",
     "next-auth": "^4.24.5",
+    "prettier": "^3.2.5",
     "react": "^18",
     "react-dom": "^18",
     "react-flow-renderer": "^10.3.17",
