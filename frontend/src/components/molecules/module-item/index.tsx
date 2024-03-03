@@ -1,5 +1,7 @@
 import Card from "@/components/atoms/card";
 import { useRouter } from "next/navigation";
+import Modal from "antd/es/modal/Modal";
+import { useState } from "react";
 
 type ModuleItemPropsType = {
     id: string;
@@ -16,25 +18,35 @@ type ModuleItemPropsType = {
 
 
 const ModuleItem = ( { id, cardData } : ModuleItemPropsType ) => {
-	const router = useRouter()
+	const router = useRouter();
+    const [openModal, setOpenModal] = useState<boolean>(false);
+    const [subdomain, setSubdomain] = useState<string>('');
 
 	const onClickItemHandle = () => {
-		router.push(`https://huggingface.co/spaces/${id}`)
+		setOpenModal(true);
+        console.log(id)
+        const prepared = id.toLowerCase().replaceAll('_', '-');
+        setSubdomain(prepared.split('/')[0] + '-' + prepared.split('/')[1] )
 	};
 
     return (
-        <Card className="p-[20px] cursor-pointer">
-            <div onClick={() => onClickItemHandle()}>
-                <p className="text-[#0e0e0e] text-[18px] break-words w-[260px] h-[36px]">
-                    {
-                        cardData?.title
-                    }
-                </p>
-                <div className="mt-[20px]">
-                    <p className='text-[50px] text-center'>{cardData?.emoji}</p>
+        <>
+            <Modal open={openModal} onCancel={() => setOpenModal(false) } width={840} footer={null} >
+                <iframe className="w-[800px] h-[480px] p-[20px]" src={`https://${subdomain}.hf.space`} ></iframe>
+            </Modal>
+            <Card className="p-[20px] cursor-pointer">
+                <div onClick={() => onClickItemHandle()}>
+                    <p className="text-[#0e0e0e] text-[18px] break-words w-[260px] h-[36px]">
+                        {
+                            cardData?.title
+                        }
+                    </p>
+                    <div className="mt-[20px]">
+                        <p className='text-[50px] text-center'>{cardData?.emoji}</p>
+                    </div>
                 </div>
-            </div>
-        </Card>
+            </Card>
+        </>
     )
 
 }
