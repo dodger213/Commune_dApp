@@ -1,26 +1,23 @@
-import React from "react";
-import { useSearchParams } from "next/navigation";
+import React from 'react';
+import { useSearchParams } from 'next/navigation';
 
 const Head = () => {
-  const searchParams = useSearchParams();
+	const searchParams = useSearchParams();
 
-  const name = searchParams?.get("titlename");
+	const name = searchParams?.get("titlename");
 
-  const dynamicTitle = name ? `${name} | Commune` : "Commune";
+	const dynamicTitle = name ? `${name} | Commune` : "Commune";
 
-  return (
-    <>
-      <title>
-        {dynamicTitle.charAt(0).toUpperCase() + dynamicTitle.slice(1)}
-      </title>
-      <meta content="width=device-width, initial-scale=1" name="viewport" />
-      <meta
-        name="description"
-        content="Renovating the way we build software for developers"
-      />
-      <link rel="icon" href="/svg/commune.svg" />
-    </>
-  );
+	return (
+		<>
+			<title>
+				{dynamicTitle.charAt(0).toUpperCase() + dynamicTitle.slice(1)}
+			</title>
+			<meta content="width=device-width, initial-scale=1" name="viewport" />
+			<meta name="description" content="Renovating the way we build software for developers" />
+			<link rel="icon" href="/svg/commune.svg" />
+		</>
+	);
 };
 
 export default Head;
