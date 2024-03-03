@@ -6,6 +6,9 @@ import { ApiPromise, WsProvider } from "@polkadot/api";
 import Modal from "antd/es/modal/Modal";
 import MetaMaskImage from "../../../public/svg/metamask.svg";
 import GithubImage from "../../../public/svg/github-mark.svg";
+import PolkadotImage from "../../../public/svg/polkadot.svg";
+import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
+
 
 const words: string[] = [
   "developers.",
@@ -25,6 +28,7 @@ const TITLE = "Commune AI";
 const TAGLINE = "Renovating the way we build software for ";
 
 export default function HomepageHeader() {
+
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
   const [blink, setBlink] = useState(true);
@@ -123,9 +127,23 @@ export default function HomepageHeader() {
     };
     getUserInfo(accessToken);
   };
-
+  
   const onGitHubLoginFailure = (response: any) => {
     console.log("------the data from github-----failed-----", response);
+  };
+  
+  const connectWallet = async () => {
+    try {
+        await web3Enable('Commune AI');
+        const accounts = await web3Accounts();
+        const provider = new WsProvider('wss://rpc.polkadot.io');
+        const polkadotAPI = await ApiPromise.create({ provider });
+        const address = accounts[0].address;
+        const data = await polkadotAPI.query.system.account(address);
+        setIsShowAuthModalOpen(false);
+      } catch (error) {
+        console.error('Error connecting to wallet:', error);
+    }
   };
 
   // useEffect(() => {
@@ -138,66 +156,63 @@ export default function HomepageHeader() {
   //   connectToSubstrate();
   // }, []);
 
-  const connectToSubstrate = async () => {
-    const provider = new WsProvider("wss://rpc.polkadot.io");
-    const substrateApi = await ApiPromise.create({ provider });
-    setApi(substrateApi);
-  };
+//   const connectToSubstrate = async () => {
+//     const provider = new WsProvider("wss://rpc.polkadot.io");
+//     const substrateApi = await ApiPromise.create({ provider });
+//     setApi(substrateApi);
+//   };
 
-  const getChainInfo = async () => {
-    if (api) {
-      const chain = await api.rpc.system.chain();
-      setChainInfo(chain.toString());
-      const nodeName = await api.rpc.system.name();
-      setNodeName(nodeName.toString());
-      console.log(`Connected to chain ${chain} using ${nodeName}`);
-    }
-  };
+//   const getChainInfo = async () => {
+//     if (api) {
+//       const chain = await api.rpc.system.chain();
+//       setChainInfo(chain.toString());
+//       const nodeName = await api.rpc.system.name();
+//       setNodeName(nodeName.toString());
+//       console.log(`Connected to chain ${chain} using ${nodeName}`);
+//     }
+//   };
 
-  useEffect(() => {
-    getChainInfo();
-  }, [api]);
 
-  const getAccountBalance = async () => {
-    try {
-      const accountInfo = await api?.query.system.account(address);
 
-      console.log(
-        "------------------where is the account Info---------",
-        accountInfo,
-      );
-      setIsLoggedIn(true);
+//   useEffect(() => {
+//     getChainInfo();
+//   }, [api]);
 
-      // if (accountInfo?.isSome) {
-      //   const { nonce, data: balance } = accountInfo.unwrap();
+//   const getAccountBalance = async () => {
+//     try {
+//       const accountInfo = await api?.query.system.account(address);
+//       setIsLoggedIn(true);
 
-      //   console.log('Account Nonce:', nonce.toNumber());
-      //   console.log('Account Balance:', balance.free.toString());
+//       // if (accountInfo?.isSome) {
+//       //   const { nonce, data: balance } = accountInfo.unwrap();
 
-      //   setBalance(balance.free.toString());
-      // } else {
-      //   console.error('Account information not available for the provided address');
-      // }
-    } catch (error) {
-      console.error("Error getting account balance:", error);
-    }
-  };
+//       //   console.log('Account Nonce:', nonce.toNumber());
+//       //   console.log('Account Balance:', balance.free.toString());
 
-  const handleLogin = async () => {
-    if (!api || !address) {
-      window.alert("Substrate API not connected or address not provided");
-      setIsShowSubstrateAuth(false);
-      return;
-    }
+//       //   setBalance(balance.free.toString());
+//       // } else {
+//       //   console.error('Account information not available for the provided address');
+//       // }
+//     } catch (error) {
+//       console.error("Error getting account balance:", error);
+//     }
+//   };
 
-    // Fetch account balance as an example
-    getAccountBalance();
-    setIsShowSubstrateAuth(false);
-  };
+//   const handleLogin = async () => {
+//     if (!api || !address) {
+//       window.alert("Substrate API not connected or address not provided");
+//       setIsShowSubstrateAuth(false);
+//       return;
+//     }
 
-  const handleShowSubstrateAuth = () => {
-    setIsShowSubstrateAuth(true);
-  };
+//     // Fetch account balance as an example
+//     getAccountBalance();
+//     setIsShowSubstrateAuth(false);
+//   };
+
+//   const handleShowSubstrateAuth = () => {
+//     setIsShowSubstrateAuth(true);
+//   };
 
   return (
     <header
@@ -242,7 +257,7 @@ export default function HomepageHeader() {
         </div>
       </div>
 
-      {isShowSubstrateConnectModalOpen && (
+      {/* {isShowSubstrateConnectModalOpen && (
         <Modal
           open={isShowSubstrateConnectModalOpen}
           onCancel={() => setIsShowSubstrateConnectModalOpen(false)}
@@ -251,7 +266,7 @@ export default function HomepageHeader() {
         >
           <button onClick={getChainInfo}>Get Chain Info</button>
         </Modal>
-      )}
+      )} */}
 
       {isShowAuthModalOpen && (
         <Modal
@@ -395,7 +410,7 @@ export default function HomepageHeader() {
                 }}
               </ConnectButton.Custom>
 
-              <div className="flex items-center justify-center flex-col border-[1px] border-[gray] p-2 rounded-md hover:bg-gray-300 w-[105.77px] h-[105.77px]">
+              <div className="transition-all duration-300 flex items-center justify-center flex-col border-[1px] border-[gray] p-2 rounded-md hover:bg-gray-300 w-[105.77px] h-[105.77px]">
                 <Image
                   src={GithubImage}
                   alt="login with Github"
@@ -412,9 +427,15 @@ export default function HomepageHeader() {
                   redirectUri={"http://localhost:3000/modules"}
                 />
               </div>
+              <div className="transition-all duration-300 flex items-center justify-center flex-col border-[1px] border-[gray] p-2 rounded-md hover:bg-gray-300 w-[105.77px] h-[105.77px]">
+                <button onClick={connectWallet} className="w-full h-full flex justify-center items-center">
+                  <Image className="w-[60px] h-[60px]" width={50} height={50} src={PolkadotImage} alt="Polkadot" />
+                </button>
+              </div>
             </div>
 
-            <div
+            
+            {/* <div
               className="flex flex-col justify-center items-center mt-4 p-[20px] rounded-md "
               style={{ flexDirection: "column", border: "1px solid gray" }}
             >
@@ -473,8 +494,8 @@ export default function HomepageHeader() {
                   />
                   <span>Substrate</span>
                 </div>
-              )}
-            </div>
+              )} 
+            </div> */}
           </div>
         </Modal>
       )}
