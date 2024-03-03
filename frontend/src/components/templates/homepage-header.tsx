@@ -1,3 +1,4 @@
+"use client"
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import GitHubLogin from "react-github-login";
@@ -6,6 +7,9 @@ import { ApiPromise, WsProvider } from "@polkadot/api";
 import Modal from "antd/es/modal/Modal";
 import MetaMaskImage from "../../../public/svg/metamask.svg";
 import GithubImage from "../../../public/svg/github-mark.svg";
+import PolkadotImage from "../../../public/svg/polkadot.svg";
+import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
+
 
 const words: string[] = [
   "developers.",
@@ -31,22 +35,15 @@ export default function HomepageHeader() {
   const [blink, setBlink] = useState(true);
   const [reverse, setReverse] = useState(false);
   const [isShowAuthModalOpen, setIsShowAuthModalOpen] = useState(false)
-  const [isShowSubstrateConnectModalOpen, setIsShowSubstrateConnectModalOpen] = useState(false)
-  const [address, setAddress] = useState('');
-  const [balance, setBalance] = useState(null);
 
   //user login
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [isShowSubstrateAuth, setIsShowSubstrateAuth] = useState(false)
 
   // state of the scroll position and header height
   const [scrollPosition, setScrollPosition] = useState(0);
   const headerRef = useRef<any>(null);
   const [headerHeight, setHeaderHeight] = useState(20);
 
-  const [api, setApi] = useState<ApiPromise | null>(null);
-  const [chainInfo, setChainInfo] = useState('');
-  const [nodeName, setNodeName] = useState('');
   // typeWriter effect
   // give me the context of this whole useEffect
   useEffect(() => {
@@ -108,17 +105,6 @@ export default function HomepageHeader() {
     }
   }, [headerRef.current]);
 
-  const handleAuthModal = () => {
-    setIsShowAuthModalOpen(true)
-  }
-
-  const handleShowAuthModalCancel: () => void = () => {
-    setIsShowAuthModalOpen(false);
-  };
-
-  const handleShowSubstrateModalCancel = () => {
-    setIsShowSubstrateConnectModalOpen(false);
-  };
 
   const onGitHubLoginSuccess = (response: any) => {
 
@@ -156,82 +142,23 @@ export default function HomepageHeader() {
     console.log('------the data from github-----failed-----', response);
   }
 
-  const responseMessage = (response: any) => {
-    console.log('-----------------------This is the React component-------------------', response);
+  const connectWallet = async () => {
+      if (typeof window !== 'undefined') {
+          try {
+              await web3Enable('Commune AI');
+              const accounts = await web3Accounts();
+              const provider = new WsProvider('wss://rpc.polkadot.io');
+              const polkadotAPI = await ApiPromise.create({ provider });
+              const address = accounts[0].address;
+              const data = await polkadotAPI.query.system.account(address);
+          } catch (error) {
+              console.error('Error connecting to wallet:', error);
+          }
+          setIsShowAuthModalOpen(false);
+      } else {
+          console.error('Cannot connect wallet: Code is running on the server.');
+      }
   };
-  const errorMessage = () => {
-    console.log('An error has occured')
-  };
-
-  // useEffect(() => {
-  //   const connectToSubstrate = async () => {
-  //     const provider = new WsProvider('wss://rpc.polkadot.io');
-  //     const substrateApi = await ApiPromise.create({ provider });
-  //     setApi(substrateApi);
-  //   };
-
-  //   connectToSubstrate();
-  // }, []);
-
-  const connectToSubstrate = async () => {
-    const provider = new WsProvider('wss://rpc.polkadot.io');
-    const substrateApi = await ApiPromise.create({ provider });
-    setApi(substrateApi);
-  }
-
-  const getChainInfo = async () => {
-    if (api) {
-      const chain = await api.rpc.system.chain();
-      setChainInfo(chain.toString())
-      const nodeName = await api.rpc.system.name();
-      setNodeName(nodeName.toString())
-      console.log(`Connected to chain ${chain} using ${nodeName}`);
-    }
-  };
-
-  useEffect(() => {
-    getChainInfo()
-  }, [api])
-
-  const getAccountBalance = async () => {
-    try {
-      const accountInfo = await api?.query.system.account(address);
-
-      console.log('------------------where is the account Info---------', accountInfo)
-      setIsLoggedIn(true)
-
-      // if (accountInfo?.isSome) {
-      //   const { nonce, data: balance } = accountInfo.unwrap();
-
-      //   console.log('Account Nonce:', nonce.toNumber());
-      //   console.log('Account Balance:', balance.free.toString());
-
-      //   setBalance(balance.free.toString());
-      // } else {
-      //   console.error('Account information not available for the provided address');
-      // }
-    } catch (error) {
-      console.error('Error getting account balance:', error);
-    }
-  };
-
-  const handleLogin = async () => {
-    // Perform login logic here
-    // For example, check if the entered address is valid and proceed accordingly
-    if (!api || !address) {
-      window.alert('Substrate API not connected or address not provided');
-      setIsShowSubstrateAuth(false)
-      return;
-    }
-
-    // Fetch account balance as an example
-    getAccountBalance();
-    setIsShowSubstrateAuth(false)
-  };
-
-  const handleShowSubstrateAuth = () => {
-    setIsShowSubstrateAuth(true)
-  }
 
   return (
     <header ref={headerRef} className={` dark:bg-[#161616] p-[4rem] py-32 text-center overflow-hidden ${getHeaderClasses(scrollPosition, headerHeight)} duration-500`} >
@@ -251,7 +178,8 @@ export default function HomepageHeader() {
             </div>
 
             <div className='w-30 h-10'>
-              <div className=' bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-600 duration-200 text-white hover:text-white font-sans font-semibold justify-center px-2 py-2 hover:border-blue-300 hover:border-2 hover:border-solid cursor-pointer' onClick={handleAuthModal}>
+              <div className=' bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-600 duration-200 text-white hover:text-white font-sans font-semibold 
+                justify-center px-2 py-2 cursor-pointer' onClick={ () => setIsShowAuthModalOpen(true)}>
                 Get Started
               </div>
             </div>
@@ -266,13 +194,8 @@ export default function HomepageHeader() {
       </div>
 
       {
-        isShowSubstrateConnectModalOpen && <Modal open={isShowSubstrateConnectModalOpen} onCancel={handleShowSubstrateModalCancel} footer={null} width={500}>
-          <button onClick={getChainInfo}>Get Chain Info</button>
-        </Modal>
-      }
-      {
         isShowAuthModalOpen &&
-        <Modal open={isShowAuthModalOpen} onCancel={handleShowAuthModalCancel} footer={null} width={500}>
+        <Modal open={isShowAuthModalOpen} onCancel={ () => setIsShowAuthModalOpen(false)} footer={null} width={500}>
           <div className='flex items-center justify-center'>
             <span style={{ fontWeight: '500', alignItems: 'center', display: 'flex', fontSize: '2rem' }}>
               Connect to Commune AI
@@ -394,37 +317,13 @@ export default function HomepageHeader() {
                   redirectUri={'http://localhost:3000/modules'}
                 />
               </div>
-
-            </div>
-
-            <div className="flex flex-col justify-center items-center mt-4 hover:bg-gray-300 p-2 rounded-md w-[290px]" style={{ flexDirection: 'column', border: '1px solid gray' }}>
-              {
-                isShowSubstrateAuth ?
-                  <>
-                    <button onClick={connectToSubstrate} className="bg-blue-400 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-500 duration-200 text-white hover:text-white font-sans font-semibold justify-center px-2 py-2 hover:border-blue-300 hover:border-2 hover:border-solid cursor-pointer">Connect to Substrate</button>
-                    {
-                      chainInfo && nodeName &&
-                      <div className="flex items-center justify-evenly mt-4">
-                        Connected to chain &nbsp;<span className="text-cyan-500" style={{ fontStyle: 'italic' }}>{chainInfo}&nbsp;</span> using &nbsp;<span className="text-cyan-500" style={{ fontStyle: 'italic' }}>&nbsp;{nodeName}</span>
-                      </div>
-                    }
-                    <div className="flex flex-col">
-                      <label>Enter Substrate Address:</label>
-                      <input type="text" value={address} onChange={({ target: { value } }) => setAddress(value)} className="p-2" />
-                    </div>
-                    <button onClick={handleLogin} className="bg-blue-400 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-500 duration-200 text-white hover:text-white font-sans font-semibold justify-center px-2 py-2 hover:border-blue-300 hover:border-2 hover:border-solid cursor-pointer mt-2">Login</button>
-                    {balance !== null && <p>Account Balance: {balance}</p>}
-                  </>
-                  :
-                  <div className="flex flex-col items-center justify-center cursor-pointer h-[105.77px]" onClick={handleShowSubstrateAuth}>
-                    <img style={{ width: "50px", height: "50px" }} src="/svg/polkadot.svg" alt="My Site Logo" className="mb-1" />
-                    <span>Substrate</span>
-                  </div>
-              }
-
+              <div className="transition-all duration-300 flex items-center justify-center flex-col border-[1px] border-[gray] p-2 rounded-md hover:bg-gray-300 w-[105.77px] h-[105.77px]">
+                <button onClick={() => connectWallet()} className="w-full h-full flex justify-center items-center">
+                  <Image className="w-[60px] h-[60px]" width={50} height={50} src={PolkadotImage} alt="Polkadot" />
+                </button>
+              </div>
             </div>
           </div>
-
         </Modal>
       }
     </header>
