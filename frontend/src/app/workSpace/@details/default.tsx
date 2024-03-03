@@ -1,3 +1,5 @@
-export default function ModuleDetailsDefault({}) {
-  return null;
+export default function ModuleDetailsDefault({
+
+}) {
+    return null;
 }
