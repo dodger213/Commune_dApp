@@ -51,7 +51,7 @@ const ModuleItem = ({ data }: ModuleItemPropsType) => {
             </div>
 
             <div className="flex text-red-500 items-center text-center gap-x-[5px] mt-[10px] absolute left-3 bottom-3">
-                <IoRocketOutline className="w-[16px] h-[16px]"></IoRocketOutline>
+                <IoRocketOutline className="w-[16px] h-[16px]" />
                 <div className="text-[16px] text-center"> {data?.run_count } runs</div>
             </div>
         </div>

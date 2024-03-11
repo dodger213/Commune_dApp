@@ -1,9 +1,8 @@
 "use client";
 import React, { useEffect } from "react";
-
-import classes from "./popup.module.css";
 import classNames from "classnames";
 import Link from "next/link";
+import classes from "./popup.module.css";
 
 export default function Popup({
   className,

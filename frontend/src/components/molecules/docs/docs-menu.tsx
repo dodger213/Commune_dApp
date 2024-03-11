@@ -1,7 +1,6 @@
-import Link from "next/link";
-import ActiveLink from "@/components/atoms/active-link";
 import classNames from "classnames";
 import classes from './docs-menu.module.css';
+import ActiveLink from "@/components/atoms/active-link";
 
 const MENU_ITEMS = [{
     name: '👋 Introduction',

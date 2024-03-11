@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { web3Enable, web3Accounts } from "@polkadot/extension-dapp";
+import React, { useState } from "react";
 import { ApiPromise, WsProvider } from "@polkadot/api";
-
+import { web3Enable, web3Accounts } from "@polkadot/extension-dapp";
 import Modal from "antd/es/modal/Modal";
 
 export default function PolkadotWalletButton() {
@@ -10,12 +9,12 @@ export default function PolkadotWalletButton() {
     const connectWallet = async () => {
         if (typeof window !== 'undefined') {
             try {
-                const extensions = await web3Enable('Commune AI');
+                await web3Enable('Commune AI');
                 const accounts = await web3Accounts();
                 const provider = new WsProvider('wss://rpc.polkadot.io');
                 const polkadotAPI = await ApiPromise.create({ provider });
                 const address = accounts[0].address;
-                const data = await polkadotAPI.query.system.account(address);
+                await polkadotAPI.query.system.account(address);
             } catch (error) {
                 console.error('Error', error);
             }

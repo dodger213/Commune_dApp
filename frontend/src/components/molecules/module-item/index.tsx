@@ -1,7 +1,6 @@
-import Card from "@/components/atoms/card";
-import { useRouter } from "next/navigation";
-import Modal from "antd/es/modal/Modal";
 import { useState } from "react";
+import Modal from "antd/es/modal/Modal";
+import Card from "@/components/atoms/card";
 
 type ModuleItemPropsType = {
     id: string;
@@ -18,7 +17,6 @@ type ModuleItemPropsType = {
 
 
 const ModuleItem = ( { id, cardData } : ModuleItemPropsType ) => {
-	const router = useRouter();
     const [openModal, setOpenModal] = useState<boolean>(false);
     const [subdomain, setSubdomain] = useState<string>('');
 
@@ -32,7 +30,7 @@ const ModuleItem = ( { id, cardData } : ModuleItemPropsType ) => {
     return (
         <>
             <Modal open={openModal} onCancel={() => setOpenModal(false) } width={840} footer={null} >
-                <iframe className="w-[800px] h-[480px] p-[20px]" src={`https://${subdomain}.hf.space`} ></iframe>
+                <iframe className="w-[800px] h-[480px] p-[20px]" src={`https://${subdomain}.hf.space`} />
             </Modal>
             <Card className="p-[20px] cursor-pointer">
                 <div onClick={() => onClickItemHandle()}>
@@ -48,8 +46,6 @@ const ModuleItem = ( { id, cardData } : ModuleItemPropsType ) => {
             </Card>
         </>
     )
-
 }
-
 
 export default ModuleItem;

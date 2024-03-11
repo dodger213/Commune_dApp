@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import SearchBar from "@/components/molecules/search-bar/search-bar";
 import Modal from "antd/es/modal/Modal";
 import Pagination from "react-paginate";
 import ModuleItem from "@/components/molecules/cog-modules";
+import SearchBar from "@/components/molecules/search-bar/search-bar";
 
 const PolkadotWallet = dynamic(
 	() => import("@/app/api/polkadot/PolkadotWallet"),
@@ -20,7 +20,7 @@ export default function () {
 	const [displayedModules, setDisplayedModules] = useState<any[]>([]);
 	const [filteredModules, setFilteredModules] = useState<any[]>([]);
 	const [isShowPolkadotWalletModalOpen, setIsShowPolkadotWalletModalOpen] = useState(false);
-	const [replicateData, setData] = useState<any[]>([]);
+	const [replicateData] = useState<any[]>([]);
 	
 	useEffect(() => {
 		const filtered = searchString
@@ -39,7 +39,7 @@ export default function () {
 
 	const pageCount = Math.ceil(filteredModules.length / itemsPerPage);
     
-	var  count = 0;
+	var count = 0;
 	async function fetchModules(val: string) {
 		const response = await fetch(`/api/replicate?cursor=${val}`, { method: "GET" });
 		const data = await response.json();
@@ -51,7 +51,6 @@ export default function () {
 			});
 			fetchModules(next);
 		}
-
 		else {
 			setLoadedModules(replicateData);
 			updateDisplayedModules(replicateData, currentPage);
@@ -138,7 +137,6 @@ export default function () {
 						}`}
 				/>
 			)}
-
 			{
 				isShowPolkadotWalletModalOpen &&
 				<Modal open={isShowPolkadotWalletModalOpen} onCancel={handleShowPolkadotWalletModalCancel} footer={null} width={500}>

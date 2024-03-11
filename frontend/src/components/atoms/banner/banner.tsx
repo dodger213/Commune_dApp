@@ -39,7 +39,7 @@ function CloseButton({ onClick }: { onClick: () => void }) {
 		>
 			<svg viewBox="0 0 15 15" width="14" height="14">
 				<g stroke="currentColor" strokeWidth="3.1">
-					<path d="M.75.75l13.5 13.5M14.25.75L.75 14.25"></path>
+					<path d="M.75.75l13.5 13.5M14.25.75L.75 14.25" />
 				</g>
 			</svg>
 		</button>

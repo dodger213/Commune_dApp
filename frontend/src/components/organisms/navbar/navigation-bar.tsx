@@ -1,30 +1,27 @@
 import React from "react";
-import Link from "next/link";
-import { loadStripe } from "@stripe/stripe-js";
-import { useRouter } from "next/navigation";
-import ThemeToggler from "@/components/templates/theme-toggler";
-import { ApiPromise, WsProvider } from '@polkadot/api';
-
-import classes from './navigation-bar.module.css';
 import classNames from "classnames";
-import ActiveLink from "@/components/atoms/active-link";
-import type { MenuProps } from 'antd';
-import { Dropdown, Modal, Space, Select } from 'antd';
-import { DownOutlined } from "@ant-design/icons";
-import StripeImage from '../../../../public/img/frontpage/stripe.png'
 import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { DownOutlined } from "@ant-design/icons";
+import { ApiPromise, WsProvider } from '@polkadot/api';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import MetaMaskImage from '../../../../public/svg/metamask.svg'
-import { useSendTransaction, useContractWrite } from 'wagmi'
-import { parseEther } from 'viem'
+import { loadStripe } from "@stripe/stripe-js";
+import { Dropdown, Modal, Space, Select, MenuProps } from 'antd';
 import axios from "axios";
-import * as  erc20ContractABI from '../../../services/token_abi.json';
-import { saveTransaction } from "@/store/action/transaction.record.action";
-import LogoImage from '../../../../public/img/frontpage/stripe.png'
+import { parseEther } from 'viem'
+import { useSendTransaction, useContractWrite } from 'wagmi'
+import classes from './navigation-bar.module.css';
 import ProfileDropDownComponent from "./profile.dropdown";
-import TwitterIcon from "@/components/atoms/twitter-icon";
+import StripeImage from '../../../../public/img/frontpage/stripe.png'
+import MetaMaskImage from '../../../../public/svg/metamask.svg'
+import * as  erc20ContractABI from '../../../services/token_abi.json';
+import ActiveLink from "@/components/atoms/active-link";
 import DiscordIcon from "@/components/atoms/discord-icon";
 import GitHubIcon from "@/components/atoms/github-icon";
+import TwitterIcon from "@/components/atoms/twitter-icon";
+import ThemeToggler from "@/components/templates/theme-toggler";
+import { saveTransaction } from "@/store/action/transaction.record.action";
 
 const items: MenuProps['items'] = [
     {
@@ -48,26 +45,19 @@ const items: MenuProps['items'] = [
 ]
 
 export default function NavigationBar() {
-
     const [isShowWalletPaymentModal, setIsShowWalletPaymentModal] = React.useState(false)
     const [destinationAddress, setDestinationAddress] = React.useState('')
     const [amount, setAmount] = React.useState('')
     const [tokenType, setTokenType] = React.useState('')
     const [selectedChain, setSelectedChain] = React.useState('')
     const [isShowConnectWithSubstrateModalOpen, setIsShowConnectWithSubstrateModalOpen] = React.useState(false)
-
-    //user profile
-    const [isShowUserProfileAvatar, setIsShowUserProfileAvatar] = React.useState(false)
-
     const asyncStripe = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
     const { abi: erc20ABI } = erc20ContractABI
-
     const router = useRouter();
-
+    
     const handleClickPayButton = async () => {
         try {
-
-            let amount = 1;
+            const amount = 1;
             const stripe = await asyncStripe;
             const res = await fetch("/api/stripe/session", {
                 method: "POST",
@@ -232,27 +222,6 @@ export default function NavigationBar() {
 
         }
         if (tokenType === 'bitcoin') {
-            const transfer = async (
-                privateKey: string,
-                value: number,
-                receiver: string,
-                env: string,
-                address: string,
-                ecc: any,
-            ) => {
-                try {
-                    const createTxResponse = await createBTCTx(receiver, value, env, address);
-                    if (createTxResponse?.code != 1) return createTxResponse;
-                    const tx = createTxResponse.result.tx;
-                    const toSign = createTxResponse.result.tosign;
-
-                } catch (error) {
-                    return {
-                        code: 0,
-                        error,
-                    };
-                }
-            };
         }
     }
 
@@ -303,7 +272,7 @@ export default function NavigationBar() {
                     <b className="dark:text-white dark:hover:text-[#25c2a0]">commune</b>
                 </Link>
                 <ActiveLink activeClassName={classes.activeModules} className={classNames(classes.item, classes.modules)} href="/modules">🚀 Modules</ActiveLink>
-                <ActiveLink activeClassName={classes.active} className={classes.item} href="/telemetry"><Image src={'http://telemetry.communeai.net/favicon.svg'} alt="image" width={20} height={20}></Image> &nbsp;Telemetry</ActiveLink>
+                <ActiveLink activeClassName={classes.active} className={classes.item} href="/telemetry"><Image src={'http://telemetry.communeai.net/favicon.svg'} alt="image" width={20} height={20} /> &nbsp;Telemetry</ActiveLink>
                 <ActiveLink activeClassName={classes.active} className={classes.item} href="https://comchat.io/">🥂 ComChat</ActiveLink>
                 <ActiveLink activeClassName={classes.activeModules} className={classNames(classes.item, classes.modules)} href="/workSpace">🚀 Workspace</ActiveLink>
             </div>
@@ -321,7 +290,7 @@ export default function NavigationBar() {
                             >
                                 <div style={{ display: "flex", alignItems: "center" }}>
                                     <span>Whitepaper 📄</span>
-                                    <span className="nx-sr-only"></span>
+                                    <span className="nx-sr-only" />
                                 </div>
                             </Link>
                         </li>
@@ -361,7 +330,7 @@ export default function NavigationBar() {
                                 <div style={{ display: "flex", alignItems: "center" }}>
                                     <span>Github</span>
                                     <GitHubIcon />
-                                    <span className="nx-sr-only"></span>
+                                    <span className="nx-sr-only" />
                                 </div>
                             </Link>
                         </li>
@@ -374,7 +343,7 @@ export default function NavigationBar() {
                             >
                                 <div style={{ display: "flex", alignItems: "center" }}>
                                     <span>Comwallet 💱</span>
-                                    <span className="nx-sr-only"></span>
+                                    <span className="nx-sr-only" />
                                 </div>
                             </Link>
                         </li>
@@ -388,37 +357,29 @@ export default function NavigationBar() {
                         </li>
                     </ul>
                 </div>
-
                 <ActiveLink activeClassName={classes.activeDocs} className={classNames(classes.item, classes.docs)} href="/docs/introduction">📚 Docs</ActiveLink>
-
                 <div className="ml-2 mr-2">
                     <ProfileDropDownComponent />
                 </div>
-
                 <div className={classes.themeTogglerWrapper}>
                     <ThemeToggler />
                 </div>
-
             </div>
-
             {
                 isShowConnectWithSubstrateModalOpen
                 &&
                 <Modal open={isShowConnectWithSubstrateModalOpen} onCancel={handleConnectWithSubstrateModalCancel} footer={null} >
                     <div className="flex flex-col">
                         <button onClick={getChainInfo} className="w-1/2 mx-auto bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-600 duration-200 text-white hover:text-white font-sans font-semibold justify-center px-2 py-2 hover:border-blue-300 hover:border-2 hover:border-solid cursor-pointer">Get Chain Info</button>
-
                         {
                             chainInfo && nodeName &&
                             <div className="flex items-center justify-evenly mt-4">
                                 Connected to chain <span className="text-cyan-500">{chainInfo}</span> using <span className="text-cyan-500">{nodeName}</span>
                             </div>
                         }
-
                     </div>
                 </Modal>
             }
-
             {
                 isShowWalletPaymentModal
                 &&
@@ -528,18 +489,15 @@ export default function NavigationBar() {
                                                         )}
                                                         {chain.name}
                                                     </button>
-
                                                     <button type="button" style={{ color: 'darkcyan' }} onClick={handlePayWithWallet}>
                                                         Pay with Wallet
                                                     </button>
-
                                                     <button onClick={openAccountModal} type="button">
                                                         {account.displayName}
                                                         {account.displayBalance
                                                             ? ` (${account.displayBalance})`
                                                             : ''}
                                                     </button>
-
                                                 </div>
                                             );
                                         })()}
@@ -550,18 +508,6 @@ export default function NavigationBar() {
                     </div>
                 </Modal>
             }
-        </nav>
-    );
-}
-
-function NavigationBar2() {
-    return (
-        <nav>
-            <Link href="/modules">Modules</Link>
-            <Link href="/docs">Docs</Link>
-            <Link href={'https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf'}>Whitepaper</Link>
-            <Link href="/telemetry">Telemetry</Link>
-            <ThemeToggler />
         </nav>
     );
 }

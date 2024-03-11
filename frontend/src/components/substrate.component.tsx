@@ -4,8 +4,8 @@ import { ApiPromise, WsProvider } from '@polkadot/api';
 const SubstrateComponent: React.FC = () => {
 
 		const [api, setApi] = useState<ApiPromise | null>(null);
-		const [chainInfo, setChainInfo] = useState('');
-		const [nodeName, setNodeName] = useState('');
+		const [, setChainInfo] = useState('');
+		const [, setNodeName] = useState('');
 
 		useEffect(() => {
 				const connectToSubstrate = async () => {

@@ -1,12 +1,9 @@
 "use client";
 
 import React, { useState } from "react";
-
 import classNames from "classnames";
-
+import { PlayCircleOutlined } from "@ant-design/icons";
 import { Checkbox, Tag } from "antd";
-import { HomeOutlined, PlayCircleOutlined } from "@ant-design/icons";
-
 import classes from "./modal.module.css";
 import { modulesList } from "../../../../services/modules-service";
 

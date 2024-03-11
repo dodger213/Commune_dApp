@@ -1,15 +1,14 @@
 "use client"
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import GitHubLogin from "react-github-login";
-import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { ApiPromise, WsProvider } from "@polkadot/api";
-import Modal from "antd/es/modal/Modal";
-import MetaMaskImage from "../../../public/svg/metamask.svg";
-import GithubImage from "../../../public/svg/github-mark.svg";
-import PolkadotImage from "../../../public/svg/polkadot.svg";
 import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
-
+import { ConnectButton } from "@rainbow-me/rainbowkit";
+import Modal from "antd/es/modal/Modal";
+import GitHubLogin from "react-github-login";
+import GithubImage from "../../../public/svg/github-mark.svg";
+import MetaMaskImage from "../../../public/svg/metamask.svg";
+import PolkadotImage from "../../../public/svg/polkadot.svg";
 
 const words: string[] = [
   "developers.",
@@ -37,7 +36,7 @@ export default function HomepageHeader() {
   const [isShowAuthModalOpen, setIsShowAuthModalOpen] = useState(false)
 
   //user login
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [, setIsLoggedIn] = useState(false)
 
   // state of the scroll position and header height
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -162,12 +161,10 @@ export default function HomepageHeader() {
 
   return (
     <header ref={headerRef} className={` dark:bg-[#161616] p-[4rem] py-32 text-center overflow-hidden ${getHeaderClasses(scrollPosition, headerHeight)} duration-500`} >
-
       <img src="gif/logo/CubesShufflingGIF.gif" alt="Commune Logo" className='block sm:hidden' />
       <div className="px-10 py-5">
         <div className='flex lg:flex-row flex-col h-1/2'>
           <div className='w-full lg:w-1/2 flex flex-col items-center justify-center'>
-
             <div className=' w-auto sm:w-[710px] sm:h-[250px] '>
               <h1 className=" text-4xl sm:text-6xl sm:pb-3 dark:text-white">{TITLE}</h1>
               <div className='hidden sm:block'>
@@ -176,23 +173,18 @@ export default function HomepageHeader() {
                   <span className={`hero__subtitle text-4xl ${colour[index]} font-semibold mb-5`}>{`${words[index].substring(0, subIndex)}${blink ? "|" : ""}`}</span></p>
               </div>
             </div>
-
             <div className='w-30 h-10'>
               <div className=' bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-600 duration-200 text-white hover:text-white font-sans font-semibold 
                 justify-center px-2 py-2 cursor-pointer' onClick={ () => setIsShowAuthModalOpen(true)}>
                 Get Started
               </div>
             </div>
-
           </div>
-
           <div className='hidden sm:block w-full lg:w-1/2 h-full lg:-mr-44 '>
             <img src="gif/logo/commune.gif" alt="Commune Logo" className='' />
           </div>
-
         </div>
       </div>
-
       {
         isShowAuthModalOpen &&
         <Modal open={isShowAuthModalOpen} onCancel={ () => setIsShowAuthModalOpen(false)} footer={null} width={500}>
@@ -306,7 +298,6 @@ export default function HomepageHeader() {
                   );
                 }}
               </ConnectButton.Custom>
-
               <div className='flex items-center justify-center p-2 rounded-md hover:bg-gray-300 w-[105.77px] h-[105.77px]' style={{ flexDirection: 'column', border: '1px solid gray' }}>
                 <Image src={GithubImage} alt='login with Github' width={50} height={50} className='cursor-pointer mb-1' />
                 <GitHubLogin clientId='8386c0df1514607054e7'

@@ -13,7 +13,6 @@ import ReactFlow, {
   Background,
 } from 'reactflow';
 import CustomNode from './CustomNode';
-
 import styles from './Flow.module.css';
 
 const initialNodes: Node[] = [
@@ -60,7 +59,7 @@ const initialNodes: Node[] = [
 
 export default function () {
 
-	const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
+	const [nodes,, onNodesChange] = useNodesState(initialNodes);
 	const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
 	const onConnect = useCallback(
 		(params: Connection | Edge) => setEdges((eds) => addEdge(params, eds)),

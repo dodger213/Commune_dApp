@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Wallet } from 'ethers';
 
 interface GeneratedKeys {
     gmailKey: string;

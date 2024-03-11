@@ -2,11 +2,10 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-import SearchBar from "@/components/molecules/search-bar/search-bar";
 import { Pagination } from 'antd';
-import Modal from "antd/es/modal/Modal";
-import ModuleItem from "@/components/molecules/module-item";
 import axios from "axios";
+import ModuleItem from "@/components/molecules/module-item";
+import SearchBar from "@/components/molecules/search-bar/search-bar";
 
 const PolkadotWalletButton = dynamic(
 	() => import("@/components/atoms/polkadot-wallet-button"),
@@ -56,7 +55,6 @@ export default function () {
 		const endIndex = startIndex + itemsPerPage;
 		setDisplayedModules(modules.slice(startIndex, endIndex));
 	};
-
 
 	return (
 		<>

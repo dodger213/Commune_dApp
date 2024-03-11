@@ -1,8 +1,8 @@
 "use client";
-import { usePathname } from "next/navigation";
-import Link, { LinkProps } from "next/link";
 import React, { PropsWithChildren } from "react";
 import classNames from "classnames";
+import Link, { LinkProps } from "next/link";
+import { usePathname } from "next/navigation";
 
 type ActiveLinkProps = LinkProps & {
 	className?: string;
@@ -16,7 +16,6 @@ const ActiveLink = ({
 	...props
 }: PropsWithChildren<ActiveLinkProps>) => {
 	const pathname = usePathname();
-
 	const isActive = pathname?.startsWith(props.href as string);
 
 	return (
