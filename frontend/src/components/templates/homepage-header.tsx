@@ -160,21 +160,21 @@ export default function HomepageHeader() {
   };
 
   return (
-    <header ref={headerRef} className={` dark:bg-[#161616] p-[4rem] py-32 text-center overflow-hidden ${getHeaderClasses(scrollPosition, headerHeight)} duration-500`} >
+    <header ref={headerRef} className={` dark:bg-[#161616] p-[4rem] text-center overflow-hidden ${getHeaderClasses(scrollPosition, headerHeight)} duration-500`} >
       <img src="gif/logo/CubesShufflingGIF.gif" alt="Commune Logo" className='block sm:hidden' />
       <div className="px-10 py-5">
         <div className='flex lg:flex-row flex-col h-1/2'>
           <div className='w-full lg:w-1/2 flex flex-col items-center justify-center'>
-            <div className=' w-auto sm:w-[710px] sm:h-[250px] '>
-              <h1 className=" text-4xl sm:text-6xl sm:pb-3 dark:text-white">{TITLE}</h1>
+            <div className='w-auto sm:w-[710px] sm:h-[250px] '>
+              <h1 className="text-4xl sm:text-6xl sm:pb-3 dark:text-white">{TITLE}</h1>
               <div className='hidden sm:block'>
                 <p className="hero__subtitle text-xl sm:text-4xl dark:text-white">{TAGLINE}
                   <br />
                   <span className={`hero__subtitle text-4xl ${colour[index]} font-semibold mb-5`}>{`${words[index].substring(0, subIndex)}${blink ? "|" : ""}`}</span></p>
               </div>
             </div>
-            <div className='w-30 h-10'>
-              <div className=' bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-600 duration-200 text-white hover:text-white font-sans font-semibold 
+            <div className='w-[10rem] h-[3rem]'>
+              <div className='bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-600 duration-200 text-xl text-white hover:text-white font-sans font-semibold 
                 justify-center px-2 py-2 cursor-pointer' onClick={ () => setIsShowAuthModalOpen(true)}>
                 Get Started
               </div>
