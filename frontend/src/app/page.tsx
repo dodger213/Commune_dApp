@@ -1,6 +1,7 @@
 'use client';
 import classNames from 'classnames';
 import HomepageHeader from '@/components/templates/homepage-header';
+import BlueGifImage from '../../public/gif/cubes/commune-single-block_blue.gif'
 
 import classes from "./home.module.css";
 
@@ -31,7 +32,7 @@ function WelcomeSection() {
           <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
             <a href="#blue" className="hover:no-underline">
               <img
-                src="./gif/cubes/blue_small.gif"
+                src="./gif/cubes/commune-single-block_blue.gif"
                 className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
               />
             </a>
@@ -40,7 +41,7 @@ function WelcomeSection() {
           <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
             <a href="#green" className="hover:no-underline">
               <img
-                src="./gif/cubes/green_small.gif"
+                src="./gif/cubes/commune-single-block_green.gif"
                 className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
               />
             </a>
@@ -49,7 +50,8 @@ function WelcomeSection() {
           <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
             <a href="#yellow" className="hover:no-underline">
               <img
-                src="./gif/cubes/yellow_small.gif"
+                src="./gif/cubes/commune-single-block_yellow.gif"
+
                 className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
               />
             </a>
@@ -58,7 +60,8 @@ function WelcomeSection() {
           <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
             <a href="#red" className="hover:no-underline">
               <img
-                src="./gif/cubes/red_small.gif"
+                 src="./gif/cubes/commune-single-block_red.gif"
+
                 className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
               />
             </a>
@@ -67,7 +70,7 @@ function WelcomeSection() {
           <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
             <a href="#pink" className="hover:no-underline">
               <img
-                src="./gif/cubes/pink_small.gif"
+                src="./gif/cubes/commune-single-block_purple.gif"
                 className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
               />
             </a>
@@ -76,7 +79,8 @@ function WelcomeSection() {
           <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
             <a href="#black" className="hover:no-underline">
               <img
-                src="./gif/cubes/black_small.gif"
+                      src="./gif/cubes/commune-single-block_gray.gif"
+
                 className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
               />
             </a>
@@ -85,7 +89,8 @@ function WelcomeSection() {
           <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
             <a href="#white" className="hover:no-underline">
               <img
-                src="./gif/cubes/white_small.gif"
+                src="./gif/cubes/commune-single-block_white.gif"
+
                 className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
               />
             </a>
@@ -135,7 +140,7 @@ export default function Home() {
       <WelcomeSection />
       <SectionWrapper
         id="blue"
-        imageUrl="./gif/cubes/blue_small.gif"
+        imageUrl="./gif/cubes/commune-single-block_blue.gif"
         backgroundClassName="bg-white"
       >
         <div className=' text-black '>
@@ -173,7 +178,7 @@ export default function Home() {
       </SectionWrapper>
       <SectionWrapper
         id="green"
-        imageUrl="./gif/cubes/green_small.gif"
+        imageUrl="./gif/cubes/commune-single-block_green.gif"
         // backgroundClassName="dark:bg-gradient-to-b from-green-300 to-[#7ceb87] bg-[linear-gradient(180deg,#ffffff,#c3f7c8)]"
         backgroundClassName="bg-white"
       >
@@ -233,7 +238,7 @@ export default function Home() {
       </SectionWrapper>
       <SectionWrapper
         id="yellow"
-        imageUrl="./gif/cubes/yellow_small.gif"
+        imageUrl="./gif/cubes/commune-single-block_yellow.gif"
         // backgroundClassName="dark:dark:bg-gradient-to-b from-yellow-300 to-[#fff7a1] bg-[linear-gradient(180deg,#ffffff,#fff7a1)] rounded-lg shadow-xl"
         backgroundClassName="bg-white"
       >
@@ -274,7 +279,7 @@ export default function Home() {
       </SectionWrapper>
       <SectionWrapper
         id="red"
-        imageUrl="./gif/cubes/red_small.gif"
+        imageUrl="./gif/cubes/commune-single-block_red.gif"
         // backgroundClassName="dark:bg-gradient-to-b from-red-300 to-[#ff8f8f] bg-[linear-gradient(180deg,#ffffff,#ff8f8f)] rounded-lg shadow-xl"
         backgroundClassName="bg-white"
       >
@@ -308,7 +313,7 @@ export default function Home() {
       </SectionWrapper>
       <SectionWrapper
         id="pink"
-        imageUrl="./gif/cubes/pink_small.gif"
+        imageUrl="./gif/cubes/commune-single-block_purple.gif"
         // backgroundClassName="dark:bg-gradient-to-b from-pink-300 to-[#ffd6f5] bg-[linear-gradient(180deg,#ffffff,#ffd6f5)] rounded-lg shadow-xl"
         backgroundClassName="bg-white"
       >
@@ -356,7 +361,7 @@ export default function Home() {
       </SectionWrapper>
       <SectionWrapper
         id="black"
-        imageUrl="./gif/cubes/black_small.gif"
+        imageUrl="./gif/cubes/commune-single-block_gray.gif"
         // backgroundClassName="dark:bg-[#1b1b1d] bg-[#ffffff] rounded-lg shadow-xl"
         backgroundClassName="bg-white"
       >
@@ -387,7 +392,7 @@ export default function Home() {
       </SectionWrapper>
       <SectionWrapper
         id="white"
-        imageUrl="./gif/cubes/white_small.gif"
+        imageUrl="./gif/cubes/commune-single-block_white.gif"
         // backgroundClassName="dark:bg-[linear-gradient(180deg,#ffffff,#ffffff)] bg-[linear-gradient(180deg,#1b1b1d,#1b1b1d)] rounded-lg shadow-xl"
         backgroundClassName="bg-white"
       >
