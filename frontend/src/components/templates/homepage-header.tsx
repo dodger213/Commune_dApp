@@ -28,7 +28,6 @@ const TITLE = "Commune AI";
 const TAGLINE = "Renovating the way we build software for ";
 
 export default function HomepageHeader() {
-
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
   const [blink, setBlink] = useState(true);
@@ -142,21 +141,21 @@ export default function HomepageHeader() {
   }
 
   const connectWallet = async () => {
-      if (typeof window !== 'undefined') {
-          try {
-              await web3Enable('Commune AI');
-              const accounts = await web3Accounts();
-              const provider = new WsProvider('wss://rpc.polkadot.io');
-              const polkadotAPI = await ApiPromise.create({ provider });
-              const address = accounts[0].address;
-              const data = await polkadotAPI.query.system.account(address);
-          } catch (error) {
-              console.error('Error connecting to wallet:', error);
-          }
-          setIsShowAuthModalOpen(false);
-      } else {
-          console.error('Cannot connect wallet: Code is running on the server.');
+    if (typeof window !== 'undefined') {
+      try {
+        await web3Enable('Commune AI');
+        const accounts = await web3Accounts();
+        const provider = new WsProvider('wss://rpc.polkadot.io');
+        const polkadotAPI = await ApiPromise.create({ provider });
+        const address = accounts[0].address;
+        const data = await polkadotAPI.query.system.account(address);
+      } catch (error) {
+        console.error('Error connecting to wallet:', error);
       }
+      setIsShowAuthModalOpen(false);
+    } else {
+      console.error('Cannot connect wallet: Code is running on the server.');
+    }
   };
 
   return (
@@ -193,11 +192,8 @@ export default function HomepageHeader() {
               Connect to Commune AI
             </span>
           </div>
-
           <div className='flex items-center justify-evenly mt-14 mb-14 flex-col'>
-
             <div className='flex w-full items-center justify-evenly cursor-pointer'>
-
               <ConnectButton.Custom>
                 {({
                   account,
@@ -279,18 +275,15 @@ export default function HomepageHeader() {
                               )}
                               {chain.name}
                             </button>
-
                             <button type="button" style={{ color: 'darkcyan' }}>
                               Connected
                             </button>
-
                             <button onClick={openAccountModal} type="button">
                               {account.displayName}
                               {account.displayBalance
                                 ? ` (${account.displayBalance})`
                                 : ''}
                             </button>
-
                           </div>
                         );
                       })()}
