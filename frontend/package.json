@@ -12,6 +12,8 @@
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
     "@fontsource/source-code-pro": "^5.0.16",
+    "@headlessui/react": "^1.7.18",
+    "@heroicons/react": "^2.1.1",
     "@mdx-js/loader": "^3.0.0",
     "@mdx-js/react": "^3.0.0",
     "@metamask/sdk-react": "^0.14.2",

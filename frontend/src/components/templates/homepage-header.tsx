@@ -159,8 +159,8 @@ export default function HomepageHeader() {
   };
 
   return (
-    <header ref={headerRef} className={` dark:bg-[#161616] p-[4rem] text-center overflow-hidden ${getHeaderClasses(scrollPosition, headerHeight)} duration-500`} >
-      <img src="gif/logo/CubesShufflingGIF.gif" alt="Commune Logo" className='block sm:hidden' />
+    <header ref={headerRef} className={`dark:bg-[#161616] p-[4rem] text-center overflow-hidden ${getHeaderClasses(scrollPosition, headerHeight)} duration-500`} >
+      <img src="gif/logo/CubesShufflingGIF.gif" alt="Commune Logo" className='block lg:hidden' />
       <div className="px-10 py-5">
         <div className='flex lg:flex-row flex-col h-1/2'>
           <div className='w-full lg:w-1/2 flex flex-col items-center justify-center'>
@@ -179,7 +179,7 @@ export default function HomepageHeader() {
               </div>
             </div>
           </div>
-          <div className='hidden sm:block w-full lg:w-1/2 h-full lg:-mr-44 '>
+          <div className='hidden lg:block w-full lg:w-1/2 h-full lg:-mr-44 '>
             <img src="gif/logo/commune.gif" alt="Commune Logo" className='' />
           </div>
         </div>

@@ -1,7 +1,7 @@
 export default function GitHubIcon() {
     return (
       <svg
-        style={{ marginLeft: "15px" }}
+        style={{ marginLeft: "10px" }}
         width="24"
         height="24"
         fill="currentColor"

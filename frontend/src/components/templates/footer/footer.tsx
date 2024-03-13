@@ -1,13 +1,13 @@
 import Link from "next/link";
 import classes from "./footer.module.css";
-import { externalLinks } from "@/config";
 import DiscordIcon from "@/components/atoms/discord-icon";
 import GitHubIcon from "@/components/atoms/github-icon";
 import TwitterIcon from "@/components/atoms/twitter-icon";
+import { externalLinks } from "@/config";
 
 export default function Footer() {
 	return (
-		<footer className="bg-black text-white">
+		<footer className="dark:bg-black shadow-inner dark:text-white">
 			<div className="container mx-auto px-[5rem] py-[5rem]">
 				<div className="flex justify-between flex-col md:flex-row  items-center md:items-start gap-[3rem] md:gap-[1rem] text-left">
 					<div className="flex flex-col lg:w-1/2">
@@ -69,7 +69,7 @@ export default function Footer() {
 					</div>
 				</div>
 			</div>
-			<p className="text-[16px] font-medium text-white text-center mb-[5rem] px-3">
+			<p className="text-[16px] font-medium dark:text-white text-center mb-[5rem] px-3">
 				Copyright © {new Date().getFullYear()} Commune, Inc. Built with Docusaurus.
 			</p>
 		</footer>
