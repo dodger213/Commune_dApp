@@ -1,9 +1,9 @@
 import React from 'react';
 import type { MenuProps } from 'antd';
-import { Dropdown, Space } from 'antd';
-import Image from "next/image";
-import LogoImage from '../../../../public/gif/logo/CubesShufflingGIF.gif'
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { Dropdown, Space } from 'antd';
+import LogoImage from '../../../../public/gif/logo/CubesShufflingGIF.gif'
 
 const ProfileDropDownComponent: React.FC = () => {
 

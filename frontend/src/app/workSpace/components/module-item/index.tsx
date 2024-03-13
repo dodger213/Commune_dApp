@@ -1,7 +1,4 @@
-import Image from 'next/image';
-import BasicImage from '../../../../../public/img/frontpage/blockchain-1.png';
 import Card from '@/components/atoms/card';
-import { useRouter } from "next/navigation";
 
 type ModuleItemPropsType = {
     id: string;
@@ -17,9 +14,7 @@ type ModuleItemPropsType = {
 }
 
 
-const ModuleItem = ( { id, cardData } : ModuleItemPropsType ) => {
-	const router = useRouter()
-    
+const ModuleItem = ( { cardData } : ModuleItemPropsType ) => {    
     return (
         <Card className="p-[20px] cursor-pointer">
             <div style={{width: "9rem", height: "7rem"}} >
@@ -32,8 +27,6 @@ const ModuleItem = ( { id, cardData } : ModuleItemPropsType ) => {
             </div>
         </Card>
     )
-
 }
-
 
 export default ModuleItem;

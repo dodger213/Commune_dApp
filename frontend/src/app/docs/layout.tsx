@@ -1,4 +1,3 @@
-import Link from "next/link";
 import DocsMenu from "@/components/molecules/docs/docs-menu";
 
 export default function DocsLayout({

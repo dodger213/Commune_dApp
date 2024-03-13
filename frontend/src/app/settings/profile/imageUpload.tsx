@@ -6,7 +6,7 @@ interface ImageUploadProps {
 
 const ImageUpload: React.FC<ImageUploadProps> = ({ onImageSelect }) => {
     const [selectedImage, setSelectedImage] = useState<File | null>(null);
-    const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+    const [, setPreviewUrl] = useState<string | null>(null);
 
     const handleImageChange = (event: ChangeEvent<HTMLInputElement>) => {
         const files = event.target.files;

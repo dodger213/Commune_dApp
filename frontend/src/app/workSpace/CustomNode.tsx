@@ -1,32 +1,17 @@
-import { memo, FC, CSSProperties } from 'react';
-import { Handle, Position, NodeProps, NodeResizer } from 'reactflow';
-import classNames from "classnames";
-import { useEffect, useState } from "react";
+import { useEffect, useState, memo, FC } from 'react';
 import axios from "axios";
+import { NodeProps, NodeResizer } from 'reactflow';
+import ModuleItem from "./components/module-item";
 import SearchBar from "./components/search-bar";
 import classes from "./modules.module.css";
-import ModuleItem from "./components/module-item";
-import dynamic from "next/dynamic";
 
-const sourceHandleStyleA: CSSProperties = { left: 50 };
-const sourceHandleStyleB: CSSProperties = {
-  right: 50,
-  left: 'auto',
-};
-
-const PolkadotWallet = dynamic(
-	() => import("@/app/api/polkadot/PolkadotWallet"),
-	{ ssr: false }
-);
-
-const CustomNode: FC<NodeProps> = ({ data, xPos, yPos }) => {
+const CustomNode: FC<NodeProps> = () => {
   const [searchString, setSearchString] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
 	const itemsPerPage = 300;
 	const [loadedModules, setLoadedModules] = useState<any[]>([]);
 	const [displayedModules, setDisplayedModules] = useState<any[]>([]);
-	const [filteredModules, setFilteredModules] = useState<any[]>([]);
-	const [isShowPolkadotWalletModalOpen, setIsShowPolkadotWalletModalOpen] = useState(false)
+	const [, setFilteredModules] = useState<any[]>([]);
 
   useEffect(() => {
 		const filtered = searchString
@@ -43,7 +28,6 @@ const CustomNode: FC<NodeProps> = ({ data, xPos, yPos }) => {
 		}
 	}, [searchString, loadedModules]);
 
-	const pageCount = Math.ceil(filteredModules.length / itemsPerPage);
 
 	useEffect(() => {
 		// async function fetchModules() {
@@ -61,18 +45,7 @@ const CustomNode: FC<NodeProps> = ({ data, xPos, yPos }) => {
 		fetchModules();
 	}, []);
 
-	const handlePageChange = (selectedItem: any) => {
-		setCurrentPage(selectedItem.selected + 1);
-		updateDisplayedModules(filteredModules, selectedItem.selected + 1);
-	};
 
-	const handleModulesFetched = (modules: string[]) => {
-		const formattedModules = modules.map((moduleName: string) => ({
-			name: moduleName,
-		}));
-		setLoadedModules(formattedModules);
-		updateDisplayedModules(formattedModules, currentPage);
-	};
 
 	const updateDisplayedModules = (modules: any[], page: number) => {
 		const startIndex = (page - 1) * itemsPerPage;
@@ -80,13 +53,7 @@ const CustomNode: FC<NodeProps> = ({ data, xPos, yPos }) => {
 		setDisplayedModules(modules.slice(startIndex, endIndex));
 	};
 
-	const handlePolkadotWalletModal = () => {
-		setIsShowPolkadotWalletModalOpen(true)
-	}
 
-	const handleShowPolkadotWalletModalCancel: () => void = () => {
-		setIsShowPolkadotWalletModalOpen(false);
-	};
 
   return (
     <>
@@ -105,18 +72,6 @@ const CustomNode: FC<NodeProps> = ({ data, xPos, yPos }) => {
       ) : (
         <span className="dark: text-white" style={{height: "1500px"}}>There is no data to display</span>
       )}
-      {/* <Handle
-        type="source"
-        position={Position.Bottom}
-        id="a"
-        style={sourceHandleStyleA}
-      />
-      <Handle
-        type="source"
-        position={Position.Bottom}
-        id="b"
-        style={sourceHandleStyleB}
-      /> */}
     </>
   );
 };

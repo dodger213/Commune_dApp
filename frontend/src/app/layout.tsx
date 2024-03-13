@@ -28,11 +28,10 @@ import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import "@fontsource/source-code-pro";
 import { projectId } from "../config";
-import Head from '@/components/templates/head';
-import Footer from '@/components/templates/footer/footer';
 import NavigationBar from '@/components/organisms/navbar/navigation-bar';
+import Footer from '@/components/templates/footer/footer';
+import Head from '@/components/templates/head';
 import ThemeProvider from '@/context/toggle-theme-provider';
-
 import './globals.css';
 import 'reactflow/dist/style.css';
 

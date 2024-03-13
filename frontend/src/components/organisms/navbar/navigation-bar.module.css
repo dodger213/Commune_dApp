@@ -67,7 +67,7 @@
     color: black;
     text-decoration: var(--ifm-link-decoration);
     font-size: 16px;
-    padding: var(--ifm-navbar-item-padding-vertical) var(--ifm-navbar-item-padding-horizontal);
+    padding: 0rem;
     transition: color var(--ifm-transition-fast) var(--ifm-transition-timing-default);
 }
 

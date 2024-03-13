@@ -1,6 +1,6 @@
-import axios from "axios";
 import { web3FromAddress } from "@polkadot/extension-dapp";
 import { InjectedAccountWithMeta } from "@polkadot/extension-inject/types";
+import axios from "axios";
 
 export const postRequest = async (selectedAccount: InjectedAccountWithMeta | null, callback: (data: string[]) => void) => {
 	const endpoint = "http://165.227.45.30:50147/modules";

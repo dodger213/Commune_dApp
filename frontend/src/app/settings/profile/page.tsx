@@ -1,11 +1,11 @@
 "use client"
 import React, { useState } from "react";
-import LogoImage from '../../../../public/gif/logo/CubesShufflingGIF.gif'
+import type { GetProp, UploadFile, UploadProps } from 'antd';
 import Image from "next/image";
 import { PlusOutlined } from '@ant-design/icons';
 import { Modal, Upload } from 'antd';
-import type { GetProp, UploadFile, UploadProps } from 'antd';
 import axios from "axios";
+import LogoImage from '../../../../public/gif/logo/CubesShufflingGIF.gif'
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 
@@ -98,13 +98,10 @@ const ProfileEditPage: React.FC = () => {
                                 Alan1201
                             </span>
                         </div>
-
                     </div>
-
                     <div style={{ backgroundImage: 'linear-gradient(to right,rgb(190 191 195), rgb(101 101 101))' }} className="p-2 w-full mt-5 cursor-pointer hover:text-black">
                         <span style={{ fontWeight: '500' }}>Profile</span>
                     </div>
-
                     {
                         Items.map((item, index) => {
                             return <div key={index}>
@@ -114,11 +111,8 @@ const ProfileEditPage: React.FC = () => {
                             </div>
                         })
                     }
-
                 </div>
-
             </div>
-
             <div className='w-[60%] dark:text-white flex items-start dark:bg-[#212324] flex-col'>
                 <div className="mt-5 flex flex-col w-[80%]">
                     <span className="flex mt-14" style={{ fontWeight: '500' }}>
@@ -148,11 +142,9 @@ const ProfileEditPage: React.FC = () => {
                         Save Changes
                     </button>
                 </div>
-
             </div>
         </div>
     )
-
 }
 
 export default ProfileEditPage;

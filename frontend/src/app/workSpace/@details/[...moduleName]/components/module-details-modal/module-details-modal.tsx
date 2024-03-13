@@ -1,12 +1,11 @@
 "use client";
 
 import React, { useState } from "react";
-
-import Popup from "@/components/atoms/popup/popup";
+import classNames from "classnames";
 import classes from "./module-details-modal.module.css";
 import { modulesList } from "../../../../../../services/modules-service";
-import classNames from "classnames";
 import Checkbox from "@/components/atoms/checkbox/checkbox";
+import Popup from "@/components/atoms/popup/popup";
 
 export default function ModuleDetailsModal({
   name,

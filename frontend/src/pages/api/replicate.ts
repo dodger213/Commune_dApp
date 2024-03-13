@@ -1,14 +1,9 @@
 import axios from "axios";
-import { NextApiRequest, NextApiResponse } from "next";
 
 export default async function handler(req: any, res: any) {
+  const cursor:string = req.query.cursor;  
 
-  const { method } = req;
-  let cursor:string = req.query.cursor;
-  
-
-  if ( cursor  == '') {
-    
+  if ( cursor  === '') {    
     try {
       const response = await axios.get('https://api.replicate.com/v1/models', {
         headers: {
@@ -24,7 +19,6 @@ export default async function handler(req: any, res: any) {
       res.status(500).json({ error: err });
     }
   }
-
   else {
     try {
       const response = await axios.get(`${ cursor }`, {

@@ -1,7 +1,6 @@
 "use client";
 
 import classNames from "classnames";
-
 import classes from "./search-bar.module.css";
 
 interface SearchBarProps {

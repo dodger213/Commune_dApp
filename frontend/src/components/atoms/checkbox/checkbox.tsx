@@ -25,7 +25,7 @@ export default function Checkbox({
                 checked={checked}
                 onChange={() => setChecked(state => !state)}
             />
-            <div className={classes.checkmark}></div>
+            <div className={classes.checkmark} />
         </label>
     );
 }

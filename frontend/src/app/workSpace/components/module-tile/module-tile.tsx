@@ -1,12 +1,9 @@
 "use client";
 
 import React from "react";
-
-import Image from "next/image";
-
 import classNames from "classnames";
-
-import Modal from "antd/es/modal/Modal";
+import Image from "next/image";
+import { useRouter } from "next/navigation";
 import {
 	DislikeOutlined,
 	DislikeTwoTone,
@@ -15,11 +12,9 @@ import {
 	LikeFilled,
 	LikeOutlined,
 } from "@ant-design/icons";
-
+import Modal from "antd/es/modal/Modal";
 import ModuleDetailsModal from "./modal";
-
 import classes from "./module-tile.module.css";
-import { useRouter } from "next/navigation";
 
 type ModuleTileProps = {
 	image_url?: string;
@@ -37,7 +32,7 @@ export default function ModuleTile({
 	attributes,
 }: ModuleTileProps) {
 	const [isShowDetailedModalOpen, setIsShowDetailedModalOpen] = React.useState(false);
-	const [selectedModuleName, setSelectedModuleName] = React.useState("");
+	const [selectedModuleName] = React.useState("");
 	const [isLikeIconClicked, setIsLikeIconClicked] = React.useState(false);
 	const [isDisLikeIconClicked, setIsDisLikeIconClicked] = React.useState(false);
 	const [isHeartIconClicked, setIsHeartIconClicked] = React.useState(false);
@@ -110,7 +105,6 @@ export default function ModuleTile({
 				>
 					name: {name}
 				</div>
-
 				<div
 					className={classNames(
 						classes.address,
@@ -120,7 +114,6 @@ export default function ModuleTile({
 				>
 					address: {address}
 				</div>
-
 				<div
 					className={classNames(
 						classes.imageWrapper,
@@ -151,7 +144,6 @@ export default function ModuleTile({
 						description: {description}
 					</div>
 				)}
-
 				{attributes && (
 					<div className={classes.attributes}>
 						{attributes.map((attribute) => (
@@ -218,7 +210,6 @@ export default function ModuleTile({
 						{dislikeCount}
 					</span>
 				</div>
-
 				<div className="flex items-center">
 					{isHeartIconClicked ? (
 						<HeartFilled
