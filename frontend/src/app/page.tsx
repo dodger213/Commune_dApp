@@ -47,7 +47,8 @@ function WelcomeSection() {
           <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg">
             <a href="#yellow" className="hover:no-underline">
               <img
-                src="./gif/cubes/yellow_small.gif"
+                src="./gif/cubes/commune-single-block_yellow.gif"
+
                 className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
               />
             </a>
@@ -56,7 +57,8 @@ function WelcomeSection() {
           <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg">
             <a href="#red" className="hover:no-underline">
               <img
-                src="./gif/cubes/red_small.gif"
+                 src="./gif/cubes/commune-single-block_red.gif"
+
                 className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
               />
             </a>
@@ -83,7 +85,8 @@ function WelcomeSection() {
           <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg">
             <a href="#white" className="hover:no-underline">
               <img
-                src="./gif/cubes/white_small.gif"
+                src="./gif/cubes/commune-single-block_white.gif"
+
                 className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
               />
             </a>
@@ -133,7 +136,7 @@ export default function Home() {
       <WelcomeSection />
       <SectionWrapper
         id="blue"
-        imageUrl="./gif/cubes/blue_small.gif"
+        imageUrl="./gif/cubes/commune-single-block_blue.gif"
         backgroundClassName="bg-white"
       >
         <div className='text-black'>
@@ -171,7 +174,7 @@ export default function Home() {
       </SectionWrapper>
       <SectionWrapper
         id="green"
-        imageUrl="./gif/cubes/green_small.gif"
+        imageUrl="./gif/cubes/commune-single-block_green.gif"
         // backgroundClassName="dark:bg-gradient-to-b from-green-300 to-[#7ceb87] bg-[linear-gradient(180deg,#ffffff,#c3f7c8)]"
         backgroundClassName="bg-white"
       >
