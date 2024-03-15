@@ -35,7 +35,7 @@ export default function HomepageHeader() {
   const [isShowAuthModalOpen, setIsShowAuthModalOpen] = useState(false)
 
   //user login
-  const [, setIsLoggedIn] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
 
   // state of the scroll position and header height
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -160,7 +160,7 @@ export default function HomepageHeader() {
 
   return (
     <header ref={headerRef} className={`relative z-10 dark:bg-gray-900 p-[4rem] text-center overflow-hidden ${getHeaderClasses(scrollPosition, headerHeight)} duration-500`} >
-      <img src="gif/logo/CubesShufflingGIF.gif" alt="Commune Logo" className='block lg:hidden' />
+      <img src="/gif/logo/CubesShufflingGIF.gif" alt="Commune Logo" className='block lg:hidden' />
       <div className="px-10 py-5">
         <div className='flex lg:flex-row flex-col h-1/2'>
           <div className='w-full lg:w-1/2 flex flex-col items-center justify-center'>
@@ -543,8 +543,9 @@ export default function HomepageHeader() {
                 />
               </div>
               <div className="transition-all duration-300 flex items-center justify-center flex-col border-[1px] border-[gray] p-2 rounded-md hover:bg-gray-300 w-[105.77px] h-[105.77px]">
-                <button onClick={() => connectWallet()} className="w-full h-full flex justify-center items-center">
+                <button onClick={() => connectWallet()} className="w-full h-full flex justify-center items-center flex-col">
                   <Image className="w-[60px] h-[60px]" width={50} height={50} src={PolkadotImage} alt="Polkadot" />
+                  <span>Comwallet</span>
                 </button>
               </div>
             </div>

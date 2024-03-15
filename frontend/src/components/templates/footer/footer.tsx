@@ -1,5 +1,6 @@
 import Link from "next/link";
 import classes from "./footer.module.css";
+import Image from "next/image";
 import DiscordIcon from "@/components/atoms/discord-icon";
 import GitHubIcon from "@/components/atoms/github-icon";
 import TwitterIcon from "@/components/atoms/twitter-icon";
@@ -14,7 +15,7 @@ export default function Footer() {
 						<Link className={classes.brand} href="/">
 							<div className="flex flex-row items-center">
 								<div className={classes.logo}>
-									<img style={{ width: "auto", height: "10rem" }} src="/svg/commune.svg" alt="My Site Logo" />
+									<Image style={{ width: "auto", height: "10rem" }} src="/gif/logo/commune.gif" alt="My Site Logo" width={160} height={160}/>
 								</div>
 								<b className="text-[2rem] font-bold footer-main hover:underline">Commune AI</b>
 							</div>

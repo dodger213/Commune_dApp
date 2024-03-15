@@ -1,13 +1,14 @@
+import { NextApiRequest, NextApiResponse } from 'next';
 
-export default async function handler(req: any, res: any) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
 
     const data = JSON.parse(req.body);
 
     const key = process.env.NEXT_PUBLIC_BITTENSOR_KEY!;
-    
-    
+
+
     try {
-        const response = await  fetch('https://api.corcel.io/v1/text/cortext/chat', {
+        const response = await fetch('https://api.corcel.io/v1/text/cortext/chat', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -27,12 +28,12 @@ export default async function handler(req: any, res: any) {
                 ensure_responses: true
             })
         })
-        
-        
+
+
         const result = await response.json();
-        
+
         res.status(200).json({ data: result })
-        
+
     } catch (error) {
         console.log(error)
         return res.status(500).json({ error: error });
