@@ -54,7 +54,7 @@ const BittensorSubnet = () => {
 
         if(response.status == 200) {
             const result = await response.json();
-            const replyContent = result.data[0].choices[0].delta.content;
+            const replyContent = result.data[0]?.choices[0]?.delta?.content;
             setConversation(prev =>  [...prev, {role:'commune', content: replyContent}]);
         }
         setLoading(false);
