@@ -2,30 +2,37 @@
 
 import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import Image from "next/image";
 import Modal from "antd/es/modal/Modal";
 import Pagination from "react-paginate";
-import ModuleItem from "@/components/molecules/cog-modules";
+import ModuleItem, { ModuleItemProps } from "@/components/molecules/cog-modules";
 import SearchBar from "@/components/molecules/search-bar/search-bar";
+
+export type ModuleItemPropsType = {
+	id: number;
+	description: string;
+	name: string
+}
 
 const PolkadotWallet = dynamic(
 	() => import("@/app/api/polkadot/PolkadotWallet"),
 	{ ssr: false }
 );
 
-export default function () {
+const CogModulePage = () => {
 	const [searchString, setSearchString] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
 	const itemsPerPage = 6;
-	const [loadedModules, setLoadedModules] = useState<any[]>([]);
-	const [displayedModules, setDisplayedModules] = useState<any[]>([]);
-	const [filteredModules, setFilteredModules] = useState<any[]>([]);
+	const [loadedModules, setLoadedModules] = useState<ModuleItemProps[]>([]);
+	const [displayedModules, setDisplayedModules] = useState<ModuleItemProps[]>([]);
+	const [filteredModules, setFilteredModules] = useState<ModuleItemProps[]>([]);
 	const [isShowPolkadotWalletModalOpen, setIsShowPolkadotWalletModalOpen] = useState(false);
-	const [replicateData] = useState<any[]>([]);
-	
+	const [replicateData] = useState<ModuleItemProps[]>([]);
+
 	useEffect(() => {
 		const filtered = searchString
 			? loadedModules.filter((module) =>
-			    module?.description ? module.description.toLowerCase().includes(searchString.toLowerCase()) : false			
+				module?.data.description ? module.data.description.toLowerCase().includes(searchString.toLowerCase()) : false
 			)
 			: loadedModules;
 		setFilteredModules(filtered);
@@ -38,14 +45,14 @@ export default function () {
 	}, [searchString, loadedModules]);
 
 	const pageCount = Math.ceil(filteredModules.length / itemsPerPage);
-    
-	var count = 0;
+
+	let count = 0;
 	async function fetchModules(val: string) {
 		const response = await fetch(`/api/replicate?cursor=${val}`, { method: "GET" });
 		const data = await response.json();
 		const next = data.modules.next;
 		if (count < 6) {
-			const dataArray: any[] = data.modules.results;
+			const dataArray: ModuleItemProps[] = data.modules.results;
 			dataArray.forEach(element => {
 				replicateData.push(element)
 			});
@@ -65,20 +72,30 @@ export default function () {
 	}, []);
 
 
-	const handlePageChange = (selectedItem: any) => {
+	const handlePageChange = (selectedItem: {
+		selected: number;
+	}) => {
 		setCurrentPage(selectedItem.selected + 1);
 		updateDisplayedModules(filteredModules, selectedItem.selected + 1);
 	};
 
 	const handleModulesFetched = (modules: string[]) => {
-		const formattedModules = modules.map((moduleName: string) => ({
-			name: moduleName,
+		const formattedModules = modules.map((moduleName: string, index: number) => ({
+			id: index,
+			data: {
+				url: 'string',
+				cover_image_url: 'string',
+				owner: 'string',
+				name: moduleName,
+				description: 'string',
+				run_count: 'number'
+			}
 		}));
 		setLoadedModules(formattedModules);
 		updateDisplayedModules(formattedModules, currentPage);
 	};
 
-	const updateDisplayedModules = (modules: any[], page: number) => {
+	const updateDisplayedModules = (modules: ModuleItemProps[], page: number) => {
 		const startIndex = (page - 1) * itemsPerPage;
 		const endIndex = startIndex + itemsPerPage;
 		setDisplayedModules(modules.slice(startIndex, endIndex));
@@ -98,7 +115,7 @@ export default function () {
 				<div className=' mb-[20px] bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-600 duration-200 
 					text-white hover:text-white font-sans font-semibold px-2 py-2 w-full flex justify-center items-center
 						hover:border-blue-300 hover:border-2 hover:border-solid cursor-pointer' 	onClick={handlePolkadotWalletModal}>
-					<img style={{ width: "auto", height: "2.7rem", marginRight: "0.25rem" }} src="/svg/polkadot.svg" alt="My Site Logo" />
+					<Image style={{ width: "auto", height: "2.7rem", marginRight: "0.25rem" }} src="/svg/polkadot.svg" alt="My Site Logo" height={44} width={44} />
 					<span>Connect Wallet</span>
 				</div>
 				<SearchBar
@@ -109,7 +126,6 @@ export default function () {
 					<div className='mt-[40px] grid grid-cols-3 gap-[20px] w-[100%]'>
 						{displayedModules.map((item, idx) => (
 							<ModuleItem key={idx} data={item} />
-
 						))}
 					</div>
 				) : (
@@ -146,3 +162,6 @@ export default function () {
 		</>
 	);
 }
+
+export default CogModulePage;
+
