@@ -6,7 +6,17 @@ const initialState = {
     error: ''
 }
 
-const transactionReducer = (state = initialState, action: any) => {
+export type SaveTransactionSuccessAction = {
+    type: typeof SAVE_TRANSACTION_SUCCESS;
+    payload: 'YourPayloadTypeHere';
+}
+
+export type SaveTransactionFailedAction = {
+    type: typeof SAVE_TRANSACTION_FAILED;
+    payload: 'YourErrorPayloadTypeHere';
+}
+
+const transactionReducer = (state = initialState, action: SaveTransactionSuccessAction | SaveTransactionFailedAction) => {
 
     const { type, payload } = action
 

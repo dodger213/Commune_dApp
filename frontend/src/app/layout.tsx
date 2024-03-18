@@ -1,6 +1,6 @@
 "use client";
 import '@rainbow-me/rainbowkit/styles.css';
-
+import { useState, useEffect } from 'react';
 import {
   RainbowKitProvider,
   darkTheme,
@@ -14,6 +14,7 @@ import {
   ledgerWallet,
   metaMaskWallet
 } from '@rainbow-me/rainbowkit/wallets';
+import { Provider } from "react-redux"
 import { configureChains, createConfig, sepolia, WagmiConfig } from 'wagmi';
 import {
   mainnet,
@@ -27,13 +28,15 @@ import {
 import { alchemyProvider } from 'wagmi/providers/alchemy';
 import { publicProvider } from 'wagmi/providers/public';
 import "@fontsource/source-code-pro";
-import { projectId } from "../config";
+import { projectId } from "../config"
+import Loading from '@/components/molecules/bittensor/loading';
 import NavigationBar from '@/components/organisms/navbar/navigation-bar';
 import Footer from '@/components/templates/footer/footer';
 import Head from '@/components/templates/head';
 import ThemeProvider from '@/context/toggle-theme-provider';
 import './globals.css';
 import 'reactflow/dist/style.css';
+import { store } from "@/store/index"
 
 const { chains, publicClient } = configureChains(
   [mainnet, polygon, optimism, arbitrum, base, zora, sepolia, goerli],
@@ -82,22 +85,43 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const handleLoad = () => {
+      setIsLoading(false);
+    };
+
+    window.addEventListener('load', handleLoad);
+
+    return () => {
+      // Cleanup: Remove the event listener when the component unmounts
+      window.removeEventListener('load', handleLoad);
+    };
+  }, []);
   return (
     <html lang="en">
       <Head />
       <body>
-        <WagmiConfig config={wagmiConfig}>
-          <RainbowKitProvider chains={chains} coolMode theme={darkTheme()}>
-            {/* <Provider store={store}> */}
-            <ThemeProvider>
-              {/* <Banner /> */}
-              <NavigationBar />
-              {children}
-              <Footer />
-            </ThemeProvider>
-            {/* </Provider> */}
-          </RainbowKitProvider>
-        </WagmiConfig>
+        {
+          isLoading ?
+            <Loading />
+            :
+            <WagmiConfig config={wagmiConfig}>
+              <RainbowKitProvider chains={chains} coolMode theme={darkTheme()}>
+                <Provider store={store}>
+                <ThemeProvider>
+                  {/* <Banner /> */}
+                  <NavigationBar />
+                  {children}
+                  <Footer />
+                </ThemeProvider>
+                </Provider>
+              </RainbowKitProvider>
+            </WagmiConfig>
+        }
+
       </body>
     </html>
   );

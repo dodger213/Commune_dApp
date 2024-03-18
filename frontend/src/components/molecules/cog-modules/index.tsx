@@ -2,12 +2,18 @@ import Image from 'next/image';
 import { useRouter } from "next/navigation";
 import { IoRocketOutline } from "react-icons/io5";
 
-type ModuleItemPropsType = {
-    data: any;
-}
+export type ModuleItemProps = {
+    data: {
+        url?: string | undefined;
+        cover_image_url?: string | undefined;
+        owner?: string | undefined;
+        name?: string | undefined;
+        description?: string | undefined;
+        run_count?: string | undefined;
+    };
+};
 
-
-const ModuleItem = ({ data }: ModuleItemPropsType) => {
+const ModuleItem = ({ data }: ModuleItemProps) => {
     const router = useRouter();
 
     const onClickItemHandle = () => {
@@ -52,7 +58,7 @@ const ModuleItem = ({ data }: ModuleItemPropsType) => {
 
             <div className="flex text-red-500 items-center text-center gap-x-[5px] mt-[10px] absolute left-3 bottom-3">
                 <IoRocketOutline className="w-[16px] h-[16px]" />
-                <div className="text-[16px] text-center"> {data?.run_count } runs</div>
+                <div className="text-[16px] text-center"> {data?.run_count} runs</div>
             </div>
         </div>
     )

@@ -18,6 +18,7 @@ const AuthComponent: React.FC = () => {
     });
 
     const handleLogin = (method: string) => {
+        console.log('----------------', method)
         // Perform authentication logic based on the selected method
         // Update the state with the generated keys and setLoggedIn(true)
 
@@ -38,6 +39,7 @@ const AuthComponent: React.FC = () => {
     };
 
     const generateKeyFromSeed = (seed: string, method: string): string => {
+        console.log('------------------', seed, method)
         // Implement key generation logic based on the seed and method
         // Use appropriate libraries for key generation for each blockchain
         // Ethereum (EVM) key generation using ethers.js
@@ -57,7 +59,7 @@ const AuthComponent: React.FC = () => {
                         <input
                             type="text"
                             value={userSeed}
-                            onChange={({target:{value}}) => setUserSeed(value)}
+                            onChange={({ target: { value } }) => setUserSeed(value)}
                         />
                     </label>
                     <button onClick={() => handleLogin('gmail')}>Login with Gmail</button>

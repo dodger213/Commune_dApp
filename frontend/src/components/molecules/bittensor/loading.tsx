@@ -1,9 +1,8 @@
 'use client';
 
 import Image from 'next/image';
-import communeImage from '../../../../public/svg/commune.svg';
 import loadingImage from '../../../../public/img/frontpage/loading.png';
-
+import communeImage from '../../../../public/svg/commune.svg';
 
 export default function Loading() {
    return (
