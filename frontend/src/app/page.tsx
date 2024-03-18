@@ -3,136 +3,27 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import classes from "./home.module.css";
 import HomepageHeader from '@/components/templates/homepage-header';
-
-function WelcomeSection() {
-  return (
-    <section id="welcome" className="h-full pt-20">
-      <div className="flex flex-col items-center justify-center">
-        <div className="pt-6 w-full">
-          <h1 className="text-6xl pb-3 dark:text-white text-center">
-            Welcome to the{" "}
-            <span className="text-[#ffb4ed] dark:text-[#FFD6F5] hover:animate-pulse duration-500">
-              commune
-            </span>
-            ! 👋
-          </h1>
-          <p className="hero__subtitle text-4xl text-center dark:text-white">
-            A place for{" "}
-            <span className="text-[#ffb4ed] dark:text-[#FFD6F5]">everyone</span>{" "}
-            to{" "}
-            <span className="text-[#6db1ff] dark:text-[#6db1ff]">develop</span>,{" "}
-            <span className="text-[#FF8F8F]  dark:text-[#FF8F8F]">design</span>,
-            and{" "}
-            <span className="text-[#ffef40] dark:text-[#FFF7A1]">create</span>.
-          </p>
-        </div>
-        <div className="flex flex-row h-[500px] items-center justify-center px-3 gap-0 overflow-auto">
-          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
-            <a href="#blue" className="hover:no-underline">
-              <Image
-                src="/gif/cubes/commune-single-block_blue.gif"
-                className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
-                alt='Image'
-                width={30}
-                height={30}
-              />
-            </a>
-            <p>Networking &amp; Wrapping</p>
-          </div>
-          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
-            <a href="#green" className="hover:no-underline">
-              <Image
-                src="/gif/cubes/commune-single-block_green.gif"
-                alt='Image'
-                className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
-                width={30}
-                height={30}
-              />
-            </a>
-            <p>Reusability</p>
-          </div>
-          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
-            <a href="#yellow" className="hover:no-underline">
-              <Image
-                src="/gif/cubes/commune-single-block_yellow.gif"
-                alt='Image'
-                className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
-                width={30}
-                height={30}
-              />
-            </a>
-            <p>Scalability</p>
-          </div>
-          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
-            <a href="#red" className="hover:no-underline">
-              <Image
-                alt='Image'
-                src="/gif/cubes/commune-single-block_red.gif"
-                className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
-                width={30}
-                height={30}
-              />
-            </a>
-            <p>Namespaces</p>
-          </div>
-          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
-            <a href="#pink" className="hover:no-underline">
-              <Image
-                alt='Image'
-                src="/gif/cubes/commune-single-block_purple.gif"
-                className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
-                width={30}
-                height={30}
-              />
-            </a>
-            <p>Tokenomics</p>
-          </div>
-          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
-            <a href="#black" className="hover:no-underline">
-              <Image
-                alt='Image'
-                src="/gif/cubes/commune-single-block_gray.gif"
-                className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
-                width={30}
-                height={30}
-              />
-            </a>
-            <p>Application Validators</p>
-          </div>
-          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
-            <a href="#white" className="hover:no-underline">
-              <Image
-                alt='Image'
-                src="/gif/cubes/commune-single-block_white.gif"
-                className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
-                width={30}
-                height={30}
-              />
-            </a>
-            <p>Whitepaper 📄</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+import WelcomeSection from '@/components/templates/welcome/welcome';
 
 function SectionWrapper({
-  id,
   imageUrl,
   backgroundClassName,
   children,
 }: {
-  id: string;
   imageUrl: string;
   backgroundClassName: string;
   children: React.ReactNode;
 }) {
 
   return (
-    <div id={id} className='mb-5 md:mb-10 lg:mb-15'>
-      <div className="px-3 md:px-5">
-        <div className={`${backgroundClassName} flex lg:flex-row flex-col items-center justify-center rounded-3xl hover-effect w-[100%] lg:mx-auto dark:bg-black`} style={{ boxShadow: `1px 6px 50px 10px ${id}` }}>
+    <div>
+      <div className="">
+        <div className={`
+            ${backgroundClassName} flex lg:flex-row flex-col items-center 
+            justify-center hover-effect w-[100%] lg:mx-auto 
+            dark:bg-gray-900
+          `} 
+        >
           <div className=" flex-none lg:-mr-4 m-10 mt-20">
             <Image
               alt='Image'
@@ -157,9 +48,8 @@ export default function Home() {
       <HomepageHeader />
       <WelcomeSection />
       <SectionWrapper
-        id="blue"
-        imageUrl="/gif/cubes/commune-single-block_blue.gif"
-        backgroundClassName="bg-white"
+        imageUrl="./gif/cubes/commune-single-block_blue.gif"
+        backgroundClassName="bg-white dark:bg-gray-900"
       >
         <div className='text-black'>
           <div className='text-right w-full pb-10'>
@@ -197,10 +87,8 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        id="green"
-        imageUrl="/gif/cubes/commune-single-block_green.gif"
-        // backgroundClassName="dark:bg-gradient-to-b from-green-300 to-[#7ceb87] bg-[linear-gradient(180deg,#ffffff,#c3f7c8)]"
-        backgroundClassName="bg-white"
+        imageUrl="./gif/cubes/commune-single-block_green.gif"
+        backgroundClassName="bg-white dark:bg-gray-800"
       >
         <div className='text-black'>
           <div className='text-right w-full pb-10'>
@@ -250,8 +138,9 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        id="yellow"
-        imageUrl="/gif/cubes/commune-single-block_yellow.gif"
+
+        imageUrl="./gif/cubes/commune-single-block_yellow.gif"
+
         backgroundClassName="bg-white"
       >
         <div className='text-black'>
@@ -283,9 +172,8 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        id="red"
-        imageUrl="/gif/cubes/commune-single-block_red.gif"
-        backgroundClassName="bg-white"
+        imageUrl="./gif/cubes/commune-single-block_red.gif"
+        backgroundClassName="bg-white dark:bg-gray-800"
       >
         <div className='text-black '>
           <div className='text-right w-full pb-10'>
@@ -310,8 +198,7 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        id="pink"
-        imageUrl="/gif/cubes/commune-single-block_purple.gif"
+        imageUrl="./gif/cubes/commune-single-block_purple.gif"
         backgroundClassName="bg-white"
       >
         <div className=' text-black'>
@@ -351,9 +238,8 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        id="black"
-        imageUrl="/gif/cubes/commune-single-block_gray.gif"
-        backgroundClassName="bg-white"
+        imageUrl="./gif/cubes/commune-single-block_gray.gif"
+        backgroundClassName="bg-white dark:bg-gray-800"
       >
         <div className=' text-black dark:text-white'>
           <div className='text-right w-full pb-10'>
@@ -378,8 +264,7 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        id="white"
-        imageUrl="/gif/cubes/commune-single-block_white.gif"
+        imageUrl="./gif/cubes/commune-single-block_white.gif"
         backgroundClassName="bg-white"
       >
         <div className='text-black dark:text-white'>
