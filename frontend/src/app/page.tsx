@@ -26,12 +26,12 @@ function WelcomeSection() {
             <span className="text-[#ffef40] dark:text-[#FFF7A1]">create</span>.
           </p>
         </div>
-        <div className="flex flex-row h-[500px] items-center justify-center px-3 gap-0 overflow-auto">
-          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
+        <div className="grid grid-cols-7 h-[300px] lg:h-[500px] items-center justify-center px-3 gap-0">
+          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg">
             <a href="#blue" className="hover:no-underline">
               <Image
                 src="/gif/cubes/commune-single-block_blue.gif"
-                className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
+                className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[25rem] hover:h-[25rem] duration-300"
                 alt='Image'
                 width={30}
                 height={30}
@@ -39,72 +39,72 @@ function WelcomeSection() {
             </a>
             <p>Networking &amp; Wrapping</p>
           </div>
-          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
+          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg">
             <a href="#green" className="hover:no-underline">
               <Image
                 src="/gif/cubes/commune-single-block_green.gif"
                 alt='Image'
-                className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
+                className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[25rem] hover:h-[25rem] duration-300"
                 width={30}
                 height={30}
               />
             </a>
             <p>Reusability</p>
           </div>
-          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
+          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg">
             <a href="#yellow" className="hover:no-underline">
               <Image
                 src="/gif/cubes/commune-single-block_yellow.gif"
                 alt='Image'
-                className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
+                className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[25rem] hover:h-[25rem] duration-300"
                 width={30}
                 height={30}
               />
             </a>
             <p>Scalability</p>
           </div>
-          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
+          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg">
             <a href="#red" className="hover:no-underline">
               <Image
                 alt='Image'
                 src="/gif/cubes/commune-single-block_red.gif"
-                className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
+                className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[25rem] hover:h-[25rem] duration-300"
                 width={30}
                 height={30}
               />
             </a>
             <p>Namespaces</p>
           </div>
-          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
+          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg">
             <a href="#pink" className="hover:no-underline">
               <Image
                 alt='Image'
                 src="/gif/cubes/commune-single-block_purple.gif"
-                className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
+                className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[25rem] hover:h-[25rem] duration-300"
                 width={30}
                 height={30}
               />
             </a>
             <p>Tokenomics</p>
           </div>
-          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
+          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg">
             <a href="#black" className="hover:no-underline">
               <Image
                 alt='Image'
                 src="/gif/cubes/commune-single-block_gray.gif"
-                className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px]  duration-300"
+                className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[25rem] hover:h-[25rem] duration-300"
                 width={30}
                 height={30}
               />
             </a>
             <p>Application Validators</p>
           </div>
-          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg ">
+          <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg">
             <a href="#white" className="hover:no-underline">
               <Image
                 alt='Image'
                 src="/gif/cubes/commune-single-block_white.gif"
-                className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
+                className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[25rem] hover:h-[25rem] duration-300"
                 width={30}
                 height={30}
               />
@@ -406,7 +406,7 @@ export default function Home() {
                   <div className=' mt-14 ml-14  bg-gray-100 rounded-lg w-[17rem] h-[17rem] border-2 border-yellow-500 border-solid shadow-xl px-3' />
                 </div>
               </div>
-              <p className="text-2xl font-semibold text-center mt-10">Want to read more? Check<br />out our whitepaper.</p>
+              <p className="text-2xl font-semibold text-center">Want to read more? Check<br />out our whitepaper.</p>
               <div className='flex justify-center rounded-xl lg:mb-4'>
                 <a href='https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf' className='hover:no-underline '>
                   <div className='w-[15rem] h-[3rem] flex flex-row gap-2 bg-[#FF8F8F] hover:bg-[#FF8F8F] dark:bg-[#FF8F8F] dark:hover:bg-[#fc9494] text-white text-xl font-bold py-2 px-4 mt-10 rounded-lg shadow-md hover:shadow-xl duration-300 '>

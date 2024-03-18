@@ -12,8 +12,8 @@ import ReactFlow, {
 	ConnectionLineType,
 	Background,
 } from 'reactflow';
-import CustomNode from './CustomNode';
 import styles from './Flow.module.css';
+import CustomNode from './components/organisms/CustomNode';
 
 const initialNodes: Node[] = [
 	{

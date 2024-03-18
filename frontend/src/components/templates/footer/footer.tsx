@@ -1,6 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
 import classes from "./footer.module.css";
-import Image from "next/image";
 import DiscordIcon from "@/components/atoms/discord-icon";
 import GitHubIcon from "@/components/atoms/github-icon";
 import TwitterIcon from "@/components/atoms/twitter-icon";

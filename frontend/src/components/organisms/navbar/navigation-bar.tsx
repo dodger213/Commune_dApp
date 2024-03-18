@@ -127,88 +127,6 @@ export default function NavigationBar() {
 
 	const { data: hash, sendTransaction } = useSendTransaction()
 
-	//This Function must be used in Client side.
-	// 	const createBTCTx = async (toAddress: string, value: number, env: string, fromAddress: string) => {
-	// 		try {
-	// 			// const { toAddress, value, env, fromAddress } = data;
-	// 			const valueInSatoshi = value * 100000000;
-	// 			// console.log(valueInSatoshi);
-	// 			// console.log("Vivek bhai ",toAddress, value, env, fromAddress);
-	// 			if (!fromAddress || !toAddress || !value || !env) {
-	// 				return {
-	// 					code: 0,
-	// 					message: "invalid/insufficient parameters"
-	// 				}
-	// 			}
-	// 			let url;
-	// 			if (env == 'testnet') {
-	// 				url = 'https://api.blockcypher.com/v1/btc/test3/txs/new'
-	// 			}
-	// 			else if (env == 'mainnet') {
-	// 				url = 'https://api.blockcypher.com/v1/btc/main/txs/new'
-	// 			}
-	// 			else {
-	// 				return {
-	// 					code: 0,
-	// 					message: 'Invalid env'
-	// 				}
-	// 			}
-	// 			let data = JSON.stringify({
-	// 				"inputs": [
-	// 					{
-	// 						"addresses": [
-	// 							`${fromAddress}`  /* "n1TKu4ZX7vkyjfvo7RCbjeUZB6Zub8N3fN" */
-	// 						]
-	// 					}
-	// 				],
-	// 				"outputs": [
-	// 					{
-	// 						"addresses": [
-	// 							`${toAddress}` /* "2NCY42y4mbvJCxhd7gcCroBEvVh1dXkbPzA"
-	// */                    ],
-	// 						"value": valueInSatoshi
-	// 					}
-	// 				]
-	// 			});
-
-	// 			let config = {
-	// 				method: 'post',
-	// 				maxBodyLength: Infinity,
-	// 				url: 'https://api.blockcypher.com/v1/btc/test3/txs/new',
-	// 				headers: {
-	// 					'Content-Type': 'application/json'
-	// 				},
-	// 				data: data
-	// 			};
-
-	// 			const response = await axios.request(config)
-	// 				.then((response) => {
-	// 					// console.log("Tushar",JSON.stringify(response.data));
-	// 					return response;
-	// 				})
-	// 				.catch((error) => {
-	// 					console.log(error);
-	// 				});
-	// 			// console.log(response.status);
-	// 			if (response?.status != 201) {
-	// 				return {
-	// 					code: 0,
-	// 					message: response?.data?.error
-	// 				}
-	// 			}
-	// 			return {
-	// 				code: 1,
-	// 				result: response.data
-	// 			}
-	// 		} catch (error) {
-	// 			console.log('error generating btc tx', error);
-	// 			return {
-	// 				code: 0,
-	// 				message: error,
-	// 			};
-	// 		}
-	// 	}
-
 	const { data: txHashUSDT, write: paywithUSDT } = useContractWrite({
 		address: '0x28B3071bE7A6E4B3bE2b36D78a29b6e4DbBdDb74',
 		abi: erc20ABI,
@@ -279,7 +197,7 @@ export default function NavigationBar() {
 				<Disclosure as="nav" className="dark:bg-black shadow">
 					{({ open }) => (
 						<>
-							<div className="mx-auto px-4 md:px-0 lg:px-8">
+							<div className="mx-auto px-4 lg:px-8">
 								<div className="flex h-16 items-center justify-between">
 									<div className="flex items-center">
 										<Link className={classes.brand} href="/">
@@ -291,7 +209,7 @@ export default function NavigationBar() {
 												height={64}
 											/>
 										</Link>
-										<div className="hidden md:block">
+										<div className="hidden xl:block">
 											<div className="flex">
 												{navigation.map((item) => (
 													<a
@@ -310,7 +228,7 @@ export default function NavigationBar() {
 											</div>
 										</div>
 									</div>
-									<div className="hidden md:block">
+									<div className="hidden xl:block">
 										<div className="flex items-center">
 											<Menu as="div" className="relative ml-3">
 												<div>
@@ -416,9 +334,9 @@ export default function NavigationBar() {
 											</div>
 										</div>
 									</div>
-									<div className="-mr-2 flex md:hidden">
+									<div className="flex xl:hidden">
 										{/* Mobile menu button */}
-										<Disclosure.Button className="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:text-[#25c2a0]  focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+										<Disclosure.Button className="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:text-[#25c2a0] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
 											<span className="absolute -inset-0.5" />
 											<span className="sr-only">Open main menu</span>
 											{open ? (
@@ -431,8 +349,8 @@ export default function NavigationBar() {
 								</div>
 							</div>
 
-							<Disclosure.Panel className="md:hidden">
-								<div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+							<Disclosure.Panel className="xl:hidden">
+								<div className="space-y-1 pb-3 pt-2 px-3">
 									{navigation.map((item) => (
 										<Disclosure.Button
 											key={item.name}
