@@ -1,7 +1,7 @@
 import { useEffect, useState, memo, FC } from 'react';
 import axios from "axios";
 import { NodeProps, NodeResizer } from 'reactflow';
-import classes from "../modules.module.css";
+import classes from "./modules.module.css";
 import SearchBar from "../atoms/search-bar/search-bar";
 import ModuleItem, { ModuleItemPropsType } from "../molecules/module-item";
 
