@@ -7,8 +7,8 @@ import { externalLinks } from "@/config";
 
 export default function Footer() {
 	return (
-		<footer className="dark:bg-black shadow-inner dark:text-white">
-			<div className="container mx-auto px-[5rem] py-[5rem]">
+		<footer className="dark:bg-blue-900 shadow-inner dark:text-white">
+			<div className="container m-auto px-[5rem] mt-[40px]">
 				<div className="flex justify-between flex-col md:flex-row  items-center md:items-start gap-[3rem] md:gap-[1rem] text-left">
 					<div className="flex flex-col lg:w-1/2">
 						<Link className={classes.brand} href="/">
