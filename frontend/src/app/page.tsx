@@ -138,7 +138,9 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
+
         imageUrl="./gif/cubes/commune-single-block_yellow.gif"
+
         backgroundClassName="bg-white"
       >
         <div className='text-black'>
