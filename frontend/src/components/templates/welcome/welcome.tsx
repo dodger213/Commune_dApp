@@ -25,7 +25,7 @@ export default function WelcomeSection() {
             <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg">
               <a href="#blue" className="hover:no-underline">
                 <img
-                  src="./gif/cubes/blue_small.gif"
+                  src="./gif/cubes/commune-single-block_blue.gif"
                   className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
                 />
               </a>
@@ -34,7 +34,7 @@ export default function WelcomeSection() {
             <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg">
               <a href="#green" className="hover:no-underline">
                 <img
-                  src="./gif/cubes/green_small.gif"
+                  src="./gif/cubes/commune-single-block_green.gif"
                   className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
                 />
               </a>
@@ -63,7 +63,7 @@ export default function WelcomeSection() {
             <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg">
               <a href="#pink" className="hover:no-underline">
                 <img
-                  src="./gif/cubes/pink_small.gif"
+                  src="./gif/cubes/commune-single-block_purple.gif"
                   className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
                 />
               </a>
@@ -72,7 +72,7 @@ export default function WelcomeSection() {
             <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg">
               <a href="#black" className="hover:no-underline">
                 <img
-                  src="./gif/cubes/black_small.gif"
+                  src="./gif/cubes/commune-single-block_gray.gif"
                   className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
                 />
               </a>

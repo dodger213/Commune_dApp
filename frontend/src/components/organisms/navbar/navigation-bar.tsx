@@ -298,7 +298,11 @@ export default function NavigationBar() {
 														className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0] p-0 lg:pl-4 md:text-xl')}
 														aria-current={item.current ? 'page' : undefined}
 													>
-														{item.name}
+                            <span className='flex items-center justify-center'>
+															{item.name === 'Bittensor' && <Image src='/img/frontpage/bittensor.jpg' alt='bittensor' width={25} height={10} className='mr-1' />}
+															{item.name === 'Staking' && <Image src='/img/frontpage/staking.jpg' alt='staking' width={25} height={10} className='mr-1 rounded-md' />}
+															{item.name}
+														</span>
 													</a>
 												))}
 											</div>
