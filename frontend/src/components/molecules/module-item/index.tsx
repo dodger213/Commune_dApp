@@ -2,7 +2,7 @@ import { useState } from "react";
 import Modal from "antd/es/modal/Modal";
 import Card from "@/components/atoms/card";
 
-type ModuleItemPropsType = {
+export type ModuleItemPropsType = {
     id: string;
     cardData: {
         title: string;
@@ -16,20 +16,20 @@ type ModuleItemPropsType = {
 }
 
 
-const ModuleItem = ( { id, cardData } : ModuleItemPropsType ) => {
+const ModuleItem = ({ id, cardData }: ModuleItemPropsType) => {
     const [openModal, setOpenModal] = useState<boolean>(false);
     const [subdomain, setSubdomain] = useState<string>('');
 
-	const onClickItemHandle = () => {
-		setOpenModal(true);
+    const onClickItemHandle = () => {
+        setOpenModal(true);
         console.log(id)
         const prepared = id.toLowerCase().replaceAll('_', '-');
-        setSubdomain(prepared.split('/')[0] + '-' + prepared.split('/')[1] )
-	};
+        setSubdomain(prepared.split('/')[0] + '-' + prepared.split('/')[1])
+    };
 
     return (
         <>
-            <Modal open={openModal} onCancel={() => setOpenModal(false) } width={840} footer={null} >
+            <Modal open={openModal} onCancel={() => setOpenModal(false)} width={840} footer={null} >
                 <iframe className="w-[800px] h-[480px] p-[20px]" src={`https://${subdomain}.hf.space`} />
             </Modal>
             <Card className="p-[20px] cursor-pointer">

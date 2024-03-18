@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 import { ApiPromise, WsProvider } from "@polkadot/api";
 import { web3Enable, web3Accounts } from "@polkadot/extension-dapp";
 import Modal from "antd/es/modal/Modal";
@@ -36,7 +37,7 @@ export default function PolkadotWalletButton() {
             </Modal>
             <div className=' mb-[20px] bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-600 duration-200 
                 text-white font-sans font-semibold px-2 py-2 w-full flex justify-center items-center cursor-pointer' 	onClick={() => connectWallet()}>
-                <img style={{ width: "auto", height: "2.7rem", marginRight: "0.25rem" }} src="/svg/polkadot.svg" alt="My Site Logo" />
+                <Image style={{ width: "auto", height: "2.7rem", marginRight: "0.25rem" }} src="/svg/polkadot.svg" alt="My Site Logo"  width={42} height={42}/>
                 <span>Connect Wallet</span>
             </div>
 		</>
