@@ -65,7 +65,7 @@ export default function Banner() {
 		<div className={classes.wrapper}>
 			<div className="banner">
 				✨<span>Million</span>✨ tokens minted so far... 🚀🌙, Follow the
-				project on our 
+				project on our
 				<a href="https://discord.gg/communeai">discord</a>
 				<DiscordIcon />
 			</div>

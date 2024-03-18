@@ -9,7 +9,6 @@ import { ApiPromise, WsProvider } from '@polkadot/api';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { loadStripe } from "@stripe/stripe-js";
 import { Dropdown, Modal, Space, Select, MenuProps } from 'antd';
-// import axios from "axios";
 import { parseEther } from 'viem'
 import { useSendTransaction, useContractWrite } from 'wagmi'
 import classes from './navigation-bar.module.css';
@@ -34,6 +33,8 @@ const navigation = [
 	{ name: '🥂ComChat', href: 'https://comchat.io/', current: false },
 	{ name: '💻ComfyUILauncher', href: 'https://huggingface.co/spaces/subbytech/comfyui-launcher/', current: false },
 	{ name: '💱Comwallet', href: 'https://comwallet.io/', current: false },
+	{ name: 'Bittensor', href: '/bittensor', current: false },
+	{ name: 'Staking', href: '/staking', current: false },
 	{ name: '📚Docs', href: '/docs/introduction', current: false },
 	{ name: '📄Whitepaper', href: 'https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf' },
 ]
@@ -237,12 +238,10 @@ export default function NavigationBar() {
 		if (tokenType === 'usdc') {
 			paywithUSDC({ args: [destinationAddress, amount] });
 		}
-		if (tokenType === 'bitcoin') {
-		}
 	}
 
 	if (hash || txHashUSDT || txHashUSDC) {
-		let selectedHash = hash || txHashUSDT || txHashUSDC;
+		const selectedHash = hash || txHashUSDT || txHashUSDC;
 		if (selectedHash) {
 			saveTransaction(tokenType, parseFloat(amount), destinationAddress, selectedHash.hash);
 		}
@@ -367,7 +366,7 @@ export default function NavigationBar() {
 											</Menu>
 											<Dropdown menu={{ items, onClick }}>
 												<Space>
-													<span style={{ marginLeft: '0.25rem' }} className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0] p-0 md:text-xl')}>💰Payment</span>
+													<span style={{ marginLeft: '0.35rem' }} className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0] p-0 md:text-[18px]')}>💰Payment</span>
 												</Space>
 											</Dropdown>
 											<Menu as="div" className="mx-3">
@@ -612,10 +611,12 @@ export default function NavigationBar() {
 																}}
 															>
 																{chain.iconUrl && (
-																	<img
+																	<Image
 																		alt={chain.name ?? 'Chain icon'}
 																		src={chain.iconUrl}
 																		style={{ width: 12, height: 12 }}
+																		width={12}
+																		height={12}
 																	/>
 																)}
 															</div>

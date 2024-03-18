@@ -1,9 +1,10 @@
+import { NextApiRequest, NextApiResponse } from 'next';
 import axios from "axios";
 
-export default async function handler(req: any, res: any) {
-  const cursor:string = req.query.cursor;  
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  const cursor: string | string[] | undefined = req && req?.query?.cursor;
 
-  if ( cursor  === '') {    
+  if (cursor === '') {
     try {
       const response = await axios.get('https://api.replicate.com/v1/models', {
         headers: {
@@ -21,7 +22,7 @@ export default async function handler(req: any, res: any) {
   }
   else {
     try {
-      const response = await axios.get(`${ cursor }`, {
+      const response = await axios.get(`${cursor}`, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: 'Token r8_ZGZlzThfRkPZVDMygVclY1XZ9AuxmIQ2qwwPP',
@@ -34,7 +35,7 @@ export default async function handler(req: any, res: any) {
     } catch (err) {
       return res.status(500).json({ error: err });
     }
-  } 
+  }
 }
 
 

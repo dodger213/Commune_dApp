@@ -1,10 +1,11 @@
-import Stripe from "stripe";
+import { NextApiRequest, NextApiResponse } from 'next';
+import Stripe from 'stripe';
 
 const stripe = new Stripe(process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY || '');
 const host = process.env.NEXT_PUBLIC_HOST;
 
-export default async function handler(req: any, res: any) {
-    
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+
     const { method, body } = req;
 
     if (method === "POST") {
