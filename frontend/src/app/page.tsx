@@ -138,7 +138,9 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        imageUrl="./gif/cubes/yellow_small.gif"
+
+        imageUrl="./gif/cubes/commune-single-block_yellow.gif"
+
         backgroundClassName="bg-white"
       >
         <div className='text-black'>
@@ -170,7 +172,7 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        imageUrl="./gif/cubes/red_small.gif"
+        imageUrl="./gif/cubes/commune-single-block_red.gif"
         backgroundClassName="bg-white dark:bg-gray-800"
       >
         <div className='text-black '>
@@ -196,7 +198,7 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        imageUrl="./gif/cubes/pink_small.gif"
+        imageUrl="./gif/cubes/commune-single-block_purple.gif"
         backgroundClassName="bg-white"
       >
         <div className=' text-black'>
@@ -236,7 +238,7 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        imageUrl="./gif/cubes/black_small.gif"
+        imageUrl="./gif/cubes/commune-single-block_gray.gif"
         backgroundClassName="bg-white dark:bg-gray-800"
       >
         <div className=' text-black dark:text-white'>
@@ -262,7 +264,7 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        imageUrl="./gif/cubes/white_small.gif"
+        imageUrl="./gif/cubes/commune-single-block_white.gif"
         backgroundClassName="bg-white"
       >
         <div className='text-black dark:text-white'>

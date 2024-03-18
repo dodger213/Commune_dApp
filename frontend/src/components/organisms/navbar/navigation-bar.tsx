@@ -287,8 +287,6 @@ export default function NavigationBar() {
 												style={{ width: "auto", height: "4rem", marginRight: "-0.25rem" }}
 												src="/svg/commune.svg"
 												alt="Commune Logo"
-												width={64}
-												height={64}
 											/>
 										</Link>
 										<div className="hidden md:block">
@@ -450,11 +448,7 @@ export default function NavigationBar() {
 											)}
 											aria-current={item.current ? 'page' : undefined}
 										>
-											<span className='flex items-center justify-center flex-col'>
-												{item.name === 'Bittensor' && <Image src='/img/frontpage/bittensor.jpg' alt='bittensor' width={25} height={10} className='mr-1' />}
-												{item.name === 'Staking' && <Image src='/img/frontpage/staking.jpg' alt='bittensor' width={25} height={10} className='mr-1' />}
-												{item.name}
-											</span>
+											{item.name}
 										</Disclosure.Button>
 									))}
 								</div>
