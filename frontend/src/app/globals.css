@@ -8,8 +8,8 @@
   --ifm-color-primary: #25c2a0;
   --ifm-color-white: #fff;
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-start-rgb: 14, 23, 42;
+  --background-end-rgb: 8, 8, 8;
   --ifm-font-family-base: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   --ifm-h1-font-size: 2rem;
   --ifm-heading-color: inherit;
