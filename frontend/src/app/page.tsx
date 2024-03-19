@@ -5,6 +5,8 @@ import classes from "./home.module.css";
 import HomepageHeader from '@/components/templates/homepage-header';
 import WelcomeSection from '@/components/templates/welcome/welcome';
 
+import blue from '../../public/gif/cubes/commune-single-block_blue.gif';
+
 function SectionWrapper({
   imageUrl,
   backgroundClassName,
@@ -48,7 +50,7 @@ export default function Home() {
       <HomepageHeader />
       <WelcomeSection />
       <SectionWrapper
-        imageUrl="./gif/cubes/commune-single-block_blue.gif"
+        imageUrl="/gif/cubes/commune-single-block_blue.gif"
         backgroundClassName="bg-white dark:bg-gray-900"
       >
         <div className='text-black'>
@@ -87,7 +89,7 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        imageUrl="./gif/cubes/commune-single-block_green.gif"
+        imageUrl="/gif/cubes/commune-single-block_green.gif"
         backgroundClassName="bg-white dark:bg-gray-800"
       >
         <div className='text-black'>
@@ -139,7 +141,7 @@ export default function Home() {
       </SectionWrapper>
       <SectionWrapper
 
-        imageUrl="./gif/cubes/commune-single-block_yellow.gif"
+        imageUrl="/gif/cubes/commune-single-block_yellow.gif"
 
         backgroundClassName="bg-white"
       >
@@ -172,7 +174,7 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        imageUrl="./gif/cubes/commune-single-block_red.gif"
+        imageUrl="/gif/cubes/commune-single-block_red.gif"
         backgroundClassName="bg-white dark:bg-gray-800"
       >
         <div className='text-black '>
@@ -198,7 +200,7 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        imageUrl="./gif/cubes/commune-single-block_purple.gif"
+        imageUrl="/gif/cubes/commune-single-block_purple.gif"
         backgroundClassName="bg-white"
       >
         <div className=' text-black'>
@@ -238,7 +240,7 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        imageUrl="./gif/cubes/commune-single-block_gray.gif"
+        imageUrl="/gif/cubes/commune-single-block_gray.gif"
         backgroundClassName="bg-white dark:bg-gray-800"
       >
         <div className=' text-black dark:text-white'>
@@ -264,7 +266,7 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        imageUrl="./gif/cubes/commune-single-block_white.gif"
+        imageUrl="/gif/cubes/commune-single-block_white.gif"
         backgroundClassName="bg-white"
       >
         <div className='text-black dark:text-white'>
