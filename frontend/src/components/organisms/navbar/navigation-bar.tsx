@@ -168,7 +168,7 @@ export default function NavigationBar() {
 	const handleConnectWithSubstrateModalCancel = () => {
 		setIsShowConnectWithSubstrateModalOpen(false)
 	}
-	const [api, setApi] = React.useState<ApiPromise | null>(null);
+	const [api, setApi] = React.useState < ApiPromise | null > (null);
 	const [chainInfo, setChainInfo] = React.useState('');
 	const [nodeName, setNodeName] = React.useState('');
 
@@ -194,19 +194,17 @@ export default function NavigationBar() {
 	return (
 		<>
 			<div className="min-h-full">
-				<Disclosure as="nav" className="dark:bg-black shadow">
+				<Disclosure as="nav" className="dark:bg-blue-900 shadow-md">
 					{({ open }) => (
 						<>
 							<div className="mx-auto px-4 lg:px-8">
 								<div className="flex h-16 items-center justify-between">
 									<div className="flex items-center">
 										<Link className={classes.brand} href="/">
-											<Image
-												style={{ width: "auto", height: "3.2rem", marginRight: "-0.25rem" }}
-												src="/gif/logo/commune.gif"
+											<img
+												style={{ width: "auto", height: "4rem", marginRight: "-0.25rem" }}
+												src="/svg/commune.svg"
 												alt="Commune Logo"
-												width={64}
-												height={64}
 											/>
 										</Link>
 										<div className="hidden xl:block">
@@ -215,10 +213,10 @@ export default function NavigationBar() {
 													<a
 														key={item.name}
 														href={item.href}
-														className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0] p-0 lg:pl-4 md:text-[18px]')}
+														className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0] p-0 lg:pl-4 md:text-xl')}
 														aria-current={item.current ? 'page' : undefined}
 													>
-														<span className='flex items-center justify-center'>
+                            <span className='flex items-center justify-center'>
 															{item.name === 'Bittensor' && <Image src='/img/frontpage/bittensor.jpg' alt='bittensor' width={25} height={10} className='mr-1' />}
 															{item.name === 'Staking' && <Image src='/img/frontpage/staking.jpg' alt='staking' width={25} height={10} className='mr-1 rounded-md' />}
 															{item.name}
@@ -232,7 +230,7 @@ export default function NavigationBar() {
 										<div className="flex items-center">
 											<Menu as="div" className="relative ml-3">
 												<div>
-													<Menu.Button className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0] p-0 md:text-[18px]')} aria-haspopup="true" aria-expanded="false" role="button" >
+													<Menu.Button className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0] p-0 md:text-xl')} aria-haspopup="true" aria-expanded="false" role="button" >
 														🔗Community
 													</Menu.Button>
 												</div>
@@ -336,7 +334,13 @@ export default function NavigationBar() {
 									</div>
 									<div className="flex xl:hidden">
 										{/* Mobile menu button */}
-										<Disclosure.Button className="relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 text-gray-400 hover:text-[#25c2a0] focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+										<Disclosure.Button
+											className="
+												relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 
+												text-gray-400 hover:text-[#25c2a0] hover:text-white focus:outline-none focus:ring-2 
+												focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800
+											"
+										>
 											<span className="absolute -inset-0.5" />
 											<span className="sr-only">Open main menu</span>
 											{open ? (
@@ -362,11 +366,7 @@ export default function NavigationBar() {
 											)}
 											aria-current={item.current ? 'page' : undefined}
 										>
-											<span className='flex items-center justify-center flex-col'>
-												{item.name === 'Bittensor' && <Image src='/img/frontpage/bittensor.jpg' alt='bittensor' width={25} height={10} className='mr-1' />}
-												{item.name === 'Staking' && <Image src='/img/frontpage/staking.jpg' alt='bittensor' width={25} height={10} className='mr-1' />}
-												{item.name}
-											</span>
+											{item.name}
 										</Disclosure.Button>
 									))}
 								</div>
@@ -405,7 +405,16 @@ export default function NavigationBar() {
 				&&
 				<Modal open={isShowConnectWithSubstrateModalOpen} onCancel={handleConnectWithSubstrateModalCancel} footer={null} >
 					<div className="flex flex-col">
-						<button onClick={getChainInfo} className="w-1/2 mx-auto bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-600 duration-200 text-white hover:text-white font-sans font-semibold justify-center px-2 py-2 hover:border-blue-300 hover:border-2 hover:border-solid cursor-pointer">Get Chain Info</button>
+						<button
+							onClick={getChainInfo}
+							className="
+								w-1/2 mx-auto bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-600 
+								duration-200 text-white hover:text-white font-sans font-semibold justify-center px-2 py-2 
+								hover:border-blue-300 hover:border-2 hover:border-solid cursor-pointer
+							"
+						>
+							Get Chain Info
+						</button>
 						{
 							chainInfo && nodeName &&
 							<div className="flex items-center justify-evenly mt-4">
@@ -421,7 +430,13 @@ export default function NavigationBar() {
 				<Modal open={isShowWalletPaymentModal} onCancel={handleWalletPaymentModalOpen} footer={null} >
 					<div className="flex flex-col">
 						<label className="mt-2">Receiver:</label>
-						<input value={destinationAddress} onChange={({ target: { value } }) => setDestinationAddress(value)} style={{ padding: '0.3rem' }} className="mt-2" placeholder="Please input wallet address" />
+						<input
+							value={destinationAddress}
+							onChange={({ target: { value } }) => setDestinationAddress(value)}
+							style={{ padding: '0.3rem' }}
+							className="mt-2"
+							placeholder="Please input wallet address"
+						/>
 						<div className="flex items-center mt-4">
 							<label style={{ marginRight: '0.3rem' }}>PayType:</label>
 							<Space wrap>
@@ -476,7 +491,15 @@ export default function NavigationBar() {
 										{(() => {
 											if (!connected) {
 												return (
-													<div className='flex items-center justify-center mt-3 bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-600 duration-200 text-white hover:text-white font-sans font-semibold px-2 py-2 hover:border-blue-300 hover:border-2 hover:border-solid cursor-pointer' onClick={openConnectModal}>
+													<div
+														className='
+															flex items-center justify-center mt-3 bg-blue-700 rounded-lg shadow-lg 
+															hover:shadow-2xl text-center hover:bg-blue-600 duration-200 text-white
+															hover:text-white font-sans font-semibold px-2 py-2 hover:border-blue-300 
+															hover:border-2 hover:border-solid cursor-pointer
+														'
+														onClick={openConnectModal}
+													>
 														<button type="button">
 															Connect Wallet
 														</button>
