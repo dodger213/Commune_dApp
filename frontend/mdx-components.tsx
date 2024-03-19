@@ -1,6 +1,6 @@
+import type { MDXComponents } from 'mdx/types';
 import classnames from 'classnames';
 import classes from './mdx-components.module.css';
-import type { MDXComponents } from 'mdx/types';
 
  
 export function useMDXComponents(components: MDXComponents): MDXComponents {
