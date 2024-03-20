@@ -135,11 +135,7 @@ const ProfileEditPage: React.FC = () => {
                         {fileList.length >= 1 ? null : uploadButton}
                     </Upload>
                     <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
-<<<<<<< HEAD
                         <Image alt="example" style={{ width: '100%' }} src={previewImage} />
-=======
-                        <Image alt="example" style={{ width: '100%' }} src={previewImage} width={30} height={30} />
->>>>>>> 80b3c6a1f3f49d4791bf48f7948b6b7e83a6c76d
                     </Modal>
                     <button className='gap-2 border-[rgb(229 231 235)] w-[20%] inline-flex cursor-pointer items-center justify-center rounded-[0.5rem] border-[1px] p-1 hover:scale-105' onClick={handleSaveUserProfile}>
                         Save Changes
