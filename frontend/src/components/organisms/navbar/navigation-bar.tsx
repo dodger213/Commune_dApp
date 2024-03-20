@@ -28,15 +28,15 @@ const user = {
 }
 
 const navigation = [
-	{ name: '🚀Modules', href: '/modules', current: false },
-	{ name: '⛓Telemetry', href: '/telemetry', current: false },
-	{ name: '🥂ComChat', href: 'https://comchat.io/', current: false },
-	{ name: '💻ComfyUILauncher', href: 'https://huggingface.co/spaces/subbytech/comfyui-launcher/', current: false },
-	{ name: '💱Comwallet', href: 'https://comwallet.io/', current: false },
-	{ name: 'Bittensor', href: '/bittensor', current: false },
-	{ name: 'Staking', href: '/staking', current: false },
-	{ name: '📚Docs', href: '/docs/introduction', current: false },
-	{ name: '📄Whitepaper', href: 'https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf' },
+	// { name: '🚀Modules', href: '/modules', current: false },
+	// { name: '⛓Telemetry', href: '/telemetry', current: false },
+	// { name: '🥂ComChat', href: 'https://comchat.io/', current: false },
+	// { name: '💻ComfyUILauncher', href: 'https://huggingface.co/spaces/subbytech/comfyui-launcher/', current: false },
+	// { name: '💱Comwallet', href: 'https://comwallet.io/', current: false },
+	// { name: 'Bittensor', href: '/bittensor', current: false },
+	// { name: 'Staking', href: '/staking', current: false },
+	// { name: '📚Docs', href: '/docs/introduction', current: false },
+	// { name: '📄Whitepaper', href: 'https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf' },
 ]
 
 const community = [
@@ -195,7 +195,7 @@ export default function NavigationBar() {
 	return (
 		<>
 			<div className="min-h-full">
-				<Disclosure as="nav" className="dark:bg-blue-900 shadow-md">
+				<Disclosure as="nav" className="dark:bg-gray-900 border-b-2 border-slate-500 shadow-md">
 					{({ open }) => (
 						<>
 							<div className="mx-auto px-4 md:px-0 lg:px-8">
