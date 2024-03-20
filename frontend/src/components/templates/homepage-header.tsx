@@ -6,11 +6,9 @@ import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Modal from "antd/es/modal/Modal";
 import GitHubLogin from "react-github-login";
-import { useDispatch } from 'react-redux'
 import GithubImage from "../../../public/svg/github-mark.svg";
 import MetaMaskImage from "../../../public/svg/metamask.svg";
 import PolkadotImage from "../../../public/svg/polkadot.svg";
-import { saveMetaMaskAddress } from "@/store/action/transaction.record.action";
 
 const words: string[] = [
   "developers.",
@@ -36,14 +34,10 @@ export default function HomepageHeader() {
   const [reverse, setReverse] = useState(false);
   const [isShowAuthModalOpen, setIsShowAuthModalOpen] = useState(false)
 
-  //user login
-
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [metamaskAddress, setMetamaskAddress] = useState<string | undefined>('')
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const dispatch=useDispatch<any>()
-
-
   // state of the scroll position and header height
   const [scrollPosition, setScrollPosition] = useState(0);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -89,19 +83,19 @@ export default function HomepageHeader() {
   }, [blink]);
 
   // Handle scroll position
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
-  };
+  // const handleScroll = () => {
+  //   const position = window.pageYOffset;
+  //   setScrollPosition(position);
+  // };
 
   // Add scroll event listener to window
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
+  // useEffect(() => {
+  //   window.addEventListener('scroll', handleScroll, { passive: true });
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, []);
 
   // Get header height on mount and when window is resized
   // This is to offset the scroll position so that the header
@@ -167,13 +161,6 @@ export default function HomepageHeader() {
     }
   };
 
-  useEffect(() => {
-    console.log('------------what is the metamaskAddress----', metamaskAddress, isLoggedIn)
-    if (isLoggedIn && metamaskAddress) {
-      dispatch(saveMetaMaskAddress(metamaskAddress))
-    }
-  }, [isLoggedIn, metamaskAddress])
-
   return (
     <header
       ref={headerRef} 
@@ -200,133 +187,29 @@ export default function HomepageHeader() {
           <div className='w-full lg:w-1/2 flex flex-col items-center justify-center'>
             <div className='w-auto sm:w-[710px] sm:h-[250px] '>
               <h1 className="text-4xl sm:text-6xl sm:pb-3 dark:text-white">{TITLE}</h1>
-
               <div className='hidden sm:block'>
                 <p className="hero__subtitle text-xl sm:text-4xl dark:text-white">{TAGLINE}
                   <br />
-                  <span 
+                  <span
                     className={`hero__subtitle text-4xl ${colour[index]} font-semibold mb-5`}
-                    >
+                  >
                     {`${words[index].substring(0, subIndex)}${blink ? "|" : ""}`}
                   </span>
                 </p>
               </div>
             </div>
             <div className='w-[10rem] h-[3rem]'>
-              <div 
+              <div
                 className='
                   bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center 
                   hover:bg-blue-600 duration-200 text-xl text-white hover:text-white 
                   font-sans font-semibold justify-center px-2 py-2 cursor-pointer
-                ' 
+                '
                 onClick={() => setIsShowAuthModalOpen(true)}
               >
                 Get Started
               </div>
             </div>
-          </div>
-          <div className="absolute bottom-0 left-0 z-[-1] opacity-30 lg:opacity-100">
-            <svg
-              width="full"
-              height="201"
-              viewBox="0 0 364 201"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M5.88928 72.3303C33.6599 66.4798 101.397 64.9086 150.178 105.427C211.155 156.076 229.59 162.093 264.333 166.607C299.076 171.12 337.718 183.657 362.889 212.24"
-                stroke="url(#paint0_linear_25:218)"
-              />
-              <path
-                d="M-22.1107 72.3303C5.65989 66.4798 73.3965 64.9086 122.178 105.427C183.155 156.076 201.59 162.093 236.333 166.607C271.076 171.12 309.718 183.657 334.889 212.24"
-                stroke="url(#paint1_linear_25:218)"
-              />
-              <path
-                d="M-53.1107 72.3303C-25.3401 66.4798 42.3965 64.9086 91.1783 105.427C152.155 156.076 170.59 162.093 205.333 166.607C240.076 171.12 278.718 183.657 303.889 212.24"
-                stroke="url(#paint2_linear_25:218)"
-              />
-              <path
-                d="M-98.1618 65.0889C-68.1416 60.0601 4.73364 60.4882 56.0734 102.431C120.248 154.86 139.905 161.419 177.137 166.956C214.37 172.493 255.575 186.165 281.856 215.481"
-                stroke="url(#paint3_linear_25:218)"
-              />
-              <circle
-                opacity="0.8"
-                cx="214.505"
-                cy="60.5054"
-                r="49.7205"
-                transform="rotate(-13.421 214.505 60.5054)"
-                stroke="url(#paint4_linear_25:218)"
-              />
-              <circle cx="220" cy="63" r="43" fill="url(#paint5_radial_25:218)" />
-              <defs>
-                <linearGradient
-                  id="paint0_linear_25:218"
-                  x1="184.389"
-                  y1="69.2405"
-                  x2="184.389"
-                  y2="212.24"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop stopColor="#4A6CF7" stopOpacity="0" />
-                  <stop offset="1" stopColor="#4A6CF7" />
-                </linearGradient>
-                <linearGradient
-                  id="paint1_linear_25:218"
-                  x1="156.389"
-                  y1="69.2405"
-                  x2="156.389"
-                  y2="212.24"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop stopColor="#4A6CF7" stopOpacity="0" />
-                  <stop offset="1" stopColor="#4A6CF7" />
-                </linearGradient>
-                <linearGradient
-                  id="paint2_linear_25:218"
-                  x1="125.389"
-                  y1="69.2405"
-                  x2="125.389"
-                  y2="212.24"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop stopColor="#4A6CF7" stopOpacity="0" />
-                  <stop offset="1" stopColor="#4A6CF7" />
-                </linearGradient>
-                <linearGradient
-                  id="paint3_linear_25:218"
-                  x1="93.8507"
-                  y1="67.2674"
-                  x2="89.9278"
-                  y2="210.214"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop stopColor="#4A6CF7" stopOpacity="0" />
-                  <stop offset="1" stopColor="#4A6CF7" />
-                </linearGradient>
-                <linearGradient
-                  id="paint4_linear_25:218"
-                  x1="214.505"
-                  y1="10.2849"
-                  x2="212.684"
-                  y2="99.5816"
-                  gradientUnits="userSpaceOnUse"
-                >
-                  <stop stopColor="#4A6CF7" />
-                  <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
-                </linearGradient>
-                <radialGradient
-                  id="paint5_radial_25:218"
-                  cx="0"
-                  cy="0"
-                  r="1"
-                  gradientUnits="userSpaceOnUse"
-                  gradientTransform="translate(220 63) rotate(90) scale(43)"
-                >
-                  <stop offset="0.145833" stopColor="white" stopOpacity="0" />
-                  <stop offset="1" stopColor="white" stopOpacity="0.08" />
-                </radialGradient>
-              </defs>
-            </svg>
           </div>
           <div className='hidden lg:block w-full lg:w-1/2 h-full lg:-mr-44 '>
             <Image src="/gif/logo/commune.gif" width={500} height={500} alt="Commune Logo" className='' />
@@ -362,10 +245,6 @@ export default function HomepageHeader() {
                     chain &&
                     (!authenticationStatus ||
                       authenticationStatus === 'authenticated');
-                  if(connected){
-                  setIsLoggedIn(true);
-                  setMetamaskAddress(account?.address);
-                  }
                   return (
                     <div
                       {...(!ready && {
@@ -382,7 +261,7 @@ export default function HomepageHeader() {
                           return (
                             <div className='
                                 flex items-center justify-center hover:bg-gray-300 p-2 w-[105.77px] h-[105.77px] rounded-md
-                              ' 
+                              '
                               style={{ flexDirection: 'column', border: '1px solid gray' }} onClick={openConnectModal}
                             >
                               <Image src={MetaMaskImage} alt='login with Metamask' width={50} height={50} className='cursor-pointer mb-1' />
@@ -448,7 +327,7 @@ export default function HomepageHeader() {
               </ConnectButton.Custom>
               <div className='
                   flex items-center justify-center p-2 rounded-md hover:bg-gray-300 w-[105.77px] h-[105.77px]
-                ' 
+                '
                 style={{ flexDirection: 'column', border: '1px solid gray' }}
               >
                 <Image src={GithubImage} alt='login with Github' width={50} height={50} className='cursor-pointer mb-1' />
@@ -465,8 +344,9 @@ export default function HomepageHeader() {
                   border-[gray] p-2 rounded-md hover:bg-gray-300 w-[105.77px] h-[105.77px]
                 "
               >
-                <button onClick={() => connectWallet()} className="w-full h-full flex justify-center items-center">
+                <button onClick={() => connectWallet()} className="w-full h-full flex justify-center items-center flex-col">
                   <Image className="w-[60px] h-[60px]" width={50} height={50} src={PolkadotImage} alt="Polkadot" />
+                  <span>Comwallet</span>
                 </button>
               </div>
             </div>
@@ -481,6 +361,5 @@ export const getHeaderClasses = (position: number, height: number) => {
   if (position > height / 2) {
     return "rounded-b-lg shadow-lg mx-5";
   }
-
   return "";
 };

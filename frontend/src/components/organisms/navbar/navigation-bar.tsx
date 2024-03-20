@@ -28,15 +28,15 @@ const user = {
 }
 
 const navigation = [
-	{ name: '🚀Modules', href: '/modules', current: false },
-	{ name: '⛓Telemetry', href: '/telemetry', current: false },
-	{ name: '🥂ComChat', href: 'https://comchat.io/', current: false },
-	{ name: '💻ComfyUILauncher', href: 'https://huggingface.co/spaces/subbytech/comfyui-launcher/', current: false },
-	{ name: '💱Comwallet', href: 'https://comwallet.io/', current: false },
-	{ name: 'Bittensor', href: '/bittensor', current: false },
-	{ name: 'Staking', href: '/staking', current: false },
-	{ name: '📚Docs', href: '/docs/introduction', current: false },
-	{ name: '📄Whitepaper', href: 'https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf' },
+	// { name: '🚀Modules', href: '/modules', current: false },
+	// { name: '⛓Telemetry', href: '/telemetry', current: false },
+	// { name: '🥂ComChat', href: 'https://comchat.io/', current: false },
+	// { name: '💻ComfyUILauncher', href: 'https://huggingface.co/spaces/subbytech/comfyui-launcher/', current: false },
+	// { name: '💱Comwallet', href: 'https://comwallet.io/', current: false },
+	// { name: 'Bittensor', href: '/bittensor', current: false },
+	// { name: 'Staking', href: '/staking', current: false },
+	// { name: '📚Docs', href: '/docs/introduction', current: false },
+	// { name: '📄Whitepaper', href: 'https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf' },
 ]
 
 const community = [
@@ -168,7 +168,7 @@ export default function NavigationBar() {
 	const handleConnectWithSubstrateModalCancel = () => {
 		setIsShowConnectWithSubstrateModalOpen(false)
 	}
-	const [api, setApi] = React.useState < ApiPromise | null > (null);
+	const [api, setApi] = React.useState<ApiPromise | null>(null);
 	const [chainInfo, setChainInfo] = React.useState('');
 	const [nodeName, setNodeName] = React.useState('');
 
@@ -194,7 +194,7 @@ export default function NavigationBar() {
 	return (
 		<>
 			<div className="min-h-full">
-				<Disclosure as="nav" className="dark:bg-blue-900 shadow-md">
+				<Disclosure as="nav" className="dark:bg-gray-900 border-b-2 border-slate-500 shadow-md">
 					{({ open }) => (
 						<>
 							<div className="mx-auto px-4 lg:px-8">
@@ -203,7 +203,7 @@ export default function NavigationBar() {
 										<Link className={classes.brand} href="/">
 											<Image
 												style={{ width: "auto", height: "4rem", marginRight: "-0.25rem" }}
-												src="/svg/commune.svg"
+												src="/gif/logo/commune.gif"
 												alt="Commune Logo"
 												width={64}
 												height={64}
@@ -218,7 +218,7 @@ export default function NavigationBar() {
 														className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0] p-0 lg:pl-4 md:text-xl')}
 														aria-current={item.current ? 'page' : undefined}
 													>
-                            <span className='flex items-center justify-center'>
+														<span className='flex items-center justify-center'>
 															{item.name === 'Bittensor' && <Image src='/img/frontpage/bittensor.jpg' alt='bittensor' width={25} height={10} className='mr-1' />}
 															{item.name === 'Staking' && <Image src='/img/frontpage/staking.jpg' alt='staking' width={25} height={10} className='mr-1 rounded-md' />}
 															{item.name}
@@ -345,7 +345,7 @@ export default function NavigationBar() {
 										<Disclosure.Button
 											className="
 												relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 
-												text-gray-400 hover:text-[#25c2a0] hover:text-white focus:outline-none focus:ring-2 
+												text-gray-400 hover:text-[#25c2a0] focus:outline-none focus:ring-2 
 												focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800
 											"
 										>

@@ -1,0 +1,88 @@
+[
+    {
+        "name": "Modules",
+        "url": "/modules",
+        "image": "/img/frontpage/comchat.png",
+        "description": "The hub for Commune Ai modules",
+        "tags": [
+            "com",
+            "hub"
+        ]
+    },
+    {
+        "name": "Telemetry",
+        "url": "/telemetry",
+        "image": "/img/frontpage/comai-logo.png",
+        "description": "Telemetry of Commune Ai",
+        "tags": [
+            "stats",
+            "staking",
+            "wallet"
+        ]
+    },
+    {
+        "name": "ComChat",
+        "url": "https://comchat.io/",
+        "image": "/img/frontpage/comchat.png",
+        "description": "LLM GPT aggregator built on Commune Ai",
+        "tags": [
+            "chat",
+            "GPT",
+            "Ai"
+        ]
+    },
+    {
+        "name": "ComfyUILauncher",
+        "url": "https://huggingface.co/spaces/subbytech/comfyui-launcher/",
+        "image": "/img/frontpage/comai-logo.png",
+        "description": "ComfyUILauncher of Commune Ai",
+        "tags": [
+            "Docs",
+            "AI"
+        ]
+    },
+    {
+        "name": "ComWallet",
+        "url": "https://comwallet.io/",
+        "image": "/img/frontpage/combridge-logo.png",
+        "description": "ComWallet of Commune Ai",
+        "validatorKey": "5CXiWwsS76H2vwroWu4SvdAS3kxprb7aFtqWLxxZC5FNhYri",
+        "verified": true,
+        "tags": [
+            "staking",
+            "wallet"
+        ],
+        "disabled": false
+    },
+    {
+        "name": "Bittensor",
+        "url": "/bittensor",
+        "image": "/img/frontpage/comai-webp.webp",
+        "description": "Bittensor of Commune Ai",
+        "tags": [
+            "AI"
+        ]
+    },
+    {
+        "name": "Comscanner",
+        "url": "https://comscanner.vercel.app/app/welcome",
+        "image": "/img/frontpage/comai-logo.png",
+        "description": "coming soon",
+        "tags": [
+            "wallet",
+            "predict",
+            "explorer",
+            "AI"
+        ]
+    },
+    {
+        "name": "Staking",
+        "url": "/staking",
+        "image": "/img/frontpage/comai-logo.png",
+        "description": "coming soon",
+        "tags": [
+            "wallet",
+            "bridge"
+        ]
+    }
+]
