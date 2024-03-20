@@ -6,10 +6,10 @@ import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Modal from "antd/es/modal/Modal";
 import GitHubLogin from "react-github-login";
+import { useDispatch } from 'react-redux'
 import GithubImage from "../../../public/svg/github-mark.svg";
 import MetaMaskImage from "../../../public/svg/metamask.svg";
 import PolkadotImage from "../../../public/svg/polkadot.svg";
-import { useDispatch, useSelector } from 'react-redux'
 import { saveMetaMaskAddress } from "@/store/action/transaction.record.action";
 
 const words: string[] = [
