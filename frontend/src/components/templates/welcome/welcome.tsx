@@ -27,7 +27,7 @@ export default function WelcomeSection() {
               <a href="#blue" className="hover:no-underline">
                 <Image
                   src="/gif/cubes/commune-single-block_blue.gif"
-                  className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[25rem] hover:h-[25rem] duration-300"
+                  className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[20rem] hover:h-[19rem] duration-300"
                   alt='Image'
                   width={30}
                   height={30}
@@ -40,7 +40,7 @@ export default function WelcomeSection() {
                 <Image
                   src="/gif/cubes/commune-single-block_green.gif"
                   alt='Image'
-                  className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[25rem] hover:h-[25rem] duration-300"
+                  className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[20rem] hover:h-[19rem] duration-300"
                   width={30}
                   height={30}
                 />
@@ -52,7 +52,7 @@ export default function WelcomeSection() {
                 <Image
                   src="/gif/cubes/commune-single-block_yellow.gif"
                   alt='Image'
-                  className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[25rem] hover:h-[25rem] duration-300"
+                  className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[20rem] hover:h-[19rem] duration-300"
                   width={30}
                   height={30}
                 />
@@ -64,7 +64,7 @@ export default function WelcomeSection() {
                 <Image
                   alt='Image'
                   src="/gif/cubes/commune-single-block_red.gif"
-                  className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[25rem] hover:h-[25rem] duration-300"
+                  className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[20rem] hover:h-[19rem] duration-300"
                   width={30}
                   height={30}
                 />
@@ -76,7 +76,7 @@ export default function WelcomeSection() {
                 <Image
                   alt='Image'
                   src="/gif/cubes/commune-single-block_purple.gif"
-                  className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[25rem] hover:h-[25rem] duration-300"
+                  className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[20rem] hover:h-[19rem] duration-300"
                   width={30}
                   height={30}
                 />
@@ -88,7 +88,7 @@ export default function WelcomeSection() {
                 <Image
                   alt='Image'
                   src="/gif/cubes/commune-single-block_gray.gif"
-                  className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[25rem] hover:h-[25rem] duration-300"
+                  className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[20rem] hover:h-[19rem] duration-300"
                   width={30}
                   height={30}
                 />
@@ -100,7 +100,7 @@ export default function WelcomeSection() {
                 <Image
                   alt='Image'
                   src="/gif/cubes/commune-single-block_white.gif"
-                  className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[25rem] hover:h-[25rem] duration-300"
+                  className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[20rem] hover:h-[19rem] duration-300"
                   width={30}
                   height={30}
                 />
