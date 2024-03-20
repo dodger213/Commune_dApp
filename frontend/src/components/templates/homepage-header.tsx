@@ -37,9 +37,11 @@ export default function HomepageHeader() {
   const [isShowAuthModalOpen, setIsShowAuthModalOpen] = useState(false)
 
   //user login
+
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [metamaskAddress, setMetamaskAddress] = useState<string | undefined>('')
   const dispatch=useDispatch<any>()
+
 
   // state of the scroll position and header height
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -170,6 +172,7 @@ export default function HomepageHeader() {
   }, [isLoggedIn, metamaskAddress])
 
   return (
+
     <header ref={headerRef} className={`relative z-10 dark:bg-gray-900 p-[4rem] text-center h-screen overflow-hidden ${getHeaderClasses(scrollPosition, headerHeight)} duration-500`} >
       <img src="/gif/logo/CubesShufflingGIF.gif" alt="Commune Logo" className='block lg:hidden' />
       <div className="px-10 py-5">
@@ -177,15 +180,27 @@ export default function HomepageHeader() {
           <div className='w-full lg:w-1/2 flex flex-col items-center justify-center'>
             <div className='w-auto sm:w-[710px] sm:h-[250px] '>
               <h1 className="text-4xl sm:text-6xl sm:pb-3 dark:text-white">{TITLE}</h1>
+
               <div className='hidden sm:block'>
                 <p className="hero__subtitle text-xl sm:text-4xl dark:text-white">{TAGLINE}
                   <br />
-                  <span className={`hero__subtitle text-4xl ${colour[index]} font-semibold mb-5`}>{`${words[index].substring(0, subIndex)}${blink ? "|" : ""}`}</span></p>
+                  <span 
+                    className={`hero__subtitle text-4xl ${colour[index]} font-semibold mb-5`}
+                    >
+                    {`${words[index].substring(0, subIndex)}${blink ? "|" : ""}`}
+                  </span>
+                </p>
               </div>
             </div>
             <div className='w-[10rem] h-[3rem]'>
-              <div className='bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center hover:bg-blue-600 duration-200 text-xl text-white hover:text-white font-sans font-semibold 
-                justify-center px-2 py-2 cursor-pointer' onClick={() => setIsShowAuthModalOpen(true)}>
+              <div 
+                className='
+                  bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center 
+                  hover:bg-blue-600 duration-200 text-xl text-white hover:text-white 
+                  font-sans font-semibold justify-center px-2 py-2 cursor-pointer
+                ' 
+                onClick={() => setIsShowAuthModalOpen(true)}
+              >
                 Get Started
               </div>
             </div>
@@ -483,7 +498,11 @@ export default function HomepageHeader() {
                       {(() => {
                         if (!connected) {
                           return (
-                            <div className='flex items-center justify-center hover:bg-gray-300 p-2 w-[105.77px] h-[105.77px] rounded-md' style={{ flexDirection: 'column', border: '1px solid gray' }} onClick={openConnectModal}>
+                            <div className='
+                                flex items-center justify-center hover:bg-gray-300 p-2 w-[105.77px] h-[105.77px] rounded-md
+                              ' 
+                              style={{ flexDirection: 'column', border: '1px solid gray' }} onClick={openConnectModal}
+                            >
                               <Image src={MetaMaskImage} alt='login with Metamask' width={50} height={50} className='cursor-pointer mb-1' />
                               <button type="button">
                                 Metamask
@@ -545,7 +564,11 @@ export default function HomepageHeader() {
                   );
                 }}
               </ConnectButton.Custom>
-              <div className='flex items-center justify-center p-2 rounded-md hover:bg-gray-300 w-[105.77px] h-[105.77px]' style={{ flexDirection: 'column', border: '1px solid gray' }}>
+              <div className='
+                  flex items-center justify-center p-2 rounded-md hover:bg-gray-300 w-[105.77px] h-[105.77px]
+                ' 
+                style={{ flexDirection: 'column', border: '1px solid gray' }}
+              >
                 <Image src={GithubImage} alt='login with Github' width={50} height={50} className='cursor-pointer mb-1' />
                 <GitHubLogin clientId='8386c0df1514607054e7'
                   buttonText="Github"
@@ -555,10 +578,13 @@ export default function HomepageHeader() {
                   redirectUri={'http://localhost:3000/modules'}
                 />
               </div>
-              <div className="transition-all duration-300 flex items-center justify-center flex-col border-[1px] border-[gray] p-2 rounded-md hover:bg-gray-300 w-[105.77px] h-[105.77px]">
-                <button onClick={() => connectWallet()} className="w-full h-full flex justify-center items-center flex-col">
+              <div className="
+                  transition-all duration-300 flex items-center justify-center flex-col border-[1px] 
+                  border-[gray] p-2 rounded-md hover:bg-gray-300 w-[105.77px] h-[105.77px]
+                "
+              >
+                <button onClick={() => connectWallet()} className="w-full h-full flex justify-center items-center">
                   <Image className="w-[60px] h-[60px]" width={50} height={50} src={PolkadotImage} alt="Polkadot" />
-                  <span>Comwallet</span>
                 </button>
               </div>
             </div>
