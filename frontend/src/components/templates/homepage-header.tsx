@@ -6,11 +6,9 @@ import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Modal from "antd/es/modal/Modal";
 import GitHubLogin from "react-github-login";
-import { useDispatch } from 'react-redux'
 import GithubImage from "../../../public/svg/github-mark.svg";
 import MetaMaskImage from "../../../public/svg/metamask.svg";
 import PolkadotImage from "../../../public/svg/polkadot.svg";
-import { saveMetaMaskAddress } from "@/store/action/transaction.record.action";
 
 const words: string[] = [
   "developers.",
@@ -38,14 +36,9 @@ export default function HomepageHeader() {
 
   //user login
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [metamaskAddress, setMetamaskAddress] = useState<string | undefined>('')
-  const dispatch=useDispatch<any>()
-
-
   // state of the scroll position and header height
   const [scrollPosition, setScrollPosition] = useState(0);
-  const headerRef = useRef < any > (null);
+  const headerRef = useRef <HTMLDivElement> (null);
   const [headerHeight, setHeaderHeight] = useState(20);
 
   // typeWriter effect
@@ -109,8 +102,14 @@ export default function HomepageHeader() {
     }
   }, [headerRef.current]);
 
+  interface GitHubUserInfo {
+    // Define properties representing user information from GitHub API response
+    id: number;
+    login: string;
+    // Add other properties as needed
+  }
 
-  const onGitHubLoginSuccess = (response: any) => {
+  const onGitHubLoginSuccess = (response: GitHubUserInfo) => {
 
     setIsShowAuthModalOpen(false)
 
@@ -142,7 +141,7 @@ export default function HomepageHeader() {
 
   }
 
-  const onGitHubLoginFailure = (response: any) => {
+  const onGitHubLoginFailure = (response: GitHubUserInfo) => {
     console.log('------the data from github-----failed-----', response);
   }
 
@@ -155,6 +154,7 @@ export default function HomepageHeader() {
         const polkadotAPI = await ApiPromise.create({ provider });
         const address = accounts[0].address;
         const data = await polkadotAPI.query.system.account(address);
+        console.log('----------This is the data------', data)
       } catch (error) {
         console.error('Error connecting to wallet:', error);
       }
@@ -164,17 +164,9 @@ export default function HomepageHeader() {
     }
   };
 
-  useEffect(() => {
-    console.log('------------what is the metamaskAddress----', metamaskAddress, isLoggedIn)
-    if (isLoggedIn && metamaskAddress) {
-      dispatch(saveMetaMaskAddress(metamaskAddress))
-    }
-  }, [isLoggedIn, metamaskAddress])
-
   return (
-
     <header ref={headerRef} className={`relative z-10 dark:bg-gray-900 p-[4rem] text-center h-screen overflow-hidden ${getHeaderClasses(scrollPosition, headerHeight)} duration-500`} >
-      <img src="/gif/logo/CubesShufflingGIF.gif" alt="Commune Logo" className='block lg:hidden' />
+      <img src="/gif/logo/commune.gif" alt="Commune Logo" className='block lg:hidden' />
       <div className="px-10 py-5">
         <div className='flex lg:flex-row flex-col h-1/2'>
           <div className='w-full lg:w-1/2 flex flex-col items-center justify-center'>
@@ -480,10 +472,6 @@ export default function HomepageHeader() {
                     chain &&
                     (!authenticationStatus ||
                       authenticationStatus === 'authenticated');
-                  if(connected){
-                  setIsLoggedIn(true);
-                  setMetamaskAddress(account?.address);
-                  }
                   return (
                     <div
                       {...(!ready && {
@@ -583,8 +571,9 @@ export default function HomepageHeader() {
                   border-[gray] p-2 rounded-md hover:bg-gray-300 w-[105.77px] h-[105.77px]
                 "
               >
-                <button onClick={() => connectWallet()} className="w-full h-full flex justify-center items-center">
+                <button onClick={() => connectWallet()} className="w-full h-full flex justify-center items-center flex-col">
                   <Image className="w-[60px] h-[60px]" width={50} height={50} src={PolkadotImage} alt="Polkadot" />
+                  <span>Comwallet</span>
                 </button>
               </div>
             </div>
@@ -599,6 +588,5 @@ export const getHeaderClasses = (position: number, height: number) => {
   if (position > height / 2) {
     return "rounded-b-lg shadow-lg mx-5";
   }
-
   return "";
 };

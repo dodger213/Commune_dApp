@@ -9,7 +9,6 @@ import { ApiPromise, WsProvider } from '@polkadot/api';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { loadStripe } from "@stripe/stripe-js";
 import { Dropdown, Modal, Space, Select, MenuProps } from 'antd';
-import { useSelector } from 'react-redux';
 import { parseEther } from 'viem'
 import { useSendTransaction, useContractWrite } from 'wagmi'
 import classes from './navigation-bar.module.css';
@@ -83,9 +82,6 @@ export default function NavigationBar() {
 	const asyncStripe = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
 	const { abi: erc20ABI } = erc20ContractABI
 	const router = useRouter();
-
-	const loginStatus = useSelector((state: { transactionRecord: { loginStatus: boolean } }) => state.transactionRecord.loginStatus);
-    console.log('-----------login status-------navigation---', loginStatus)
 
 	const handleClickPayButton = async () => {
 		try {
@@ -173,7 +169,7 @@ export default function NavigationBar() {
 	const handleConnectWithSubstrateModalCancel = () => {
 		setIsShowConnectWithSubstrateModalOpen(false)
 	}
-	const [api, setApi] = React.useState < ApiPromise | null > (null);
+	const [api, setApi] = React.useState<ApiPromise | null>(null);
 	const [chainInfo, setChainInfo] = React.useState('');
 	const [nodeName, setNodeName] = React.useState('');
 
@@ -206,10 +202,12 @@ export default function NavigationBar() {
 								<div className="flex h-16 items-center justify-between">
 									<div className="flex items-center">
 										<Link className={classes.brand} href="/">
-											<img
+											<Image
 												style={{ width: "auto", height: "4rem", marginRight: "-0.25rem" }}
-												src="/svg/commune.svg"
+												src="/gif/logo/commune.gif"
 												alt="Commune Logo"
+												width={50}
+												height={50}
 											/>
 										</Link>
 										<div className="hidden md:block">
@@ -221,7 +219,7 @@ export default function NavigationBar() {
 														className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0] p-0 lg:pl-4 md:text-xl')}
 														aria-current={item.current ? 'page' : undefined}
 													>
-                            <span className='flex items-center justify-center'>
+														<span className='flex items-center justify-center'>
 															{item.name === 'Bittensor' && <Image src='/img/frontpage/bittensor.jpg' alt='bittensor' width={25} height={10} className='mr-1' />}
 															{item.name === 'Staking' && <Image src='/img/frontpage/staking.jpg' alt='staking' width={25} height={10} className='mr-1 rounded-md' />}
 															{item.name}
@@ -296,49 +294,47 @@ export default function NavigationBar() {
 													<span style={{ marginLeft: '0.35rem' }} className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0] p-0 md:text-[18px]')}>💰Payment</span>
 												</Space>
 											</Dropdown>
-											{
-												loginStatus &&
-												<Menu as="div" className="mx-3">
-													<div>
-														<Menu.Button className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-															<span className="absolute -inset-1.5" />
-															<span className="sr-only">Open user menu</span>
-															<Image className="h-8 w-8 rounded-full bg-white" src={LogoImage} alt="" />
-														</Menu.Button>
-													</div>
 
-													<Transition
-														as={Fragment}
-														enter="transition ease-out duration-100"
-														enterFrom="transform opacity-0 scale-95"
-														enterTo="transform opacity-100 scale-100"
-														leave="transition ease-in duration-75"
-														leaveFrom="transform opacity-100 scale-100"
-														leaveTo="transform opacity-0 scale-95"
-													>
-														<Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-															{
-																userNavigation.map((item) => (
-																	<Menu.Item key={item.name}>
-																		{({ active }) => (
-																			<a
-																				href={item.href}
-																				className={classNames(
-																					active ? 'bg-gray-100' : '',
-																					'block px-4 py-2 text-sm text-gray-700'
-																				)}
-																			>
-																				{item.name}
-																			</a>
-																		)}
-																	</Menu.Item>
-																))
-															}
-														</Menu.Items>
-													</Transition>
+											<Menu as="div" className="mx-3">
+												<div>
+													<Menu.Button className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+														<span className="absolute -inset-1.5" />
+														<span className="sr-only">Open user menu</span>
+														<Image className="h-8 w-8 rounded-full bg-white" src={LogoImage} alt="" />
+													</Menu.Button>
+												</div>
 
-												</Menu>
-											}
+												<Transition
+													as={Fragment}
+													enter="transition ease-out duration-100"
+													enterFrom="transform opacity-0 scale-95"
+													enterTo="transform opacity-100 scale-100"
+													leave="transition ease-in duration-75"
+													leaveFrom="transform opacity-100 scale-100"
+													leaveTo="transform opacity-0 scale-95"
+												>
+													<Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+														{
+															userNavigation.map((item) => (
+																<Menu.Item key={item.name}>
+																	{({ active }) => (
+																		<a
+																			href={item.href}
+																			className={classNames(
+																				active ? 'bg-gray-100' : '',
+																				'block px-4 py-2 text-sm text-gray-700'
+																			)}
+																		>
+																			{item.name}
+																		</a>
+																	)}
+																</Menu.Item>
+															))
+														}
+													</Menu.Items>
+												</Transition>
+
+											</Menu>
 
 											<div className={classes.themeTogglerWrapper} style={{ marginLeft: '0.5rem' }}>
 												<ThemeToggler />
@@ -350,7 +346,7 @@ export default function NavigationBar() {
 										<Disclosure.Button
 											className="
 												relative inline-flex items-center justify-center rounded-md bg-gray-800 p-2 
-												text-gray-400 hover:text-[#25c2a0] hover:text-white focus:outline-none focus:ring-2 
+												text-gray-400 hover:text-[#25c2a0] focus:outline-none focus:ring-2 
 												focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800
 											"
 										>
