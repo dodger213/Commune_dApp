@@ -40,7 +40,10 @@ export default function HomepageHeader() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const [metamaskAddress, setMetamaskAddress] = useState<string | undefined>('')
+<<<<<<< HEAD
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
+=======
+>>>>>>> 80b3c6a1f3f49d4791bf48f7948b6b7e83a6c76d
   const dispatch=useDispatch<any>()
 
 
@@ -175,6 +178,7 @@ export default function HomepageHeader() {
   }, [isLoggedIn, metamaskAddress])
 
   return (
+<<<<<<< HEAD
     <header
       ref={headerRef} 
       className={`
@@ -195,6 +199,11 @@ export default function HomepageHeader() {
         width={5000}
         height={5000}
       />
+=======
+
+    <header ref={headerRef} className={`relative z-10 dark:bg-gray-900 p-[4rem] text-center h-screen overflow-hidden ${getHeaderClasses(scrollPosition, headerHeight)} duration-500`} >
+      <img src="/gif/logo/CubesShufflingGIF.gif" alt="Commune Logo" className='block lg:hidden' />
+>>>>>>> 80b3c6a1f3f49d4791bf48f7948b6b7e83a6c76d
       <div className="px-10 py-5">
         <div className='flex lg:flex-row flex-col h-1/2'>
           <div className='w-full lg:w-1/2 flex flex-col items-center justify-center'>

@@ -9,6 +9,7 @@ import { ApiPromise, WsProvider } from '@polkadot/api';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { loadStripe } from "@stripe/stripe-js";
 import { Dropdown, Modal, Space, Select, MenuProps } from 'antd';
+import { useSelector } from 'react-redux';
 import { parseEther } from 'viem'
 import { useSendTransaction, useContractWrite } from 'wagmi'
 import classes from './navigation-bar.module.css';
@@ -83,8 +84,13 @@ export default function NavigationBar() {
 	const { abi: erc20ABI } = erc20ContractABI
 	const router = useRouter();
 
+<<<<<<< HEAD
 	// const loginStatus = useSelector((state: { transactionRecord: { loginStatus: boolean } }) => state.transactionRecord.loginStatus);
   //   console.log('-----------login status-------navigation---', loginStatus)
+=======
+	const loginStatus = useSelector((state: { transactionRecord: { loginStatus: boolean } }) => state.transactionRecord.loginStatus);
+    console.log('-----------login status-------navigation---', loginStatus)
+>>>>>>> 80b3c6a1f3f49d4791bf48f7948b6b7e83a6c76d
 
 	const handleClickPayButton = async () => {
 		try {
@@ -298,7 +304,11 @@ export default function NavigationBar() {
 												</Space>
 											</Dropdown>
 											{
+<<<<<<< HEAD
 												// loginStatus &&
+=======
+												loginStatus &&
+>>>>>>> 80b3c6a1f3f49d4791bf48f7948b6b7e83a6c76d
 												<Menu as="div" className="mx-3">
 													<div>
 														<Menu.Button className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
@@ -337,8 +347,15 @@ export default function NavigationBar() {
 															}
 														</Menu.Items>
 													</Transition>
+<<<<<<< HEAD
 												</Menu>
 											}
+=======
+
+												</Menu>
+											}
+
+>>>>>>> 80b3c6a1f3f49d4791bf48f7948b6b7e83a6c76d
 											<div className={classes.themeTogglerWrapper} style={{ marginLeft: '0.5rem' }}>
 												<ThemeToggler />
 											</div>
