@@ -23,16 +23,16 @@ const CogModulePage = () => {
 	const [searchString, setSearchString] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
 	const itemsPerPage = 6;
-	const [loadedModules, setLoadedModules] = useState<ModuleItemProps[]>([]);
-	const [displayedModules, setDisplayedModules] = useState<ModuleItemProps[]>([]);
-	const [filteredModules, setFilteredModules] = useState<ModuleItemProps[]>([]);
+	const [loadedModules, setLoadedModules] = useState(Array<ModuleItemProps>);
+	const [displayedModules, setDisplayedModules] = useState(Array<ModuleItemProps>);
+	const [filteredModules, setFilteredModules] = useState(Array<ModuleItemProps>);
 	const [isShowPolkadotWalletModalOpen, setIsShowPolkadotWalletModalOpen] = useState(false);
-	const [replicateData] = useState<ModuleItemProps[]>([]);
+	const [replicateData] = useState(Array<ModuleItemProps>);
 
 	useEffect(() => {
 		const filtered = searchString
 			? loadedModules.filter((module) =>
-				module?.data.description ? module.data.description.toLowerCase().includes(searchString.toLowerCase()) : false
+				module?.description ? module?.description.toLowerCase().includes(searchString.toLowerCase()) : false
 			)
 			: loadedModules;
 		setFilteredModules(filtered);
@@ -71,7 +71,6 @@ const CogModulePage = () => {
 		fetchModules('');
 	}, []);
 
-
 	const handlePageChange = (selectedItem: {
 		selected: number;
 	}) => {
@@ -82,14 +81,12 @@ const CogModulePage = () => {
 	const handleModulesFetched = (modules: string[]) => {
 		const formattedModules = modules.map((moduleName: string, index: number) => ({
 			id: index,
-			data: {
-				url: 'string',
-				cover_image_url: 'string',
-				owner: 'string',
-				name: moduleName,
-				description: 'string',
-				run_count: 'number'
-			}
+			url: 'string',
+			cover_image_url: 'string',
+			owner: 'string',
+			name: moduleName,
+			description: 'string',
+			run_count: 'number'
 		}));
 		setLoadedModules(formattedModules);
 		updateDisplayedModules(formattedModules, currentPage);
@@ -123,9 +120,17 @@ const CogModulePage = () => {
 					searchString={searchString}
 				/>
 				{displayedModules && displayedModules.length > 0 ? (
-					<div className='mt-[40px] grid grid-cols-3 gap-[20px] w-[100%]'>
+					<div className='mt-[40px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[20px] w-[100%]'>
 						{displayedModules.map((item, idx) => (
-							<ModuleItem key={idx} data={item} />
+							<ModuleItem 
+								key={idx} 
+								url={item.url} 
+								cover_image_url={item.cover_image_url} 
+								name={item.name} 
+								owner={item.owner} 
+								description={item.description} 
+								run_count={item.run_count} 
+							/>
 						))}
 					</div>
 				) : (
@@ -137,8 +142,8 @@ const CogModulePage = () => {
 					pageCount={pageCount}
 					onPageChange={handlePageChange}
 					forcePage={currentPage - 1}
-					containerClassName="flex justify-center items-center space-x-3 my-4 text-lg dark:text-white"
-					pageLinkClassName="px-5 text-lg border rounded hover:bg-gray-200 transition-colors duration-200 py-3"
+					containerClassName="flex justify-center items-center space-x-1 my-4 text-lg dark:text-white"
+					pageLinkClassName="px-3 text-lg border rounded hover:bg-gray-200 transition-colors duration-200 py-3"
 					activeClassName="bg-blue-500 text-white py-3 rounded"
 					previousLabel={"previous"}
 					nextLabel={"next"}

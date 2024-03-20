@@ -1,5 +1,5 @@
-import ModuleCard from "@/components/atoms/ModuleCard/modulecard";
 import modules from '../../../../modules.json';
+import ModuleCard from "@/components/atoms/ModuleCard/modulecard";
 
 export default function ModuleComponent() {
   return (

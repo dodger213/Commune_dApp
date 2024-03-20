@@ -1,9 +1,9 @@
 import { useEffect, useState, memo, FC } from 'react';
 import axios from "axios";
 import { NodeProps, NodeResizer } from 'reactflow';
-import ModuleItem, { ModuleItemPropsType } from "./components/module-item";
-import SearchBar from "./components/search-bar";
 import classes from "./modules.module.css";
+import SearchBar from "../atoms/search-bar/search-bar";
+import ModuleItem, { ModuleItemPropsType } from "../molecules/module-item";
 
 const CustomNode: FC<NodeProps> = () => {
 	const [searchString, setSearchString] = useState("");
