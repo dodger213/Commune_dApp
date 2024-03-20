@@ -25,68 +25,84 @@ export default function WelcomeSection() {
           <div className="grid grid-cols-7 sm:h-[300px] lg:h-[500px] items-center justify-center px-3 gap-0">
             <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg">
               <a href="#blue" className="hover:no-underline">
-                <img
-                  src="./gif/cubes/commune-single-block_blue.gif"
-                  className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
-                  width={200}
-                  height={200}
+                <Image
+                  src="/gif/cubes/commune-single-block_blue.gif"
+                  className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[25rem] hover:h-[25rem] duration-300"
+                  alt='Image'
+                  width={30}
+                  height={30}
                 />
               </a>
               <p>Networking &amp; Wrapping</p>
             </div>
             <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg">
               <a href="#green" className="hover:no-underline">
-                <img
-                  src="./gif/cubes/commune-single-block_green.gif"
-                  className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
+                <Image
+                  src="/gif/cubes/commune-single-block_green.gif"
+                  alt='Image'
+                  className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[25rem] hover:h-[25rem] duration-300"
+                  width={30}
+                  height={30}
                 />
               </a>
               <p>Reusability</p>
             </div>
             <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg">
               <a href="#yellow" className="hover:no-underline">
-                <img
-                  src="./gif/cubes/commune-single-block_yellow.gif"
-  
-                  className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
+                <Image
+                  src="/gif/cubes/commune-single-block_yellow.gif"
+                  alt='Image'
+                  className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[25rem] hover:h-[25rem] duration-300"
+                  width={30}
+                  height={30}
                 />
               </a>
               <p>Scalability</p>
             </div>
             <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg">
               <a href="#red" className="hover:no-underline">
-                <img
-                   src="./gif/cubes/commune-single-block_red.gif"
-  
-                  className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
+                <Image
+                  alt='Image'
+                  src="/gif/cubes/commune-single-block_red.gif"
+                  className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[25rem] hover:h-[25rem] duration-300"
+                  width={30}
+                  height={30}
                 />
               </a>
               <p>Namespaces</p>
             </div>
             <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg">
               <a href="#pink" className="hover:no-underline">
-                <img
-                  src="./gif/cubes/commune-single-block_purple.gif"
-                  className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
+                <Image
+                  alt='Image'
+                  src="/gif/cubes/commune-single-block_purple.gif"
+                  className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[25rem] hover:h-[25rem] duration-300"
+                  width={30}
+                  height={30}
                 />
               </a>
               <p>Tokenomics</p>
             </div>
             <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg">
               <a href="#black" className="hover:no-underline">
-                <img
-                  src="./gif/cubes/commune-single-block_gray.gif"
-                  className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
+                <Image
+                  alt='Image'
+                  src="/gif/cubes/commune-single-block_gray.gif"
+                  className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[25rem] hover:h-[25rem] duration-300"
+                  width={30}
+                  height={30}
                 />
               </a>
               <p>Application Validators</p>
             </div>
             <div className="flex flex-col items-center justify-center text-transparent hover:dark:text-white hover:text-black duration-300 font-sans font-semibold text-lg">
               <a href="#white" className="hover:no-underline">
-                <img
-                  src="./gif/cubes/commune-single-block_white.gif"
-  
-                  className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
+                <Image
+                  alt='Image'
+                  src="/gif/cubes/commune-single-block_white.gif"
+                  className="w-[7rem] h-[7rem] md:w-[10rem] md:h-[10rem] lg:w-[15rem] lg:h-[15rem] hover:w-[25rem] hover:h-[25rem] duration-300"
+                  width={30}
+                  height={30}
                 />
               </a>
               <p>Whitepaper 📄</p>

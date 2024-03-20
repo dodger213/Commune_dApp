@@ -10,7 +10,6 @@ type ConversationType = {
     content: string;
 }
 
-
 const BittensorSubnet = () => {
     const inputRef = useRef<HTMLInputElement | null>(null);
     const [conversation, setConversation] = useState<ConversationType[]>([]);

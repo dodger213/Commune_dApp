@@ -6,9 +6,11 @@ import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Modal from "antd/es/modal/Modal";
 import GitHubLogin from "react-github-login";
+import { useDispatch } from 'react-redux'
 import GithubImage from "../../../public/svg/github-mark.svg";
 import MetaMaskImage from "../../../public/svg/metamask.svg";
 import PolkadotImage from "../../../public/svg/polkadot.svg";
+import { saveMetaMaskAddress } from "@/store/action/transaction.record.action";
 
 const words: string[] = [
   "developers.",
@@ -35,7 +37,12 @@ export default function HomepageHeader() {
   const [isShowAuthModalOpen, setIsShowAuthModalOpen] = useState(false)
 
   //user login
-  const [, setIsLoggedIn] = useState(false)
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [metamaskAddress, setMetamaskAddress] = useState<string | undefined>('')
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const dispatch=useDispatch<any>()
+
 
   // state of the scroll position and header height
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -160,6 +167,13 @@ export default function HomepageHeader() {
     }
   };
 
+  useEffect(() => {
+    console.log('------------what is the metamaskAddress----', metamaskAddress, isLoggedIn)
+    if (isLoggedIn && metamaskAddress) {
+      dispatch(saveMetaMaskAddress(metamaskAddress))
+    }
+  }, [isLoggedIn, metamaskAddress])
+
   return (
     <header
       ref={headerRef} 
@@ -174,52 +188,19 @@ export default function HomepageHeader() {
         duration-500
         `} 
     >
-      <img 
-        src="gif/logo/CubesShufflingGIF.gif" 
+      <Image 
+        src="/gif/logo/CubesShufflingGIF.gif" 
         alt="Commune Logo" 
         className='block lg:hidden' 
+        width={5000}
+        height={5000}
       />
-      <div 
-        className="
-          px-10 
-          py-5
-        "
-      >
-        <div 
-          className='
-            flex 
-            lg:flex-row 
-            flex-col 
-            h-1/2
-          '
-        >
-          <div 
-            className='
-              w-full 
-              lg:w-1/2 
-              flex 
-              flex-col 
-              items-center 
-              justify-center
-            '
-          >
-            <div 
-              className='
-                w-auto 
-                sm:w-[710px] 
-                sm:h-[250px] 
-              '
-            >
-              <h1 
-                className="
-                  text-4xl 
-                  sm:text-6xl 
-                  sm:pb-3 
-                  dark:text-white
-                "
-              >
-                {TITLE}
-              </h1>
+      <div className="px-10 py-5">
+        <div className='flex lg:flex-row flex-col h-1/2'>
+          <div className='w-full lg:w-1/2 flex flex-col items-center justify-center'>
+            <div className='w-auto sm:w-[710px] sm:h-[250px] '>
+              <h1 className="text-4xl sm:text-6xl sm:pb-3 dark:text-white">{TITLE}</h1>
+
               <div className='hidden sm:block'>
                 <p className="hero__subtitle text-xl sm:text-4xl dark:text-white">{TAGLINE}
                   <br />
@@ -348,7 +329,7 @@ export default function HomepageHeader() {
             </svg>
           </div>
           <div className='hidden lg:block w-full lg:w-1/2 h-full lg:-mr-44 '>
-            <img src="gif/logo/commune.gif" alt="Commune Logo" className='' />
+            <Image src="/gif/logo/commune.gif" width={500} height={500} alt="Commune Logo" className='' />
           </div>
         </div>
       </div>
@@ -375,14 +356,16 @@ export default function HomepageHeader() {
                   // Note: If your app doesn't use authentication, you
                   // can remove all 'authenticationStatus' checks
                   const ready = mounted && authenticationStatus !== 'loading';
-                  ready && account && chain && setIsLoggedIn(true);
                   const connected =
                     ready &&
                     account &&
                     chain &&
                     (!authenticationStatus ||
                       authenticationStatus === 'authenticated');
-
+                  if(connected){
+                  setIsLoggedIn(true);
+                  setMetamaskAddress(account?.address);
+                  }
                   return (
                     <div
                       {...(!ready && {
