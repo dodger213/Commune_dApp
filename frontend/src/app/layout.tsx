@@ -36,7 +36,7 @@ import Head from '@/components/templates/head';
 import ThemeProvider from '@/context/toggle-theme-provider';
 import './globals.css';
 import 'reactflow/dist/style.css';
-import { store } from "@/store/index"
+import { store } from "@/store/reducers/index"
 
 const { chains, publicClient } = configureChains(
   [mainnet, polygon, optimism, arbitrum, base, zora, sepolia, goerli],
@@ -111,12 +111,12 @@ export default function RootLayout({
             <WagmiConfig config={wagmiConfig}>
               <RainbowKitProvider chains={chains} coolMode theme={darkTheme()}>
                 <Provider store={store}>
-                <ThemeProvider>
-                  {/* <Banner /> */}
-                  <NavigationBar />
-                  {children}
-                  <Footer />
-                </ThemeProvider>
+                  <ThemeProvider>
+                    {/* <Banner /> */}
+                    <NavigationBar />
+                    {children}
+                    <Footer />
+                  </ThemeProvider>
                 </Provider>
               </RainbowKitProvider>
             </WagmiConfig>

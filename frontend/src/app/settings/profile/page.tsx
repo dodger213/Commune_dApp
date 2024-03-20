@@ -5,7 +5,7 @@ import Image from "next/image";
 import { PlusOutlined } from '@ant-design/icons';
 import { Modal, Upload } from 'antd';
 import axios from "axios";
-import LogoImage from '../../../../public/gif/logo/CubesShufflingGIF.gif'
+import LogoImage from '../../../../public/gif/logo/commune.gif'
 
 type FileType = Parameters<GetProp<UploadProps, 'beforeUpload'>>[0];
 
@@ -135,7 +135,7 @@ const ProfileEditPage: React.FC = () => {
                         {fileList.length >= 1 ? null : uploadButton}
                     </Upload>
                     <Modal open={previewOpen} title={previewTitle} footer={null} onCancel={handleCancel}>
-                        <img alt="example" style={{ width: '100%' }} src={previewImage} />
+                        <Image alt="example" style={{ width: '100%' }} src={previewImage} width={30} height={30} />
                     </Modal>
 
                     <button className='gap-2 border-[rgb(229 231 235)] w-[20%] inline-flex cursor-pointer items-center justify-center rounded-[0.5rem] border-[1px] p-1 hover:scale-105' onClick={handleSaveUserProfile}>

@@ -1,22 +1,29 @@
-import { SAVE_TRANSACTION_SUCCESS, SAVE_TRANSACTION_FAILED } from "../action/type";
+import { SAVE_TRANSACTION_SUCCESS, SAVE_TRANSACTION_FAILED, SAVE_METAMASK_SUCCESS } from "../action/type";
 
 const initialState = {
     records: {},
     loading: false,
-    error: ''
+    error: '',
+    loginStatus: false,
+    address: ''
 }
 
 export type SaveTransactionSuccessAction = {
     type: typeof SAVE_TRANSACTION_SUCCESS;
-    payload: 'YourPayloadTypeHere';
+    payload: string;
 }
 
 export type SaveTransactionFailedAction = {
     type: typeof SAVE_TRANSACTION_FAILED;
-    payload: 'YourErrorPayloadTypeHere';
+    payload: string;
 }
 
-const transactionReducer = (state = initialState, action: SaveTransactionSuccessAction | SaveTransactionFailedAction) => {
+export type SaveMetamaskSuccessAction = {
+    type: typeof SAVE_METAMASK_SUCCESS;
+    payload: string
+}
+
+const transactionReducer = (state = initialState, action: SaveTransactionSuccessAction | SaveTransactionFailedAction | SaveMetamaskSuccessAction) => {
 
     const { type, payload } = action
 
@@ -30,6 +37,12 @@ const transactionReducer = (state = initialState, action: SaveTransactionSuccess
             return {
                 ...state,
                 records: payload
+            }
+        case SAVE_METAMASK_SUCCESS:
+            return {
+                ...state,
+                address: payload,
+                loginStatus: true
             }
         default:
             return state
