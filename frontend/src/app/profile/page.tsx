@@ -2,11 +2,23 @@
 import React from 'react';
 import Image from "next/image";
 import { useRouter } from 'next/navigation';
-import LogoImage from '../../../public/gif/logo/CubesShufflingGIF.gif'
+import { useSelector } from 'react-redux';
+import LogoImage from '../../../public/gif/logo/commune.gif'
 
 const ProfilePage = () => {
 
-    const router = useRouter()
+    const router = useRouter();
+
+    const loginStatus = useSelector((state: { transactionRecord: { loginStatus: boolean } }) => state.transactionRecord.loginStatus);
+
+    // console.log('-----------login status----------', loginStatus)
+
+    // if (!loginStatus) {
+    //     router.push('/')
+    // }
+    const address = useSelector((state: { transactionRecord: { address: string } }) => state.transactionRecord.address);
+
+    console.log('-------------This is the address---------', address, loginStatus)
 
     const handleUserProfile = () => {
         router.push('/settings/profile');
