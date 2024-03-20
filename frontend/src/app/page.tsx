@@ -6,8 +6,6 @@ import HomepageHeader from '@/components/templates/homepage-header';
 import WelcomeSection from '@/components/templates/welcome/welcome';
 import ModuleComponent from '@/components/templates/module/ModuleComponent';
 
-import blue from '../../public/gif/cubes/commune-single-block_blue.gif';
-
 function SectionWrapper({
   imageUrl,
   backgroundClassName,

@@ -2,7 +2,7 @@
 import BittensorItem from "@/components/molecules/bittensor/item";
 import { items } from "@/components/molecules/bittensor/item-date";
 
-export default function () {
+export default function BittensorPage() {
     return (
         <main className="mt-[30px] my-auto mx-auto xl:w-[1400px] px-[20px] py-[50px]">
             <h2 className="text-[32px] font-bold text-left dark:text-white">
