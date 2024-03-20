@@ -4,6 +4,7 @@ import Image from 'next/image';
 import classes from "./home.module.css";
 import HomepageHeader from '@/components/templates/homepage-header';
 import WelcomeSection from '@/components/templates/welcome/welcome';
+import ModuleComponent from '@/components/templates/module/ModuleComponent';
 
 function SectionWrapper({
   imageUrl,
@@ -22,7 +23,7 @@ function SectionWrapper({
             ${backgroundClassName} flex lg:flex-row flex-col items-center 
             justify-center hover-effect w-[100%] lg:mx-auto 
             dark:bg-gray-900
-          `} 
+          `}
         >
           <div className=" flex-none lg:-mr-4 m-10 mt-20">
             <Image
@@ -45,10 +46,11 @@ function SectionWrapper({
 export default function Home() {
   return (
     <main className={classNames(classes.main, "flex flex-col ")}>
+      <ModuleComponent />
       <HomepageHeader />
       <WelcomeSection />
       <SectionWrapper
-        imageUrl="./gif/cubes/commune-single-block_blue.gif"
+        imageUrl="/gif/cubes/commune-single-block_blue.gif"
         backgroundClassName="bg-white dark:bg-gray-900"
       >
         <div className='text-black'>
@@ -87,7 +89,7 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        imageUrl="./gif/cubes/commune-single-block_green.gif"
+        imageUrl="/gif/cubes/commune-single-block_green.gif"
         backgroundClassName="bg-white dark:bg-gray-800"
       >
         <div className='text-black'>
@@ -125,11 +127,11 @@ export default function Home() {
                 <div className='flex flex-col space-y-2'>
                   <div className='w-[100%] md:w-[35rem] my-auto'>
                     <Image src="/img/frontpage/4.png" className='py-4' alt='Image' width={560}
-                    height={560} />
+                      height={560} />
                   </div>
                   <div className='w-[100%] md:w-[35rem]'>
                     <Image src="/img/frontpage/5.png" alt='Image' width={560}
-                    height={560} />
+                      height={560} />
                   </div>
                 </div>
               </div>
@@ -139,7 +141,7 @@ export default function Home() {
       </SectionWrapper>
       <SectionWrapper
 
-        imageUrl="./gif/cubes/commune-single-block_yellow.gif"
+        imageUrl="/gif/cubes/commune-single-block_yellow.gif"
 
         backgroundClassName="bg-white"
       >
@@ -172,7 +174,7 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        imageUrl="./gif/cubes/commune-single-block_red.gif"
+        imageUrl="/gif/cubes/commune-single-block_red.gif"
         backgroundClassName="bg-white dark:bg-gray-800"
       >
         <div className='text-black '>
@@ -198,7 +200,7 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        imageUrl="./gif/cubes/commune-single-block_purple.gif"
+        imageUrl="/gif/cubes/commune-single-block_purple.gif"
         backgroundClassName="bg-white"
       >
         <div className=' text-black'>
@@ -238,7 +240,7 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        imageUrl="./gif/cubes/commune-single-block_gray.gif"
+        imageUrl="/gif/cubes/commune-single-block_gray.gif"
         backgroundClassName="bg-white dark:bg-gray-800"
       >
         <div className=' text-black dark:text-white'>
@@ -264,7 +266,7 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        imageUrl="./gif/cubes/commune-single-block_white.gif"
+        imageUrl="/gif/cubes/commune-single-block_white.gif"
         backgroundClassName="bg-white"
       >
         <div className='text-black dark:text-white'>

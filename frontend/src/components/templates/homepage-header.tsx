@@ -39,7 +39,7 @@ export default function HomepageHeader() {
 
   // state of the scroll position and header height
   const [scrollPosition, setScrollPosition] = useState(0);
-  const headerRef = useRef < any > (null);
+  const headerRef = useRef<any>(null);
   const [headerHeight, setHeaderHeight] = useState(20);
 
   // typeWriter effect
@@ -81,19 +81,19 @@ export default function HomepageHeader() {
   }, [blink]);
 
   // Handle scroll position
-  const handleScroll = () => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
-  };
+  // const handleScroll = () => {
+  //   const position = window.pageYOffset;
+  //   setScrollPosition(position);
+  // };
 
   // Add scroll event listener to window
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
+  // useEffect(() => {
+  //   window.addEventListener('scroll', handleScroll, { passive: true });
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, []);
 
   // Get header height on mount and when window is resized
   // This is to offset the scroll position so that the header
@@ -160,7 +160,7 @@ export default function HomepageHeader() {
 
   return (
     <header
-      ref={headerRef} 
+      ref={headerRef}
       className={`
         relative 
         z-10 
@@ -170,20 +170,20 @@ export default function HomepageHeader() {
         overflow-hidden 
         ${getHeaderClasses(scrollPosition, headerHeight)} 
         duration-500
-        `} 
+        `}
     >
-      <img 
-        src="gif/logo/CubesShufflingGIF.gif" 
-        alt="Commune Logo" 
-        className='block lg:hidden' 
+      <img
+        src="gif/logo/CubesShufflingGIF.gif"
+        alt="Commune Logo"
+        className='block lg:hidden'
       />
-      <div 
+      <div
         className="
           px-10 
           py-5
         "
       >
-        <div 
+        <div
           className='
             flex 
             lg:flex-row 
@@ -191,7 +191,7 @@ export default function HomepageHeader() {
             h-1/2
           '
         >
-          <div 
+          <div
             className='
               w-full 
               lg:w-1/2 
@@ -201,14 +201,14 @@ export default function HomepageHeader() {
               justify-center
             '
           >
-            <div 
+            <div
               className='
                 w-auto 
                 sm:w-[710px] 
                 sm:h-[250px] 
               '
             >
-              <h1 
+              <h1
                 className="
                   text-4xl 
                   sm:text-6xl 
@@ -221,28 +221,28 @@ export default function HomepageHeader() {
               <div className='hidden sm:block'>
                 <p className="hero__subtitle text-xl sm:text-4xl dark:text-white">{TAGLINE}
                   <br />
-                  <span 
+                  <span
                     className={`hero__subtitle text-4xl ${colour[index]} font-semibold mb-5`}
-                    >
+                  >
                     {`${words[index].substring(0, subIndex)}${blink ? "|" : ""}`}
                   </span>
                 </p>
               </div>
             </div>
             <div className='w-[10rem] h-[3rem]'>
-              <div 
+              <div
                 className='
                   bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center 
                   hover:bg-blue-600 duration-200 text-xl text-white hover:text-white 
                   font-sans font-semibold justify-center px-2 py-2 cursor-pointer
-                ' 
+                '
                 onClick={() => setIsShowAuthModalOpen(true)}
               >
                 Get Started
               </div>
             </div>
           </div>
-          <div className="absolute right-0 top-0 z-[-1] opacity-30 lg:opacity-100">
+          {/* <div className="absolute right-0 top-0 z-[-1] opacity-30 lg:opacity-100">
             <svg
               width="450"
               height="556"
@@ -482,7 +482,7 @@ export default function HomepageHeader() {
                 </radialGradient>
               </defs>
             </svg>
-          </div>
+          </div> */}
           <div className='hidden lg:block w-full lg:w-1/2 h-full lg:-mr-44 '>
             <img src="gif/logo/commune.gif" alt="Commune Logo" className='' />
           </div>
@@ -535,7 +535,7 @@ export default function HomepageHeader() {
                           return (
                             <div className='
                                 flex items-center justify-center hover:bg-gray-300 p-2 w-[105.77px] h-[105.77px] rounded-md
-                              ' 
+                              '
                               style={{ flexDirection: 'column', border: '1px solid gray' }} onClick={openConnectModal}
                             >
                               <Image src={MetaMaskImage} alt='login with Metamask' width={50} height={50} className='cursor-pointer mb-1' />
@@ -601,7 +601,7 @@ export default function HomepageHeader() {
               </ConnectButton.Custom>
               <div className='
                   flex items-center justify-center p-2 rounded-md hover:bg-gray-300 w-[105.77px] h-[105.77px]
-                ' 
+                '
                 style={{ flexDirection: 'column', border: '1px solid gray' }}
               >
                 <Image src={GithubImage} alt='login with Github' width={50} height={50} className='cursor-pointer mb-1' />
