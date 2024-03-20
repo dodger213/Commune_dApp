@@ -1,3 +1,4 @@
+import Image from 'next/image';
 
 export default function WelcomeSection() {
     return (
@@ -27,6 +28,8 @@ export default function WelcomeSection() {
                 <img
                   src="./gif/cubes/commune-single-block_blue.gif"
                   className="lg:w-[200px] lg:h-[200px] lg:hover:w-[300px] lg:hover:h-[300px] duration-300"
+                  width={200}
+                  height={200}
                 />
               </a>
               <p>Networking &amp; Wrapping</p>
