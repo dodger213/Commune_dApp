@@ -9,6 +9,7 @@ import { ApiPromise, WsProvider } from '@polkadot/api';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { loadStripe } from "@stripe/stripe-js";
 import { Dropdown, Modal, Space, Select, MenuProps } from 'antd';
+import { useSelector } from 'react-redux';
 import { parseEther } from 'viem'
 import { useSendTransaction, useContractWrite } from 'wagmi'
 import classes from './navigation-bar.module.css';
@@ -72,6 +73,7 @@ const items: MenuProps['items'] = [
 ]
 
 export default function NavigationBar() {
+
 	const [isShowWalletPaymentModal, setIsShowWalletPaymentModal] = React.useState(false)
 	const [destinationAddress, setDestinationAddress] = React.useState('')
 	const [amount, setAmount] = React.useState('')
@@ -81,6 +83,9 @@ export default function NavigationBar() {
 	const asyncStripe = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
 	const { abi: erc20ABI } = erc20ContractABI
 	const router = useRouter();
+
+	const loginStatus = useSelector((state: { transactionRecord: { loginStatus: boolean } }) => state.transactionRecord.loginStatus);
+    console.log('-----------login status-------navigation---', loginStatus)
 
 	const handleClickPayButton = async () => {
 		try {
@@ -126,88 +131,6 @@ export default function NavigationBar() {
 	};
 
 	const { data: hash, sendTransaction } = useSendTransaction()
-
-	//This Function must be used in Client side.
-	// 	const createBTCTx = async (toAddress: string, value: number, env: string, fromAddress: string) => {
-	// 		try {
-	// 			// const { toAddress, value, env, fromAddress } = data;
-	// 			const valueInSatoshi = value * 100000000;
-	// 			// console.log(valueInSatoshi);
-	// 			// console.log("Vivek bhai ",toAddress, value, env, fromAddress);
-	// 			if (!fromAddress || !toAddress || !value || !env) {
-	// 				return {
-	// 					code: 0,
-	// 					message: "invalid/insufficient parameters"
-	// 				}
-	// 			}
-	// 			let url;
-	// 			if (env == 'testnet') {
-	// 				url = 'https://api.blockcypher.com/v1/btc/test3/txs/new'
-	// 			}
-	// 			else if (env == 'mainnet') {
-	// 				url = 'https://api.blockcypher.com/v1/btc/main/txs/new'
-	// 			}
-	// 			else {
-	// 				return {
-	// 					code: 0,
-	// 					message: 'Invalid env'
-	// 				}
-	// 			}
-	// 			let data = JSON.stringify({
-	// 				"inputs": [
-	// 					{
-	// 						"addresses": [
-	// 							`${fromAddress}`  /* "n1TKu4ZX7vkyjfvo7RCbjeUZB6Zub8N3fN" */
-	// 						]
-	// 					}
-	// 				],
-	// 				"outputs": [
-	// 					{
-	// 						"addresses": [
-	// 							`${toAddress}` /* "2NCY42y4mbvJCxhd7gcCroBEvVh1dXkbPzA"
-	// */                    ],
-	// 						"value": valueInSatoshi
-	// 					}
-	// 				]
-	// 			});
-
-	// 			let config = {
-	// 				method: 'post',
-	// 				maxBodyLength: Infinity,
-	// 				url: 'https://api.blockcypher.com/v1/btc/test3/txs/new',
-	// 				headers: {
-	// 					'Content-Type': 'application/json'
-	// 				},
-	// 				data: data
-	// 			};
-
-	// 			const response = await axios.request(config)
-	// 				.then((response) => {
-	// 					// console.log("Tushar",JSON.stringify(response.data));
-	// 					return response;
-	// 				})
-	// 				.catch((error) => {
-	// 					console.log(error);
-	// 				});
-	// 			// console.log(response.status);
-	// 			if (response?.status != 201) {
-	// 				return {
-	// 					code: 0,
-	// 					message: response?.data?.error
-	// 				}
-	// 			}
-	// 			return {
-	// 				code: 1,
-	// 				result: response.data
-	// 			}
-	// 		} catch (error) {
-	// 			console.log('error generating btc tx', error);
-	// 			return {
-	// 				code: 0,
-	// 				message: error,
-	// 			};
-	// 		}
-	// 	}
 
 	const { data: txHashUSDT, write: paywithUSDT } = useContractWrite({
 		address: '0x28B3071bE7A6E4B3bE2b36D78a29b6e4DbBdDb74',
@@ -375,43 +298,51 @@ export default function NavigationBar() {
 													<span style={{ marginLeft: '0.35rem' }} className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0] p-0 md:text-[18px]')}>💰Payment</span>
 												</Space>
 											</Dropdown>
-											<Menu as="div" className="mx-3">
-												<div>
-													<Menu.Button className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-														<span className="absolute -inset-1.5" />
-														<span className="sr-only">Open user menu</span>
-														<Image className="h-8 w-8 rounded-full bg-white" src={LogoImage} alt="" />
-													</Menu.Button>
-												</div>
-												<Transition
-													as={Fragment}
-													enter="transition ease-out duration-100"
-													enterFrom="transform opacity-0 scale-95"
-													enterTo="transform opacity-100 scale-100"
-													leave="transition ease-in duration-75"
-													leaveFrom="transform opacity-100 scale-100"
-													leaveTo="transform opacity-0 scale-95"
-												>
-													<Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-														{userNavigation.map((item) => (
-															<Menu.Item key={item.name}>
-																{({ active }) => (
-																	<a
-																		href={item.href}
-																		className={classNames(
-																			active ? 'bg-gray-100' : '',
-																			'block px-4 py-2 text-sm text-gray-700'
+											{
+												loginStatus &&
+												<Menu as="div" className="mx-3">
+													<div>
+														<Menu.Button className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+															<span className="absolute -inset-1.5" />
+															<span className="sr-only">Open user menu</span>
+															<Image className="h-8 w-8 rounded-full bg-white" src={LogoImage} alt="" />
+														</Menu.Button>
+													</div>
+
+													<Transition
+														as={Fragment}
+														enter="transition ease-out duration-100"
+														enterFrom="transform opacity-0 scale-95"
+														enterTo="transform opacity-100 scale-100"
+														leave="transition ease-in duration-75"
+														leaveFrom="transform opacity-100 scale-100"
+														leaveTo="transform opacity-0 scale-95"
+													>
+														<Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+															{
+																userNavigation.map((item) => (
+																	<Menu.Item key={item.name}>
+																		{({ active }) => (
+																			<a
+																				href={item.href}
+																				className={classNames(
+																					active ? 'bg-gray-100' : '',
+																					'block px-4 py-2 text-sm text-gray-700'
+																				)}
+																			>
+																				{item.name}
+																			</a>
 																		)}
-																	>
-																		{item.name}
-																	</a>
-																)}
-															</Menu.Item>
-														))}
-													</Menu.Items>
-												</Transition>
-											</Menu>
-											<div className={classes.themeTogglerWrapper}>
+																	</Menu.Item>
+																))
+															}
+														</Menu.Items>
+													</Transition>
+
+												</Menu>
+											}
+
+											<div className={classes.themeTogglerWrapper} style={{ marginLeft: '0.5rem' }}>
 												<ThemeToggler />
 											</div>
 										</div>
