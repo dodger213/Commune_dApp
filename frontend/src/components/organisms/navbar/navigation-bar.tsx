@@ -28,15 +28,15 @@ const user = {
 }
 
 const navigation = [
-	// { name: '🚀Modules', href: '/modules', current: false },
-	// { name: '⛓Telemetry', href: '/telemetry', current: false },
-	// { name: '🥂ComChat', href: 'https://comchat.io/', current: false },
-	// { name: '💻ComfyUILauncher', href: 'https://huggingface.co/spaces/subbytech/comfyui-launcher/', current: false },
-	// { name: '💱Comwallet', href: 'https://comwallet.io/', current: false },
-	// { name: 'Bittensor', href: '/bittensor', current: false },
-	// { name: 'Staking', href: '/staking', current: false },
-	// { name: '📚Docs', href: '/docs/introduction', current: false },
-	// { name: '📄Whitepaper', href: 'https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf' },
+	{ name: '🚀Modules', href: '/modules', current: false },
+	{ name: '⛓Telemetry', href: '/telemetry', current: false },
+	{ name: '🥂ComChat', href: 'https://comchat.io/', current: false },
+	{ name: '💻ComfyUILauncher', href: 'https://huggingface.co/spaces/subbytech/comfyui-launcher/', current: false },
+	{ name: '💱Comwallet', href: 'https://comwallet.io/', current: false },
+	{ name: 'Bittensor', href: '/bittensor', current: false },
+	{ name: 'Staking', href: '/staking', current: false },
+	{ name: '📚Docs', href: '/docs/introduction', current: false },
+	{ name: '📄Whitepaper', href: 'https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf' },
 ]
 
 const community = [

@@ -34,12 +34,11 @@ export default function HomepageHeader() {
   const [reverse, setReverse] = useState(false);
   const [isShowAuthModalOpen, setIsShowAuthModalOpen] = useState(false)
 
-  const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const [metamaskAddress, setMetamaskAddress] = useState<string | undefined>('')
+  const [, setIsLoggedIn] = useState(false)
+  // const [metamaskAddress, setMetamaskAddress] = useState<string | undefined>('')
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const dispatch=useDispatch<any>()
   // state of the scroll position and header height
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [scrollPosition] = useState(0);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const headerRef = useRef < any > (null);
   const [headerHeight, setHeaderHeight] = useState(20);

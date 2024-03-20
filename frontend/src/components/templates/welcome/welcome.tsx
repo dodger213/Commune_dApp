@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function WelcomeSection() {
     return (
       <section id="welcome" className="h-full pt-20 dark:bg-gray-900">
