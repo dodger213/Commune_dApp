@@ -5,7 +5,7 @@ export default function ModuleComponent() {
   return (
     <div className="relative z-10 bg-white dark:bg-gray-900">
       <div className="flex justify-center opacity-85">
-        <div className="flex flex-wrap justify-center">
+        <div className="flex grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 w-full">
           {modules.map((item, key) => (
             <ModuleCard
               key={key}
@@ -14,7 +14,7 @@ export default function ModuleComponent() {
               image={item.image}
               url={item.url}
               tags={item.tags}
-            />
+            />   
           ))}
         </div>
       </div>
@@ -158,7 +158,7 @@ export default function ModuleComponent() {
       </div>
       <div className="absolute bottom-0 left-0 z-[-1] opacity-30 lg:opacity-100">
         <svg
-          width="364"
+          width="100%"
           height="201"
           viewBox="0 0 364 201"
           fill="none"

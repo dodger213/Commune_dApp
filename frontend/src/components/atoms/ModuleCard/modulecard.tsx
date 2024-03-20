@@ -19,8 +19,8 @@ const ModuleCard = ({ url, name, image, description, tags }: ModuleCardInterface
 
     return (
         <div>
-            <div className="card card-compact w-96 shadow-xl m-4 ">
-                <div className="mockup-browser border rounded-2xl bg-gray-900 h-full w-[360px]">
+            <div className="card card-compact w-full shadow-xl p-4">
+                <div className="mockup-browser border rounded-2xl bg-gray-900 h-full w-full">
                     <div className="inset-0 rounded-2xl bg-opacity-50 backdrop-filter backdrop-blur-lg flex items-center justify-center">
                         <div className="text-white text-2xl font-bold">
                             <Link href={url} className="input">
