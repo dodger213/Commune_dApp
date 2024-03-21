@@ -3,8 +3,8 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import classes from "./home.module.css";
 import HomepageHeader from '@/components/templates/homepage-header';
-import WelcomeSection from '@/components/templates/welcome/welcome';
 import ModuleComponent from '@/components/templates/module/ModuleComponent';
+import WelcomeSection from '@/components/templates/welcome/welcome';
 
 function SectionWrapper({
   imageUrl,
