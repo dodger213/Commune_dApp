@@ -8,7 +8,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { loadStripe } from "@stripe/stripe-js";
-import { Modal, Space, Select, MenuProps } from 'antd';
+import { Modal, Space, Select } from 'antd';
 import { IoSettingsSharp } from "react-icons/io5";
 import { parseEther } from 'viem'
 import { useSendTransaction, useContractWrite } from 'wagmi'
