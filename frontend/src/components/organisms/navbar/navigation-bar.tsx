@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import { Fragment, useState } from 'react'
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
@@ -73,12 +73,12 @@ const items: MenuProps['items'] = [
 ]
 
 export default function NavigationBar() {
-	const [isShowWalletPaymentModal, setIsShowWalletPaymentModal] = React.useState(false)
-	const [destinationAddress, setDestinationAddress] = React.useState('')
-	const [amount, setAmount] = React.useState('')
-	const [tokenType, setTokenType] = React.useState('')
-	const [selectedChain, setSelectedChain] = React.useState('')
-	const [isShowConnectWithSubstrateModalOpen, setIsShowConnectWithSubstrateModalOpen] = React.useState(false)
+	const [isShowWalletPaymentModal, setIsShowWalletPaymentModal] = useState(false)
+	const [destinationAddress, setDestinationAddress] = useState('')
+	const [amount, setAmount] = useState('')
+	const [tokenType, setTokenType] = useState('')
+	const [selectedChain, setSelectedChain] = useState('')
+	const [isShowConnectWithSubstrateModalOpen, setIsShowConnectWithSubstrateModalOpen] = useState(false)
 	const asyncStripe = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
 	const { abi: erc20ABI } = erc20ContractABI
 	const router = useRouter();
@@ -169,9 +169,9 @@ export default function NavigationBar() {
 	const handleConnectWithSubstrateModalCancel = () => {
 		setIsShowConnectWithSubstrateModalOpen(false)
 	}
-	const [api, setApi] = React.useState<ApiPromise | null>(null);
-	const [chainInfo, setChainInfo] = React.useState('');
-	const [nodeName, setNodeName] = React.useState('');
+	const [api, setApi] = useState<ApiPromise | null>(null);
+	const [chainInfo, setChainInfo] = useState('');
+	const [nodeName, setNodeName] = useState('');
 
 	React.useEffect(() => {
 		const connectToSubstrate = async () => {
