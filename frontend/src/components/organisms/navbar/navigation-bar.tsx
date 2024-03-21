@@ -184,9 +184,13 @@ export default function NavigationBar() {
 	const getChainInfo = async () => {
 		if (api) {
 			const chain = await api.rpc.system.chain();
-			setChainInfo(chain.toString())
+			if (chain) {
+				setChainInfo(chain?.toString())
+			}
 			const nodeName = await api.rpc.system.name();
-			setNodeName(nodeName.toString())
+			if (nodeName) {
+				setNodeName(nodeName?.toString())
+			}
 			console.log(`Connected to chain ${chain} using ${nodeName}`);
 		}
 	};
