@@ -47,7 +47,7 @@ export default function Home() {
   return (
     <main className={classNames(classes.main, "flex flex-col ")}>
       <HomepageHeader />
-      <ModuleComponent />
+{/*       <ModuleComponent /> */}
       <WelcomeSection />
       <SectionWrapper
         imageUrl="/gif/cubes/commune-single-block_blue.webp"
