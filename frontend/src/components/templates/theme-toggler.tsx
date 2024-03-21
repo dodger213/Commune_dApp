@@ -38,7 +38,7 @@ import { ThemeContext, ToggleThemeContext } from "@/context/toggle-theme-provide
 // }
 
 export default function ThemeToggler() {
-	const toggleTheme = useContext(ToggleThemeContext);
+	// const toggleTheme = useContext(ToggleThemeContext);
 	// const theme = useContext(ThemeContext);
 
 	return (
