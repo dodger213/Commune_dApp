@@ -405,7 +405,7 @@ export default function HomepageHeader() {
     </div>
 
       <Image 
-        src="/gif/logo/CubesShufflingGIF.gif" 
+        src="/gif/logo/commune.webp" 
         alt="Commune Logo" 
         className='block lg:hidden' 
         width={5000}
