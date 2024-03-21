@@ -38,11 +38,11 @@ export default function HomepageHeader() {
   // const [metamaskAddress, setMetamaskAddress] = useState<string | undefined>('')
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   // state of the scroll position and header height
-  const [scrollPosition] = useState(0);
+  // const [scrollPosition] = useState(0);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const headerRef = useRef<any>(null);
   const [headerHeight, setHeaderHeight] = useState(20);
-
+  console.log('-----This is the headerHeight---------', headerHeight)
   // typeWriter effect
   // give me the context of this whole useEffect
   useEffect(() => {
