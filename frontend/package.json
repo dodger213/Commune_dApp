@@ -30,6 +30,7 @@
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@web3modal/wagmi": "3.2.1",
     "antd": "^5.12.8",
+    "antd-style": "^3.6.1",
     "axios": "^1.6.5",
     "classnames": "^2.5.1",
     "daisyui": "^4.7.3",

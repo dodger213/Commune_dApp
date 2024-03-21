@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,7 +8,7 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { loadStripe } from "@stripe/stripe-js";
-import { Dropdown, Modal, Space, Select, MenuProps } from 'antd';
+import { Dropdown, Modal, Space, Select, MenuProps, ConfigProvider, Button } from 'antd';
 import { parseEther } from 'viem'
 import { useSendTransaction, useContractWrite } from 'wagmi'
 import classes from './navigation-bar.module.css';
@@ -21,6 +21,7 @@ import GitHubIcon from "@/components/atoms/github-icon";
 import TwitterIcon from "@/components/atoms/twitter-icon";
 import ThemeToggler from "@/components/templates/theme-toggler";
 import { saveTransaction } from "@/store/action/transaction.record.action";
+import { IoSettingsSharp } from "react-icons/io5";
 
 const user = {
 	name: 'Tom Cook',
@@ -232,14 +233,15 @@ export default function NavigationBar() {
 											</div>
 										</div>
 									</div>
-									<div className="hidden xl:block">
+									<h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"><span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">Commune AI</span></h1>
+									<div className="hidden md:block">
 										<div className="flex items-center">
-											<Menu as="div" className="relative ml-3">
-												<div>
-													<Menu.Button className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0] p-0 md:text-xl')} aria-haspopup="true" aria-expanded="false" role="button" >
-														🔗Community
-													</Menu.Button>
-												</div>
+											<Menu as="div" className="flex relative ml-3">
+
+												<Menu.Button className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0] p-0 md:text-xl')} aria-haspopup="true" aria-expanded="false" role="button" >
+													🔗Community
+												</Menu.Button>
+
 												<Transition
 													as={Fragment}
 													enter="transition ease-out duration-100"
@@ -249,7 +251,7 @@ export default function NavigationBar() {
 													leaveFrom="transform opacity-100 scale-100"
 													leaveTo="transform opacity-0 scale-95"
 												>
-													<Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+													<Menu.Items className="dark:bg-[#242556] dark:text-white absolute right-0 z-10 mt-8 w-39 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
 														<Menu.Item>
 															<Link
 																className={classes.dropdownLink}
@@ -258,8 +260,8 @@ export default function NavigationBar() {
 																rel="noopener noreferrer"
 															>
 																<div style={{ display: "flex", alignItems: "center", }}>
-																	<DiscordIcon />
-																	<span className="ml-3">Discord</span>
+																	<span><DiscordIcon /></span>
+																	<span className="ml-1 mr-2">Discord</span>
 																</div>
 															</Link>
 														</Menu.Item>
@@ -272,7 +274,7 @@ export default function NavigationBar() {
 															>
 																<div style={{ display: "flex", alignItems: "center", }}>
 																	<TwitterIcon />
-																	<span className="ml-3">Twitter</span>
+																	<span className="ml-1 mr-2">Twitter</span>
 																</div>
 															</Link>
 														</Menu.Item>
@@ -285,63 +287,143 @@ export default function NavigationBar() {
 															>
 																<div style={{ display: "flex", alignItems: "center", }}>
 																	<GitHubIcon />
-																	<span className="ml-3">Github</span>
+																	<span className="ml-1 mr-2">Github</span>
 																</div>
 															</Link>
 														</Menu.Item>
 													</Menu.Items>
 												</Transition>
-											</Menu>
-											<Dropdown menu={{ items, onClick }}>
-												<Space>
-													<span style={{ marginLeft: '0.35rem' }} className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0] p-0 md:text-[18px]')}>💰Payment</span>
-												</Space>
-											</Dropdown>
-											{
-												// loginStatus &&
-												<Menu as="div" className="mx-3">
-													<div>
-														<Menu.Button className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
-															<span className="absolute -inset-1.5" />
-															<span className="sr-only">Open user menu</span>
-															<Image className="h-8 w-8 rounded-full bg-white" src={LogoImage} alt="" />
-														</Menu.Button>
-													</div>
 
-													<Transition
-														as={Fragment}
-														enter="transition ease-out duration-100"
-														enterFrom="transform opacity-0 scale-95"
-														enterTo="transform opacity-100 scale-100"
-														leave="transition ease-in duration-75"
-														leaveFrom="transform opacity-100 scale-100"
-														leaveTo="transform opacity-0 scale-95"
-													>
-														<Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-															{
-																userNavigation.map((item) => (
-																	<Menu.Item key={item.name}>
-																		{({ active }) => (
-																			<a
-																				href={item.href}
-																				className={classNames(
-																					active ? 'bg-gray-100' : '',
-																					'block px-4 py-2 text-sm text-gray-700'
-																				)}
-																			>
-																				{item.name}
-																			</a>
-																		)}
-																	</Menu.Item>
-																))
-															}
-														</Menu.Items>
-													</Transition>
-												</Menu>
-											}
-											<div className={classes.themeTogglerWrapper} style={{ marginLeft: '0.5rem' }}>
-												<ThemeToggler />
-											</div>
+											</Menu>
+
+											<Menu as="div" className="flex relative ml-3">
+												<div>
+													<Menu.Button style={{ marginLeft: '0.35rem' }} className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0] p-0 md:text-[18px]')}>💰Payment</Menu.Button>
+												</div>
+												<Transition
+													as={Fragment}
+													enter="transition ease-out duration-100"
+													enterFrom="transform opacity-0 scale-95"
+													enterTo="transform opacity-100 scale-100"
+													leave="transition ease-in duration-75"
+													leaveFrom="transform opacity-100 scale-100"
+													leaveTo="transform opacity-0 scale-95"
+												>
+													<Menu.Items className="dark:bg-[#242556] dark:text-white absolute right-0 z-10 mt-8 w-48 origin-top-right rounded-md bg-white py-1 px-5 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+														<Menu.Item>
+															<button rel="noopener noreferrer" onClick={handleClickPayButton} className="flex items-center" >
+																Pay with Stripe
+																<Image src={StripeImage} alt="stripeImage" width={24} height={24} className="rounded-md ml-auto" />
+															</button>
+
+														</Menu.Item>
+														<Menu.Item>
+															<button rel="noopener noreferrer" onClick={handleMetaMaskPayment} className="flex items-center" >
+																Pay with Wallet
+																<Image src={MetaMaskImage} alt="MetaMaskImage" width={24} height={24} className="rounded-md ml-2" />
+															</button>
+
+														</Menu.Item>
+													</Menu.Items>
+												</Transition>
+
+											</Menu>
+
+											{/* <Dropdown menu={{ items, onClick }}>
+												<Space>
+													<button style={{ marginLeft: '0.35rem' }} className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0] p-0 md:text-[18px]')}>💰Payment</button>
+												</Space>
+											</Dropdown> */}
+
+											<Menu as="div" className="flex relative ml-3 mr-3 mt-2">
+												<div>
+													<Menu.Button className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0] p-0 md:text-xl')} aria-haspopup="true" aria-expanded="false" role="button" >
+														<IoSettingsSharp />
+													</Menu.Button>
+												</div>
+												<Transition
+													as={Fragment}
+													enter="transition ease-out duration-100"
+													enterFrom="transform opacity-0 scale-95"
+													enterTo="transform opacity-100 scale-100"
+													leave="transition ease-in duration-75"
+													leaveFrom="transform opacity-100 scale-100"
+													leaveTo="transform opacity-0 scale-95"
+												>
+													<Menu.Items className="dark:bg-[#242556] dark:text-white absolute right-0 z-10 mt-6 w-39 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+														<Menu.Item>
+															<Link
+																className={classes.dropdownLink}
+																href="/profile"
+																target="_blank"
+																rel="noopener noreferrer"
+															>
+																<div style={{ display: "flex", alignItems: "center", }}>
+																	<span className="ml-1 mr-2">Profile</span>
+																</div>
+															</Link>
+														</Menu.Item>
+														<Menu.Item>
+															<Link
+																className={classes.dropdownLink}
+																href="#"
+																target="_blank"
+																rel="noopener noreferrer"
+															>
+																<div style={{ display: "flex", alignItems: "center", }}>
+																	<span className="ml-1 mr-2">Settings</span>
+																</div>
+															</Link>
+														</Menu.Item>
+													</Menu.Items>
+												</Transition>
+
+											</Menu>
+
+											{/* <Menu as="div" className="mx-3">
+												<div>
+													<Menu.Button className="relative flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
+														<span className="absolute -inset-1.5" />
+														<span className="sr-only">Open user menu</span>
+														<Image className="h-8 w-8 rounded-full bg-white" src={LogoImage} alt="" />
+													</Menu.Button>
+												</div>
+
+												<Transition
+													as={Fragment}
+													enter="transition ease-out duration-100"
+													enterFrom="transform opacity-0 scale-95"
+													enterTo="transform opacity-100 scale-100"
+													leave="transition ease-in duration-75"
+													leaveFrom="transform opacity-100 scale-100"
+													leaveTo="transform opacity-0 scale-95"
+												>
+													<Menu.Items className="dark:bg-[#242556] dark:text-white absolute right-10 z-10 mt-2 w-39 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+														{
+															userNavigation.map((item) => (
+																<Menu.Item key={item.name}>
+																	{({ active }) => (
+																		<a
+																			href={item.href}
+																			className={classNames(
+																				active ? 'bg-gray-100' : '',
+																				'block px-4 py-2 text-sm text-gray-700'
+																			)}
+																		>
+																			{item.name}
+																		</a>
+																	)}
+																</Menu.Item>
+															))
+														}
+													</Menu.Items>
+												</Transition>
+
+											</Menu> */}
+
+											{/* <div className={classes.themeTogglerWrapper} style={{ marginLeft: '0.1rem' }}> */}
+											<ThemeToggler />
+											{/* </div> */}
 										</div>
 									</div>
 									<div className="flex xl:hidden">
