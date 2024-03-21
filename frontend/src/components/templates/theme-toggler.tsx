@@ -3,7 +3,8 @@
 // import { useContext } from "react";
 // import Input from "antd/es/input/Input";
 // import classes from "./theme-toggler.module.css";
-// import { ThemeContext, ToggleThemeContext } from "@/context/toggle-theme-provider";
+//import { ThemeContext, ToggleThemeContext } from "@/context/toggle-theme-provider";
+import { ToggleThemeContext } from "@/context/toggle-theme-provider";
 
 // function LightThemeIcon() {
 // 	return (
@@ -38,7 +39,7 @@
 // }
 
 export default function ThemeToggler() {
-	// const toggleTheme = useContext(ToggleThemeContext);
+	const toggleTheme = useContext(ToggleThemeContext);
 	// const theme = useContext(ThemeContext);
 
 	return (
