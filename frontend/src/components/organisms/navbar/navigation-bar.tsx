@@ -233,7 +233,7 @@ export default function NavigationBar() {
 											</div>
 										</div>
 									</div>
-									<h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"><span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">Commune AI</span></h1>
+									{/* <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"><span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">Commune AI</span></h1> */}
 									<div className="hidden md:block">
 										<div className="flex items-center">
 											<Menu as="div" className="flex relative ml-3">
@@ -313,7 +313,7 @@ export default function NavigationBar() {
 														<Menu.Item>
 															<button rel="noopener noreferrer" onClick={handleClickPayButton} className="flex items-center" >
 																Pay with Stripe
-																<Image src={StripeImage} alt="stripeImage" width={24} height={24} className="rounded-md ml-auto" />
+																<Image src={StripeImage} alt="stripeImage" width={24} height={24} className="rounded-md ml-3" />
 															</button>
 
 														</Menu.Item>

@@ -40,7 +40,7 @@ export default function HomepageHeader() {
   // state of the scroll position and header height
   const [scrollPosition] = useState(0);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const headerRef = useRef < any > (null);
+  const headerRef = useRef<any>(null);
   const [headerHeight, setHeaderHeight] = useState(20);
 
   // typeWriter effect
@@ -162,21 +162,21 @@ export default function HomepageHeader() {
 
   return (
     <header
-      ref={headerRef} 
+      ref={headerRef}
       className={`
         relative 
         z-10 
+        h-[100vh]
         dark:bg-gray-900 
         p-[4rem] 
         text-center 
         overflow-hidden 
-        ${getHeaderClasses(scrollPosition, headerHeight)} 
         duration-500
-        `} 
+        `}
     >
-<div className="absolute right-0 top-0 z-[-1] opacity-30 lg:opacity-100">
-      <svg width="450" height="556" viewBox="0 0 450 556" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle
+      <div className="absolute right-0 top-0 z-[-1] opacity-30 lg:opacity-100">
+        <svg width="450" height="556" viewBox="0 0 450 556" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle
             cx="277"
             cy="63"
             r="225"
@@ -304,11 +304,11 @@ export default function HomepageHeader() {
               <stop offset="1" stopColor="#4A6CF7" stopOpacity="0" />
             </linearGradient>
           </defs>
-      </svg>
-    </div>
-    <div className="absolute bottom-0 left-0 z-[-1] opacity-30 lg:opacity-100">
-      <svg width="364" height="201" viewBox="0 0 364 201" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path
+        </svg>
+      </div>
+      <div className="absolute bottom-0 left-0 z-[-1] opacity-30 lg:opacity-100">
+        <svg width="364" height="201" viewBox="0 0 364 201" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path
             d="M5.88928 72.3303C33.6599 66.4798 101.397 64.9086 150.178 105.427C211.155 156.076 229.59 162.093 264.333 166.607C299.076 171.12 337.718 183.657 362.889 212.24"
             stroke="url(#paint0_linear_25:218)"
           />
@@ -401,20 +401,20 @@ export default function HomepageHeader() {
               <stop offset="1" stopColor="white" stopOpacity="0.08" />
             </radialGradient>
           </defs>
-      </svg>
-    </div>
+        </svg>
+      </div>
 
-      <Image 
-        src="/gif/logo/commune.webp" 
-        alt="Commune Logo" 
-        className='block lg:hidden' 
+      <Image
+        src="/gif/logo/commune.webp"
+        alt="Commune Logo"
+        className='block lg:hidden'
         width={5000}
         height={5000}
       />
-      <div className="px-10 py-5">
-        <div className='flex lg:flex-row flex-col h-1/2'>
-          <div className='w-full lg:w-1/2 flex flex-col items-center justify-center'>
-            <div className='w-auto sm:w-[710px] sm:h-[250px] '>
+      <div className="px-10 py-5 m-auto">
+        <div className='flex lg:flex-row flex-col mt-[100px]'>
+          <div className='m-auto w-full lg:w-1/2 flex flex-col items-center justify-center'>
+            <div className='w-auto sm:w-[710px] sm:h-[250px]'>
               <h1 className="text-4xl sm:text-6xl sm:pb-3 dark:text-white">{TITLE}</h1>
               <div className='hidden sm:block'>
                 <p className="hero__subtitle text-xl sm:text-4xl dark:text-white">{TAGLINE}
@@ -427,7 +427,7 @@ export default function HomepageHeader() {
                 </p>
               </div>
             </div>
-            <div className='w-[10rem] h-[3rem]'>
+            <div className='w-[10rem] h-[5rem]'>
               <div
                 className='
                   bg-blue-700 rounded-lg shadow-lg hover:shadow-2xl text-center 
