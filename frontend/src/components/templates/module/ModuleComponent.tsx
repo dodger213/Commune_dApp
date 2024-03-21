@@ -11,6 +11,8 @@ export default function ModuleComponent() {
               key={key}
               name={item.name}
               description={item.description}
+              registerKey={item.registerKey}
+              verified={item.verified}
               image={item.image}
               url={item.url}
               tags={item.tags}

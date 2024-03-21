@@ -46,8 +46,8 @@ function SectionWrapper({
 export default function Home() {
   return (
     <main className={classNames(classes.main, "flex flex-col ")}>
-      {/* <ModuleComponent /> */}
       <HomepageHeader />
+      <ModuleComponent />
       <WelcomeSection />
       <SectionWrapper
         imageUrl="/gif/cubes/commune-single-block_blue.webp"
