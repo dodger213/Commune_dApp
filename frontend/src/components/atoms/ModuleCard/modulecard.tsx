@@ -19,6 +19,7 @@ interface ModuleCardInterface {
 
 const ModuleCard = ({ url, name, image, description, registerKey, verified, tags }: ModuleCardInterface) => {
 
+    console.log('--------This is the status--------', verified)
     return (
         <div>
             {registerKey &&
