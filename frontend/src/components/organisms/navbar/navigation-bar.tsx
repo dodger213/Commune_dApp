@@ -29,15 +29,15 @@ const user = {
 }
 
 const navigation = [
-	// { name: '🚀Modules', href: '/modules', current: false },
-	// { name: '⛓Telemetry', href: '/telemetry', current: false },
-	// { name: '🥂ComChat', href: 'https://comchat.io/', current: false },
-	// { name: '💻ComfyUILauncher', href: 'https://huggingface.co/spaces/subbytech/comfyui-launcher/', current: false },
-	// { name: '💱Comwallet', href: 'https://comwallet.io/', current: false },
-	// { name: 'Bittensor', href: '/bittensor', current: false },
-	// { name: 'Staking', href: '/staking', current: false },
-	// { name: '📚Docs', href: '/docs/introduction', current: false },
-	// { name: '📄Whitepaper', href: 'https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf' },
+	{ name: '🚀Modules', href: '/modules', current: false },
+	{ name: '⛓Telemetry', href: '/telemetry', current: false },
+	{ name: '🥂ComChat', href: 'https://comchat.io/', current: false },
+	{ name: '💻ComfyUILauncher', href: 'https://huggingface.co/spaces/subbytech/comfyui-launcher/', current: false },
+	{ name: '💱Comwallet', href: 'https://comwallet.io/', current: false },
+	{ name: 'Bittensor', href: '/bittensor', current: false },
+	{ name: 'Staking', href: '/staking', current: false },
+	{ name: '📚Docs', href: '/docs/introduction', current: false },
+	{ name: '📄Whitepaper', href: 'https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf' },
 ]
 
 const community = [
@@ -73,7 +73,6 @@ const items: MenuProps['items'] = [
 ]
 
 export default function NavigationBar() {
-
 	const [isShowWalletPaymentModal, setIsShowWalletPaymentModal] = React.useState(false)
 	const [destinationAddress, setDestinationAddress] = React.useState('')
 	const [amount, setAmount] = React.useState('')
@@ -186,9 +185,13 @@ export default function NavigationBar() {
 	const getChainInfo = async () => {
 		if (api) {
 			const chain = await api.rpc.system.chain();
-			setChainInfo(chain.toString())
+			if (chain) {
+				setChainInfo(chain?.toString())
+			}
 			const nodeName = await api.rpc.system.name();
-			setNodeName(nodeName.toString())
+			if (nodeName) {
+				setNodeName(nodeName?.toString())
+			}
 			console.log(`Connected to chain ${chain} using ${nodeName}`);
 		}
 	};
@@ -199,7 +202,7 @@ export default function NavigationBar() {
 				<Disclosure as="nav" className="dark:bg-gray-900 border-b-2 border-slate-500 shadow-md">
 					{({ open }) => (
 						<>
-							<div className="mx-auto px-4 md:px-0 lg:px-8">
+							<div className="mx-auto px-4 lg:px-8">
 								<div className="flex h-16 items-center justify-between">
 									<div className="flex items-center">
 										<Link className={classes.brand} href="/">
@@ -207,11 +210,11 @@ export default function NavigationBar() {
 												style={{ width: "auto", height: "4rem", marginRight: "-0.25rem" }}
 												src="/gif/logo/commune.gif"
 												alt="Commune Logo"
-												width={50}
-												height={50}
+												width={64}
+												height={64}
 											/>
 										</Link>
-										<div className="hidden md:block">
+										<div className="hidden xl:block">
 											<div className="flex">
 												{navigation.map((item) => (
 													<a
@@ -423,7 +426,7 @@ export default function NavigationBar() {
 											{/* </div> */}
 										</div>
 									</div>
-									<div className="-mr-2 flex md:hidden">
+									<div className="flex xl:hidden">
 										{/* Mobile menu button */}
 										<Disclosure.Button
 											className="
@@ -444,8 +447,8 @@ export default function NavigationBar() {
 								</div>
 							</div>
 
-							<Disclosure.Panel className="md:hidden">
-								<div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
+							<Disclosure.Panel className="xl:hidden">
+								<div className="space-y-1 pb-3 pt-2 px-3">
 									{navigation.map((item) => (
 										<Disclosure.Button
 											key={item.name}
