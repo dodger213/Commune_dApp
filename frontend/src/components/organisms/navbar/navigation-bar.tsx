@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useState, useEffect } from 'react'
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
@@ -174,7 +174,7 @@ export default function NavigationBar() {
 	const [chainInfo, setChainInfo] = useState('');
 	const [nodeName, setNodeName] = useState('');
 
-	React.useEffect(() => {
+	useEffect(() => {
 		const connectToSubstrate = async () => {
 			const provider = new WsProvider('wss://rpc.polkadot.io');
 			const substrateApi = await ApiPromise.create({ provider });
