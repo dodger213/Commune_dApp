@@ -47,7 +47,6 @@ function SectionWrapper({
 export default function Home() {
   return (
     <main className={classNames(classes.main, "flex flex-col ")}>
-      <ModuleComponent />
       <HomepageHeader />
 {/*       <ModuleComponent /> */}
       <WelcomeSection />
