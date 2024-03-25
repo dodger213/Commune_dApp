@@ -82,7 +82,7 @@ export default function Home() {
                 <div className='my-auto mx-auto'>
                   <Image src="/img/frontpage/_5.png" className='my-auto w-[100%] md:w-[30rem] p-2 rounded-md' alt='Image' width={480}
                     height={480} />
-                </div>
+                </div>                
               </div>
             </div>
           </div>

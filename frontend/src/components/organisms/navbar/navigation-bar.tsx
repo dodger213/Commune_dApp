@@ -22,6 +22,7 @@ import TwitterIcon from "@/components/atoms/twitter-icon";
 import ThemeToggler from "@/components/templates/theme-toggler";
 import { saveTransaction } from "@/store/action/transaction.record.action";
 import { IoSettingsSharp } from "react-icons/io5";
+import HamburgerModal from '@/components/atoms/Hamburger/hamburger';
 
 const user = {
 	name: 'Tom Cook',
@@ -196,6 +197,7 @@ export default function NavigationBar() {
 		}
 	};
 
+
 	return (
 		<>
 			<div className="min-h-full">
@@ -235,7 +237,7 @@ export default function NavigationBar() {
 									</div>
 									{/* <h1 className="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"><span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">Commune AI</span></h1> */}
 									<div className="hidden md:block">
-										<div className="flex items-center">
+										<div className="flex items-center relative">
 											<Menu as="div" className="flex relative ml-3">
 
 												<Menu.Button className={classNames(classes.link, 'dark:text-white dark:hover:text-[#25c2a0] p-0 md:text-xl')} aria-haspopup="true" aria-expanded="false" role="button" >
@@ -422,8 +424,14 @@ export default function NavigationBar() {
 											</Menu> */}
 
 											{/* <div className={classes.themeTogglerWrapper} style={{ marginLeft: '0.1rem' }}> */}
-											<ThemeToggler />
-											{/* </div> */}
+											<ThemeToggler/>
+											{/*  </div> */}		
+											{/* <div className='absolute'>								 */}
+											<div className='hidden xl:block'>
+											<HamburgerModal/>
+											</div>	
+											
+											{/* </div>																		 */}
 										</div>
 									</div>
 									<div className="flex xl:hidden">
