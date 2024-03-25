@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react'
+import { Fragment, useState, useEffect } from 'react'
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
@@ -8,7 +8,8 @@ import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { loadStripe } from "@stripe/stripe-js";
-import { Dropdown, Modal, Space, Select, MenuProps, ConfigProvider, Button } from 'antd';
+import { Modal, Space, Select } from 'antd';
+import { IoSettingsSharp } from "react-icons/io5";
 import { parseEther } from 'viem'
 import { useSendTransaction, useContractWrite } from 'wagmi'
 import classes from './navigation-bar.module.css';
@@ -47,39 +48,39 @@ const community = [
 	{ name: 'Github', href: 'https://github.com/commune-ai' },
 ]
 
-const userNavigation = [
-	{ name: 'Profile', href: '/profile' },
-	{ name: 'Settings', href: '#' },
-]
+// const userNavigation = [
+// 	{ name: 'Profile', href: '/profile' },
+// 	{ name: 'Settings', href: '#' },
+// ]
 
-const items: MenuProps['items'] = [
-	{
-		key: '1',
-		label: (
-			<span rel="noopener noreferrer" className="flex items-center">
-				Pay with Stripe
-				<Image src={StripeImage} alt="stripeImage" width={24} height={24} className="rounded-md ml-auto" />
-			</span>
-		),
-	},
-	{
-		key: '2',
-		label: (
-			<span rel="noopener noreferrer" className="flex items-center" >
-				Pay with Wallet
-				<Image src={MetaMaskImage} alt="MetaMaskImage" width={24} height={24} className="rounded-md ml-2" />
-			</span>
-		),
-	},
-]
+// const items: MenuProps['items'] = [
+// 	{
+// 		key: '1',
+// 		label: (
+// 			<span rel="noopener noreferrer" className="flex items-center">
+// 				Pay with Stripe
+// 				<Image src={StripeImage} alt="stripeImage" width={24} height={24} className="rounded-md ml-auto" />
+// 			</span>
+// 		),
+// 	},
+// 	{
+// 		key: '2',
+// 		label: (
+// 			<span rel="noopener noreferrer" className="flex items-center" >
+// 				Pay with Wallet
+// 				<Image src={MetaMaskImage} alt="MetaMaskImage" width={24} height={24} className="rounded-md ml-2" />
+// 			</span>
+// 		),
+// 	},
+// ]
 
 export default function NavigationBar() {
-	const [isShowWalletPaymentModal, setIsShowWalletPaymentModal] = React.useState(false)
-	const [destinationAddress, setDestinationAddress] = React.useState('')
-	const [amount, setAmount] = React.useState('')
-	const [tokenType, setTokenType] = React.useState('')
-	const [selectedChain, setSelectedChain] = React.useState('')
-	const [isShowConnectWithSubstrateModalOpen, setIsShowConnectWithSubstrateModalOpen] = React.useState(false)
+	const [isShowWalletPaymentModal, setIsShowWalletPaymentModal] = useState(false)
+	const [destinationAddress, setDestinationAddress] = useState('')
+	const [amount, setAmount] = useState('')
+	const [tokenType, setTokenType] = useState('')
+	const [selectedChain, setSelectedChain] = useState('')
+	const [isShowConnectWithSubstrateModalOpen, setIsShowConnectWithSubstrateModalOpen] = useState(false)
 	const asyncStripe = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || '');
 	const { abi: erc20ABI } = erc20ContractABI
 	const router = useRouter();
@@ -110,14 +111,14 @@ export default function NavigationBar() {
 		setIsShowWalletPaymentModal(true)
 	}
 
-	const onClick: MenuProps['onClick'] = ({ key }) => {
-		if (key === '1') {
-			handleClickPayButton()
-		}
-		if (key === '2') {
-			handleMetaMaskPayment()
-		}
-	};
+	// const onClick: MenuProps['onClick'] = ({ key }) => {
+	// 	if (key === '1') {
+	// 		handleClickPayButton()
+	// 	}
+	// 	if (key === '2') {
+	// 		handleMetaMaskPayment()
+	// 	}
+	// };
 
 	const handleWalletPaymentModalOpen = () => {
 		setIsShowWalletPaymentModal(false)
@@ -170,11 +171,11 @@ export default function NavigationBar() {
 	const handleConnectWithSubstrateModalCancel = () => {
 		setIsShowConnectWithSubstrateModalOpen(false)
 	}
-	const [api, setApi] = React.useState<ApiPromise | null>(null);
-	const [chainInfo, setChainInfo] = React.useState('');
-	const [nodeName, setNodeName] = React.useState('');
+	const [api, setApi] = useState<ApiPromise | null>(null);
+	const [chainInfo, setChainInfo] = useState('');
+	const [nodeName, setNodeName] = useState('');
 
-	React.useEffect(() => {
+	useEffect(() => {
 		const connectToSubstrate = async () => {
 			const provider = new WsProvider('wss://rpc.polkadot.io');
 			const substrateApi = await ApiPromise.create({ provider });

@@ -41,7 +41,7 @@ export default function HomepageHeader() {
   const [scrollPosition, setScrollPosition] = useState(0);
   const headerRef = useRef<any>(null);
   const [headerHeight, setHeaderHeight] = useState(20);
-
+  console.log('-----This is the headerHeight---------', headerHeight)
   // typeWriter effect
   // give me the context of this whole useEffect
   useEffect(() => {
