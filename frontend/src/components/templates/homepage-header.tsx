@@ -1,10 +1,13 @@
 "use client"
 import { useState, useEffect, useRef } from "react";
+import { useDispatch } from 'react-redux'
 import Image from "next/image";
 import { ApiPromise, WsProvider } from "@polkadot/api";
 import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Modal from "antd/es/modal/Modal";
+import {saveMetaMaskAddress} from '@/store/action/transaction.record.action';
+import { toast } from 'react-toastify';
 import GitHubLogin from "react-github-login";
 import GithubImage from "../../../public/svg/github-mark.svg";
 import MetaMaskImage from "../../../public/svg/metamask.svg";
@@ -28,20 +31,20 @@ const TITLE = "Commune AI";
 const TAGLINE = "Renovating the way we build software for ";
 
 export default function HomepageHeader() {
+
   const [index, setIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
   const [blink, setBlink] = useState(true);
   const [reverse, setReverse] = useState(false);
   const [isShowAuthModalOpen, setIsShowAuthModalOpen] = useState(false)
 
-  const [, setIsLoggedIn] = useState(false)
-  // const [metamaskAddress, setMetamaskAddress] = useState<string | undefined>('')
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [metamaskAddress, setMetamaskAddress] = useState<string | undefined>('')
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   // state of the scroll position and header height
   const [scrollPosition, setScrollPosition] = useState(0);
   const headerRef = useRef<any>(null);
   const [headerHeight, setHeaderHeight] = useState(20);
-  console.log('-----This is the headerHeight---------', headerHeight)
   // typeWriter effect
   // give me the context of this whole useEffect
   useEffect(() => {
@@ -158,6 +161,16 @@ export default function HomepageHeader() {
       console.error('Cannot connect wallet: Code is running on the server.');
     }
   };
+
+  const dispatch = useDispatch<any>()
+
+  useEffect(()=>{
+    if(metamaskAddress){
+      console.log('-----------This is an wallet address---------', metamaskAddress);
+      toast.success(`You are logged in with ${metamaskAddress}`, { autoClose: 2000 });
+      dispatch(saveMetaMaskAddress(metamaskAddress));
+    }
+  }, [metamaskAddress])
 
   return (
     <header
@@ -708,6 +721,7 @@ export default function HomepageHeader() {
                   // Note: If your app doesn't use authentication, you
                   // can remove all 'authenticationStatus' checks
                   const ready = mounted && authenticationStatus !== 'loading';
+                  account?.address&&setMetamaskAddress(account.address)
                   const connected =
                     ready &&
                     account &&
@@ -772,6 +786,8 @@ export default function HomepageHeader() {
                                       alt={chain.name ?? 'Chain icon'}
                                       src={chain.iconUrl}
                                       style={{ width: 12, height: 12 }}
+                                      width={12}
+                                      height={12}
                                     />
                                   )}
                                 </div>

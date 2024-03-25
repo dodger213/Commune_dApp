@@ -39,6 +39,7 @@ const transactionReducer = (state = initialState, action: SaveTransactionSuccess
                 records: payload
             }
         case SAVE_METAMASK_SUCCESS:
+            console.log('--------------This is an error status-------', payload)
             return {
                 ...state,
                 address: payload,
