@@ -4,6 +4,13 @@ import Image from 'next/image';
 import classes from "./home.module.css";
 import HomepageHeader from '@/components/templates/homepage-header';
 import WelcomeSection from '@/components/templates/welcome/welcome';
+import ModuleComponent from '@/components/templates/module/ModuleComponent';
+import ThreeDButton from '@/components/atoms/threedbutton/ThreeDbutton';
+import { useState } from 'react';
+import { Modal } from 'antd';
+import ModuleModal from '@/components/RegisterModal';
+import RegisterModal from '@/components/RegisterModal';
+// import Modal from 'antd/es/modal/Modal';
 
 function SectionWrapper({
   imageUrl,
@@ -42,9 +49,22 @@ function SectionWrapper({
   );
 }
 
+
 export default function Home() {
+  const [moduleModalOpen, setModuleModalOpen] = useState<boolean>(false);
+  const handleOpenModal = () => {
+    setModuleModalOpen(true);
+  }
+
+  const handleCloseModal = () => {
+    setModuleModalOpen(false);
+  };
+
   return (
-    <main className={classNames(classes.main, "flex flex-col ")}>
+    <main className={classNames(classes.main, "flex flex-col relative")}>
+      <div className="fixed top-15 z-20 left-1 top-15">
+        <ThreeDButton onClick={handleOpenModal} />
+      </div>
       <HomepageHeader />
       {/*       <ModuleComponent /> */}
       <WelcomeSection />
@@ -52,6 +72,7 @@ export default function Home() {
         imageUrl="/gif/cubes/commune-single-block_blue.webp"
         backgroundClassName="bg-white dark:bg-gray-900"
       >
+
         <div className='text-black'>
           <div className='text-right w-full pb-10'>
             <h1 className="text-4xl md:text-5xl lg:text-6xl py-10 md:py-15 lg:py-20 px-3 text-center dark:text-white">
@@ -306,6 +327,7 @@ export default function Home() {
           </div>
         </div>
       </SectionWrapper>
+      {moduleModalOpen && <RegisterModal onClose={handleCloseModal} />}    
     </main>
   )
 }
