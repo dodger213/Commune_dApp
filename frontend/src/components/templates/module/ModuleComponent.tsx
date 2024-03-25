@@ -1,5 +1,7 @@
+
 import ModuleCard from "@/components/atoms/ModuleCard/modulecard";
 import modules from '../../../../modules.json';
+
 
 export default function ModuleComponent() {
   return (
@@ -11,10 +13,12 @@ export default function ModuleComponent() {
               key={key}
               name={item.name}
               description={item.description}
+              registerKey={item.registerKey}
+              verified={item.verified}
               image={item.image}
               url={item.url}
               tags={item.tags}
-            />
+            />   
           ))}
         </div>
       </div>
@@ -158,7 +162,7 @@ export default function ModuleComponent() {
       </div>
       <div className="absolute bottom-0 left-0 z-[-1] opacity-30 lg:opacity-100">
         <svg
-          width="364"
+          width="100%"
           height="201"
           viewBox="0 0 364 201"
           fill="none"

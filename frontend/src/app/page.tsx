@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import classes from "./home.module.css";
 import HomepageHeader from '@/components/templates/homepage-header';
+// import ModuleComponent from '@/components/templates/module/ModuleComponent';
 import WelcomeSection from '@/components/templates/welcome/welcome';
 import ModuleComponent from '@/components/templates/module/ModuleComponent';
 
@@ -48,9 +49,10 @@ export default function Home() {
     <main className={classNames(classes.main, "flex flex-col ")}>
       <ModuleComponent />
       <HomepageHeader />
+{/*       <ModuleComponent /> */}
       <WelcomeSection />
       <SectionWrapper
-        imageUrl="/gif/cubes/commune-single-block_blue.gif"
+        imageUrl="/gif/cubes/commune-single-block_blue.webp"
         backgroundClassName="bg-white dark:bg-gray-900"
       >
         <div className='text-black'>
@@ -82,14 +84,14 @@ export default function Home() {
                 <div className='my-auto mx-auto'>
                   <Image src="/img/frontpage/_5.png" className='my-auto w-[100%] md:w-[30rem] p-2 rounded-md' alt='Image' width={480}
                     height={480} />
-                </div>
+                </div>                
               </div>
             </div>
           </div>
         </div>
       </SectionWrapper>
       <SectionWrapper
-        imageUrl="/gif/cubes/commune-single-block_green.gif"
+        imageUrl="/gif/cubes/commune-single-block_green.webp"
         backgroundClassName="bg-white dark:bg-gray-800"
       >
         <div className='text-black'>
@@ -141,7 +143,7 @@ export default function Home() {
       </SectionWrapper>
       <SectionWrapper
 
-        imageUrl="/gif/cubes/commune-single-block_yellow.gif"
+        imageUrl="/gif/cubes/commune-single-block_yellow.webp"
 
         backgroundClassName="bg-white"
       >
@@ -174,7 +176,7 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        imageUrl="/gif/cubes/commune-single-block_red.gif"
+        imageUrl="/gif/cubes/commune-single-block_red.webp"
         backgroundClassName="bg-white dark:bg-gray-800"
       >
         <div className='text-black '>
@@ -200,7 +202,7 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        imageUrl="/gif/cubes/commune-single-block_purple.gif"
+        imageUrl="/gif/cubes/commune-single-block_purple.webp"
         backgroundClassName="bg-white"
       >
         <div className=' text-black'>
@@ -240,7 +242,7 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        imageUrl="/gif/cubes/commune-single-block_gray.gif"
+        imageUrl="/gif/cubes/commune-single-block_gray.webp"
         backgroundClassName="bg-white dark:bg-gray-800"
       >
         <div className=' text-black dark:text-white'>
@@ -266,7 +268,7 @@ export default function Home() {
         </div>
       </SectionWrapper>
       <SectionWrapper
-        imageUrl="/gif/cubes/commune-single-block_white.gif"
+        imageUrl="/gif/cubes/commune-single-block_white.webp"
         backgroundClassName="bg-white"
       >
         <div className='text-black dark:text-white'>
@@ -293,7 +295,7 @@ export default function Home() {
                   <div className=' mt-14 ml-14  bg-gray-100 rounded-lg w-[17rem] h-[17rem] border-2 border-yellow-500 border-solid shadow-xl px-3' />
                 </div>
               </div>
-              <p className="text-2xl font-semibold text-center mt-10">Want to read more? Check<br />out our whitepaper.</p>
+              <p className="text-2xl font-semibold text-center">Want to read more? Check<br />out our whitepaper.</p>
               <div className='flex justify-center rounded-xl lg:mb-4'>
                 <a href='https://ai-secure.github.io/DMLW2022/assets/papers/7.pdf' className='hover:no-underline '>
                   <div className='w-[15rem] h-[3rem] flex flex-row gap-2 bg-[#FF8F8F] hover:bg-[#FF8F8F] dark:bg-[#FF8F8F] dark:hover:bg-[#fc9494] text-white text-xl font-bold py-2 px-4 mt-10 rounded-lg shadow-md hover:shadow-xl duration-300 '>

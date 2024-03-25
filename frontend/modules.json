@@ -4,6 +4,8 @@
         "url": "/modules",
         "image": "/img/frontpage/comchat.png",
         "description": "The hub for Commune Ai modules",
+        "registerKey": "5EJ9AUpSGafWeagdP5nwc5AwcYBkagYSZyx2BmLKWJrGBZUZ",
+        "verified": false,
         "tags": [
             "com",
             "hub"
@@ -14,6 +16,8 @@
         "url": "/telemetry",
         "image": "/img/frontpage/comai-logo.png",
         "description": "Telemetry of Commune Ai",
+        "registerKey": "5EJ9AUpSGafWeagdP5nwc5AwcYBkagYSZyx2BmLKWJrGBZUZ",
+        "verified": false,
         "tags": [
             "stats",
             "staking",
@@ -25,6 +29,8 @@
         "url": "https://comchat.io/",
         "image": "/img/frontpage/comchat.png",
         "description": "LLM GPT aggregator built on Commune Ai",
+        "registerKey": "5EJ9AUpSGafWeagdP5nwc5AwcYBkagYSZyx2BmLKWJrGBZUZ",
+        "verified": false,
         "tags": [
             "chat",
             "GPT",
@@ -36,6 +42,8 @@
         "url": "https://huggingface.co/spaces/subbytech/comfyui-launcher/",
         "image": "/img/frontpage/comai-logo.png",
         "description": "ComfyUILauncher of Commune Ai",
+        "registerKey": "5EJ9AUpSGafWeagdP5nwc5AwcYBkagYSZyx2BmLKWJrGBZUZ",
+        "verified": false,
         "tags": [
             "Docs",
             "AI"
@@ -46,7 +54,7 @@
         "url": "https://comwallet.io/",
         "image": "/img/frontpage/combridge-logo.png",
         "description": "ComWallet of Commune Ai",
-        "validatorKey": "5CXiWwsS76H2vwroWu4SvdAS3kxprb7aFtqWLxxZC5FNhYri",
+        "registerKey": "5CXiWwsS76H2vwroWu4SvdAS3kxprb7aFtqWLxxZC5FNhYri",
         "verified": true,
         "tags": [
             "staking",
@@ -59,6 +67,8 @@
         "url": "/bittensor",
         "image": "/img/frontpage/comai-webp.webp",
         "description": "Bittensor of Commune Ai",
+        "registerKey": "5EJ9AUpSGafWeagdP5nwc5AwcYBkagYSZyx2BmLKWJrGBZUZ",
+        "verified": true,
         "tags": [
             "AI"
         ]
@@ -68,6 +78,8 @@
         "url": "https://comscanner.vercel.app/app/welcome",
         "image": "/img/frontpage/comai-logo.png",
         "description": "coming soon",
+        "registerKey": "5EJ9AUpSGafWeagdP5nwc5AwcYBkagYSZyx2BmLKWJrGBZUZ",
+        "verified": false,
         "tags": [
             "wallet",
             "predict",
@@ -80,6 +92,8 @@
         "url": "/staking",
         "image": "/img/frontpage/comai-logo.png",
         "description": "coming soon",
+        "registerKey": "5EJ9AUpSGafWeagdP5nwc5AwcYBkagYSZyx2BmLKWJrGBZUZ",
+        "verified": false,
         "tags": [
             "wallet",
             "bridge"
