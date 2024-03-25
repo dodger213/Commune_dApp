@@ -5,6 +5,7 @@ import classes from "./home.module.css";
 import HomepageHeader from '@/components/templates/homepage-header';
 // import ModuleComponent from '@/components/templates/module/ModuleComponent';
 import WelcomeSection from '@/components/templates/welcome/welcome';
+import ModuleComponent from '@/components/templates/module/ModuleComponent';
 
 function SectionWrapper({
   imageUrl,
@@ -46,6 +47,7 @@ function SectionWrapper({
 export default function Home() {
   return (
     <main className={classNames(classes.main, "flex flex-col ")}>
+      <ModuleComponent />
       <HomepageHeader />
 {/*       <ModuleComponent /> */}
       <WelcomeSection />

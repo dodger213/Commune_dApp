@@ -1,11 +1,13 @@
-import modules from '../../../../modules.json';
+
 import ModuleCard from "@/components/atoms/ModuleCard/modulecard";
+import modules from '../../../../modules.json';
+
 
 export default function ModuleComponent() {
   return (
     <div className="relative z-10 bg-white dark:bg-gray-900">
       <div className="flex justify-center opacity-85">
-        <div className="flex grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 w-full">
+        <div className="flex flex-wrap justify-center">
           {modules.map((item, key) => (
             <ModuleCard
               key={key}
