@@ -17,13 +17,12 @@ import LogoImage from '../../../../public/gif/logo/CubesShufflingGIF.gif'
 import StripeImage from '../../../../public/img/frontpage/stripe.png'
 import MetaMaskImage from '../../../../public/svg/metamask.svg'
 import * as  erc20ContractABI from '../../../services/token_abi.json';
+import HamburgerModal from '@/components/atoms/Hamburger/hamburger';
 import DiscordIcon from "@/components/atoms/discord-icon";
 import GitHubIcon from "@/components/atoms/github-icon";
 import TwitterIcon from "@/components/atoms/twitter-icon";
 import ThemeToggler from "@/components/templates/theme-toggler";
 import { saveTransaction } from "@/store/action/transaction.record.action";
-import { IoSettingsSharp } from "react-icons/io5";
-import HamburgerModal from '@/components/atoms/Hamburger/hamburger';
 
 const user = {
 	name: 'Tom Cook',

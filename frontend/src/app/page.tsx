@@ -3,9 +3,7 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import classes from "./home.module.css";
 import HomepageHeader from '@/components/templates/homepage-header';
-// import ModuleComponent from '@/components/templates/module/ModuleComponent';
 import WelcomeSection from '@/components/templates/welcome/welcome';
-import ModuleComponent from '@/components/templates/module/ModuleComponent';
 
 function SectionWrapper({
   imageUrl,
@@ -48,7 +46,7 @@ export default function Home() {
   return (
     <main className={classNames(classes.main, "flex flex-col ")}>
       <HomepageHeader />
-{/*       <ModuleComponent /> */}
+      {/*       <ModuleComponent /> */}
       <WelcomeSection />
       <SectionWrapper
         imageUrl="/gif/cubes/commune-single-block_blue.webp"
@@ -83,7 +81,7 @@ export default function Home() {
                 <div className='my-auto mx-auto'>
                   <Image src="/img/frontpage/_5.png" className='my-auto w-[100%] md:w-[30rem] p-2 rounded-md' alt='Image' width={480}
                     height={480} />
-                </div>                
+                </div>
               </div>
             </div>
           </div>
