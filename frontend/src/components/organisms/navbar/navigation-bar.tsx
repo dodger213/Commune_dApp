@@ -22,7 +22,7 @@ import GitHubIcon from "@/components/atoms/github-icon";
 import TwitterIcon from "@/components/atoms/twitter-icon";
 import ThemeToggler from "@/components/templates/theme-toggler";
 import { saveTransaction } from "@/store/action/transaction.record.action";
-import { IoSettingsSharp } from "react-icons/io5";
+// import { IoSettingsSharp } from "react-icons/io5";
 import HamburgerModal from '@/components/atoms/Hamburger/hamburger';
 
 const user = {

@@ -113,7 +113,8 @@ export default function RootLayout({
                 <Provider store={store}>
                   <ThemeProvider>
                     {/* <Banner /> */}
-                    <NavigationBar />
+                    <NavigationBar />           
+                                
                     {children}
                     <Footer />
                   </ThemeProvider>
