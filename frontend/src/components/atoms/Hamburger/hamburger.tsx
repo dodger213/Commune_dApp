@@ -36,9 +36,11 @@ const HamburgerModal: React.FC = () => {
       floatButtonX={0.1}
     >
       <ul>
-        {modules.map((item, key) => (
-          <li><Link href={item.url} className='text-black'><p className="text-4xl font-extrabold text-gray-900 dark:text-blue">{item.name}</p></Link></li>
-        ))}
+        {
+          modules.map((item, key) => (
+            <li key={key}><Link href={item.url} className='text-black'><p className="text-4xl font-extrabold text-gray-900 dark:text-blue">{item.name}</p></Link></li>
+          ))
+        }
       </ul>
     </GhostNavbar>   
   );

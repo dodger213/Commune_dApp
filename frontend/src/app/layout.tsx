@@ -14,7 +14,9 @@ import {
   ledgerWallet,
   metaMaskWallet
 } from '@rainbow-me/rainbowkit/wallets';
-import { Provider } from "react-redux"
+import { Provider } from "react-redux";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { configureChains, createConfig, sepolia, WagmiConfig } from 'wagmi';
 import {
   mainnet,
@@ -119,6 +121,7 @@ export default function RootLayout({
                     <Footer />
                   </ThemeProvider>
                 </Provider>
+                <ToastContainer />
               </RainbowKitProvider>
             </WagmiConfig>
         }
