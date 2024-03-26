@@ -5,7 +5,6 @@ import classes from "./home.module.css";
 import HomepageHeader from '@/components/templates/homepage-header';
 import WelcomeSection from '@/components/templates/welcome/welcome';
 import ModuleComponent from '@/components/templates/module/ModuleComponent';
-import ThreeDButton from '@/components/atoms/threedbutton/ThreeDbutton';
 import { useState } from 'react';
 import { Modal } from 'antd';
 import ModuleModal from '@/components/RegisterModal';
@@ -51,20 +50,9 @@ function SectionWrapper({
 
 
 export default function Home() {
-  const [moduleModalOpen, setModuleModalOpen] = useState<boolean>(false);
-  const handleOpenModal = () => {
-    setModuleModalOpen(true);
-  }
-
-  const handleCloseModal = () => {
-    setModuleModalOpen(false);
-  };
 
   return (
-    <main className={classNames(classes.main, "flex flex-col relative")}>
-      <div className="fixed top-15 z-20 left-1 top-15">
-        <ThreeDButton onClick={handleOpenModal} />
-      </div>
+    <main className={classNames(classes.main, "flex flex-col relative")}>  
       <HomepageHeader />
       {/*       <ModuleComponent /> */}
       <WelcomeSection />
@@ -326,8 +314,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </SectionWrapper>
-      {moduleModalOpen && <RegisterModal onClose={handleCloseModal} />}    
+      </SectionWrapper>      
     </main>
   )
 }

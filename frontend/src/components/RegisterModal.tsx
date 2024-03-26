@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Modal, Form, Input, Button } from "antd";
+import { Modal, Form, Input, Button, Select } from "antd";
 import modules from "../../modules.json"
 import { Background } from "reactflow";
 import './registerModal.css'
@@ -39,8 +39,14 @@ const RegisterModal: React.FC<ModalProps> = ({ onClose }) => {
       title="Register Module"
       open={true}
       onCancel={onClose}
+      styles={{
+        mask: {
+          backdropFilter: 'blur(10px)'
+        }
+      }
+      }
       footer={[
-        <Button key="cancel" onClick={onClose}>
+        <Button key="cancel" onClick={onClose} className="bg-green-400">
           Cancel
         </Button>,
         <Button key="submit" type="primary" onClick={handleSubmit} className="bg-blue-800">
@@ -49,58 +55,72 @@ const RegisterModal: React.FC<ModalProps> = ({ onClose }) => {
       ]}
     >
       <Form form={form}
-        labelCol={{ span: 6 }}    
+        labelCol={{ span: 6 }}
         layout="vertical"
         // disabled={componentDisabled}
         style={{ maxWidth: 600 }}>
         <Form.Item
-          name="name"
-          label="Name"
-          rules={[{ required: true, message: "Please enter module name" }]}
+          name="title"
+          label="Title"
+          rules={[{ required: true, message: "Please enter Title" }]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          name="url"
-          label="URL"
+          name="emoji"
+          label="Emoji"
           rules={[
-            { required: true, message: "Please enter module url" },
-            { type: "url", message: "Please enter a valid url" },
+            { required: true, message: "Please enter Emoji" },
           ]}
         ><Input />
         </Form.Item>
         <Form.Item
-          name="image"
-          label="Image"
+          name="colorfrom"
+          label="ColorFrom"
           rules={[
-            { required: true, message: "Please enter image" },
+            { required: true, message: "Please enter ColorFrom" },
           ]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          name="description"
-          label="Description"
+          name="colorto"
+          label="ColorTo"
           rules={[
-            { required: true, message: "Please enter module description" },
+            { required: true, message: "Please enter ColorTo" },
           ]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          name="registerkey"
-          label="Registerkey"
+          name="sdk"
+          label="SDK"
           rules={[
-            { required: true, message: "Please enter Registerkey" },
+            { required: true, message: "Please enter SDK" },
+          ]}
+        >
+          <Select
+            options={[
+              { value: 'Streamlit', label: 'Streamlit' },
+              { value: 'Gradio', label: 'Gradio' },
+              { value: 'Docker', label: 'Docker' },
+              { value: 'Static', label: 'Static' },          
+            ]} />
+        </Form.Item>
+        <Form.Item
+          name="app_file"
+          label="App_File"
+          rules={[
+            { required: true, message: "Please enter App_File" },
           ]}
         >
           <Input />
         </Form.Item>
         <Form.Item
-          name="tags"
-          label="Tags"
+          name="pinned"
+          label="Pinned"
           rules={[
-            { required: true, message: "Please enter Module tags" },
+            { required: true, message: "Please enter Pinned" },
           ]}
         >
           <Input />

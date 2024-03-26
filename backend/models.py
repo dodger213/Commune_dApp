@@ -58,5 +58,13 @@ class UserModel(Base):
     id = Column(Integer, primary_key=True, index=True)
     meta_mask_address = Column(String, index=True, nullable=False)
 
+class Module(Base):
+    __tablemame__ = "Moduls"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, index=True)
+    description = Column(String, index=True)
+    registerKey = Column(String, index=True)
+    verified = Column(bool, index=True )
+    tags = Column(String, index=True)
 
 Base.metadata.create_all(bind=engine)
