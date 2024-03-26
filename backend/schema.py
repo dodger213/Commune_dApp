@@ -7,3 +7,5 @@ class FileModel(BaseModel):
     text_data: str
     time_created: str
     time_updated: str
+
+

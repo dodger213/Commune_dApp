@@ -429,7 +429,7 @@ export default function NavigationBar() {
 											{/*  </div> */}		
 											{/* <div className='absolute'>								 */}
 											<div className='hidden xl:block'>
-											<HamburgerModal/>
+											{/* <HamburgerModal/> */}
 											</div>	
 											
 											{/* </div>																		 */}
